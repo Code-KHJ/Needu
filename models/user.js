@@ -10,20 +10,23 @@ const userSchema = mongoose.Schema({
         type: String,
         minlength: 8
     },
-    name: {
+    username: {
         type: String,
         maxlength: 50
+    },
+    phonenumber: {
+        type: String
     },
     email: {
         type: String,
         trim: true,
-    },
-    token: {
-        type: String
-    },
-    tokenExp: {
-        type: Number
     }
+//     token: {
+//         type: String
+//     },
+//     tokenExp: {
+//         type: Number
+//     }
 })
 
 const User = mongoose.model('User',userSchema)
