@@ -1,0 +1,66 @@
+header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #EAEDF4;
+}
+header .area_logo a {
+  margin-left: 64px;
+}
+.signup {
+  padding-top: 55px;
+  width: 360px;
+  margin: 0 auto;
+  position: relative;
+  font-size: 100%;
+}
+form input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px 14px 12px;
+  height: 48px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #8491A7;
+  border-radius: 4px;
+  color: #373F57;
+  letter-spacing: -1px;
+}
+form input:hover {
+  background-color: #EFF5FF;
+}
+form input:focus {
+  border: #2D65FE;
+}
+form .item {
+  margin-top: 24px;
+  position: relative;
+}
+form .item label strong {
+  font-size: 16px;
+  line-height: 1.0;
+  color: #373F57;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.btn_signup {
+  margin-top: 24px;
+  padding-bottom: 100px;
+}
+.btn_signup button {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 16px 12px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #4876EF;
+  border-color: #D7DCE5;
+  border-radius: 4px;
+  letter-spacing: -1px;
+  text-align: center;
+  color: #AFBAC8;
+  background-color: #EAEDF4;
+  overflow: visible;
+}
