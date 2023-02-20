@@ -19,14 +19,14 @@
             </header>
             <!-- 회원가입 입력폼 --> <!-- name 부분은 DB 필드이름하고 매치-->
             <div class="signup">
-                <form name="frm" id="frm" method="post" action="http://localhost:3000/signup"><!-- 데이터 넘길 곳을 액션 안에 넣기-->
+                <form name="frm" id="frm" method="post" action="http://localhost:3000/register"><!-- 데이터 넘길 곳을 액션 안에 넣기  autocapitalize="off" -->
                     <div class="write_base">
                         <!-- 아이디 -->
                         <div class="item">
                             <label for="id">
                                 <strong>아이디</strong>
                             </label>
-                            <input type="text" name="id" id="id" clsss="" maxlength="20" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="4~20자리 / 영문, 숫자만 사용해주세요">
+                            <input type="text" name="id" id="id" clsss="" maxlength="20" style="ime-mode:disabled" autocomplete="off" placeholder="4~20자리 / 영문, 숫자만 사용해주세요">
                         </div>
                         <!-- 비밀번호 -->
                         <div class="item">
