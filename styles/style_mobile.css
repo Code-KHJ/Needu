@@ -2,7 +2,7 @@
 
 /* z-index
 .visual_slider_wrap span 9 (arrow)
-.header_wrap 10 / .modal 11 / .btn_ham 12 / nav 13 */
+.header_wrap 10 / .btn_toTop 10 / .modal 11 / nav 12 / .btn_ham 13 */
 /* moblie */
 .container{
   width:100%;height:100%;
@@ -53,35 +53,39 @@ h1>a>span:nth-child(2){
 }
 
 .btn_ham{
+  position:absolute;
+  top:40px;right:5%;
   display:block;
   width:24px; height:80px;
   background:url(images/btn_ham.png) no-repeat center/contain;
   cursor:pointer;
-  z-index: 12;
+  z-index: 13;
 }
 
 nav{
   display:none;
   width:50%;
-  z-index: 13;
+  z-index: 12;
 }
 
 nav form{
+  position:relative;
   margin-top:80px;
   width:100%;
   text-align:right;
 }
-nav form input{
-  border:none;
+.input_search{
+  position:absolute;
+  top:-44px;right:40%;
   border-bottom:1px solid #000DFF;
 }
-nav form input{
-  outline: none;
-}
 nav input::placeholder{
-  color:rgba(0,0,0,0.3)
+  color:rgba(0,0,0,0.3);
+  font-size:1.4rem;
 }
 nav form button{
+  position:absolute;
+  top:-44px;right:32%;
   border:none;
   width:14px;
   height:14px;
@@ -127,6 +131,7 @@ main{
   width:28px;height:24px;
   background:url(images/toTop.png) no-repeat center/contain;
   cursor:pointer;
+  z-index:10;
 }
 .visual{
   position:relative;
@@ -140,7 +145,7 @@ main{
   height:100%;
   padding:20px 0;
 }
-.visual_slider_wrap span:nth-of-type(1){
+.visual_slider_wrap button:nth-of-type(1){
   position:absolute;
   top:50%;left:20px;
   display:block;
@@ -149,7 +154,7 @@ main{
   cursor: pointer;
   z-index: 9;
 }
-.visual_slider_wrap span:nth-of-type(2){
+.visual_slider_wrap button:nth-of-type(2){
   position:absolute;
   top:50%;right:20px;
   display:block;
@@ -397,13 +402,13 @@ footer{
 }
 .footer_top{
   width:100%;
-  margin:60px 0 40px;
+  margin:20px 0 0;
   border-bottom: 1px solid rgba(51, 51, 51, 0.3);
-  padding-bottom:40px;
+  padding-bottom:20px;
 }
 .footer_top h2{
-  font-size:2.4rem;
-  line-height:40px;
+  font-size:2rem;
+  line-height:28px;
 }
 .footer_top ul{
   width:100%;
@@ -423,6 +428,7 @@ footer{
 }
 .footer_sns{
   width:100%;
+  display:none;
 }
 .footer_sns ul li a{
   display:block;
@@ -444,7 +450,13 @@ footer{
 
 .footer_bottom{
   width:100%;
-  font-size:1.4rem;
+  font-size:1.2rem;
+  margin-top:20px;
 }
-
+.footer_bottom span::after{
+  content:" |"
+}
+.footer_bottom span:last-of-type::after{
+  content:""
+}
 /* moblie end */

@@ -26,8 +26,20 @@ li{
 fieldset{
   border:none;
 }
+button{
+  border:none;
+  background:none;
+}
+input{
+  outline:none;
+  border:none;
+}
 .screen_out{
-  text-indent: -9999px;
+  position:absolute;
+  top:-9999px;
+}
+.blind{
+  text-indent:-9999px;
 }
 .clearfix::after{
   content:"";
