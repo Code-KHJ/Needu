@@ -15,12 +15,14 @@
     <header>
       <div class="header_wrap">
         <h1><a href="#"><span>사회복지</span><span>채용</span>플랫폼</a></h1>
-        <span class="screen_out btn_ham">btn_ham</span>
+        <button class="blind btn_ham">메뉴열기</button>
         <nav>
           <div class="clearfix">
-          <form>
+          <form id="formSearch" name="formSearch">
             <fieldset>
-              <input type="text" id="search" class="input_search" placeholder="검색어를 입력하세요">
+              <legend class="screen_out">검색영역</legend>
+              <input type="search" id="inputSearch" name="inputSearch" class="input_search" placeholder="검색어를 입력하세요">
+              <label for="inputSearch" class="screen_out">검색어입력</label>
               <button></button>
             </fieldset>
           </form>
@@ -39,10 +41,10 @@
     <!-- header end -->
     <main>
       <div class="main_wrap">
-        <span class="btn_toTop screen_out">to_top</span>
-        <div class="visual">
+        <button class="btn_toTop blind">맨위로</button>
+        <section class="visual">
           <div class="visual_slider_wrap">
-            <span class="screen_out">arrow_left</span>
+            <button class="blind">왼쪽화살표</button>
             <ul class="visual_slider clearfix">
               <li><a href="#">
                 <b>공고제목</b>
@@ -60,12 +62,12 @@
                 <i>채용기간</i>
               </a></li>
             </ul>
-            <span class="screen_out">arrow_right</span>
+            <button class="blind">오른쪽화살표</button>
           </div>
           <div class="btn_more">
             <a href="#">더 많은 채용공고 보러가기</a></div>
-        </div>
-        <div class="con1">
+        </section>
+        <section class="con1">
           <div class="con1_tit">
             <h3>기관후기</h3>
           </div>
@@ -106,8 +108,8 @@
             </ul>
           </div>
           <span class="btn_more"><a href="#">더 보기</a></span>
-        </div>
-        <div class="con2">
+        </section>
+        <section class="con2">
           <div class="con2_tit">
             <h3>커뮤니티</h3>
           </div>
@@ -136,7 +138,7 @@
             </ul>
           </div>
           <span class="btn_more"><a href="#">더 보기</a></span>
-        </div>
+        </section>
       </div>
     </main>
   <!-- main end -->
@@ -154,16 +156,25 @@
           </div>
           <div class="footer_sns">
             <ul>
-              <li><a href="#" class="screen_out">sns1</a></li>
-              <li><a href="#" class="screen_out">sns2</a></li>
-              <li><a href="#" class="screen_out">sns3</a></li>
-              <li><a href="#" class="screen_out">sns4</a></li>
+              <li><a href="#" class="blind">인스타그램</a></li>
+              <li><a href="#" class="blind">페이스북</a></li>
+              <li><a href="#" class="blind">트위터</a></li>
+              <li><a href="#" class="blind">네이버블로그</a></li>
             </ul>
           </div>
         </div>
         <div class="footer_bottom">
-          <p>회사명 | 회사주소(서울특별시 ㅇㅇ구 ㅇㅇ로 ㅇㅇ길 00-00 | 대표명: ㅇㅇㅇ | 사업자 등록번호: 123-435-325663</p>
-          <p>통신판매업번호: ㅇㅇ-제1239843 | 직업정보제공사업 번호: 서울 ㅇㅇ 제1294832-33 | 유료직업소개업 등록번호: 제 2343250989호</p>
+          <p>
+            <span>회사명</span> 
+            <span>회사주소(서울특별시 ㅇㅇ구 ㅇㅇ로 ㅇㅇ길 00-00</span>
+            <span>대표명: ㅇㅇㅇ</span>
+            <span>사업자 등록번호: 123-435-325663</span>
+          </p>
+          <p>
+            <span>통신판매업번호: ㅇㅇ-제1239843</span>
+            <span>직업정보제공사업 번호: 서울 ㅇㅇ 제1294832-33</span>
+            <span>유료직업소개업 등록번호: 제 2343250989호</span>
+          </p>
         </div>
       </div>
     </footer>  
@@ -206,12 +217,12 @@
         if($(window).innerWidth() >= 1024){
           $('.modal').css('display', 'none');
         } else if($(window).innerWidth() > 1280){
-          $('nav form input').css('display','inline-block')
+          $('.input_search').css('display','block')
         }
       })
 
-    let arrow_left = $('.visual_slider_wrap span:nth-of-type(1)')
-    let arrow_right = $('.visual_slider_wrap span:nth-of-type(2)')
+    let arrow_left = $('.visual_slider_wrap button:nth-of-type(1)')
+    let arrow_right = $('.visual_slider_wrap button:nth-of-type(2)')
     let k = 0;
     arrow_left.click(function(){
       k++;
@@ -233,19 +244,18 @@
     
     
     let l = 0;
-  
-      $('.input_search').next('button').click(function(){
+    
+      $('.input_search').parent().find('button').click(function(){
         l++;      
-        if(l%2 == 1 && $(window).innerWidth() < 1280 && $(window).innerWidth() > 768){
-        $('.input_search').css('display','inline-block')
+        if(l%2 == 1 && $(window).innerWidth() < 1280 && $(window).innerWidth() >= 768){
+        $('.input_search').css('display','block')
       } else if($('.input_search').val() == "" && $(window).innerWidth() < 1280 && $(window).innerWidth() > 768){
         $('.input_search').css('display','none')
         l = 0;
       } else {
-        $('.input_search').css('display','inline-block')
+        $('.input_search').css('display','block')
         l = 1;
       }
-
 
     })
     
