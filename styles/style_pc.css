@@ -1,27 +1,29 @@
 @charset "utf-8";
 
 /* z-index
-.visual_slider_wrap span 9 (arrow)
+.visual_slider_wrap button 9 (arrow)
 .header_wrap 10 / .modal 11 / .btn_ham 12 / nav 13 */
-/* tablet */
+/* tablet_768 */
 @media screen and (min-width:768px) {
 
 
-  nav form input{
-    font-size:2rem;
-  }
+.input_search{
+  top:-52px;
+  font-size:2rem;
+}
   
-  nav form button{
-    width:20px;
-    height:20px;
-  }
-  nav ul{
-    font-size:2rem;
-  }
-  nav>div:last-child{
-    font-size:2rem;
-  }
-  /* header end */
+nav form button{
+  top:-52px;
+  width:20px;
+  height:20px;
+}
+nav ul{
+  font-size:2rem;
+}
+nav>div:last-child{
+  font-size:2rem;
+}
+/* header end */
 
 
 .visual .btn_more a{
@@ -64,6 +66,9 @@
   position:relative;
   overflow:scroll;
 }
+.con2_con::-webkit-scrollbar{
+  opacity: 0;
+}
 .con2_box{
   width:1600px;
   display:flex;
@@ -94,14 +99,12 @@ footer{
 }
 
 .footer_top{
-  width:100%;
-  margin:60px 0 40px;
+  height:40px;
+  margin:40px 0 20px;
   border-bottom: 1px solid rgba(51, 51, 51, 0.3);
-  padding-bottom:40px;
 }
 .footer_top h2{
   float:left;
-  font-size:2.4rem;
 }
 .footer_top>div:nth-child(1) ul{
   width:60%;
@@ -116,7 +119,6 @@ footer{
 
 .footer_bottom{
   width:100%;
-  font-size:1.4rem;
 }
 }
 /* tablet end */
@@ -131,6 +133,7 @@ footer{
     width:260px;
     font-size:2.8rem;
   }
+  
   nav{
     display:block !important;
     width:80%;
@@ -165,14 +168,19 @@ footer{
     line-height:40px;
     font-size:1.6rem;
   }
-  
-  nav form input{
+    
+  .input_search{
+    top:32px;
+    font-size:2rem;
     display:none;
-  }  
+  }
+    
   nav form button{
+    top:32px;
     width:20px;
     height:20px;
   }
+
   nav ul{
     font-size:2rem;
   }
@@ -206,7 +214,6 @@ footer{
   }
   .con2_con{
     position:relative;
-    overflow:scroll;
   }
   .con2_box{
     width:1600px;
@@ -247,7 +254,7 @@ footer{
   .footer_top h2{
     display:block;
     width:max-content;
-    font-size:2.4rem;
+    font-size:2.2rem;
   }
   .footer_top>div:nth-child(1) ul{
     width:70%;
@@ -302,10 +309,12 @@ nav>div:last-child{
   font-size:2rem;
 }
 
-nav form input{
-  display:inline-block;
+.input_search{
+  display:block;
+  top:28px;
 }  
 nav form button{
+  top:28px;
   width:20px;
   height:20px;
 }
@@ -320,10 +329,10 @@ nav>div{
 .visual{
   height:540px;
 }
-.visual_slider_wrap span:nth-of-type(1){
+.visual_slider_wrap button:nth-of-type(1){
   width:40px;height:40px;
 }
-.visual_slider_wrap span:nth-of-type(2){
+.visual_slider_wrap button:nth-of-type(2){
   width:40px;height:40px;
 }
 .visual_slider{
@@ -383,8 +392,7 @@ nav>div{
   justify-content: space-between;
 }
 .con2_box li{
-  width:49%;
-  margin-top:20px;
+  width:50%;
 }
 .con2 .btn_more {
   position:relative;
