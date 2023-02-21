@@ -328,38 +328,60 @@ nav>div{
 
 .visual{
   height:540px;
+  position: relative;
 }
-.visual_slider_wrap button:nth-of-type(1){
+/* .visual_slider_wrap button:nth-of-type(1){
   width:40px;height:40px;
 }
 .visual_slider_wrap button:nth-of-type(2){
   width:40px;height:40px;
-}
-.visual_slider{
+} */
+.visual_slider {
   width:1134px;
   height:400px;
   margin-top:68px;
 }
-.visual_slider li{
+.visual_slider li,
+.swiper-slide li {
   width:324px;
   height:400px;
   margin-left:80px;
 }
 
-.visual_slider li:first-child{
+.swiper-slide li:first-child{
   margin-left:0;
 }
-.visual_slider li a b{
+.swiper-slide li a b{
   top:260px;
   font-size:2.8rem;
 }
-.visual_slider li a p{
+.swiper-slide li a p{
   top:310px;
   font-size:2.4rem;
 }
-.visual_slider li a i{
+.swiper-slide li a i{
   top:340px;
   font-size:1.6rem;
+}
+.swiper-prev .material-symbols-outlined{
+  font-size: 4rem;
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  color: #0038C9;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+}
+.swiper-next .material-symbols-outlined {
+  font-size: 4rem;
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  color: #0038C9;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
 }
 
 .visual .btn_more{
