@@ -1,79 +1,104 @@
-// const form = document.getElementsById('frm');
-// const userid = document.getElementById('id');
-// var password1 = document.getElementById('password1');
-// const password2 = document.getElementById('password2');
-const username = document.getElementById('name');
-const phonenumber = document.getElementById('phonenumber');
-const email = document.getElementById('email');
+
 
 function checkId(){
     const userid = document.getElementById('id');
-    let regId = /^[a-zA-Z0-9]{4,20}}$/ //영어, 숫자만 가능한 정규식
+    const msgid = document.getElementById('checkidmsg');
+    const regid = /^[A-Za-z0-9]{4,20}$/ //영어, 숫자만 가능한 정규식
     let duplicate = [] //db에서 아이디 배열 가져와서 중복검사
-
     //아이디 글자 수
     if(userid.value.length < 4 || userid.value.length > 20){
        userid.style.borderColor = '#dc3434';
-       alert("아이디 글자수 안맞음")
+       msgid.style="display: "
+       msgid.innerHTML="아이디는 4~20자리로 입력해주세요."
     } else{
         //아이디 정규식 검사
-        if(!regId.test(userid.value)){
+        if(!regid.test(userid.value)){
+            console.log(userid.value)
             userid.style.borderColor = '#dc3434';
-            alert("아이디는 영문, 숫자만 가능합니다.")
+            msgid.style="display: "
+            msgid.innerHTML="아이디는 영문, 숫자만 가능합니다."
             userid.value = "";
             return false;
         } else{
-            //중복검사 필요
-
+            //아이디 중복체크 필요
+            userid.style.borderColor = '#2D65FE';
+            msgid.style="display: none;"
         }
-        
-    }
-}
-
+    }}
 function checkPw1(){
     const password1 = document.getElementById('password1');
-    // let password2 = document.getElementById('password2');
+    const msgpw1 = document.getElementById('checkpw1msg');
     var regPw = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,16}$/ //영어, 숫자만 가능한 정규식
     //비밀번호 글자 수 검사
     if(password1.value.length < 8){
         password1.style.borderColor = '#dc3434';
-        alert("비밀번호 글자 적음")
+        msgpw1.style="display: "
+        msgpw1.innerHTML="비밀번호는 8~16자리로 입력해주세요."
     } else{
         //비밀번호 유효성 검사
         if(!regPw.test(password1.value)){
             password1.style.borderColor = '#dc3434';
-            alert("비밀번호는 영문 대소문자, 숫자, 특수문자만 가능하며 반드시 영문, 숫자 필요")
+            msgpw1.style="display: "
+            msgpw1.innerHTML="영문 대소문자, 숫자, 특수문자만 입력 가능하며 반드시 영문, 숫자 필요합니다."
             password1.value = "";
             return false;
         } else{
-            //통과 색 수정
-            password1.style.borderColor = '#dc3434';
+            //통과
+            password1.style.borderColor = '#2D65FE';
+            msgpw1.style="display: none;"
         }
-    }
-}
+    }}
 function checkPw2(){
     const password1 = document.getElementById('password1');
     const password2 = document.getElementById('password2');
-    if(password2.value !== password1.value){
+    const msgpw2 = document.getElementById('checkpw2msg');
+    if(password2.value !== password1.value){ //비밀번호 일치 확인
     password2.style.borderColor = '#dc3434';
-    alert("비밀번호가 동일하지 않음")
-} else{
-    //통과
-}}
-
+    msgpw2.style="display: "
+    msgpw2.innerHTML="비밀번호가 일치하지 않습니다."
+    } else{
+        //통과
+        password2.style.borderColor = '#2D65FE';
+    }}
 function checkNm(){
-    const name = document.getElementById('name');
-    if(name.value == ""){
-    name.style.borderColor = '#dc3434';
-    alert("이름입력하시오")
-} else{
-    //통과
-}}
-
-
-// id.onchange = function (){
-//     if(id.value.length < 4 || id.value.length > 20){
-//         id.style.color = "#573737";
-//         alert("에러발생");
-//     }
-// };
+    const name = document.getElementById('username');
+    const msgnm = document.getElementById('checknmmsg')
+    const regnm = /^[A-Za-z가-힣]{2,10}$/ //영어, 한글만 가능한 정규식
+    if(name.value.length == 0){
+        name.style.borderColor = '#dc3434';
+        msgnm.style="display: "
+        msgnm.innerHTML="이름을 입력해주세요."
+    } else{
+        if(!regnm.test(name.value)){
+            name.style.borderColor = '#dc3434';
+            msgnm.style="display: "
+            msgnm.innerHTML="이름을 바르게 입력해주세요."
+        } else{ //통과
+            name.style.borderColor = '#2D65FE';
+            msgnm.style="display: none;"
+        }
+    }}
+function checkPn(){
+    const phone = document.getElementById('phonenumber');
+    const msgPn = document.getElementById('checkPnmsg')
+    const regPn = /^(010)[0-9]{7,8}$/ //전화번호 정규식
+    if(!regPn.test(phone.value)){
+        phone.style.borderColor = '#dc3434';
+        msgPn.style="display: "
+        msgPn.innerHTML="휴대폰 번호를 바르게 입력해주세요."
+    } else{ //통과
+        phone.style.borderColor = '#2D65FE';
+        msgPn.style="display: none;"
+    }}
+function checkEm(){
+    const email = document.getElementById('email');
+    const msgEm = document.getElementById('checkEmmsg')
+    const regEm = /^\S+@\S+\.\S+/ //이메일 정규식
+    if(!regEm.test(email.value)){
+        email.style.borderColor = '#dc3434';
+        msgEm.style="display: "
+        msgEm.innerHTML="휴대폰 번호를 바르게 입력해주세요."
+    } else{ //통과
+        email.style.borderColor = '#2D65FE';
+        msgEm.style="display: none;"
+    }}
