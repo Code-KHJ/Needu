@@ -7,18 +7,7 @@
         <title>회원가입</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
         <link rel="stylesheet" href="../styles/signup.css">
-        <script difer src="../js/signup.js"></script>
-        <!-- <script>
-        window.onload = function(){
-            var userid = document.getElementById('id');
-            userid.onchange = function(){
-                if(userid.value.length < 4){
-                    userid.style.borderColor = '#dc3434';
-                    alert("에러발생");
-                }
-            }
-        }
-        </script> -->
+
     </head>
     <body>
         <div class="signin_container">
@@ -34,32 +23,36 @@
                 <form name="frm" id="frm" method="post" action="http://localhost:3000/register"><!-- 데이터 넘길 곳을 액션 안에 넣기   -->
                     <div class="write_base">
                         <!-- 아이디 -->
-                        <div class="item" id="test">
+                        <div class="item">
                             <label for="id">
                                 <strong>아이디</strong>
                             </label>
-                            <input type="text" name="id" id="id" clsss="" maxlength="20" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="4~20자리 / 영문, 숫자만 사용해주세요" onchange="checkId()">
+                            <input type="text" name="id" id="id" clsss="" maxlength="20" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="아이디(4~20자리) 영문, 숫자만 사용해주세요" onchange="checkId()">
+                            <div class="checkmsg" id="checkidmsg" style="display: none;"></div>
                         </div>
                         <!-- 비밀번호 -->
                         <div class="item">
                             <label for="password1">
                                 <strong>비밀번호</strong>
                             </label>
-                            <input type="password" name="password" id="password1" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호(8~16자리/영문 대소문자, 숫자, 특수문자 조합" onchange="checkPw1()">    
+                            <input type="password" name="password" id="password1" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호(8~16자리) 영문 대소문자, 숫자, 특수문자 조합" onchange="checkPw1()">
+                            <div class="checkmsg" id="checkpw1msg" style="display: none;"></div>
                         </div>
                         <!-- 비밀번호 확인 -->
                         <div class="item">
                             <label for="password2">
                                 <strong>비밀번호 확인</strong>
                             </label>
-                            <input type="password" id="password2" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호를 다시 한번 입력해주세요" onchange="checkPw2()">    
+                            <input type="password" id="password2" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호를 다시 한번 입력해주세요" onchange="checkPw2()">
+                            <div class="checkmsg" id="checkpw2msg" style="display: none;"></div>
                         </div>
                         <!-- 이름 -->
                         <div class="item">
                             <label for="username">
                                 <strong>이름</strong>
                             </label>
-                            <input type="text" name="name" id="username" clsss="" maxlength="10" autocomplete="off" placeholder="이름을 입력해주세요" onchange="checkNm()">    
+                            <input type="text" name="name" id="username" clsss="" maxlength="10" autocomplete="off" placeholder="이름을 입력해주세요" onblur="checkNm()">
+                            <div class="checkmsg" id="checknmmsg" style="display: none;"></div>
                         </div>
                         <!-- 휴대폰 번호 -->
                         <div class="item">
@@ -67,17 +60,18 @@
                                 <strong>휴대폰</strong>
                             </label>
                             <div>
-                                <input type="text" name="phonenumber" id="phonenumber" clsss="" autocomplete="off" placeholder="휴대전화 번호('-'빼고 숫자만 입력)">    
+                                <input type="text" name="phonenumber" id="phonenumber" clsss="" autocomplete="off" placeholder="휴대전화 번호('-'빼고 숫자만 입력)" onchange="checkPn()">    
                                 <button>인증요청</button>
                             </div>
-                            
+                            <div class="checkmsg" id="checkPnmsg" style="display: none;"></div>
                         </div>
                         <!-- 이메일 -->
                         <div class="item">
                             <label for="email">
                                 <strong>이메일</strong>
                             </label>
-                            <input type="email" name="email" id="email" clsss="" maxlength="40" autocomplete="off" placeholder="이메일을 입력해주세요">    
+                            <input type="email" name="email" id="email" clsss="" maxlength="40" autocomplete="off" placeholder="이메일을 입력해주세요" onchange="checkEm()">
+                            <div class="checkmsg" id="checkEmmsg" style="display: none;"></div>
                         </div>
                         <div class="join_agree">
                             <div class="join_input">
@@ -92,6 +86,6 @@
                 </form>
             </div>
         </div>
-
+        <script difer src="../js/signup.js"></script>
     </body>
 </html>
