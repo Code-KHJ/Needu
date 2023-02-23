@@ -49,4 +49,16 @@ app.post("/register",(req, res) => {
     })
 })
 
+app.post("/checkId",(req, res) =>{
+    const checkId = req.body.id
+    let result = 1
+    pool.query('SELECT id FROM user WHERE id = "' + checkId + '"', (err, row)=>{
+        if(row[0] == undefined){
+            res.send(JSON.stringify(result))
+        } else{
+            result = 2
+            res.send(JSON.stringify(result))
+        }
+    })})
+
 app.listen(port, () => {console.log(`Server started on port ${port}`)});
