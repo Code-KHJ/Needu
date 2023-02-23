@@ -1,10 +1,9 @@
 
-
 function checkId(){
     const userid = document.getElementById('id');
     const msgid = document.getElementById('checkidmsg');
     const regid = /^[A-Za-z0-9]{4,20}$/ //영어, 숫자만 가능한 정규식
-    let duplicate = [] //db에서 아이디 배열 가져와서 중복검사
+
     //아이디 글자 수
     if(userid.value.length < 4 || userid.value.length > 20){
        userid.style.borderColor = '#dc3434';
@@ -20,9 +19,21 @@ function checkId(){
             userid.value = "";
             return false;
         } else{
-            //아이디 중복체크 필요
-            userid.style.borderColor = '#2D65FE';
-            msgid.style="display: none;"
+            //아이디 중복체크
+            axios.post("http://localhost:3000/checkId", {
+            id: userid.value
+            })
+            .then((res)=>{
+                console.log(res)
+                if(res.data == 1){
+                    userid.style.borderColor = '#2D65FE';
+                    msgid.style="display: none;"    
+                } else{
+                    userid.style.borderColor = '#dc3434';
+                    msgid.style="display: "
+                    msgid.innerHTML="이미 존재하는 아이디입니다."
+                }
+            })
         }
     }}
 function checkPw1(){
@@ -59,6 +70,7 @@ function checkPw2(){
     } else{
         //통과
         password2.style.borderColor = '#2D65FE';
+        msgpw2.style="display: none;"
     }}
 function checkNm(){
     const name = document.getElementById('username');
@@ -97,7 +109,7 @@ function checkEm(){
     if(!regEm.test(email.value)){
         email.style.borderColor = '#dc3434';
         msgEm.style="display: "
-        msgEm.innerHTML="휴대폰 번호를 바르게 입력해주세요."
+        msgEm.innerHTML="이메일을 바르게 입력해주세요."
     } else{ //통과
         email.style.borderColor = '#2D65FE';
         msgEm.style="display: none;"
