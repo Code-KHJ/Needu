@@ -17,12 +17,13 @@
   z-index: 11;
 }
 header{
-  width:100%;
+  width:90%;
   height:120px;
   background-color:#fff;
   padding-top:40px;
   padding-left: 5%;
   padding-right: 5%;
+  margin: 0 auto;
 }
 .header_wrap{
   width:100%;
@@ -239,8 +240,8 @@ main{
 
 .con1{
   position:relative;
-  width:100%;
-  margin-top:200px;
+  width:90%;
+  margin: 200px auto 0;
   padding:0 20px;
 }
 .con1_tit{
@@ -321,8 +322,8 @@ main{
 /* con1 end */
 .con2{
   position:relative;
-  width:100%;
-  margin-top:120px;
+  width:90%;
+  margin:120px auto 0;
   padding:0 20px;
 }
 .con2_tit{

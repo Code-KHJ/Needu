@@ -280,7 +280,9 @@ footer{
 
 /* pc_1280 */
 @media screen and (min-width:1280px) {
-
+header{
+  width:85%;
+}
 h1{
   width:280px;
   font-size:3rem;
@@ -396,12 +398,14 @@ nav>div{
 /* visual end */
 
 .con1{
+  width:85%;
   margin-top:320px;
   padding:0 80px;
 }
 
 /* con1 end */
 .con2{
+  width:85%;
   padding:0 80px;
 }
 .con2_con{
