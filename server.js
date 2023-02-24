@@ -1,4 +1,5 @@
 const express = require("express");
+const { body, validationResult } = require("express-validator");
 const port = 3000;
 const mysql = require("mysql");
 const path = require("path");
@@ -21,9 +22,18 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     debug   :false
 })
-
-app.post("/register",(req, res) => {
-    //회원가입 시 필요한 정보를 클라이언트에서 가져와서 데이터베이스에 넣어줌
+//회원가입 시 필요한 정보를 클라이언트에서 가져와서 데이터베이스에 넣어줌
+app.post("/register", [
+        body('id').trim().notEmpty().isLength({min:4, max:20}).isAlphanumeric().withMessage("아이디 오류"),
+        body('password').trim().notEmpty().isLength({min:8, max:16}).withMessage("비밀번호 오류"),    
+        body('name').trim().notEmpty().isLength({min:1}).withMessage("이름 오류"),
+        body('phonenumber').trim().notEmpty().isMobilePhone('any').withMessage("휴대폰번호 오류"),
+        body('email').trim().notEmpty().isEmail().withMessage("이메일 오류")
+    ], (req, res) => {
+    const err = validationResult(req);
+    if (!err.isEmpty()){
+        return res.status(400).json({ err : err.array()});
+    }
     const user_info = {
         id : req.body.id,
         password : req.body.password,
