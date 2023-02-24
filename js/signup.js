@@ -1,4 +1,3 @@
-
 function checkId(){
     const userid = document.getElementById('id');
     const msgid = document.getElementById('checkidmsg');
@@ -25,9 +24,11 @@ function checkId(){
             })
             .then((res)=>{
                 console.log(res)
+                //통과
                 if(res.data == 1){
                     userid.style.borderColor = '#2D65FE';
-                    msgid.style="display: none;"    
+                    msgid.style="display: none;"
+                    return true;
                 } else{
                     userid.style.borderColor = '#dc3434';
                     msgid.style="display: "
@@ -57,6 +58,7 @@ function checkPw1(){
             //통과
             password1.style.borderColor = '#2D65FE';
             msgpw1.style="display: none;"
+            return true;
         }
     }}
 function checkPw2(){
@@ -71,6 +73,7 @@ function checkPw2(){
         //통과
         password2.style.borderColor = '#2D65FE';
         msgpw2.style="display: none;"
+        return true;
     }}
 function checkNm(){
     const name = document.getElementById('username');
@@ -88,19 +91,29 @@ function checkNm(){
         } else{ //통과
             name.style.borderColor = '#2D65FE';
             msgnm.style="display: none;"
+            return true;
         }
     }}
 function checkPn(){
     const phone = document.getElementById('phonenumber');
-    const msgPn = document.getElementById('checkPnmsg')
+    const msgPn = document.getElementById('checkPnmsg');
+    const btnPn = document.getElementById('btn_phone');
     const regPn = /^(010)[0-9]{7,8}$/ //전화번호 정규식
     if(!regPn.test(phone.value)){
         phone.style.borderColor = '#dc3434';
         msgPn.style="display: "
         msgPn.innerHTML="휴대폰 번호를 바르게 입력해주세요."
+        btnPn.disabled="disabled";
+        btnPn.style.backgroundColor = '#dc3434'; //이부분 색 작업해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        btnPn.style.borderColor = '#dc3434';
     } else{ //통과
         phone.style.borderColor = '#2D65FE';
         msgPn.style="display: none;"
+        btnPn.disabled="";
+        btnPn.style.backgroundColor = '#2D65FE';
+        btnPn.style.borderColor = "#2D65FE";
+        btnPn.style.color = "#EAEDF4";
+        return true;
     }}
 function checkEm(){
     const email = document.getElementById('email');
@@ -113,4 +126,31 @@ function checkEm(){
     } else{ //통과
         email.style.borderColor = '#2D65FE';
         msgEm.style="display: none;"
+        return true;
     }}
+//제출 전 최종 체크
+function checkAll(){
+    const list = [checkId(), checkPw1(), checkPw2(), checkNm(), checkPn(), checkEm];
+    if(list.every((ck)=>ch==true)) return true;
+}
+
+//모두 작성될 경우 submit버튼 활성화
+const form = document.querySelector('form');
+const btnSubmit = document.querySelector('#btnSubmit');
+form.addEventListener('change', ()=>{
+    const checkAll = Array.from(form.elements)
+    .filter(input => input.hasAttribute('required'))
+    .every(input => input.value.trim() !== '');
+
+    if(checkAll){
+        btnSubmit.disabled="";
+        btnSubmit.style.backgroundColor = '#2D65FE';
+        btnSubmit.style.borderColor = "#2D65FE";
+        btnSubmit.style.color = "#EAEDF4";
+    } else{
+        btnSubmit.disabled="disabled";
+        btnSubmit.style.backgroundColor = '#dc3434'; //이부분 색 작업해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        btnSubmit.style.borderColor = '#dc3434;'
+    }
+})
+
