@@ -5,6 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>회원가입</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
         <link rel="stylesheet" href="../styles/signup.css">
 
@@ -80,8 +83,12 @@
                             <label for="check_1">전체동의</label>
                         </div>
                         <div class="join_input join_input2">
-                            <input type="checkbox" id="check_2" required>
-                            <label for="check_2">(필수) 개인 회원 약관에 동의</label>
+                            <input type="checkbox" id="check_2">
+                            <label for="check_2">(필수) 개인 회원 약관에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </div>
+                        <div class="join_input join_input3">
+                            <input type="checkbox" id="check_3">
+                            <label for="check_3">(필수) 개인정보 수집 및 이용에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
                         </div>
                         <div class="join_input join_input3">
                             <input type="checkbox" id="check_3" required>
@@ -89,16 +96,33 @@
                         </div>
                         <div class="join_input join_input4">
                             <input type="checkbox" id="check_4">
-                            <label for="check_4">(선택) 위치기반서비스 이용약관에 동의</label>
+                            <label for="check_4">(선택) 위치기반서비스 이용약관에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
                         </div>
                         <div class="join_input join_input5">
                             <input type="checkbox" id="check_5">
-                            <label for="check_5">(선택) 마케팅 정보 수신 동의 - 이메일</label>
+                            <label for="check_5">(선택) 마케팅 정보 수신 동의 - 이메일</label><span class="material-symbols-outlined">arrow_forward_ios</span>
                         </div>
                         <div class="join_input join_input6">
                             <input type="checkbox" id="check_6">
-                            <label for="check_6">(선택) 마케팅 정보 수신 동의 - SMS/MMS</label>
+                            <label for="check_6">(선택) 마케팅 정보 수신 동의 - SMS/MMS</label><span class="material-symbols-outlined">arrow_forward_ios</span>
                         </div>
+                    </div>
+                    <div class="join_radio">
+                        <div>정보보유기간</div>
+                        <ul class="join_radio_ul">
+                            <li>
+                                <input type="radio" name="radio1" id="input_radio">
+                                <label for="input_radio">탈퇴시</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="radio1" id="input_radio">
+                                <label for="input_radio">3년</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="radio1" id="input_radio">
+                                <label for="탈퇴시">1년</label>
+                            </li>
+                        </ul>
                     </div>
                     <div class="btn_signup">
                         <button type="submit" id="btnSubmit" class="" disabled="disabled">회원가입 완료</button>
@@ -107,6 +131,9 @@
             </div>
         </div>
         <script defer src="../js/signup.js"></script>
+<<<<<<< HEAD
+=======
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+>>>>>>> 7607991e3d6e2e90197007644cd49253eb98bd99
     </body>
 </html>
