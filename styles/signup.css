@@ -84,10 +84,6 @@ form .checkmsg {
   margin-left: 6px;
   color: red;
 }
-.btn_signup {
-  margin-top: 24px;
-  padding-bottom: 100px;
-}
 .join_agree {
   position: relative;
   display: flex;
@@ -126,6 +122,12 @@ form .checkmsg {
   color: #333333;
   font-weight: 700;
   line-height: 27px;
+}
+.material-symbols-outlined {
+  position: absolute;
+  right: 20px;
+  color: rgba(51, 51, 51, 0.5);
+  cursor: pointer;
 }
 .join_input2 {
   /* position: absolute; */
@@ -184,12 +186,43 @@ form .checkmsg {
   font-weight: 400;
 }
 
+.join_radio {
+  margin: 60px 0;
+}
+.join_radio div {
+  font-size: 24px;
+  margin-bottom: 24px;
+  font-weight: 400;
+  line-height: 27px;
+}
+.join_radio ul {
+  display: flex;
+}
+.join_radio ul li {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.join_radio ul li input {
+  width: 30px;
+  height: 30px;
+  background-color: #FAFAFA;
+  border: 1px solid rgba(51, 51, 51, 0.5);
+  margin-right: 8px;
+}
+.join_radio ul li label {
+  text-align: center;
+}
+
+.btn_signup {
+  margin-top: 24px;
+}
 .btn_signup button {
   width: 100%;
   height: 65px;
   box-sizing: border-box;
   padding: 19px 28px 19px 28px;
-  font-size: 16px;
+  font-size: 24px;
   line-height: 24px;
   border: 1px solid #4876EF;
   border-color: #D7DCE5;
