@@ -104,8 +104,8 @@ function checkPn(){
         msgPn.style="display: "
         msgPn.innerHTML="휴대폰 번호를 바르게 입력해주세요."
         btnPn.disabled="disabled";
-        btnPn.style.backgroundColor = '#dc3434'; //이부분 색 작업해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        btnPn.style.borderColor = '#dc3434';
+        btnPn.style.backgroundColor = 'rgba(51, 51, 51, 0.5)';
+        btnPn.style.borderColor = 'rgba(51, 51, 51, 0.5)';
     } else{ //통과
         phone.style.borderColor = '#2D65FE';
         msgPn.style="display: none;"
@@ -128,29 +128,62 @@ function checkEm(){
         msgEm.style="display: none;"
         return true;
     }}
-//제출 전 최종 체크
-function checkAll(){
-    const list = [checkId(), checkPw1(), checkPw2(), checkNm(), checkPn(), checkEm];
-    if(list.every((ck)=>ch==true)) return true;
-}
+function checkBox1(){
+    const ckBox1 = document.getElementById('check_1');
+    const ckBox2 = document.getElementById('check_2');
+    const ckBox3 = document.getElementById('check_3');
+    const ckBox4 = document.getElementById('check_4');
+    const ckBox5 = document.getElementById('check_5');
+    const ckBox6 = document.getElementById('check_6');
+    if (ckBox1.checked == true){
+        ckBox2.checked = true
+        ckBox3.checked = true
+        ckBox4.checked = true
+        ckBox5.checked = true
+        ckBox6.checked = true
+    }
+    else{
+        ckBox2.checked = false
+        ckBox3.checked = false
+        ckBox4.checked = false
+        ckBox5.checked = false
+        ckBox6.checked = false
+    }}
 
+function checkRd(){
+    const ckradio = document.querySelector('input[name="radio1"]:checked')
+    if(ckradio == null){ return false } else{ return true }}
+
+//제출 전 최종 체크
+function checkSubmit(){
+    const ckbox2 = document.getElementById('check_2').checked;
+    const ckbox3 = document.getElementById('check_3').checked;
+    const list = [checkPw1(), checkPw2(), checkNm(), checkPn(), checkEm(), ckbox2, ckbox3, checkRd()];
+    console.log(list)
+    console.log(checkRd())
+    if(list.every((ck)=>ck==true)) return true;
+}
+// checkId(), 
 //모두 작성될 경우 submit버튼 활성화
 const form = document.querySelector('form');
 const btnSubmit = document.querySelector('#btnSubmit');
+
 form.addEventListener('change', ()=>{
     const checkAll = Array.from(form.elements)
     .filter(input => input.hasAttribute('required'))
     .every(input => input.value.trim() !== '');
 
     if(checkAll){
-        btnSubmit.disabled="";
-        btnSubmit.style.backgroundColor = '#2D65FE';
-        btnSubmit.style.borderColor = "#2D65FE";
-        btnSubmit.style.color = "#EAEDF4";
-    } else{
+        if(checkSubmit() == true){
+            btnSubmit.disabled="";
+            btnSubmit.style.backgroundColor = '#2D65FE';
+            btnSubmit.style.borderColor = "#2D65FE";
+            btnSubmit.style.color = "#EAEDF4";    
+        }
+        else{
         btnSubmit.disabled="disabled";
-        btnSubmit.style.backgroundColor = '#dc3434'; //이부분 색 작업해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        btnSubmit.style.borderColor = '#dc3434;'
-    }
+        btnSubmit.style.backgroundColor = 'rgba(51, 51, 51, 0.5)';
+        btnSubmit.style.borderColor = 'rgba(51, 51, 51, 0.5)';
+    }}
 })
 
