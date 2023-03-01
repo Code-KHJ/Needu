@@ -19,7 +19,7 @@ const pool = mysql.createPool({
     user    : dbconfig.user,
     password: dbconfig.password,
     database: dbconfig.database,
-    connectionLimit: 10,
+    connectionLimit: 100,
     debug   :false
 })
 //회원가입 시 필요한 정보를 클라이언트에서 가져와서 데이터베이스에 넣어줌
@@ -64,6 +64,21 @@ app.post("/checkId",(req, res) =>{
     let result = 1
     pool.query('SELECT id FROM user WHERE id = "' + checkId + '"', (err, row)=>{
         if(row[0] == undefined){
+            res.send(JSON.stringify(result))
+        } else{
+            result = 2
+            res.send(JSON.stringify(result))
+        }
+    })})
+
+app.post("/checkPw",(req, res) =>{
+    const checkId = req.body.Id
+    const checkPw = req.body.pw
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hashPw = bcrypt.hashSync(checkPw, salt);
+    let result = 1
+    pool.query('SELECT password FROM user WHERE id = "' + checkId + '"', (err, row)=>{
+        if(row[0] == hashPw){
             res.send(JSON.stringify(result))
         } else{
             result = 2
