@@ -3,15 +3,14 @@ const { body, validationResult } = require("express-validator");
 const port = 3000;
 const mysql = require("mysql");
 const path = require("path");
-const static = require("serve-static");
 const dbconfig = require("./config/dbconfig.json");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const app = express();
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use("/public", static(path.join(__dirname, "public")));
+app.use(express.static(__dirname+"/public"));
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -22,6 +21,21 @@ const pool = mysql.createPool({
     connectionLimit: 100,
     debug   :false
 })
+
+app.get("/", (req,res)=>{
+    res.sendFile('/index.html')
+})
+app.get("/login", (req,res)=>{
+    res.sendFile(__dirname+'/public/login.html')
+})
+app.post("/login", (req,res)=>{
+    res.redirect('/')
+})
+
+app.get("/signup", (req,res)=>{
+    res.sendFile(__dirname+'/public/signup.html')
+})
+
 //회원가입 시 필요한 정보를 클라이언트에서 가져와서 데이터베이스에 넣어줌
 app.post("/register", [
         body('id').trim().notEmpty().isLength({min:4, max:20}).isAlphanumeric().withMessage("아이디 오류"),
@@ -48,11 +62,8 @@ app.post("/register", [
             pool.query('insert into user (id, password, name, phonenumber, email) values (?, ?, ?,?,?)',
                 [user_info.id, hashPw, user_info.name, user_info.phonenumber, user_info.email], (err, rows, fields)=>{
                 if(err) return res.json({ success: false, err})
-                return res.status(200).json({
-                    success: true     
+                return res.redirect('/')
                 })}
-            )
-        }
         else {
             res.json({ success: false, err}) //아이디 중복일 때 에러 부분 추후 자바스크립트로 구현 필요
         }
@@ -71,17 +82,22 @@ app.post("/checkId",(req, res) =>{
         }
     })})
 
-app.post("/checkPw",(req, res) =>{
-    const checkId = req.body.Id
+app.post("/checkpw",(req, res) =>{
+    const checkId = req.body.id
     const checkPw = req.body.pw
-    const salt = bcrypt.genSaltSync(saltRounds);
-    const hashPw = bcrypt.hashSync(checkPw, salt);
     let result = 1
     pool.query('SELECT password FROM user WHERE id = "' + checkId + '"', (err, row)=>{
-        if(row[0] == hashPw){
+        if(err) return console.log(err)
+        else if(row[0] !== undefined){
+            const match = bcrypt.compareSync(checkPw, row[0].password)   
+            if(match){
             res.send(JSON.stringify(result))
-        } else{
+            } else{
             result = 2
+            res.send(JSON.stringify(result))
+        }
+        } else{
+            result = 3
             res.send(JSON.stringify(result))
         }
     })})
