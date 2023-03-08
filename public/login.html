@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link href="../styles/style_reset.css" rel="stylesheet" type="text/css">
-    <link href="../styles/login.css" rel="stylesheet" type="text/css">
+    <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
+    <link href="./styles/login.css" rel="stylesheet" type="text/css">
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -21,10 +21,10 @@
             <button type="button" class="btn_login_tap_cor" id="login_corp" onclick="changeToCorp()">기업회원</button>
               <div class="login_box" id="form_login_user">
                 <div class="login_input_wrap">
-                  <form id="form_user" method="post" action="" onsubmit="return checkUser()">
+                  <form id="form_user" method="post" action="/login" onsubmit="return chehckpw(event)">
                     <fieldset>
-                      <input type="text" id="userid" placeholder="아이디를 입력하세요" required>
-                      <input type="password" id="userpw" autocomplete="off" placeholder="비밀번호를 입력하세요" required>
+                      <input type="text" name="id" id="userid" placeholder="아이디를 입력하세요" required>
+                      <input type="password" name="password" id="userpw" autocomplete="off" placeholder="비밀번호를 입력하세요" required>
                       <button type="submit" class="" id="submit_user" disabled="disabled">로그인</button>
                       <input type="checkbox" id="saveId" name="saveId">
                       <label for="saveId">아이디 저장</label>
@@ -70,7 +70,7 @@
           </div>
           <div class="ad_wrap">
             <div class="ad"></div>
-            <div class="btn_signup"><a href="#">회원가입</a></div>
+            <div class="btn_signup"><a href="/signup">회원가입</a></div>
           </div>
         </div>      
       </main>
@@ -102,7 +102,7 @@
         </div>
       </footer>
     </div>
-    <script defer src="../js/login.js"></script>
+    <script defer src="./js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>

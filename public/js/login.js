@@ -31,7 +31,11 @@ formsbm_user.addEventListener('keydown', ()=>{
     if(check_user){
         btnsbm_user.disabled="";
         btnsbm_user.className = "summitbtn_on";
-        }}
+    } else{
+        btnsbm_user.disabled="disabled";
+        btnsbm_user.className = "";
+    }}
+    
 )
 //기업 로그인 버튼 활성화
 const formsbm_corp = document.getElementById("form_corp");
@@ -47,50 +51,33 @@ formsbm_corp.addEventListener('change', ()=>{
         }}
 )
 
-//아이디 체크
-function checkUser(){
-    const userid = document.getElementById('userid');
-    const userpw = document.getElementById('userpw');
-    return new Promise((resolve, reject)=>{
-        //아이디 중복체크
-        axios.post("http://localhost:3000/checkId", {
-            id: userid.value
-            })
-            .then((res)=>{
-                //아이디 없음
-                if(res.data == 1){
-                    console.log("아이디없음")
-                    alert("존재하지 않는 아이디입니다.")
-                    userid.value = "";
-                    resolve(false);
-                } else{
-                    console.log("비번체크")
-                    axios.post("http://localhost:3000/checkPw", {
-                    id: userid.value,
-                    pw: userpw.value
-                    })
-                    .then((res)=>{
-                        //일치
-                        console.log("비번체크22")
-                        alert("비번체크")
-                        if(res.data == 1){
-                            alert("통과") //리디렉션 보내줘야함
-                            window.location.href = "../index.html"
-                            resolve(true);
-                        } else{
-                            alert("아이디와 비밀번호가 일치하지 않습니다.")
-                            userid.value = "";
-                            userpw.value = "";
-                            resolve(false);
-                        }
-                    })
-                    .catch((err)=>{
-                        alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-                        console.log(err);
-                        reject(err);
-                    })
-                }
-            })
-    })
+async function chehckpw(event){
+    event.preventDefault();
+    console.log('checking')
+    const checkId = document.getElementById("userid");
+    const checkPw = document.getElementById("userpw");
+    const checkform = document.getElementById("form_user");
+    try{
+        await axios.post("/checkpw",{
+            id: checkId.value,
+            pw: checkPw.value
+        })
+        .then((res)=>{
+        console.log(res.data)
+        if(res.data == 1){
+            checkform.submit();
+        } else if (res.data == 2){
+            console.log('false')
+            alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
+            checkform.reset();
+            return false
+        } else{
+            console.log('false')
+            alert("아이디가 존재하지 않습니다.");
+            checkform.reset();
+            return false
+        }}
+    )} catch(err){
+        console.log(err);
+    }}
     
-}

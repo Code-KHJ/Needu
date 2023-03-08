@@ -40,7 +40,7 @@ function checkId(){
 function checkPw1(){
     const password1 = document.getElementById('password1');
     const msgpw1 = document.getElementById('checkpw1msg');
-    var regPw = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,16}$/ //영어, 숫자만 가능한 정규식
+    var regPw = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,16}$/ //영어, 숫자만 가능한 정규식
     //비밀번호 글자 수 검사
     if(password1.value.length < 8){
         password1.style.borderColor = '#dc3434';
