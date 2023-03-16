@@ -1,16 +1,36 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
-const port = 3000;
 const mysql = require("mysql");
+const port = 3000;
 const path = require("path");
 const dbconfig = require("./config/dbconfig.json");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const app = express();
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const cors = require("cors")
+const {
+    login,
+    accessToken,
+    refreshToken,
+    loginSuccess,
+    logout,
+} = require("./jwt");
+dotenv.config();
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname+"/public"));
+app.use(cookieParser());
+app.use(cors({
+    origin : 'http://localhost:3000',
+    methods : ['GET', 'POST'],
+    credentials : true,
+}))
+
+
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -28,9 +48,7 @@ app.get("/", (req,res)=>{
 app.get("/login", (req,res)=>{
     res.sendFile(__dirname+'/public/login.html')
 })
-app.post("/login", (req,res)=>{
-    res.redirect('/')
-})
+app.post("/login", login)
 
 app.get("/signup", (req,res)=>{
     res.sendFile(__dirname+'/public/signup.html')
@@ -82,7 +100,7 @@ app.post("/checkId",(req, res) =>{
         }
     })})
 
-app.post("/checkpw",(req, res) =>{
+app.post("/checklogin",(req, res) =>{
     const checkId = req.body.id
     const checkPw = req.body.pw
     let result = 1

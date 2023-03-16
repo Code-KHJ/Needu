@@ -51,14 +51,15 @@ formsbm_corp.addEventListener('change', ()=>{
         }}
 )
 
-async function chehckpw(event){
+//로그인 검사
+async function chehcklogin(event){
     event.preventDefault();
     console.log('checking')
     const checkId = document.getElementById("userid");
     const checkPw = document.getElementById("userpw");
     const checkform = document.getElementById("form_user");
     try{
-        await axios.post("/checkpw",{
+        await axios.post("/checklogin",{
             id: checkId.value,
             pw: checkPw.value
         })
