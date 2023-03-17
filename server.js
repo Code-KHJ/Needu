@@ -100,24 +100,4 @@ app.post("/checkId",(req, res) =>{
         }
     })})
 
-app.post("/checklogin",(req, res) =>{
-    const checkId = req.body.id
-    const checkPw = req.body.pw
-    let result = 1
-    pool.query('SELECT password FROM user WHERE id = "' + checkId + '"', (err, row)=>{
-        if(err) return console.log(err)
-        else if(row[0] !== undefined){
-            const match = bcrypt.compareSync(checkPw, row[0].password)   
-            if(match){
-            res.send(JSON.stringify(result))
-            } else{
-            result = 2
-            res.send(JSON.stringify(result))
-        }
-        } else{
-            result = 3
-            res.send(JSON.stringify(result))
-        }
-    })})
-
 app.listen(port, () => {console.log(`Server started on port ${port}`)});
