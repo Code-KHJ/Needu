@@ -1,4 +1,5 @@
 const express = require("express");
+const nunjucks = require("nunjucks");
 const { body, validationResult } = require("express-validator");
 const mysql = require("mysql");
 const port = 3000;
@@ -10,14 +11,16 @@ const saltRounds = 10;
 const app = express();
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
-const cors = require("cors")
+const cors = require("cors");
+const {auth} = require("./middleware/auth");
+const indexRouter = require("./routes/index");
 const {
     login,
     accessToken,
     refreshToken,
     loginSuccess,
     logout,
-} = require("./jwt");
+} = require("./controllers/user.js");
 dotenv.config();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -30,7 +33,12 @@ app.use(cors({
     credentials : true,
 }))
 
-
+app.set('view engine', 'html')
+nunjucks.configure('./public', {
+    autoescape : true,
+    watch : true,
+    express : app,
+})
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -41,14 +49,17 @@ const pool = mysql.createPool({
     connectionLimit: 100,
     debug   :false
 })
-
-app.get("/", (req,res)=>{
-    res.sendFile('/index.html')
+// app.use(auth)
+app.get("/", auth, (req, res)=>{
+    const user = req.user
+    res.render('main.html', {user: user})
 })
+// app.use("/", indexRouter)
 app.get("/login", (req,res)=>{
-    res.sendFile(__dirname+'/public/login.html')
+    res.render('login.html')
 })
 app.post("/login", login)
+app.get("/logout", logout)
 
 app.get("/signup", (req,res)=>{
     res.sendFile(__dirname+'/public/signup.html')
