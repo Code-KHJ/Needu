@@ -1,17 +1,44 @@
 const express = require("express");
+const nunjucks = require("nunjucks");
 const { body, validationResult } = require("express-validator");
-const port = 3000;
 const mysql = require("mysql");
+const port = 3000;
 const path = require("path");
-const static = require("serve-static");
 const dbconfig = require("./config/dbconfig.json");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const app = express();
-app.use(bodyParser.urlencoded({extended: true}));
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const {auth} = require("./middleware/auth");
+const indexRouter = require("./routes/index");
+const {
+    login,
+    accessToken,
+    refreshToken,
+    loginSuccess,
+    logout,
+} = require("./controllers/user.js");
+dotenv.config();
+
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use("/public", static(path.join(__dirname, "public")));
+app.use(express.static(__dirname+"/public"));
+app.use(cookieParser());
+app.use(cors({
+    origin : 'http://localhost:3000',
+    methods : ['GET', 'POST'],
+    credentials : true,
+}))
+
+app.set('view engine', 'html')
+nunjucks.configure('./public', {
+    autoescape : true,
+    watch : true,
+    express : app,
+})
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -19,9 +46,25 @@ const pool = mysql.createPool({
     user    : dbconfig.user,
     password: dbconfig.password,
     database: dbconfig.database,
-    connectionLimit: 10,
+    connectionLimit: 100,
     debug   :false
 })
+// app.use(auth)
+app.get("/", auth, (req, res)=>{
+    const user = req.user
+    res.render('main.html', {user: user})
+})
+// app.use("/", indexRouter)
+app.get("/login", (req,res)=>{
+    res.render('login.html')
+})
+app.post("/login", login)
+app.get("/logout", logout)
+
+app.get("/signup", (req,res)=>{
+    res.sendFile(__dirname+'/public/signup.html')
+})
+
 //회원가입 시 필요한 정보를 클라이언트에서 가져와서 데이터베이스에 넣어줌
 app.post("/register", [
         body('id').trim().notEmpty().isLength({min:4, max:20}).isAlphanumeric().withMessage("아이디 오류"),
@@ -48,11 +91,8 @@ app.post("/register", [
             pool.query('insert into user (id, password, name, phonenumber, email) values (?, ?, ?,?,?)',
                 [user_info.id, hashPw, user_info.name, user_info.phonenumber, user_info.email], (err, rows, fields)=>{
                 if(err) return res.json({ success: false, err})
-                return res.status(200).json({
-                    success: true     
+                return res.redirect('/')
                 })}
-            )
-        }
         else {
             res.json({ success: false, err}) //아이디 중복일 때 에러 부분 추후 자바스크립트로 구현 필요
         }

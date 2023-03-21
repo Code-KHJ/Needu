@@ -16,15 +16,13 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
 
-    
-
 </head>
 <body>
   <div class="container">
     <div class="modal"></div>
     <header>
       <div class="header_wrap">
-        <h1><a href="#"><span>사회복지</span><span>채용</span>플랫폼</a></h1>
+        <h1><a href="/"><span>사회복지</span><span>채용</span>플랫폼</a></h1>
         <button class="blind btn_ham">메뉴열기</button>
         <nav>
           <div class="clearfix">
@@ -37,14 +35,21 @@
             </fieldset>
           </form>
           <ul>
-            <li><a href="#">채용공고</a></li>
+            <!-- <li><a href="#">채용공고</a></li> -->
             <li><a href="#">기관후기</a></li>
-            <li><a href="#">커뮤니티</a></li>
+            <!-- <li><a href="#">커뮤니티</a></li> -->
           </ul>
           </div>
-          <div>
-            <a href="#">로그인/회원가입</a>
-          </div>
+            {% if user %}
+            <div>
+              <div>{{user}}님</div>
+              <a href="/logout">로그아웃</a>
+            </div>
+            {% else %}
+            <div>
+              <a href="/login">로그인/회원가입</a>
+            </div>
+            {% endif %}
         </nav>
       </div>
     </header>
@@ -217,7 +222,7 @@
         <div class="footer_bottom">
           <p>
             <span>회사명</span> 
-            <span>회사주소(서울특별시 ㅇㅇ구 ㅇㅇ로 ㅇㅇ길 00-00</span>
+            <span>회사주소(서울특별시 ㅇㅇ구 ㅇㅇ로 ㅇㅇ길 00-00)</span>
             <span>대표명: ㅇㅇㅇ</span>
             <span>사업자 등록번호: 123-435-325663</span>
           </p>
