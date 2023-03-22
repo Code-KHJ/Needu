@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const dbconfig = require("../config/dbconfig.json");
 const { body, validationResult } = require("express-validator");
+const { use } = require('../routes');
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -79,21 +80,39 @@ module.exports = {
             password : req.body.password,
             name : req.body.name,
             phonenumber : req.body.phonenumber,
-            email : req.body.email
+            email : req.body.email,
+            required_check1 : Boolean(req.body.check_2),
+            required_check2 : Boolean(req.body.check_3),
+            optional_check1 : Boolean(req.body.check_4),
+            optional_check2 : Boolean(req.body.check_5),
         }
+        console.log(user_info)
         pool.query('SELECT id FROM user WHERE id = "' + user_info.id + '"', (err, row)=>{
             if (row[0] == undefined){ //동일한 아이디가 없을 경우
                 const salt = bcrypt.genSaltSync(saltRounds);
                 const hashPw = bcrypt.hashSync(user_info.password, salt);
-                pool.query('insert into user (id, password, name, phonenumber, email) values (?, ?, ?,?,?)',
-                    [user_info.id, hashPw, user_info.name, user_info.phonenumber, user_info.email], (err, rows, fields)=>{
+                pool.query('insert into user (id, password, name, phonenumber, email, required_check1, required_check2, optional_check1, optional_check2) values (?,?,?,?,?,?,?,?,?)',
+                    [user_info.id, hashPw, user_info.name, user_info.phonenumber, user_info.email, user_info.required_check1,
+                     user_info.required_check2, user_info.optional_check1, user_info.optional_check2], (err, rows, fields)=>{
                     if(err) return res.json({ success: false, err})
-                    // res.send("<script>alert('회원가입이 완료되었습니다.');</script>");
-                    return res.status(200).redirect('/login')
+                    return res.status(200).send("<script>alert('회원가입이 완료되었습니다.');location.href = '/login';</script>");
                     })}
             else {
                 res.json({ success: false, err}) //아이디 중복일 때 에러 부분 추후 자바스크립트로 구현 필요
                 res.send("<script>alert('중복된 아이디가 있습니다.');location.href = document.referrer;</script>");
             }
         })
-    }}
+    },
+    checkId: (req,res) => {
+        const checkId = req.body.id
+        let result = 1
+        pool.query('SELECT id FROM user WHERE id = "' + checkId + '"', (err, row)=>{
+            if(row[0] == undefined){
+                res.send(JSON.stringify(result))
+            } else{
+                result = 2
+                res.send(JSON.stringify(result))
+            }
+        })
+    }
+}

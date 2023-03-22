@@ -22,7 +22,7 @@
             </header>
             <!-- 회원가입 입력폼 --> <!-- name 부분은 DB 필드이름하고 매치-->
             <div class="signup">
-                <form name="frm" id="frm" method="post" action="http://localhost:3000/register" onsubmit="return checkSubmit()"><!-- 데이터 넘길 곳을 액션 안에 넣기   -->
+                <form name="frm" id="frm" method="post" action="/signup" onsubmit="return checkSubmit()"><!-- 데이터 넘길 곳을 액션 안에 넣기   -->
                     <div class="write_base">
                         <!-- 아이디 -->
                         <div class="item">
@@ -82,24 +82,20 @@
                             <label for="check_1">전체동의</label>
                         </div>
                         <div class="join_input join_input2">
-                            <input type="checkbox" id="check_2" required>
+                            <input type="checkbox" name= "check_2" id="check_2" required>
                             <label for="check_2">(필수) 개인 회원 약관에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
                         </div>
                         <div class="join_input join_input3">
-                            <input type="checkbox" id="check_3" required>
+                            <input type="checkbox" name= "check_3" id="check_3" required>
                             <label for="check_3">(필수) 개인정보 수집 및 이용에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
                         </div>
                         <div class="join_input join_input4">
-                            <input type="checkbox" id="check_4">
-                            <label for="check_4">(선택) 위치기반서비스 이용약관에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
+                            <input type="checkbox" name= "check_4" id="check_4">
+                            <label for="check_4">(선택) 마케팅 정보 수신 동의 - 이메일</label><span class="material-symbols-outlined">arrow_forward_ios</span>
                         </div>
                         <div class="join_input join_input5">
-                            <input type="checkbox" id="check_5">
-                            <label for="check_5">(선택) 마케팅 정보 수신 동의 - 이메일</label><span class="material-symbols-outlined">arrow_forward_ios</span>
-                        </div>
-                        <div class="join_input join_input6">
-                            <input type="checkbox" id="check_6">
-                            <label for="check_6">(선택) 마케팅 정보 수신 동의 - SMS/MMS</label><span class="material-symbols-outlined">arrow_forward_ios</span>
+                            <input type="checkbox" name= "check_5" id="check_5">
+                            <label for="check_5">(선택) 마케팅 정보 수신 동의 - SMS/MMS</label><span class="material-symbols-outlined">arrow_forward_ios</span>
                         </div>
                     </div>
                     <div class="join_radio">

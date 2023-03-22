@@ -1,13 +1,8 @@
 const express = require("express");
 const nunjucks = require("nunjucks");
-const { body, validationResult } = require("express-validator");
-const mysql = require("mysql");
 const port = 3000;
 const path = require("path");
-const dbconfig = require("./config/dbconfig.json");
 const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
 const app = express();
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
@@ -18,6 +13,7 @@ const {
     login,
     logout,
     signup,
+    checkId,
 } = require("./controllers/user.js");
 dotenv.config();
 
@@ -38,15 +34,6 @@ nunjucks.configure('./public', {
     express : app,
 })
 
-// Database connection pool
-const pool = mysql.createPool({
-    host    : dbconfig.host,
-    user    : dbconfig.user,
-    password: dbconfig.password,
-    database: dbconfig.database,
-    connectionLimit: 100,
-    debug   :false
-})
 // app.use(auth)
 app.get("/", auth, (req, res)=>{
     const user = req.user
@@ -63,18 +50,8 @@ app.get("/signup", (req,res)=>{
     res.sendFile(__dirname+'/public/signup.html')
 })
 
-app.post("/register", signup)
+app.post("/signup", signup)
 
-app.post("/checkId",(req, res) =>{
-    const checkId = req.body.id
-    let result = 1
-    pool.query('SELECT id FROM user WHERE id = "' + checkId + '"', (err, row)=>{
-        if(row[0] == undefined){
-            res.send(JSON.stringify(result))
-        } else{
-            result = 2
-            res.send(JSON.stringify(result))
-        }
-    })})
+app.post("/checkId",checkId)
 
 app.listen(port, () => {console.log(`Server started on port ${port}`)});
