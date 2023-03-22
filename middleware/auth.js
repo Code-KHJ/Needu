@@ -21,7 +21,6 @@ exports.auth = (req, res, next) => {
                         httpOnly: true,
                     })
                     req.user = decoded.id
-                    console.log('엑세스토큰 재발급')
                     next();}
                 else{//엑세스토큰 만료, 리프레시토큰 비정상
                 next();

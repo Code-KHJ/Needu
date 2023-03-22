@@ -128,26 +128,24 @@ function checkEm(){
         msgEm.style="display: none;"
         return true;
     }}
+
 function checkBox1(){
     const ckBox1 = document.getElementById('check_1');
     const ckBox2 = document.getElementById('check_2');
     const ckBox3 = document.getElementById('check_3');
     const ckBox4 = document.getElementById('check_4');
     const ckBox5 = document.getElementById('check_5');
-    const ckBox6 = document.getElementById('check_6');
     if (ckBox1.checked == true){
         ckBox2.checked = true
         ckBox3.checked = true
         ckBox4.checked = true
         ckBox5.checked = true
-        ckBox6.checked = true
     }
     else{
         ckBox2.checked = false
         ckBox3.checked = false
         ckBox4.checked = false
         ckBox5.checked = false
-        ckBox6.checked = false
     }}
 
 function checkRd(){
