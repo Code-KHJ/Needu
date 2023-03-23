@@ -1,12 +1,12 @@
-const jwt = require('../modules/jwt');
-const redisClient = require("../modules/redis");
+const jwt = require('../../modules/jwt');
+const redisClient = require("../../modules/redis");
 const secret = process.env.JWT_KEY;
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const dbconfig = require("../config/dbconfig.json");
+const dbconfig = require("../../config/dbconfig.json");
 const { body, validationResult } = require("express-validator");
-const { use } = require('../routes');
+const { use } = require('..');
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -85,15 +85,17 @@ module.exports = {
             required_check2 : Boolean(req.body.check_3),
             optional_check1 : Boolean(req.body.check_4),
             optional_check2 : Boolean(req.body.check_5),
+            info_period : req.body.radio1,
         }
+        console.log(req.body)
         console.log(user_info)
         pool.query('SELECT id FROM user WHERE id = "' + user_info.id + '"', (err, row)=>{
             if (row[0] == undefined){ //동일한 아이디가 없을 경우
                 const salt = bcrypt.genSaltSync(saltRounds);
                 const hashPw = bcrypt.hashSync(user_info.password, salt);
-                pool.query('insert into user (id, password, name, phonenumber, email, required_check1, required_check2, optional_check1, optional_check2) values (?,?,?,?,?,?,?,?,?)',
+                pool.query('insert into user (id, password, name, phonenumber, email, required_check1, required_check2, optional_check1, optional_check2, info_period) values (?,?,?,?,?,?,?,?,?,?)',
                     [user_info.id, hashPw, user_info.name, user_info.phonenumber, user_info.email, user_info.required_check1,
-                     user_info.required_check2, user_info.optional_check1, user_info.optional_check2], (err, rows, fields)=>{
+                     user_info.required_check2, user_info.optional_check1, user_info.optional_check2, user_info.info_period], (err, rows, fields)=>{
                     if(err) return res.json({ success: false, err})
                     return res.status(200).send("<script>alert('회원가입이 완료되었습니다.');location.href = '/login';</script>");
                     })}

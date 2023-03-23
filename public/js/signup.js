@@ -19,7 +19,7 @@ function checkId(){
             return false;
         } else{
             //아이디 중복체크
-            axios.post("http://localhost:3000/checkId", {
+            axios.post("signup/checkId", {
             id: userid.value
             })
             .then((res)=>{

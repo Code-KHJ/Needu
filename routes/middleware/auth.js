@@ -1,6 +1,6 @@
-const {sign, verify, refreshVerify} = require('../modules/jwt');
+const {sign, verify, refreshVerify} = require('../../modules/jwt');
 const jwt = require('jsonwebtoken');
-const secret = require('../config/jwtsecret').JWT_KEY;
+const secret = require('../../config/jwtsecret').JWT_KEY;
 
 exports.auth = (req, res, next) => {
     const AccessToken = req.cookies.AccessToken
