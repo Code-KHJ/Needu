@@ -17,13 +17,13 @@
       <main>
         <div class="main_wrap">
           <div class="login_wrap">
-            <button type="button" class="btn_login_tap_per" id="login_user" onclick="changeToUser()">개인회원</button>
-            <button type="button" class="btn_login_tap_cor" id="login_corp" onclick="changeToCorp()">기업회원</button>
+            <!-- <button type="button" class="btn_login_tap_per" id="login_user" onclick="changeToUser()">개인회원</button>
+            <button type="button" class="btn_login_tap_cor" id="login_corp" onclick="changeToCorp()">기업회원</button> -->
               <div class="login_box" id="form_login_user">
                 <div class="login_input_wrap">
                   <form id="form_user" method="post" action="/login">
                     <fieldset>
-                      <input type="text" name="id" id="userid" placeholder="아이디를 입력하세요" required>
+                      <input type="text" name="id" id="userid" placeholder="아이디(이메일형식)" required>
                       <input type="password" name="password" id="userpw" autocomplete="off" placeholder="비밀번호를 입력하세요" required>
                       <button type="submit" class="" id="submit_user" disabled="disabled">로그인</button>
                       <input type="checkbox" id="saveId" name="saveId">
@@ -43,7 +43,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="login_box" id="form_login_corp" style="display: none;">
+              <!-- <div class="login_box" id="form_login_corp" style="display: none;">
                 <div class="login_input_wrap">
                   <form id="form_corp" method="post" action="" onsubmit="">
                     <fieldset>
@@ -66,10 +66,10 @@
                     <li><a href="#" class="screen_out">apple</a></li>
                   </ul>
                 </div>
-              </div>
+              </div> -->
           </div>
           <div class="ad_wrap">
-            <div class="ad"></div>
+            <div class="ad">박스</div>
             <div class="btn_signup"><a href="/signup">회원가입</a></div>
           </div>
         </div>      
@@ -96,7 +96,7 @@
             </div>
           </div>
           <div class="footer_bottom">
-            <p>회사명 | 회사주소(서울특별시 ㅇㅇ구 ㅇㅇ로 ㅇㅇ길 00-00 | 대표명: ㅇㅇㅇ | 사업자 등록번호: 123-435-325663</p>
+            <p>회사명 | 회사주소(서울특별시 ㅇㅇ구 ㅇㅇ로 ㅇㅇ길 00-00) | 대표명: ㅇㅇㅇ | 사업자 등록번호: 123-435-325663</p>
             <p>통신판매업번호: ㅇㅇ-제1239843 | 직업정보제공사업 번호: 서울 ㅇㅇ 제1294832-33 | 유료직업소개업 등록번호: 제 2343250989호</p>
           </div>
         </div>
