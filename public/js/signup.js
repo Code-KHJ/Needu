@@ -160,7 +160,8 @@ async function checkSubmit(){
     const checkid = await checkId();
     const checknm = await checkNm();
     const list = [checkid, checkPw1(), checkPw2(), checknm, checkPn(), ckbox2, ckbox3, checkRd()];
-    if(list.every((ck)=>ck==true)) return true;
+    if(list.every((ck)=>ck==true)){ return true }
+    else{ return false };
 }
 //모두 작성될 경우 submit버튼 활성화
 const form = document.querySelector('form');
@@ -170,18 +171,19 @@ form.addEventListener('change', ()=>{
     const checkAll = Array.from(form.elements)
     .filter(input => input.hasAttribute('required'))
     .every(input => input.value.trim() !== '');
-
     if(checkAll){
-        if(checkSubmit() == true){
-            console.log('good')
-            btnSubmit.disabled="";
-            btnSubmit.style.backgroundColor = '#2D65FE';
-            btnSubmit.style.borderColor = "#2D65FE";
-            btnSubmit.style.color = "#EAEDF4";    
-        }
-        else{
-        btnSubmit.disabled="disabled";
-        btnSubmit.style.backgroundColor = 'rgba(51, 51, 51, 0.5)';
-        btnSubmit.style.borderColor = 'rgba(51, 51, 51, 0.5)';
-    }}
+        (async function lastcheck(){
+            const checksubmit = await checkSubmit()
+            if(checksubmit == true){
+                btnSubmit.disabled="";
+                btnSubmit.style.backgroundColor = '#2D65FE';
+                btnSubmit.style.borderColor = "#2D65FE";
+                btnSubmit.style.color = "#EAEDF4";    
+            }
+            else{
+            btnSubmit.disabled="disabled";
+            btnSubmit.style.backgroundColor = 'rgba(51, 51, 51, 0.5)';
+            btnSubmit.style.borderColor = 'rgba(51, 51, 51, 0.5)';
+        }})();
+    }
 })
