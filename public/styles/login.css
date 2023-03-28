@@ -40,19 +40,19 @@ main{
 }
 .main_wrap{
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 10px;
-  width:80%;
-  margin:0 auto;
+  justify-content: center;
+  flex-wrap:wrap;
+  width:60%;
+  margin:80px auto;
 }
 .login_wrap{
   width:360px;
+  height:360px;
   margin:0 auto;
   border:1px solid rgb(51,51,51,0.3);
   border-radius: 12px;
 }
-.btn_login_tap_per{
+/* .btn_login_tap_per{
   width:50%;
   height:60px;
   line-height:60px;
@@ -73,12 +73,13 @@ main{
   background:#fafafa;
   float:right;
   cursor: pointer;
-}
+} */
 .login_box{
   clear:both;
   position:relative;
-  width:100%;
+  width:360px;
   height:360px;
+  border-radius: 12px;
   background:linear-gradient(180deg, rgba(0, 13, 255, 0.1),rgba(0, 163, 255,0.1));
 }
 
@@ -124,7 +125,7 @@ main{
   font-size:1.4rem;
   border:none;
   border-radius: 4px;
-  color: #333333;
+  color: #000;
   background-color: rgba(51, 51, 51, 0.5);
 }
 .summitbtn_on{
@@ -135,7 +136,7 @@ main{
   font-size:1.4rem;
   border:none;
   border-radius: 4px;
-  background:url(images/btn-bg.png) no-repeat center/cover;
+  background:url(/style/images/btn-bg.png) no-repeat center/cover;
   color:#fff !important;
 }
 .login_input_wrap form input:last-of-type{
@@ -179,40 +180,38 @@ main{
   display:block;
   width:100%;
   height:100%;
+  border-radius: 50%;
 }
 .login_social_wrap ul li:nth-of-type(1) a{
-  background:url(images/btn_social_naver.png) no-repeat center/contain;
+  background:url(/styles/images/btn_social_naver.png) no-repeat center/contain;
 }
 .login_social_wrap ul li:nth-of-type(2) a{
-  background:url(images/btn_social_kakao.png) no-repeat center/contain;
+  background:url(/styles/images/btn_social_kakao.png) no-repeat center/contain;
 }
 .login_social_wrap ul li:nth-of-type(3) a{
-  background:url(images/btn_social_google.png) no-repeat center/contain;
+  background:url(/styles/images/btn_social_google.png) no-repeat center/contain;
 }
 .login_social_wrap ul li:nth-of-type(4) a{
-  background:url(images/btn_social_facebook.png) no-repeat center/contain;
+  background:url(/styles/images/btn_social_facebook.png) no-repeat center/contain;
 }
 .login_social_wrap ul li:nth-of-type(5) a{
-  background:url(images/btn_social_apple.png) no-repeat center/contain;
+  background:url(/styles/images/btn_social_apple.png) no-repeat center/contain;
 }
 
 .ad_wrap{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width:360px;
+  width:268px;
   margin:0 auto;
 }
 .ad{
-  box-sizing: border-box;
+  display:block;
   width: 268px;;
   height: 360px;
-  display:block;
+  background:blue;
 }
 .btn_signup{
-  width:60%;
+  width:160px;
   height:60px;
-  margin:40px auto;
+  margin:10px auto;
 }
 .btn_signup a{
   display:block;
