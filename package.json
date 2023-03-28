@@ -2,11 +2,11 @@
   "name": "recruit-sw",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server",
-    "start": "node server.js"
+    "server": "nodemon app",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
