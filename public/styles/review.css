@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+.container{
+    width:100%;height:100%;
+}
+.modal{
+    display:none;
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:#fff;
+    z-index: 11;
+}
+header{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0px 28px;
+    width:100%;
+    height:96px;    
+}
+.header_wrap{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    width:78.7%;
+    height:28px;
+}
+div h1{
+    display:flex;
+    width:140px;
+    height:28px;
+    font-size:2.4rem;
+    font-weight: normal;
+}
+.blind_btn_ham {
+    display: flex;
+    padding: 0px;
+    width: 32px;
+    height:24px;
+    position:relative;
+    background:url(./images/btn_ham.png) no-repeat center/contain;
+    cursor:pointer;
+    z-index: 13;
+}
+.div_line {
+    width: 100%;
+    height: 120px;
+    background-color: #1e2480;
+}
+.corp_info {
+    display: block;
+    width: 78.7%;
+    height: 260px;
+    left: 40px;
+    top: 176px;
+    gap: 16px;
+    position: absolute;
+}
+.corp_info_image {
+    display: flex;
+    width: 27.1%;
+    max-width: 80px;
+    max-height: 80px;
+    background-color: #fff;
+    position: relative;
+    box-shadow: inset 0px 1px 2px rgba(0,0,0,0.25);
+    border-radius: 5px;
+}
+.corp_info_image::after{
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+.corp_info_data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 67.5%;
+    height: 61px;
+    left: 96px;
+    top: 60px;
+    position: absolute;
+}
+.corp_info_data div:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 16px;
+}
+.corp_info_data span:nth-child(1) {
+    display: flex;
+    font-size: 2.4rem;
+    align-items: center;
+}
+.corp_info_data span:nth-child(2) {
+    display: flex;
+    font-size: 1.4rem;
+    align-items: center;
+    line-height: 16px;
+}
+.corp_info_data div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    font-size: 1.4rem;
+}
+.hashtag_top {
+    font-size: 1.4rem;
+    line-height: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 95%;
+    height: 44px;
+}
+.btn_review {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 54.5%;
+    height: 48px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #3d47FF;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    line-height: 16px;
+    text-align: center;
+    color: #fafafa;
+    overflow: visible;
+    cursor: pointer;
+  }
