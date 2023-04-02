@@ -1,8 +1,10 @@
 @charset "utf-8";
 
 .container{
+    position: absolute;
     width:100%;height:100%;
     background-color: #f5f5f5;
+    overflow:auto;
 }
 .modal{
     display:none;
@@ -154,7 +156,7 @@ div h1{
     left: 275px;
     top: 552px;   
     background: url(./images/btn_write_modal.png) no-repeat center;
-    background-size: auto;
+    background-size: 50%;
     background-color: #3d47FF;
     border-radius: 60px;
     cursor:pointer;
@@ -207,12 +209,15 @@ div h1{
 .star_bg {
     position: relative;
     background: url(./images/star_bg.png) no-repeat;
+    background-size: contain;
 }
 .star_bg span{
     position: absolute;
     background: url(./images/star_selected.png) no-repeat;
-    width: auto;
-    height: 28px;
+    width: 100%;
+    height: 100%;
+    background-size:cover;
+
 }
 .total_score_main p:nth-of-type(2) {
     width: 60px;
@@ -251,6 +256,7 @@ div h1{
     width: 18px;
     height: 18px;
     background: url(./images/Star.png);
+    background-size: contain;
 }
 .total_detail_star span:nth-of-type(3) {
     width: 108px;
@@ -260,4 +266,192 @@ div h1{
     letter-spacing: -0.02em;
     color: #000;
 }
-
+.contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 78.7%;
+    left: 40px;
+    top: 983px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.contents_review {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 60px 30px;
+    gap: 20px;
+    width: 100%;
+    border-bottom: 1px solid #eeeeee;
+}
+.review_star {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+}
+.review_star>div:nth-of-type(1) {
+    width: 28px;
+    height: 20px;
+    font-weight: 800;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+}
+.btn_star_detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.btn_star_detail>div:nth-of-type(1) {
+    width: 96px;
+    height: 20px;
+}
+.btn_star_detail>button:nth-of-type(1) {
+    width: 16px;
+    height: 8px;
+    background: url(./images/btn_detail.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.star_detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px;
+    gap: 4px;
+    width: 100%;
+    height: 136px;
+    border: 1px solid #eeeeee;
+}
+.star_detail>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: 16px;
+}
+.star_detail>div>div{
+    width: 76px;
+    height: 16px;
+}
+.star_detail>div>p {
+    width: 100px;
+    height: 16px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #aaaaaa;
+}
+.review_comment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    position: relative;
+    width: 100%;
+    top: 30px;
+}
+.highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+}
+.highlight>p {
+    width: 100%;
+    height: 20px;
+    font-weight: 800;
+    font-size: 1.8rem;
+    line-height: 20px;
+}
+.highlight>div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+    height: 16px;
+}
+.highlight>div>span:nth-of-type(1) {
+    background: url(./images/airplane.png) no-repeat;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+}
+.highlight>div>span:nth-of-type(2) {
+    width: calc(100% - 16px);
+    height: 16px;
+    font-weight: 400    ;
+    font-size: 1.2rem;
+    line-height: 16px;
+}
+.pros_cons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+.pros_cons>p:nth-of-type(1) {
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 18px;
+}
+.pros_cons>p:nth-of-type(2) {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 160%;
+}
+.comment_hashtag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: 22px;
+    overflow-y: scroll;
+}
+.comment_hashtag>span {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 160%;
+    width: auto;
+}
+.comment_like {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    gap: 4px;
+    width: 138px;
+    height: 36px;
+    border: 1px solid #999fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.comment_like>span:nth-of-type(1) {
+    background:url(./images/like.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+}
+.comment_like>span:nth-of-type(2) {
+    width: 67x;
+    height: 20px;
+    font-size: 1.4rem;
+    line-height: 140%;
+    letter-spacing: -0.02rem;
+}
+.comment_like>span:nth-of-type(3) {
+    width: 25px;
+    height: 20px;
+    font-size: 1.4rem;
+    line-height: 140%;
+    color: #aaaaaa;
+}
