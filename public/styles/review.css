@@ -384,22 +384,6 @@ main{
 	height: 22px;
 	width: auto;
 }
-.test::before {
-	content: "";
-	position: relative;
-	width: 100%;
-}
-.test {
-	display:flex;
-	content: "";
-	position:absolute;
-	margin-top: 50px;
-	margin-right: 0px;
-	right: 0px;
-	width: 100%;
-	height: 22px;
-	background: linear-gradient(270deg, #FFFFFF 1.68%, rgba(255, 255, 255, 0) 11.39%);
-}
 /* .comment_hashtag::after{
 	content: "";
 	position: absolute;
