@@ -371,6 +371,7 @@ main{
 	overflow-x: auto;
 	white-space: nowrap;
 	text-overflow: clip;
+	background: linear-gradient(270deg, #FFFFFF 1.68%, rgba(255, 255, 255, 0) 11.39%);
 }
 .comment_hashtag::-webkit-scrollbar{
 	display: none;
@@ -383,14 +384,14 @@ main{
 	height: 22px;
 	width: auto;
 }
-.comment_hashtag::after{
+/* .comment_hashtag::after{
 	content: "";
 	position: absolute;
 	right: 0px;
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(270deg, #FFFFFF 1.68%, rgba(255, 255, 255, 0) 11.39%);
-}
+} */
 .comment_like {
 	display: flex;
 	align-items: center;
