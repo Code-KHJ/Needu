@@ -6,7 +6,8 @@
 	background-color: #f5f5f5;
 	overflow:auto;
 }
-.modal{
+/* 모달작업 보류 */
+/* .modal{
 	display:;
 	position:fixed;
 	top:10%;left:10%;
@@ -25,25 +26,33 @@
 	font-size: 2.4rem;
 	color: #ffffff;
 }
-.modal>div:nth-of-type(2) {
-	height: 1.34%;
+.modal_page {
+	width: 100%;
+	height: auto;
+}
+.modal_page>div:nth-of-type(1) {
+	height: 12px;
 	background-color: #ffffff;
 }
-.modal>div:nth-of-type(2)>div {
-	width: 33.3%;
+.modal_page>div:nth-of-type(1)>div {
 	height: 100%;
 	background-color: #1e2480;
 }
-.modal>div:nth-of-type(3) {
+.modal_page>div:nth-of-type(2) {
 	height: 70%;
 	margin-top: 30px;
 	margin-left: 40px;
 }
-.modal_page1>p {
+.modal_page1_form {
+	height: 70%;
+	margin-top: 30px;
+	margin-left: 40px;
+}
+.modal_page1_form>p {
 	font-size: 1.8rem;
 	line-height: 140%;
 }
-.modal_page1>div {
+.modal_page1_form>div {
 	width: 71%;
 	display: flex;
 	flex-direction: column;
@@ -102,8 +111,44 @@
 	margin-left: 4px;
 	font-size: 1.8rem;
 }
+.modal_corp_info {
+	display: flex;
+	flex-direction: row;
+	height: 80px;
+}
+.modal_corp_info>div:nth-of-type(1) {
+	width: 100px;
+	background-color: #d9d9d9;
+}
+.modal_corp_info>div:nth-of-type(2) {
+	display: flex;
+	flex-direction: column;
+	margin-left: 16px;
+	gap: 4px;
+}
+.modal_corp_info>div:nth-of-type(2)>p:nth-of-type(1) {
+	height: 28px;
+	font-size: 2.0rem;
+	font-weight: 700;
+}
+.modal_corp_info>div:nth-of-type(2)>p:nth-of-type(2) {
+	height: 22px;
+	font-size: 1.6rem;
+}
+.modal_corp_info>div:nth-of-type(2)>div {
+	height: 22px;
+	display: flex;
+	flex-direction: row;
+	font-size: 1.6rem;
+}
+.modal_corp_info>div:nth-of-type(2)>div>div {
+	color: #aaaaaa;
+	margin-left: 8px;
+}
 
-.modal>div:nth-of-type(4) {
+
+
+.modal_next {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -114,19 +159,19 @@
 	bottom: 0;
 	background-color: #eeeeee;
 }
-.modal>div:nth-of-type(4)>button:nth-of-type(1) {
+.modal_next>button:nth-of-type(1) {
 	width: 20%;
 	background-color: #ffffff;
 	border-radius: 5px;
 	font-size: 1.8rem;
 }
-.modal>div:nth-of-type(4)>button:nth-of-type(2) {
+.modal_next>button:nth-of-type(2) {
 	width: 20%;
 	background-color: #000dff;
 	border-radius: 5px;
 	font-size: 1.8rem;
 	color: #ffffff;
-}
+} */
 header{
 	width:100%;
 	height:96px ;
@@ -387,6 +432,7 @@ main{
 	border-radius: 5px;
 }
 .review_star {
+	position: relative;
 	width: 218px;
 }
 .review_star>p {
@@ -411,6 +457,7 @@ main{
 	cursor: pointer;
 }
 .star_detail {
+	position: absolute;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
