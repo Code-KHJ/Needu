@@ -11,6 +11,53 @@
 </head>
 <body>
 	<div class="container">
+		<form class="modal">
+			<div>기업리뷰 작성</div>
+			<div><div></div></div>
+			<div class="modal_page1">
+				<p>작성을 완료하시면 기관의 실제 리뷰를 무료로 볼 수 있습니다.<br>
+					입력하신 모든 정보는 익명으로 처리되니 걱정마세요!
+				</p>
+				<div>
+					<div class="modal_page1_item">
+						<label for="Corp_name">근무기관</label>
+						<input type="text" id="Corp_name" placeholder="근무기관명">	
+					</div>
+					<div class="modal_page1_item">
+						<label for="Corp_location">근무지역</label>
+						<input type="text" id="Corp_location" placeholder="근무지역">	
+					</div>
+					<div class="modal_page1_item">
+						<label for="work_datee">근무기간</label>
+						<div class="work_date">
+							<div>
+								<div><span>입사일</span></div>
+								<input type="date">	
+							</div>
+							<div>
+								<div>
+									<span>퇴사일</span>
+									<div>
+										<input type="checkbox" id="working">
+										<label for="working">재직중</label>
+									</div>
+								</div>
+								<input type="date" max="">
+							</div>
+						</div>
+						<!-- <input type="text" id="Corp_name" placeholder="근무기관명">	 -->
+					</div>
+					<div class="modal_page1_item">
+						<label for="type">근무직종</label>
+						<input type="text" id="type" placeholder="근무직종">
+					</div>
+				</div>
+			</div>
+			<div>
+				<button>취소</button>
+				<button>다음</button>
+			</div>
+		</form>
 		<header>
 			<div class="header_wrap">
 				<h1><a href="/">NeedU</a></h1>
@@ -302,6 +349,7 @@
 				</div>
 			</div>
 		</main>
+
 	</div>
 </body>
 </html>
