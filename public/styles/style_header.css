@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+.container{
+  width:100%;height:100px;
+}
+
+header{
+  width:90%;
+  height:100%;
+  margin:60px auto 32px;
+  display:flex;
+  justify-content: space-between;
+}
+
+h1{
+  width:100px;
+  height:28px;
+}
+h1>a{
+  display:block;
+  width:100%;
+  height:100%;
+  background: url(images/logo_NeedU.png) no-repeat center/contain;
+}
+
+nav{
+  
+}
+.btn_ham_gnb{
+  width: 32px;
+  height: auto;
+}
+.btn_ham_gnb span{
+  display:block;
+  width:100%;
+  height:2px;
+  margin-bottom:8px;
+  background-color:#000;
+  border-radius:4px;
+}
+input{
+  border:none;
+}
