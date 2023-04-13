@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>리뷰작성</title>
+		<link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
+		<link href="./styles/review_write.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="header_wrap">
+					<h1><a href="/">NeedU</a></h1>
+					<button class="blind_btn_ham"></button>
+				</div>	
+			</header>
+			<main>
+				<div class="corp_info_wrap">
+					<div class="div_line"></div>
+					<div class="corp_info">
+						<div class="corp_info_image">기업이미지</div>
+						<div class="corp_info_data">
+							<div>
+								<span>기관명</span>
+								<span>기관 소재지</span>    
+							</div>
+							<div>
+								<div class="star_bg">
+									<span style="width: 50%"></span>
+								</div>
+								<span>3.0</span>
+								<span>(000개 리뷰)</span>
+							</div>
+							<ul class="hashtag_top">
+								<li>#해시태그1</li>
+								<li>#해시태그2</li>
+								<li>#해시태그3</li>
+								<li>#해시태그4</li>
+							</ul>
+						</div>
+					</div>
+					<button class="btn_toTop"></button>    
+				</div>
+				<div class="contents">
+					<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
+					<form class="review_form">
+						<p>평가하기</p>
+						<div class="check_score">
+							<p>별을 클릭해 총점을 평가해주세요.</p>
+							<div class="item">
+								<label for="career">커리어 향상</label>
+								<div class="star_bg">
+									<span style="width: 0%;"></span>
+									<input name="career" type="range" value="0" step="1" min="0" max="10">			
+								</div>
+							</div>
+							<div class="item">
+								<label for="worklife">업무와 삶의 균형</label>
+								<div class="star_bg">
+									<span style="width: 0%;"></span>
+									<input name="worklife" type="range" value="0" step="1" min="0" max="10">			
+								</div>
+							</div>
+							<div class="item">
+								<label for="welfare">복리후생</label>
+								<div class="star_bg">
+									<span style="width: 0%;"></span>
+									<input name="welfare" type="range" value="0" step="1" min="0" max="10">			
+								</div>
+							</div>
+							<div class="item">
+								<label for="culture">조직문화</label>
+								<div class="star_bg">
+									<span style="width: 0%;"></span>
+									<input name="culture" type="range" value="0" step="1" min="0" max="10">			
+								</div>
+							</div>
+							<div class="item">
+								<label for="leadership">리더십</label>
+								<div class="star_bg">
+									<span style="width: 0%;"></span>
+									<input name="leadership" type="range" value="0" step="1" min="0" max="10">			
+								</div>
+							</div>
+							<div class="item">
+								<label for="total">총점</label>
+								<div class="star_bg">
+									<span id="total_score" style="width: 0%;"></span>
+								</div>
+							</div>
+							<div class="hashtag">
+								<label>키워드 선택하기</label>
+								<div>
+									<button>#역에서 가까운</button>
+									<button>#자유로운 복장</button>
+									<button>#간식 제공</button>
+									<button>#자유로운 휴가</button>
+									<button>#유연근무제</button>
+									<button>#역에서가까운</button>
+									<button>#역에서가까운</button>
+									<button>#역에서가까운</button>
+								</div>
+							</div>
+						</div>
+						<div class="write_review">
+							<label>한줄평</label>
+							<input>
+							<label>장점</label>
+							<input>
+							<label>단점</label>
+							<input>
+						</div>
+						<button>제출</button>
+					</form>
+				</div>
+			</main>
+			<footer></footer>
+		</div>
+		<script defer src="./js/review_write.js"></script>
+	</body>
+</html>
