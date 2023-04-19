@@ -31,7 +31,7 @@
 									<span style="width: 50%"></span>
 								</div>
 								<span>3.0</span>
-								<span>(000개 리뷰)</span>
+								<span>(00개 리뷰)</span>
 							</div>
 							<ul class="hashtag_top">
 								<li>#해시태그1</li>
@@ -40,83 +40,106 @@
 								<li>#해시태그4</li>
 							</ul>
 						</div>
+						<button class="btn_toTop"></button>
 					</div>
 					<button class="btn_toTop"></button>    
 				</div>
-				<div class="contents">
-					<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
-					<form class="review_form">
-						<p>평가하기</p>
-						<div class="check_score">
-							<p>별을 클릭해 총점을 평가해주세요.</p>
-							<div class="item">
-								<label for="career">커리어 향상</label>
-								<div class="star_bg">
-									<span style="width: 0%;"></span>
-									<input name="career" type="range" value="0" step="1" min="0" max="10">			
+				<div class="contents_wrap">
+					<div class="contents">
+						<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
+						<form class="review_form" id="review_form">
+							<p>평가하기</p>
+							<div class="check_score">
+								<p>별을 클릭해 총점을 평가해주세요.</p>
+								<div class="item">
+									<label for="career">커리어 향상</label>
+									<div class="star_bg">
+										<span style="width: 0%;"></span>
+										<input name="career" type="range" value="0" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="worklife">업무와 삶의 균형</label>
+									<div class="star_bg">
+										<span style="width: 0%;"></span>
+										<input name="worklife" type="range" value="0" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="welfare">복리후생</label>
+									<div class="star_bg">
+										<span style="width: 0%;"></span>
+										<input name="welfare" type="range" value="0" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="culture">조직문화</label>
+									<div class="star_bg">
+										<span style="width: 0%;"></span>
+										<input name="culture" type="range" value="0" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="leadership">리더십</label>
+									<div class="star_bg">
+										<span style="width: 0%;"></span>
+										<input name="leadership" type="range" value="0" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="total">총점</label>
+									<div class="star_bg">
+										<span id="total_score" style="width: 0%;"></span>
+									</div>
+								</div>
+								<div class="hashtag">
+									<div>키워드 선택하기</div>
+									<div>
+										<span>#역에서 가까운</span>
+										<span>#자유로운 복장</span>
+										<span>#간식 제공</span>
+										<span>#자유로운 휴가</span>
+										<span>#유연근무제</span>
+										<span>#역에서가까운</span>
+										<span>#역에서가까운</span>
+										<span>#역에서가까운</span>
+									</div>
 								</div>
 							</div>
-							<div class="item">
-								<label for="worklife">업무와 삶의 균형</label>
-								<div class="star_bg">
-									<span style="width: 0%;"></span>
-									<input name="worklife" type="range" value="0" step="1" min="0" max="10">			
+							<div class="write_review">
+								<div class="write_item">
+									<label for="highlight">한줄평</label>
+									<div>
+										<textarea type="text" id="highlight" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." required></textarea>
+									</div>
 								</div>
-							</div>
-							<div class="item">
-								<label for="welfare">복리후생</label>
-								<div class="star_bg">
-									<span style="width: 0%;"></span>
-									<input name="welfare" type="range" value="0" step="1" min="0" max="10">			
+								<div class="write_item">
+									<label for="pros">장점</label>
+									<div>
+										<span>현재 글자수:000자</span>
+										<textarea type="text" id="pros" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 00자)" required></textarea>
+									</div>
 								</div>
+								<div class="write_item">
+									<label for="cons">단점</label>
+									<div>
+										<span>현재 글자수:000자</span>
+										<textarea type="text" id="cons" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 00자)" required></textarea>
+									</div>
+								</div>							
 							</div>
-							<div class="item">
-								<label for="culture">조직문화</label>
-								<div class="star_bg">
-									<span style="width: 0%;"></span>
-									<input name="culture" type="range" value="0" step="1" min="0" max="10">			
-								</div>
-							</div>
-							<div class="item">
-								<label for="leadership">리더십</label>
-								<div class="star_bg">
-									<span style="width: 0%;"></span>
-									<input name="leadership" type="range" value="0" step="1" min="0" max="10">			
-								</div>
-							</div>
-							<div class="item">
-								<label for="total">총점</label>
-								<div class="star_bg">
-									<span id="total_score" style="width: 0%;"></span>
-								</div>
-							</div>
-							<div class="hashtag">
-								<label>키워드 선택하기</label>
-								<div>
-									<button>#역에서 가까운</button>
-									<button>#자유로운 복장</button>
-									<button>#간식 제공</button>
-									<button>#자유로운 휴가</button>
-									<button>#유연근무제</button>
-									<button>#역에서가까운</button>
-									<button>#역에서가까운</button>
-									<button>#역에서가까운</button>
-								</div>
-							</div>
-						</div>
-						<div class="write_review">
-							<label>한줄평</label>
-							<input>
-							<label>장점</label>
-							<input>
-							<label>단점</label>
-							<input>
-						</div>
-						<button>제출</button>
-					</form>
+						</form>
+						<button type="submit" form="review_form">제출</button>
+					</div>
+					<div class="sidebar">
+						<div>광고</div>
+						<div>광고</div>
+					</div>
 				</div>
 			</main>
-			<footer></footer>
+			<footer>
+				<div>사회복지채용플랫폼 푸터</div>
+			</footer>
 		</div>
 		<script defer src="./js/review_write.js"></script>
 	</body>
