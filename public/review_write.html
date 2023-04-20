@@ -40,7 +40,6 @@
 								<li>#해시태그4</li>
 							</ul>
 						</div>
-						<button class="btn_toTop"></button>
 					</div>
 					<button class="btn_toTop"></button>    
 				</div>
@@ -110,26 +109,26 @@
 								<div class="write_item">
 									<label for="highlight">한줄평</label>
 									<div>
-										<textarea type="text" id="highlight" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." required></textarea>
+										<textarea type="text" id="highlight" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." onchange="checkHigh()" required></textarea>
 									</div>
 								</div>
 								<div class="write_item">
 									<label for="pros">장점</label>
 									<div>
-										<span>현재 글자수:000자</span>
-										<textarea type="text" id="pros" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 00자)" required></textarea>
+										<span id="pros_cnt">현재 글자수:000자</span>
+										<textarea type="text" id="pros" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 50자)" onchange="checkPros()" required></textarea>
 									</div>
 								</div>
 								<div class="write_item">
 									<label for="cons">단점</label>
 									<div>
-										<span>현재 글자수:000자</span>
-										<textarea type="text" id="cons" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 00자)" required></textarea>
+										<span id="cons_cnt">현재 글자수:000자</span>
+										<textarea type="text" id="cons" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 50자)" onchange="checkCons()" required></textarea>
 									</div>
-								</div>							
+								</div>
 							</div>
 						</form>
-						<button type="submit" form="review_form">제출</button>
+						<button type="submit" form="review_form" id="btnSubmit" disabled="disabled">제출</button>
 					</div>
 					<div class="sidebar">
 						<div>광고</div>
