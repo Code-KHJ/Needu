@@ -39,5 +39,6 @@ app.get("/", auth, (req, res)=>{
 app.get("/logout", logout)
 app.use("/signup", require("./routes/signup"));
 app.use("/login", require("./routes/login"));
+app.use("/review_write", require("./routes/review_write"));
 
 app.listen(port, () => {console.log(`Server started on port ${port}`)});
