@@ -1,3 +1,20 @@
+//근무기간 퇴사일 기능 구현
+const first_date = document.getElementById('first_date');
+const last_date = document.getElementById('last_date');
+const working = document.getElementById('working');
+first_date.addEventListener('change', ()=>{
+  last_date.min = first_date.value;
+})
+working.addEventListener('change', ()=>{
+  if (working.checked) {
+    last_date.style.visibility = "hidden";
+    last_date.value = "9999-12";
+  } else {
+    last_date.value = "";
+    last_date.style.visibility = "";
+  }
+})
+
 // 별접 입력 구현
 const score_input = document.querySelectorAll('.star_bg input');
 const star = document.querySelectorAll('.star_bg span');
@@ -16,18 +33,21 @@ check_score.addEventListener('change', () => {
 })
 
 //해시태그 체크
-function hashClick() {
+function hashClick(i) {
   const currentColor = this.style.backgroundColor;
+  const hash_input = document.querySelectorAll('.checkhash');
   if (currentColor === 'rgb(61, 71, 255)'){
     this.style.backgroundColor = '';
     this.style.color = '#333333';
+    hash_input[i] = false;
   } else {
     this.style.backgroundColor = '#3D47FF';
     this.style.color = '#ffffff';
+    hash_input[i] = true;
   }
 }
-const hashtag = document.querySelectorAll('.hashtag span');
-hashtag.forEach((e) => e.addEventListener('click', hashClick))
+const hash = document.querySelectorAll('.item_hash label');
+hash.forEach((e,i) => e.addEventListener('click', hashClick))
 
 
 //한줄평 작성 확인
@@ -79,11 +99,14 @@ const form = document.querySelector('form');
 const btnSubmit = document.querySelector('#btnSubmit');
 
 form.addEventListener('change', ()=>{
+  const check_firstdate = document.getElementById('first_date').value !== "";
+  const check_lastdate = document.getElementById('last_date').value !== "";
+  const check_worktype = document.getElementById('work_type').value !== "";
   const score_array = Array.prototype.slice.call(score_input).every(input => input.value > 0);
   const check_highlight = document.getElementById('highlight').value.length > 0;
   const check_pros = document.getElementById('pros').value.length > 10;
   const check_cons = document.getElementById('cons').value.length > 10;
-  const checkAll = [score_array, check_highlight, check_pros, check_cons];
+  const checkAll = [check_firstdate, check_lastdate, check_worktype, score_array, check_highlight, check_pros, check_cons];
   if(checkAll.every((ck) => ck==true)){
     btnSubmit.disabled="";
     btnSubmit.style.backgroundColor = '#2D65FE';
@@ -95,4 +118,3 @@ form.addEventListener('change', ()=>{
     btnSubmit.style.borderColor = 'rgba(51, 51, 51, 0.5)';
   }
 })
-

@@ -46,7 +46,37 @@
 				<div class="contents_wrap">
 					<div class="contents">
 						<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
-						<form class="review_form" id="review_form">
+						<form class="review_form" id="review_form" method="post" action="/review_write">
+							<div class="working_info">
+								<div class="period">
+									<label>근무기간</label>
+									<div>
+										<div>
+											<label for="first_date">입사일</label>
+											<input type="month" max="YYYY-MM" id="first_date" name="first_date" required>
+										</div>
+										<div>
+											<div>
+												<label for="last_date">퇴사일</label>
+												<div>
+													<input type="checkbox" id="working">
+													<label for="working">재직중</label>
+												</div>
+											</div>
+											<input type="month" max="YYYY-MM" id="last_date" name="last_date" required>
+										</div>
+									</div>	
+								</div>
+								<div class="work_type">
+									<label for="work_type">근무직종</label>
+									<select id="work_type" name="work_type" required>
+										<option value="" selected disabled hidden>직종 선택</option>
+										<option value="Social_worker">사회복지사</option>
+										<option value="office_worker">사무원</option>
+										<option value="nutritonist">영양사</option>
+									</select>	
+								</div>
+							</div>
 							<p>평가하기</p>
 							<div class="check_score">
 								<p>별을 클릭해 총점을 평가해주세요.</p>
@@ -88,42 +118,55 @@
 								<div class="item">
 									<label for="total">총점</label>
 									<div class="star_bg">
-										<span id="total_score" style="width: 0%;"></span>
+										<span name="totalScore" id="total_score" style="width: 0%;"></span>
 									</div>
 								</div>
 								<div class="hashtag">
 									<div>키워드 선택하기</div>
 									<div>
-										<span>#역에서 가까운</span>
-										<span>#자유로운 복장</span>
-										<span>#간식 제공</span>
-										<span>#자유로운 휴가</span>
-										<span>#유연근무제</span>
-										<span>#역에서가까운</span>
-										<span>#역에서가까운</span>
-										<span>#역에서가까운</span>
+										<div class="item_hash">
+											<label for="hash_1">#역에서 가까운</label>
+											<input type="checkbox" id="hash_1" class="checkhash" name="hash_1" value="역에서 가까운">
+										</div>
+										<div class="item_hash">
+											<label for="hash_2">#자유로운 복장</label>
+											<input type="checkbox" id="hash_2" class="checkhash" name="hash_2" value="자유로운 복징">
+										</div>
+										<div class="item_hash">
+											<label for="hash_3">#간식 제공</label>
+											<input type="checkbox" id="hash_3" class="checkhash" name="hash_3" value="간식 제공">
+										</div>
+										<div class="item_hash">
+											<label for="hash_4">#유연근무제</label>
+											<input type="checkbox" id="hash_4" class="checkhash" name="hash_4" value="유연근무제">
+										</div>
+										<div class="item_hash">
+											<label for="hash_5">#테스트123</label>
+											<input type="checkbox" id="hash_5" class="checkhash" name="hash_5" value="테스트123">
+										</div>
 									</div>
+									<div id="selected_hashtag" style="display: none;"></div>
 								</div>
 							</div>
 							<div class="write_review">
 								<div class="write_item">
 									<label for="highlight">한줄평</label>
 									<div>
-										<textarea type="text" id="highlight" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." onchange="checkHigh()" required></textarea>
+										<textarea name="highlight" type="text" id="highlight" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." onchange="checkHigh()" required></textarea>
 									</div>
 								</div>
 								<div class="write_item">
 									<label for="pros">장점</label>
 									<div>
 										<span id="pros_cnt">현재 글자수:000자</span>
-										<textarea type="text" id="pros" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 50자)" onchange="checkPros()" required></textarea>
+										<textarea name="pros" type="text" id="pros" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 50자)" onchange="checkPros()" required></textarea>
 									</div>
 								</div>
 								<div class="write_item">
 									<label for="cons">단점</label>
 									<div>
 										<span id="cons_cnt">현재 글자수:000자</span>
-										<textarea type="text" id="cons" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 50자)" onchange="checkCons()" required></textarea>
+										<textarea name="cons" type="text" id="cons" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 50자)" onchange="checkCons()" required></textarea>
 									</div>
 								</div>
 							</div>

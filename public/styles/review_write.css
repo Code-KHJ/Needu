@@ -171,6 +171,57 @@ main{
 	background: #ffffff;
 	gap: 40px;
 }
+.working_info label {
+	width: 100px;
+	font-size: 1.4rem;
+	font-weight: 700;
+}
+.working_info>div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+.period>div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
+}
+.period>div>div {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.period>div>div>input {
+	height: 30px;
+	padding: 5px;
+	border: 1px solid #aaaaaa;
+	border-radius: 5px;
+}
+.period>div>div>div>div input {
+	width: 20px;
+}
+.period>div label {
+	font-weight: 400;
+}
+.period>div>div:nth-of-type(2)>div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.work_type {
+	margin-top: 40px;
+}
+.working_info select {
+	width: 150px;
+	height: 30px;
+	padding: 5px;
+	background-color: #ffffff;
+	border: 1px solid #aaaaaa;
+	border-radius: 5px;
+}
 .review_form>p:nth-of-type(1) {
 	font-size: 1.8rem;
 	font-weight: 700;
@@ -183,11 +234,6 @@ main{
 	font-size: 1.4rem;
 	font-weight: 700;
 }
-.check_score label {
-	width: 100px;
-	font-size: 1.4rem;
-	font-weight: 700;
-}
 .item {
 	max-width: 350px;
 	display: flex;
@@ -196,6 +242,11 @@ main{
 	flex-wrap: wrap;
 	margin-top: 40px;
 	gap: 10px;
+}
+.item label {
+	width: 100px;
+	font-size: 1.4rem;
+	font-weight: 700;
 }
 .item div {
 	width: 150px;
@@ -227,11 +278,16 @@ main{
 	flex-wrap: wrap;
 	gap: 10px	;
 }
-.hashtag span {
+.hashtag label {
+	display: inline-block;
 	padding: 4px 8px;
 	border: 1px solid #aaaaaa;
 	border-radius: 12px;
 	font-size: 1.3rem;
+	cursor: pointer;
+}
+.hashtag input {
+	display: none;
 }
 .write_review {
 	display: flex;
@@ -355,18 +411,31 @@ footer>div {
 		padding: 60px 40px;
 		gap: 80px;
 	}
+	.working_info label {
+		width: 125px;
+		font-size: 1.8rem;
+	}
+	.period>div>div {
+		width: 200px;
+	}
+	.period>div>div>input {
+		height: 30px;
+	}
+	.working_info select {
+		width: 400px;
+	}
 	.review_form>p:nth-of-type(1) {
 		font-size: 2.4rem;
 	}
 	.check_score>p {
 		font-size: 1.8rem;
 	}
-	.check_score label {
-		width: 125px;
-		font-size: 1.8rem;
-	}
 	.item {
 		max-width: 520px;
+	}
+	.item label {
+		width: 125px;
+		font-size: 1.8rem;
 	}
 	.item div {
 		width: 300px;
@@ -382,7 +451,7 @@ footer>div {
 	.hashtag>div:nth-of-type(2) {
 		flex-basis: calc(100% - 200px);
 	}
-	.hashtag span {
+	.hashtag label {
 		font-size: 1.8rem;
 	}
 	.write_item {
