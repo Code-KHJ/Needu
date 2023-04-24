@@ -301,6 +301,8 @@ main{
 	background-color: #3d47FF;
 	border-radius: 8px;
 	font-size: 1.4rem;
+	text-align: center;
+	line-height: 48px;
 	color: #fafafa;
 	cursor: pointer;
 }

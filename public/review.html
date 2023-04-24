@@ -5,8 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>review</title>
-	<link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
-	<link href="./styles/review.css" rel="stylesheet" type="text/css">
+	<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+	<link href="/styles/review.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -96,7 +96,7 @@
 					<div class="corp_info_image">기업이미지</div>
 					<div class="corp_info_data">
 						<div>
-							<span>기관명</span>
+							<span>{{Corp_name}}</span>
 							<span>기관 소재지</span>    
 						</div>
 						<div>
@@ -113,15 +113,15 @@
 							<li>#해시태그4</li>
 						</ul>
 					</div>
-					<button type="submit" class="btn_review">이 기관 리뷰하기</button>
+					<a href="/review_write/{{Corp_name}}" class="btn_review">이 기관 리뷰하기</a>
 				</div>
-				<button class="btn_write"></button>
+				<a href="/review_write/{{Corp_name}}" class="btn_write"></a>
 				<button class="btn_toTop"></button>    
 			</div>
 			<div class="contents_wrap">
 				<div class="contents_main">
 					<div class="total_score">
-						<div class="total_score_corpname">기관명 리뷰</div>
+						<div class="total_score_corpname">{{Corp_name}} 리뷰</div>
 						<div class="total_score_wrap">
 							<div class="total_score_main">
 								<p>3.0</p>
@@ -376,6 +376,6 @@
 			</div>
 		</main>
 	</div>
-	<script defer src="./js/review.js"></script>
+	<script defer src="/js/review.js"></script>
 </body>
 </html>
