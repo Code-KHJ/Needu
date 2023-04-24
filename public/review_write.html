@@ -5,8 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>리뷰작성</title>
-		<link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
-		<link href="./styles/review_write.css" rel="stylesheet" type="text/css">
+		<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+		<link href="/styles/review_write.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div class="container">
@@ -23,7 +23,7 @@
 						<div class="corp_info_image">기업이미지</div>
 						<div class="corp_info_data">
 							<div>
-								<span>기관명</span>
+								<span>{{Corp_name}}</span>
 								<span>기관 소재지</span>    
 							</div>
 							<div>
@@ -46,7 +46,7 @@
 				<div class="contents_wrap">
 					<div class="contents">
 						<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
-						<form class="review_form" id="review_form" method="post" action="/review_write">
+						<form class="review_form" id="review_form" method="post" action="/review_write/{{Corp_name}}">
 							<div class="working_info">
 								<div class="period">
 									<label>근무기간</label>
@@ -183,6 +183,6 @@
 				<div>사회복지채용플랫폼 푸터</div>
 			</footer>
 		</div>
-		<script defer src="./js/review_write.js"></script>
+		<script defer src="/js/review_write.js"></script>
 	</body>
 </html>
