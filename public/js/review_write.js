@@ -63,8 +63,8 @@ function checkHigh() {
 }
 
 //장점 작성 확인 및 글자수 체크
+const pros = document.getElementById('pros')
 function checkPros() {
-  const pros = document.getElementById('pros')
   const pros_cnt = document.getElementById('pros_cnt');
   pros_cnt.innerHTML=`현재 글자수: ${pros.value.length}자`
   if(pros.value.length>10){
@@ -77,10 +77,11 @@ function checkPros() {
     return false
   }
 }
+pros.addEventListener('keydown', checkPros)
 
 //단점 작성 확인 및 글자수 체크
+const cons = document.getElementById('cons');
 function checkCons() {
-  const cons = document.getElementById('cons');
   const cons_cnt = document.getElementById('cons_cnt');
   cons_cnt.innerHTML=`현재 글자수: ${cons.value.length}자`
   if(cons.value.length>10){
@@ -93,6 +94,7 @@ function checkCons() {
     return false
   }
 }
+cons.addEventListener('keydown', checkCons)
 
 //폼입력 여부 체크 후 버튼 활성화
 const form = document.querySelector('form');

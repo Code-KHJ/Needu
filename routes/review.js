@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const rootdir = require("../modules/path");
-const { write } = require("./controllers/review");
+const {auth} = require("./middleware/auth");
+const {Corp_info} = require("./middleware/corp");
 
-
-router.get('/:name', (req,res)=>{
-  const Corp_name = req.params.name
-  res.render(rootdir+'/public/review.html', {Corp_name: Corp_name})})
+router.get('/:name', auth, Corp_info, (req,res)=>{
+  res.render(rootdir+'/public/review.html', req.info)})
 
 
 router.post('/', )
