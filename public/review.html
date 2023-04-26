@@ -96,15 +96,15 @@
 					<div class="corp_info_image">기업이미지</div>
 					<div class="corp_info_data">
 						<div>
-							<span>{{Corp_name}}</span>
-							<span>기관 소재지</span>    
+							<span>{{name}}</span>
+							<span>{{location}}</span>    
 						</div>
 						<div>
 							<div class="star_bg">
-								<span style="width: 50%"></span>
+								<span style="width:{{avg_total*20}}%"></span>
 							</div>
-							<span>3.0</span>
-							<span>(000개 리뷰)</span>
+							<span>{{avg_total}}</span>
+							<span>({{cnt}}개 리뷰)</span>
 						</div>
 						<ul class="hashtag_top">
 							<li>#해시태그1</li>
@@ -113,46 +113,46 @@
 							<li>#해시태그4</li>
 						</ul>
 					</div>
-					<a href="/review_write/{{Corp_name}}" class="btn_review">이 기관 리뷰하기</a>
+					<a href="/review_write/{{name}}" class="btn_review">이 기관 리뷰하기</a>
 				</div>
-				<a href="/review_write/{{Corp_name}}" class="btn_write"></a>
+				<a href="/review_write/{{name}}" class="btn_write"></a>
 				<button class="btn_toTop"></button>    
 			</div>
 			<div class="contents_wrap">
 				<div class="contents_main">
 					<div class="total_score">
-						<div class="total_score_corpname">{{Corp_name}} 리뷰</div>
+						<div class="total_score_corpname">{{name}} 리뷰</div>
 						<div class="total_score_wrap">
 							<div class="total_score_main">
-								<p>3.0</p>
+								<p>{{avg_total}}</p>
 								<div class="star_bg">
-									<span style="width: 50%"></span>
+									<span style="width: {{avg_total*20}}%"></span>
 								</div>
-								<p>000개 리뷰</p>
+								<p>{{cnt}}개 리뷰</p>
 							</div>
 							<ul class="total_score_detail">
 								<li class="total_detail_star">
-									<span>3.0</span>
+									<span>{{avg_career.toFixed(1)}}</span>
 									<span></span>
 									<span>커리어 향상</span>
 								</li>
 								<li class="total_detail_star">
-									<span>3.0</span>
+									<span>{{avg_worklife.toFixed(1)}}</span>
 									<span></span>
 									<span>업무와 삶의 균형</span>
 								</li>
 								<li class="total_detail_star">
-									<span>3.0</span>
+									<span>{{avg_welfare.toFixed(1)}}</span>
 									<span></span>
 									<span>복리후생</span>
 								</li>
 								<li class="total_detail_star">
-									<span>3.0</span>
+									<span>{{avg_culture.toFixed(1)}}</span>
 									<span></span>
 									<span>조직문화</span>
 								</li>
 								<li class="total_detail_star">
-									<span>3.0</span>
+									<span>{{avg_leadership.toFixed(1)}}</span>
 									<span></span>
 									<span>리더십</span>
 								</li>
