@@ -645,6 +645,7 @@ main{
 		width: 240px;
 		height: 60px;
 		font-size: 1.6rem;
+		line-height: 60px;
 	}
 	.btn_write {
 		width: 80px;
