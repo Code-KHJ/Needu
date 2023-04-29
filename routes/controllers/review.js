@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const dbconfig = require("../../config/dbconfig.json");
+const rootdir = require("../../modules/path");
 const { body, validationResult } = require("express-validator");
 const { use } = require('..');
 
@@ -17,7 +18,7 @@ module.exports = {
   write: (req, res) => {
     const contents = {
       Corp_name : req.params.name,
-      User_id : req.user,
+      nickname : req.user.nickname,
       first_date : req.body.first_date,
       last_date : req.body.last_date,
       type : req.body.work_type,
@@ -39,8 +40,8 @@ module.exports = {
     }
     try{
       //기관리뷰 create
-      pool.query('INSERT into Review_Posts (Corp_name, User_id, first_date, last_date, type, career_score, worklife_score, welfare_score, culture_score, leadership_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?)',
-      [contents.Corp_name, contents.User_id, contents.first_date, contents.last_date, contents.type,
+      pool.query('INSERT into Review_Posts (Corp_name, nickname, first_date, last_date, type, career_score, worklife_score, welfare_score, culture_score, leadership_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?)',
+      [contents.Corp_name, contents.nickname, contents.first_date, contents.last_date, contents.type,
        contents.career_score, contents.worklife_score, contents.welfare_score, contents.culture_score, contents.leadership_score,
        contents.highlight, contents.pros, contents.cons], (err, result)=>{
       if(err) return res.json({ success: false, err})
@@ -48,13 +49,18 @@ module.exports = {
         const review_no = result.insertId
         try{
           //해시태그 create
-          console.log(review_no)
-          pool.query('INSERT into Hashtag_Posts (review_no, hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5) values (?, ?,?,?,?,?)',
+          pool.query('INSERT into Hashtag_Posts (review_no, hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5) values (?,?,?,?,?,?)',
           [review_no, hashtag.hashtag_1, hashtag.hashtag_2, hashtag.hashtag_3, hashtag.hashtag_4, hashtag.hashtag_5
           ], (err, rows, fields)=>{
           if(err) return res.json({ success: false, err})
-          return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/';</script>");
-          })}
+          else{
+            pool.query('UPDATE user SET authority = 1 WHERE nickname = "' + contents.nickname + '"', (err, row)=>{
+              if(err) return res.json({ success: false, err})
+              else{
+                return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/';</script>");
+              }
+            })
+          }})}
         catch(err){
           console.log(err);
           return err
@@ -65,5 +71,28 @@ module.exports = {
       return err
     }
   },
+  write_auth: (req, res) => {
+    const middle_info = {
+      User: req.user,
+      Corp: req.corp,
+      hash: req.hash
+    }
+    if (middle_info.User) {
+      res.render(rootdir+'/public/review_write.html', middle_info)
+    }
+    else {
+      return res.status(200).send("<script>alert('로그인 하신 후 이용할 수 있는 서비스입니다.');location.href = '/login';</script>");
+    }
+  },
+  review_auth: (req, res) => {
+    const middle_info = {
+      User: req.user,
+      Corp: req.corp,
+      hash: req.hash,
+      content: req.content
+    }
+    //여기서부터ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ
+    res.render(rootdir+'/public/review.html', middle_info)}
+
 }
 

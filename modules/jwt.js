@@ -5,9 +5,11 @@ const redisClient = require('./redis');
 const secret = require('../config/jwtsecret').JWT_KEY;
 
 module.exports = {
-    sign: (id) => { // access token 발급
+    sign: (id, nickname, authority) => { // access token 발급
         const payload = { // access token에 들어갈 payload
-            id: id
+            id: id,
+            nickname: nickname,
+            authority: authority
         };
         return jwt.sign(payload, secret, { // secret으로 sign하여 발급하고 return
             issuer : 'adminHJ',  // 발급자
@@ -22,6 +24,8 @@ module.exports = {
             return {
                 type: true,
                 id: decoded.id,
+                nickname: decoded.nickname,
+                authority: decoded.authority
             };
         } catch (err) {
             return {
