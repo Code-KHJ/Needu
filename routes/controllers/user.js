@@ -22,14 +22,14 @@ module.exports = {
     login: async (req, res) => {
         const {id, password} = req.body;
         //로그인 유효성검사
-        pool.query('SELECT password FROM user WHERE id = "' + id + '"', (err, row)=>{
+        pool.query('SELECT id, password, nickname, authority FROM user WHERE id = "' + id + '"', (err, row)=>{
             if(err) return console.log(err)
             else if(row[0] !== undefined){
                 const match = bcrypt.compareSync(password, row[0].password)
                 if(match){
                     try {
                         //access Token 발급
-                        const accessToken = jwt.sign(id);
+                        const accessToken = jwt.sign(row[0].id, row[0].nickname, row[0].authority);
                         // //refresh Token 발급
                         const refreshToken = jwt.refresh();
                         // //redis에 refreshToken 저장
@@ -79,6 +79,7 @@ module.exports = {
             password : req.body.password,
             phonenumber : req.body.phonenumber,
             nickname : req.body.nickname,
+            authority : 0,
             required_check1 : Boolean(req.body.check_2),
             required_check2 : Boolean(req.body.check_3),
             optional_check1 : Boolean(req.body.check_4),
@@ -89,8 +90,8 @@ module.exports = {
             if (row[0] == undefined){ //동일한 아이디가 없을 경우
                 const salt = bcrypt.genSaltSync(saltRounds);
                 const hashPw = bcrypt.hashSync(user_info.password, salt);
-                pool.query('insert into user (id, password, phonenumber, nickname, required_check1, required_check2, optional_check1, optional_check2, info_period) values (?,?,?,?,?,?,?,?,?)',
-                    [user_info.id, hashPw, user_info.phonenumber, user_info.nickname, user_info.required_check1,
+                pool.query('insert into user (id, password, phonenumber, nickname, authority, required_check1, required_check2, optional_check1, optional_check2, info_period) values (?,?,?,?,?,?,?,?,?,?)',
+                    [user_info.id, hashPw, user_info.phonenumber, user_info.nickname, user_info.authority, user_info.required_check1,
                      user_info.required_check2, user_info.optional_check1, user_info.optional_check2, user_info.info_period], (err, rows, fields)=>{
                     if(err) return res.json({ success: false, err})
                     return res.status(200).send("<script>alert('회원가입이 완료되었습니다.');location.href = '/login';</script>");

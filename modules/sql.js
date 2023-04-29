@@ -60,12 +60,30 @@ module.exports = {
         `
       try {
         pool.query(sql, (err, row, fields)=>{
-        console.log(row[0])
         return resolve(row[0])
         });
       } catch (err) {
         console.log(err);
         return reject(err);
       };
-    })}
+  })},
+  review_content: (Corp_name) => {
+    return new Promise((resolve, reject)=>{
+      const sql = `
+        SELECT 
+          RP.*,
+          HP.hashtag_1, HP.hashtag_2, HP.hashtag_3, HP.hashtag_4, HP.hashtag_5
+        FROM Review_Posts as RP
+          LEFT JOIN Hashtag_posts as HP
+          on RP.No = HP.review_no
+        WHERE RP.Corp_name = "${Corp_name}";`
+      try {
+        pool.query(sql, (err, rows)=>{
+        return resolve(rows)
+        });
+      } catch (err) {
+        console.log(err);
+        return reject(err);
+      };
+    })},
   }

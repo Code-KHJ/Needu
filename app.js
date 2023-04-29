@@ -32,8 +32,7 @@ nunjucks.configure('./public', {
 })
 
 app.get("/", auth, (req, res)=>{
-    const user = req.user
-    res.render('main.html', {user: user})
+    res.render('main.html', req.user)
 })
 
 app.get("/logout", logout)

@@ -23,15 +23,15 @@
 						<div class="corp_info_image">기업이미지</div>
 						<div class="corp_info_data">
 							<div>
-								<span>{{name}}</span>
-								<span>{{location}}</span>    
+								<span>{{Corp.name}}</span>
+								<span>{{Corp.location}}</span>    
 							</div>
 							<div>
 								<div class="star_bg">
-									<span style="width: {{avg_total*20}}%"></span>
+									<span style="width: {{Corp.avg_total*20}}%"></span>
 								</div>
-								<span>{{avg_total}}</span>
-								<span>({{cnt}}개 리뷰)</span>
+								<span>{{Corp.avg_total}}</span>
+								<span>({{Corp.cnt}}개 리뷰)</span>
 							</div>
 							<ul class="hashtag_top">
 								<li>#해시태그1</li>
@@ -46,7 +46,7 @@
 				<div class="contents_wrap">
 					<div class="contents">
 						<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
-						<form class="review_form" id="review_form" method="post" action="/review_write/{{name}}">
+						<form class="review_form" id="review_form" method="post" action="/review_write/{{Corp.name}}">
 							<div class="working_info">
 								<div class="period">
 									<label>근무기간</label>
