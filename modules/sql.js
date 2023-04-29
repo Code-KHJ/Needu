@@ -28,8 +28,36 @@ module.exports = {
           round(avg(culture_score),1) as avg_culture, 
           round(avg(leadership_score),1) as avg_leadership
         FROM Corp as C 
-          LEFT JOIN Review_Posts as RP on C.Corp_name = RP.Corp_name 
+          LEFT JOIN Review_Posts as RP 
+          on C.Corp_name = RP.Corp_name
         WHERE C.Corp_name = "${Corp_name}";`;
+      try {
+        pool.query(sql, (err, row, fields)=>{
+        return resolve(row[0])
+        });
+      } catch (err) {
+        console.log(err);
+        return reject(err);
+      };
+    })
+  },
+  Hash_info: (Corp_name) => {
+    return new Promise((resolve, reject)=>{
+      const sql = `
+        SELECT *
+        FROM
+          (SELECT 
+            sum(HP.hashtag_1) as hash_1,
+            sum(HP.hashtag_2) as hash_2,
+            sum(HP.hashtag_3) as hash_3,
+            sum(HP.hashtag_4) as hash_4,
+            sum(HP.hashtag_5) as hash_5
+          FROM Review_Posts as RP
+            LEFT JOIN Hashtag_Posts as HP
+            on RP.No = HP.review_no
+          WHERE RP.Corp_name = "${Corp_name}") as hashtag
+          ;
+        `
       try {
         pool.query(sql, (err, row, fields)=>{
         console.log(row[0])
@@ -39,10 +67,5 @@ module.exports = {
         console.log(err);
         return reject(err);
       };
-    })
+    })}
   }
-
-
-
-
-};
