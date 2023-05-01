@@ -38,6 +38,7 @@ button{
 }
 .blind{
   text-indent:-9999px;
+  line-height:0.001;
 }
 .clearfix::after{
   content:"";

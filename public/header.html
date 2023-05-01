@@ -61,29 +61,15 @@
         // $('h1').css('display','block')
       }
       })
-
-      let win_width = $(window).width();
-      if(win_width >= 768){
-        i = 0;
-        $('.btn_search').click(function(){
-          i++;
-          if(i%2 == 1){
-          $('.search_text').css('display','block');
-          $('.gnb_search>form').css('border-bottom','1px solid #000dff')
-          } else{
-          $('.search_text').css('display','none');
-          $('.gnb_search>form').css('border','none')
-          }
-          return false;
-        })
+      
       $(window).resize(function(){
         let win_resize = $(window).width();
-          if(win_resize > 767){
+          if(win_resize >= 768){
             $('h1').css('display','block !important')
       }
       console.log(win_resize)
       })
-      }
+      
 
     })
   </script>
