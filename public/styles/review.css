@@ -512,7 +512,12 @@ main{
 .highlight>div {
 	display: flex;
 	margin-top: 16px;
-	gap: 4px;
+}
+.highlight>div>span:not(:last-child)::after {
+	content: '·';
+	font-size: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 .highlight>div>span:nth-of-type(1) {
 	background: url(./images/airplane.png) no-repeat;
@@ -520,8 +525,7 @@ main{
 	height: 16px;
 	background-size: contain;
 }
-.highlight>div>span:nth-of-type(2) {
-	width: calc(100% - 16px);
+.highlight>div>span {
 	height: 16px;
 	font-weight: 400    ;
 	font-size: 1.2rem;
@@ -718,7 +722,7 @@ main{
 		width: 18px;
 		height: 18px;
 	}
-	.highlight>div>span:nth-of-type(2) {
+	.highlight>div>span {
 		font-size: 1.4rem;
 	}
 	.pros_cons>p:nth-of-type(1) {
@@ -801,7 +805,7 @@ main{
 	.highlight>p {
 		font-size: 2.4rem;
 	}
-	.highlight>div>span:nth-of-type(2) {
+	.highlight>div>span {
 		font-size: 1.6rem;
 	}
 	.pros_cons>p:nth-of-type(1) {

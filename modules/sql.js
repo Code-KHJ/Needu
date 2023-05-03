@@ -72,11 +72,13 @@ module.exports = {
       const sql = `
         SELECT 
           RP.*,
+          DATE_FORMAT(RP.created_date, '%Y.%m') as date,
           HP.hashtag_1, HP.hashtag_2, HP.hashtag_3, HP.hashtag_4, HP.hashtag_5
         FROM Review_Posts as RP
           LEFT JOIN Hashtag_posts as HP
           on RP.No = HP.review_no
-        WHERE RP.Corp_name = "${Corp_name}";`
+        WHERE RP.Corp_name = "${Corp_name}"
+        ORDER BY no DESC;`
       try {
         pool.query(sql, (err, rows)=>{
         return resolve(rows)

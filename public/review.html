@@ -96,7 +96,7 @@
 					<div class="corp_info_image">기업이미지</div>
 					<div class="corp_info_data">
 						<div>
-							<span>{{Corp.name}}</span>
+							<span id="Corp_name">{{Corp.name}}</span>
 							<span>{{Corp.location}}</span>    
 						</div>
 						<div>
@@ -159,45 +159,46 @@
 							</ul>
 						</div>
 					</div>
-					<div class="contents">
-						<ul>
+					<div class="contents" id="contents">
+						<ul id="content">
+							{% for review in content %}
 							<li class="contents_review">
 								<div class="review_star">
-									<p>3.0</p>
+									<p>{{review.total_score.toFixed(1)}}</p>
 									<div class="btn_star_detail">
 										<div class="star_bg">
-											<span style="width: 50%"></span>
+											<span style="width: {{review.total_score*20}}%"></span>
 										</div>
 										<button class="star_detail_open"></button>
 									</div>
 									<div class="star_detail" style="display: none;">
 										<div>
 											<div class="star_bg">
-												<span style="width: 50%"></span>
+												<span style="width: {{review.career_score*20}}%"></span>
 											</div>
 											<p>커리어 향상</p>
 										</div>
 										<div>
 											<div class="star_bg">
-												<span style="width: 50%"></span>
+												<span style="width: {{review.worklife_score*20}}%"></span>
 											</div>
 											<p>업무와 삶의 균형</p>
 										</div>
 										<div>
 											<div class="star_bg">
-												<span style="width: 50%"></span>
+												<span style="width: {{review.welfare_score*20}}%"></span>
 											</div>
 											<p>복리후생</p>
 										</div>
 										<div>
 											<div class="star_bg">
-												<span style="width: 50%"></span>
+												<span style="width: {{review.culture_score*20}}%"></span>
 											</div>
 											<p>조직 내 문화</p>
 										</div>
 										<div>
 											<div class="star_bg">
-												<span style="width: 50%"></span>
+												<span style="width: {{review.leadership_score*20}}%"></span>
 											</div>
 											<p>리더십</p>
 										</div>
@@ -205,23 +206,26 @@
 								</div>
 								<div class="review_comment">
 									<div class="highlight">
-										<p>한줄평</p>
+										<p>{{review.highlight}}</p>
 										<div>
 											<span></span>
-											<span>전직원 점 ****a 점 직책명 점 2023.04.02</span>
+											{% if review.last_date == '9999-12' %}
+											<span>현직원</span>
+											{% else %}
+											<span>전직원</span>
+											{% endif %}
+											<span>{{ review.nickname.slice(0,1) }}{{'*'.repeat(review.nickname.length - 1)}}</span>
+											<span>{{review.type}}</span>
+											<span>{{review.date}}</span>
 										</div>
 									</div>
 									<div class="pros_cons">
 										<p>장점</p>
-										<p>법카로 식대 택시비 지원.
-												사내 매점, 카페가 있어서 돈 모으기 좋다
-										</p>
+										<p>{{review.pros}}</p>
 									</div>
 									<div class="pros_cons">
 										<p>단점</p>
-										<p>알고는 왔지만 체계가 너무 없다. 그냥 정신이 없다.
-												휴가라는 개념도 없고 출퇴근 시간이 대체적으로 늦어서 일반적인 직장생활 느낌이 아니다.
-										</p>
+										<p>{{review.cons}}</p>
 									</div>
 									<div class="comment_hashtag_wrap">
 										<div class="hashtag_fade"></div>
@@ -235,88 +239,11 @@
 									<button class="comment_like">
 										<span></span>
 										<span>도움이 돼요</span>
-										<span>(00)</span>
+										<span>({{review.likes}})</span>
 									</button>
 								</div>
 							</li>
-							<li class="contents_review">
-								<div class="review_star">
-									<p>3.0</p>
-									<div class="btn_star_detail">
-										<div class="star_bg">
-											<span style="width: 50%"></span>
-										</div>
-										<button class="star_detail_open"></button>
-									</div>
-									<div class="star_detail" style="display: none;">
-										<div>
-											<div class="star_bg">
-												<span style="width: 50%"></span>
-											</div>
-											<p>커리어 향상</p>
-										</div>
-										<div>
-											<div class="star_bg">
-												<span style="width: 50%"></span>
-											</div>
-											<p>업무와 삶의 균형</p>
-										</div>
-										<div>
-											<div class="star_bg">
-												<span style="width: 50%"></span>
-											</div>
-											<p>복리후생</p>
-										</div>
-										<div>
-											<div class="star_bg">
-												<span style="width: 50%"></span>
-											</div>
-											<p>조직 내 문화</p>
-										</div>
-										<div>
-											<div class="star_bg">
-												<span style="width: 50%"></span>
-											</div>
-											<p>리더십</p>
-										</div>
-									</div>
-								</div>
-								<div class="review_comment">
-									<div class="highlight">
-										<p>한줄평</p>
-										<div>
-											<span></span>
-											<span>전직원 점 ****a 점 직책명 점 2023.04.02</span>
-										</div>
-									</div>
-									<div class="pros_cons">
-										<p>장점</p>
-										<p>법카로 식대 택시비 지원.
-												사내 매점, 카페가 있어서 돈 모으기 좋다
-										</p>
-									</div>
-									<div class="pros_cons">
-										<p>단점</p>
-										<p>알고는 왔지만 체계가 너무 없다. 그냥 정신이 없다.
-												휴가라는 개념도 없고 출퇴근 시간이 대체적으로 늦어서 일반적인 직장생활 느낌이 아니다.
-										</p>
-									</div>
-									<div class="comment_hashtag_wrap">
-										<div class="hashtag_fade"></div>
-										<div class="comment_hashtag">
-											<span>#역에서 가까운</span>
-											<span>#중식제공</span>
-											<span>#유연근무제</span>
-											<span>#휴가눈치안봄</span>
-										</div>	
-									</div>
-									<button class="comment_like">
-										<span></span>
-										<span>도움이 돼요</span>
-										<span>(00)</span>
-									</button>
-								</div>
-							</li>
+							{% endfor %}
 						</ul>
 					</div>
 				</div>
@@ -376,6 +303,7 @@
 			</div>
 		</main>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script defer src="/js/review.js"></script>
 </body>
 </html>

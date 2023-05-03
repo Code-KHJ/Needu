@@ -7,11 +7,10 @@ const app = express();
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const moment = require("moment");
 const {auth} = require("./routes/middleware/auth");
 const indexRouter = require("./routes/index");
-const {
-    logout,
-} = require("./routes/controllers/user.js");
+const {logout} = require("./routes/controllers/user.js");
 dotenv.config();
 
 app.use(bodyParser.urlencoded({extended: false}));
