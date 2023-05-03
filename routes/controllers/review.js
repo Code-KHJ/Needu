@@ -89,10 +89,26 @@ module.exports = {
       User: req.user,
       Corp: req.corp,
       hash: req.hash,
-      content: req.content
+      content: req.content.slice(0, 3)
     }
-    //여기서부터ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ
-    res.render(rootdir+'/public/review.html', middle_info)}
-
+    if (middle_info.User.authority > 0){
+      console.log("작성 해봤죠")
+      res.render(rootdir+'/public/review.html', middle_info)}
+    else {
+      //여기서부터ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ
+      console.log('아이디 없죠')
+      res.render(rootdir+'/public/review.html', middle_info)}
+    },
+  review_more: (req, res) => {
+    console.log(req.query.page)
+    const content = req.content;
+    const perPage = 3;
+    const curpage = req.query.page;
+    const startIndex = curpage * perPage;
+    const endIndex = startIndex + perPage;
+    const newContents = content.slice(startIndex, endIndex)
+    res.json({content: newContents})
+  }
 }
+
 
