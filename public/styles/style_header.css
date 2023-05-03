@@ -14,7 +14,7 @@
   z-index: 10;
 }
 header{
-  width:90%;
+  width:80%;
   height:100%;
   margin:60px auto 32px;
   display:flex;
@@ -135,6 +135,10 @@ input{
 
 @media screen and (min-width:768px) {
 
+header{
+  width:86%;
+}
+
 .nav_wrap{
   width:100%;
 }
@@ -191,7 +195,9 @@ nav{
 .container{
   padding:0 7.03%;
 }
-
+header{
+  width:100%;
+}
 .gnb_wrap{
   width:75%;
   /* border:1px solid red; */
@@ -199,4 +205,11 @@ nav{
 .gnb_search{
   width:36%;
 }
+}
+
+@media screen and (min-width:1280px){
+  .container{
+    width:1280px;
+    margin:0 auto;
+  }
 }
