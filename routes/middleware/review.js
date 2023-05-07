@@ -20,7 +20,6 @@ module.exports = {
     const content = await review_content(Corp_name);
     if (content !== null){
       req.content = content;
-      console.log('good')
       next();
     } else {
       console.log('리뷰 없음')
@@ -28,16 +27,16 @@ module.exports = {
     }
   },
   review_auth:(req, res, next) => {
-    const nickname = req.user.nickname;
-    pool.query('SELECT authority FROM user WHERE nickname = "'+ nickname + '"',(err,rows)=>{
-      if(rows[0] !== null){
-        req.user.auth = rows[0].authority;
-        next();
-      }
-      else{
-        req.user.auth = 'none';
-        next();
-      }
-    })
-  }
+    if(req.user){
+      const nickname = req.user.nickname;
+      pool.query('SELECT authority FROM user WHERE nickname = "'+ nickname + '"',(err,rows)=>{
+        if(rows[0] !== null){
+          req.user.auth = rows[0].authority;
+          next();
+        }
+      })}
+    else{
+      next();
+    }
+  },
 }

@@ -110,6 +110,9 @@ module.exports = {
         res.json({auth: User.auth})
       }
     }
+    else {
+      res.json({auth: 'none'})
+    }
   },
   review_likes: (req, res) => {
     const User = req.user
