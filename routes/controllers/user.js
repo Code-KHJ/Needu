@@ -22,14 +22,14 @@ module.exports = {
     login: async (req, res) => {
         const {id, password} = req.body;
         //로그인 유효성검사
-        pool.query('SELECT id, password, nickname, authority FROM user WHERE id = "' + id + '"', (err, row)=>{
+        pool.query('SELECT id, password, nickname FROM user WHERE id = "' + id + '"', (err, row)=>{
             if(err) return console.log(err)
             else if(row[0] !== undefined){
                 const match = bcrypt.compareSync(password, row[0].password)
                 if(match){
                     try {
                         //access Token 발급
-                        const accessToken = jwt.sign(row[0].id, row[0].nickname, row[0].authority);
+                        const accessToken = jwt.sign(row[0].id, row[0].nickname);
                         // //refresh Token 발급
                         const refreshToken = jwt.refresh();
                         // //redis에 refreshToken 저장
