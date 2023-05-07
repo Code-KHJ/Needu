@@ -2,7 +2,8 @@ const {sign, verify, refreshVerify} = require('../../modules/jwt');
 const jwt = require('jsonwebtoken');
 const secret = require('../../config/jwtsecret').JWT_KEY;
 
-exports.auth = (req, res, next) => {
+module.exports = {
+    auth: (req, res, next) => {
     const AccessToken = req.cookies.AccessToken
     if (AccessToken){
         const AccessResult = verify(AccessToken);
@@ -15,7 +16,7 @@ exports.auth = (req, res, next) => {
             if(refreshToken){
                 const refreshresult = refreshVerify(refreshToken, decoded.id)
                 if(refreshresult){//엑세스토큰 만료, 리프레시토큰 정상
-                    const newAccessToken = sign(decoded.id, decoded.nickname, decoded.authority)
+                    const newAccessToken = sign(decoded.id, decoded.nickname)
                     res.cookie('AccessToken', newAccessToken, {
                         secure: false,
                         httpOnly: true,
@@ -30,4 +31,5 @@ exports.auth = (req, res, next) => {
         }
     } else {
         next();
-    }}
+    }},
+}

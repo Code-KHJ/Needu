@@ -601,6 +601,20 @@ main{
 	line-height: 140%;
 	color: #aaaaaa;
 }
+#more {
+	display: flex;
+	position: relative;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	align-items: center;
+	justify-content: center;
+}
+#more>button {
+	background: url(./images/btn_detail.png) no-repeat;
+	background-size: contain;
+	width: 25px;
+	height: 30px;
+}
 .sidebar {
 	display: none;
 }

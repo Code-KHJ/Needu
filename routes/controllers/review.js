@@ -3,6 +3,7 @@ const dbconfig = require("../../config/dbconfig.json");
 const rootdir = require("../../modules/path");
 const { body, validationResult } = require("express-validator");
 const { use } = require('..');
+const { NodeResolveLoader } = require("nunjucks");
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -84,31 +85,78 @@ module.exports = {
       return res.status(200).send("<script>alert('로그인 하신 후 이용할 수 있는 서비스입니다.');location.href = '/login';</script>");
     }
   },
-  review_auth: (req, res) => {
+  review: (req, res) => {
     const middle_info = {
       User: req.user,
       Corp: req.corp,
       hash: req.hash,
-      content: req.content.slice(0, 3)
+      content: req.content.slice(0, 1)
     }
-    if (middle_info.User.authority > 0){
-      console.log("작성 해봤죠")
-      res.render(rootdir+'/public/review.html', middle_info)}
-    else {
-      //여기서부터ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ
-      console.log('아이디 없죠')
-      res.render(rootdir+'/public/review.html', middle_info)}
-    },
+    res.render(rootdir+'/public/review.html', middle_info)
+  },
   review_more: (req, res) => {
-    console.log(req.query.page)
+    const User = req.user
     const content = req.content;
     const perPage = 3;
     const curpage = req.query.page;
-    const startIndex = curpage * perPage;
+    const startIndex = curpage * perPage - 2;
     const endIndex = startIndex + perPage;
     const newContents = content.slice(startIndex, endIndex)
-    res.json({content: newContents})
+    if(User){
+      if(User.auth > 0){
+        res.json({auth: User.auth, content: newContents})
+      }
+      else{
+        res.json({auth: User.auth})
+      }
+    }
+  },
+  review_likes: (req, res) => {
+    const User = req.user
+    if (User) {
+      const corp_name = req.body.name
+      const review_num = req.body.num
+      const review_like = req.body.likes
+      const update_sql = `
+        UPDATE Review_Posts 
+        SET likes = likes + ${review_like}
+        WHERE No = (
+          SELECT No FROM (
+            SELECT No
+            FROM Review_Posts
+            WHERE Corp_name = "${corp_name}"
+            ORDER BY No DESC
+            LIMIT 1 OFFSET ${review_num}
+          ) AS subquery
+        );
+        `
+      const select_sql = `
+        SELECT likes FROM Review_Posts
+        WHERE No = (
+          SELECT No
+          FROM (
+            SELECT No
+            FROM Review_Posts
+            WHERE Corp_name = "${corp_name}"
+            ORDER BY No DESC
+            LIMIT 1 OFFSET ${review_num}
+          ) AS subquery
+        );
+        `
+      try {
+        pool.query(update_sql, (err, rows)=>{
+          if(err) throw err;
+          pool.query(select_sql, (err, rows)=>{
+            res.send(JSON.stringify(rows[0].likes))})  
+          })
+      } catch(err){
+        console.log(err);
+      }
+    } else {
+      return res.send(JSON.stringify("권한없음"));
+    }
   }
-}
+  }
 
 
+      
