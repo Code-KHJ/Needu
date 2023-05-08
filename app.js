@@ -33,6 +33,9 @@ nunjucks.configure('./public', {
 app.get("/", auth, (req, res)=>{
     res.render('main.html', req.user)
 })
+app.get("/user", auth, (req, res)=>{
+    res.json(req.user)
+})
 
 app.get("/logout", logout)
 app.use("/signup", require("./routes/signup"));
