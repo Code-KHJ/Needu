@@ -6,89 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>review</title>
 	<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+	<link href="/styles/style_header.css" rel="stylesheet">
 	<link href="/styles/review.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
 	<div class="container">
-		<!-- 모달 작업 보류 -->
-		<form class="modal" style="display: none;">
-			<div>기업리뷰 작성</div>
-			<div class="modal_page" style="display: none;">
-				<div><div style="width: 33.3%;"></div></div>
-				<div class="modal_page1_form">
-					<p>작성을 완료하시면 기관의 실제 리뷰를 무료로 볼 수 있습니다.<br>
-						입력하신 모든 정보는 익명으로 처리되니 걱정마세요!
-					</p>
-					<div>
-						<div class="modal_page1_item">
-							<label for="Corp_name">근무기관</label>
-							<input type="text" id="Corp_name" placeholder="근무기관명">	
-						</div>
-						<div class="modal_page1_item">
-							<label for="Corp_location">근무지역</label>
-							<input type="text" id="Corp_location" placeholder="근무지역">	
-						</div>
-						<div class="modal_page1_item">
-							<label for="work_datee">근무기간</label>
-							<div class="work_date">
-								<div>
-									<div><span>입사일</span></div>
-									<input type="date">	
-								</div>
-								<div>
-									<div>
-										<span>퇴사일</span>
-										<div>
-											<input type="checkbox" id="working">
-											<label for="working">재직중</label>
-										</div>
-									</div>
-									<input type="date" max="">
-								</div>
-							</div>
-						</div>
-						<div class="modal_page1_item">
-							<label for="type">근무직종</label>
-							<input type="text" id="type" placeholder="근무직종">
-						</div>
-					</div>
-				</div>
-				<div class="modal_next">
-					<button>취소</button>
-					<button>다음</button>	
-				</div>
-			</div>
-			<div class="modal_page">
-				<div><div style="width: 66.7%;"></div></div>
-				<div class="modal_page2_form">
-					<div class="modal_corp_info">
-						<div>기관이미지</div>
-						<div>
-							<p>기관명</p>
-							<p>기관유형</p>
-							<div>
-								<p>이 기업이 아닌가요?</p>
-								<div>다른기업 선택하기</div>	
-							</div>	
-						</div>
-					</div>	
-					<div>
-						<div></div>
-					</div>
-				</div>
-				<div class="modal_next">
-					<button>취소</button>
-					<button>다음</button>	
-				</div>
-			</div>
-		</form>
-		<header>
-			<div class="header_wrap">
-				<h1><a href="/">NeedU</a></h1>
-				<button class="blind_btn_ham"></button>
-			</div>
-		</header>
+		<div id="header_wrap">
+		</div>
 		<main>
 			<div class="corp_info_wrap">
 				<div class="div_line"></div>
@@ -304,6 +228,7 @@
 			</div>
 		</main>
 	</div>
+	<script type="module" src="/js/header.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script defer src="/js/review.js"></script>
 </body>

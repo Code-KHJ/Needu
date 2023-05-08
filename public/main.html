@@ -7,6 +7,10 @@
     <title>Recruit-sw</title>
 
     <link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+		<link href="/styles/style_header.css" rel="stylesheet">
+
+
+    <!-- 아래는 쓰레기 -->
     <link href="/styles/style_mobile.css" rel="stylesheet" type="text/css">
     <link href="/styles/style_pc.css" rel="stylesheet" type="text/css">
 
@@ -19,41 +23,8 @@
 </head>
 <body>
   <div class="container">
-    <div class="modal"></div>
-    <header>
-      <div class="header_wrap">
-        <h1><a href="/"><span>사회복지</span><span>채용</span>플랫폼</a></h1>
-        <button class="blind btn_ham">메뉴열기</button>
-        <nav>
-          <div class="clearfix">
-          <form id="formSearch" name="formSearch">
-            <fieldset>
-              <legend class="screen_out">검색영역</legend>
-              <input type="search" id="inputSearch" name="inputSearch" class="input_search" placeholder="검색어를 입력하세요">
-              <label for="inputSearch" class="screen_out">검색어입력</label>
-              <button></button>
-            </fieldset>
-          </form>
-          <ul>
-            <!-- <li><a href="#">채용공고</a></li> -->
-            <li><a href="#">기관후기</a></li>
-            <!-- <li><a href="#">커뮤니티</a></li> -->
-          </ul>
-          </div>
-            {% if id %}
-            <div>
-              <div>{{nickname}}님</div>
-              <a href="/logout">로그아웃</a>
-            </div>
-            {% else %}
-            <div>
-              <a href="/login">로그인/회원가입</a>
-            </div>
-            {% endif %}
-        </nav>
-      </div>
-    </header>
-    <!-- header end -->
+    <div id="header_wrap">
+    </div>
     <main>
       <div class="main_wrap">
         <!-- <button class="btn_toTop blind">맨위로</button> -->
@@ -319,7 +290,6 @@
   
   })
   </script> -->
-
   <script>
     new Swiper('.swiper-container', {
         slidesPerView: 3, // 한번에 보여줄 슬라이드 갯수
@@ -336,6 +306,7 @@
 
     });
   </script>
-
+  <script type="module" src="/js/header.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
