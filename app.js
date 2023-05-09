@@ -42,5 +42,9 @@ app.use("/signup", require("./routes/signup"));
 app.use("/login", require("./routes/login"));
 app.use("/review", require("./routes/review"));
 app.use("/review_write", require("./routes/review_write"));
+app.get("/search_write", (req, res)=>{
+    res.render('review_write_search.html')
+})
+
 
 app.listen(port, () => {console.log(`Server started on port ${port}`)});
