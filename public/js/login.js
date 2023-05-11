@@ -27,7 +27,6 @@ formsbm_user.addEventListener('keydown', ()=>{
     const check_user = Array.from(formsbm_user.elements)
     .filter(input => input.hasAttribute('required'))
     .every(input => input.value.trim() !== '');
-    console.log(check_user)
     if(check_user){
         btnsbm_user.disabled="";
         btnsbm_user.className = "summitbtn_on";
