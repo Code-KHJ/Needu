@@ -31,10 +31,7 @@ nunjucks.configure('./public', {
 })
 
 app.get("/", auth, (req, res)=>{
-    res.render('main.html', req.user)
-})
-app.get("/user", auth, (req, res)=>{
-    res.json(req.user)
+    res.render('main.html', {User: req.user})
 })
 
 app.get("/logout", logout)
@@ -42,9 +39,5 @@ app.use("/signup", require("./routes/signup"));
 app.use("/login", require("./routes/login"));
 app.use("/review", require("./routes/review"));
 app.use("/review_write", require("./routes/review_write"));
-app.get("/search_write", (req, res)=>{
-    res.render('review_write_search.html')
-})
-
 
 app.listen(port, () => {console.log(`Server started on port ${port}`)});

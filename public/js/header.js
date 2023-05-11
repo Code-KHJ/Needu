@@ -1,8 +1,16 @@
 const header = document.getElementById('header_wrap');
 
-async function load() {
-  const res = await axios.get("/user")
-  header.innerHTML = `
+class header_component extends HTMLElement{
+  constructor(){
+    super();
+  }
+  connectedCallback(){
+    this.render();
+  }
+  render(){
+    const name = this.dataset.name;
+    console.log(name)
+    header.innerHTML = `
     <div class="modal"></div>
     <header>
       <h1 class="blind"><a href="/">logo</a></h1>
@@ -24,12 +32,12 @@ async function load() {
             </div>
             <ul class="gnb">
               <li><a href="/review/연습용기관">기업리뷰</a></li>
-              <li><a href="/review_write/연습용기관">리뷰작성</a></li>
+              <li><a href="/review_write">리뷰작성</a></li>
             </ul>
           </div>
           <div class="usersign">
-            ${res.data.nickname ? `
-            <a href="#">${res.data.nickname}님</a>
+            ${name ? `
+            <a href="#">${name}님</a>
             <a href="/logout">로그아웃</a>` : `
             <a href="/login">로그인</a>
             <a href="/signup">회원가입</a>`
@@ -39,33 +47,29 @@ async function load() {
       </div>
     </header>
   `
-  const btn_ham_gnb = document.querySelector('.btn_ham_gnb');
-  const modal = document.querySelector('.modal');
-  const nav = document.querySelector('nav');
-  btn_ham_gnb.addEventListener('click', () => {
-    if(modal.style.display == 'none'){
-      modal.style.display = 'block'
-      nav.style.display = 'block'  
-    }
-    else{
-      modal.style.display = 'none'
-      nav.style.display = 'none'  
-    }
-  })
-  window.addEventListener('resize', () => {
-    let winResize = window.innerWidth;
-    if (winResize >= 768){
-      modal.style.display = 'none'
-      nav.style.display = 'none'
-    }
-  })
+  }
 }
-load()
 
-            // {% if id %}
-            // <a href="/login">로그인</a>
-            // <a href="/signup">회원가입</a>
-            // {% else %}
-            // <a href="/login">쿵쿵따</a>
-            // <a href="/signup">쿵쿵따따</a>
-            // {% endif %}
+customElements.define('header-component', header_component)
+
+
+const btn_ham_gnb = document.querySelector('.btn_ham_gnb');
+const modal = document.querySelector('.modal');
+const nav = document.querySelector('nav');
+btn_ham_gnb.addEventListener('click', () => {
+  if(modal.style.display == 'block'){
+    modal.style.display = 'none'
+    nav.style.display = 'none'
+  }
+  else{
+    modal.style.display = 'block'
+    nav.style.display = 'block'
+  }
+})
+window.addEventListener('resize', () => {
+  let winResize = window.innerWidth;
+  if (winResize >= 768){
+    modal.style.display = 'none'
+    nav.style.display = 'none'
+  }
+})
