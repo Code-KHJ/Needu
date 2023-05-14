@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const dbconfig = require("../../config/dbconfig.json");
-const { Corp_info, Hash_info } = require('../../modules/sql');
+const { Corp_info, Corp_all, Hash_info } = require('../../modules/sql');
 const rootdir = require("../../modules/path");
 
 
@@ -26,6 +26,11 @@ module.exports = {
       //기관 등록페이지로 보내기
       res.render(rootdir+'/public/main.html')
     }
+  },
+  Corp_all: async(req, res, next) => {
+    const corp = await Corp_all()
+    req.corp = corp
+    next()
   },
   Hash_info: async (req, res, next) => {
     const Corp_name = req.params.name;

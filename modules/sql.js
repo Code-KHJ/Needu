@@ -41,6 +41,21 @@ module.exports = {
       };
     })
   },
+  Corp_all: () => {
+    return new Promise((resolve, reject)=>{
+      const sql = `
+        SELECT *
+        FROM Corp`;
+      try {
+        pool.query(sql, (err, rows)=>{
+        return resolve(rows)
+        });
+      } catch (err) {
+        console.log(err);
+        return reject(err);
+      };
+    })
+  },
   Hash_info: (Corp_name) => {
     return new Promise((resolve, reject)=>{
       const sql = `

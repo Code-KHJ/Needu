@@ -8,30 +8,54 @@
 }
 .search{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 80%;
-  height: 68px;
   margin: 240px auto;
   padding: 20px 32px;
   background: #ffffff;
   border: 2px solid #000;
-  border-radius: 360px;
+  border-radius: 40px;
 }
-.search>input{
-  width: 150px;
+.user_input{
+  width: 100%;
+  padding: 0px 0px 10px;
+  border-bottom: 1px solid #000;
+}
+.user_input input{
+  float: left;
+  width: calc(100% - 30px);
   height: 28px;
   font-size: 1.4rem;
 }
-.search>input::placeholder{
+.user_input input::placeholder{
   color: rgba(0,0,0,0.3);
 }
-.search>button{
+.user_input button{
+  float: right;
   width: 28px;
   height: 28px;
   background: url(images/btn_search_black.svg) no-repeat center/contain;
 }
+.auto_corp{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+  gap: 40px;
+  font-size: 1.4rem;
+}
+.register{
+  font-size: 1.4rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.register>button{
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
 footer {
 	width: 100%;
 	margin: 80px auto;
@@ -45,17 +69,25 @@ footer>div {
 @media screen and (min-width:768px) {
   .search{
     width: 86%;
-    height: 76px;
     padding: 20px 60px;
   }
-  .search>input{
+  .user_input input{
     font-size: 1.8rem;
-    width: 350px;
+    width: calc(100% - 40px);
     height: 36px;
   }
-  .search>button{
+  .user_input button{
     width: 36px;
     height: 36px;
+  }
+  .auto_corp{
+    font-size: 1.8rem;
+  }
+  .register{
+    font-size: 1.8rem;
+  }
+  .register>button{
+    font-size: 1.8rem;
   }
   footer>div {
     width: 86%;
@@ -65,24 +97,32 @@ footer>div {
 /* 1024 */
 @media screen and (min-width:1024px) {
   .search{
-    height: 84px;
     padding: 20px 80px;
   }
-  .search>input{
+  .user_input>input{
     font-size: 2.0rem;
-    width: 650px;
+    width: calc(100% - 50px);
     height: 44px;
   }
-  .search>button{
+  .user_input>button{
     width: 44px;
     height: 44px;
+  }
+  .auto_corp{
+    font-size: 2.0rem;
+  }
+  .register{
+    font-size: 2.0rem;
+  }
+  .register>button{
+    font-size: 2.0rem;
   }
 }
 @media screen and (min-width:1280px){
   .search{
     width: 1000px;
   }
-  .search>input{
+  .user_input>input{
     font-size: 2.4rem;
   }
 }
