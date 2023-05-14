@@ -16,8 +16,36 @@
 			</div>
       <main>
         <form class="search">
-          <input placeholder="리뷰를 작성할 기관명을 입력해주세요.">
-          <button></button>
+					<div class="user_input">
+						<input type ="text" id="search_input" placeholder="기관명을 입력해주세요.">
+						<button></button>
+					</div>
+					<ul class="auto_corp" style="display: none;">
+						<!-- <li>
+							<span>가나다복지관</span>
+							<span>서울 강남구</span>
+						</li>
+						<li>
+							<span>가나다복지관</span>
+							<span>서울 강남구</span>
+						</li>
+						<li>
+							<span>가나다복지관</span>
+							<span>서울 강남구</span>
+						</li>
+						<li>
+							<span>가나다복지관</span>
+							<span>서울 강남구</span>
+						</li>
+						<li>
+							<span>가나다복지관</span>
+							<span>서울 강남구</span>
+						</li> -->
+					</ul>
+					<div class="register" style="display: none;">
+						<span>찾으시는 기관이 없나요?</span>
+						<button>기관 등록하기</button>
+					</div>
         </form>
       </main>
 			<footer>
@@ -26,5 +54,7 @@
 		</div>
 		<script type="module" src="./js/header.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="https://unpkg.com/hangul-js" type="text/javascript"></script>
+		<script defer src="./js/search_write.js"></script>
 	</body>
 </html>

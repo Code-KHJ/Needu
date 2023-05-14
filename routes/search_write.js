@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const rootdir = require("../modules/path");
 const {auth} = require("./middleware/auth");
-const {Corp_info, Hash_info} = require("./middleware/corp");
-const { review_content, review_auth } = require("./middleware/review");
+const {Corp_all, Hash_info} = require("./middleware/corp");
+const {corp} = require("./controllers/corp");
 
 
 router.get('/', (req, res)=>{
   res.render('search_write.html')
 })
-
+router.get('/all', Corp_all, corp)
 module.exports = router;
