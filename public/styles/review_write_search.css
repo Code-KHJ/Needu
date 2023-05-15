@@ -37,6 +37,7 @@
   width: 28px;
   height: 28px;
   background: url(images/btn_search_black.svg) no-repeat center/contain;
+  cursor: pointer;
 }
 .auto_corp{
   display: flex;
@@ -45,6 +46,17 @@
   margin-top: 40px;
   gap: 40px;
   font-size: 1.4rem;
+  cursor: pointer;
+}
+.auto_corp>li:hover{
+  background: gray;
+}
+.auto_corp>li{
+  height: 28px;
+  line-height: 28px;
+}
+.auto_corp>li>span:nth-of-type(2){
+  margin: 0px 4px;
 }
 .register{
   font-size: 1.4rem;
@@ -82,6 +94,10 @@ footer>div {
   }
   .auto_corp{
     font-size: 1.8rem;
+  }
+  .auto_corp>li{
+    height: 40px;
+    line-height: 40px;
   }
   .register{
     font-size: 1.8rem;
