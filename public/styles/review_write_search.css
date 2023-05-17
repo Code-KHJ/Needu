@@ -7,6 +7,7 @@
 	overflow:auto;
 }
 .search{
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -21,36 +22,52 @@
 .user_input{
   width: 100%;
   padding: 0px 0px 10px;
-  border-bottom: 1px solid #000;
 }
-.user_input input{
+#search_input{
   float: left;
   width: calc(100% - 30px);
   height: 28px;
   font-size: 1.4rem;
+  border-bottom: 1px solid #000; 
 }
-.user_input input::placeholder{
+#search_input::placeholder{
   color: rgba(0,0,0,0.3);
-}
-.user_input button{
-  float: right;
-  width: 28px;
-  height: 28px;
-  background: url(images/btn_search_black.svg) no-repeat center/contain;
-  cursor: pointer;
 }
 .auto_corp{
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 80px;
   gap: 40px;
   font-size: 1.4rem;
+}
+.auto_corp button{
+  width: 100%;
+  height: 28px;
+  text-align: left;
   cursor: pointer;
 }
-.auto_corp>li:hover{
-  background: gray;
+.auto_corp span{
+  font-size: 1.4rem;
 }
+.active{
+  background-color: gray;
+}
+
+
+#btnSubmit{
+  position: absolute;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  background: url(images/btn_search_black.svg) no-repeat center/contain;
+  cursor: pointer;
+}
+
+.active{
+  background: red;
+}
+
 .auto_corp>li{
   height: 28px;
   line-height: 28px;
@@ -83,12 +100,14 @@ footer>div {
     width: 86%;
     padding: 20px 60px;
   }
-  .user_input input{
+  #search_input{
     font-size: 1.8rem;
     width: calc(100% - 40px);
     height: 36px;
+    font-size: 2.0rem;
   }
-  .user_input button{
+  #btnSubmit{
+    right: 60px;
     width: 36px;
     height: 36px;
   }
@@ -99,6 +118,9 @@ footer>div {
     height: 40px;
     line-height: 40px;
   }
+  .auto_corp span{
+    font-size: 1.8rem;
+  }  
   .register{
     font-size: 1.8rem;
   }
@@ -115,16 +137,20 @@ footer>div {
   .search{
     padding: 20px 80px;
   }
-  .user_input>input{
+  #search_input{
     font-size: 2.0rem;
     width: calc(100% - 50px);
     height: 44px;
   }
-  .user_input>button{
+  #btnSubmit{
+    right: 60px;
     width: 44px;
     height: 44px;
   }
   .auto_corp{
+    font-size: 2.0rem;
+  }
+  .auto_corp span{
     font-size: 2.0rem;
   }
   .register{
@@ -138,7 +164,7 @@ footer>div {
   .search{
     width: 1000px;
   }
-  .user_input>input{
+  #search_input{
     font-size: 2.4rem;
   }
 }

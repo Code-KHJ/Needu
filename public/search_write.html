@@ -17,15 +17,15 @@
       <main>
         <form id="search_corp" class="search" method="get" action="/review_write/:name">
 					<div class="user_input">
-						<input type ="text" id="search_input" placeholder="기관명을 입력해주세요.">
-						<button type="submit" form="search_corp" id="btnSubmit" disabled="disabled"></button>
+						<input type ="text" id="search_input" placeholder="기관명을 입력해주세요." autocomplete="off">
+						<ul class="auto_corp" style="display: none;">
+						</ul>	
+						<div class="register" style="display: none;">
+							<span>찾으시는 기관이 없나요?</span>
+							<button>기관 등록하기</button>
+						</div>
 					</div>
-					<ul class="auto_corp" style="display: none;">
-					</ul>
-					<div class="register" style="display: none;">
-						<span>찾으시는 기관이 없나요?</span>
-						<button>기관 등록하기</button>
-					</div>
+					<button type="submit" form="search_corp" id="btnSubmit" disabled="disabled"></button>
         </form>
       </main>
 			<footer>
