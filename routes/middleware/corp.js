@@ -22,9 +22,7 @@ module.exports = {
       req.corp = info;
       next();
     } else {
-      console.log('기관등록 필요')
-      //기관 등록페이지로 보내기
-      res.render(rootdir+'/public/main.html')
+      next();
     }
   },
   Corp_all: async(req, res, next) => {
