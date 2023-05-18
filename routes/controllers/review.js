@@ -79,7 +79,11 @@ module.exports = {
       hash: req.hash
     }
     if (middle_info.User) {
-      res.render(rootdir+'/public/review_write.html', middle_info)
+      if (middle_info.Corp){
+        res.render(rootdir+'/public/review_write.html', middle_info)
+      }else{
+        return res.status(200).send("<script>alert('아직 등록되지 않은 기관이므로, 기관정보를 먼저 알려주세요.');location.href = '/';</script>");
+      }
     }
     else {
       return res.status(200).send("<script>alert('로그인 하신 후 이용할 수 있는 서비스입니다.');location.href = '/login';</script>");
