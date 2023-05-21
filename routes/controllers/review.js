@@ -58,7 +58,7 @@ module.exports = {
             pool.query('UPDATE user SET authority = 1 WHERE nickname = "' + contents.nickname + '"', (err, row)=>{
               if(err) return res.json({ success: false, err})
               else{
-                return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/';</script>");
+                return res.status(200).send("<script>alert('소중한 후기 감사합니다.');history.go(-1);</script>");
               }
             })
           }})}

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>review</title>
 	<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
-	<link href="/styles/style_header.css" rel="stylesheet">
+	<link href="/styles/webcomponent.css" rel="stylesheet">
 	<link href="/styles/review.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -41,7 +41,6 @@
 					<a href="/review_write/{{Corp.name}}" class="btn_review">이 기관 리뷰하기</a>
 				</div>
 				<a href="/review_write/{{Corp.name}}" class="btn_write"></a>
-				<button class="btn_toTop"></button>    
 			</div>
 			<div class="contents_wrap">
 				<div class="contents_main">
@@ -228,8 +227,12 @@
 				</div>
 			</div>
 		</main>
+		<footer>
+			<footer-component></footer-component>
+		</footer>
 	</div>
-	<script type="module" src="/js/header.js"></script>
+	<totop-component></totop-component>
+	<script type="module" src="/js/webcomponent.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script defer src="/js/review.js"></script>
 </body>

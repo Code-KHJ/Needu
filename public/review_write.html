@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>리뷰작성</title>
 		<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
-		<link href="/styles/style_header.css" rel="stylesheet">
+		<link href="/styles/webcomponent.css" rel="stylesheet">
 		<link href="/styles/review_write.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
@@ -39,7 +39,6 @@
 							</ul>
 						</div>
 					</div>
-					<button class="btn_toTop"></button>    
 				</div>
 				<div class="contents_wrap">
 					<div class="contents">
@@ -182,10 +181,11 @@
 				</div>
 			</main>
 			<footer>
-				<div>사회복지채용플랫폼 푸터</div>
+				<footer-component></footer-component>
 			</footer>
 		</div>
-		<script type="module" src="/js/header.js"></script>
+		<totop-component></totop-component>
+		<script type="module" src="/js/webcomponent.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script defer src="/js/review_write.js"></script>
 	</body>

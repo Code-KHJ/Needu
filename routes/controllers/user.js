@@ -1,5 +1,6 @@
 const jwt = require('../../modules/jwt');
 const redisClient = require("../../modules/redis");
+const url = require('url')
 const secret = process.env.JWT_KEY;
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
@@ -21,6 +22,8 @@ const pool = mysql.createPool({
 module.exports = {
     login: async (req, res) => {
         const {id, password} = req.body;
+        const returnUrl = req.cookies.returnPage
+        const returnPath = url.parse(returnUrl).pathname
         //로그인 유효성검사
         pool.query('SELECT id, password, nickname FROM user WHERE id = "' + id + '"', (err, row)=>{
             if(err) return console.log(err)
@@ -43,25 +46,38 @@ module.exports = {
                             secure: false,
                             httpOnly: true,
                         })
-                        return res.status(200).redirect('/')
+                        if(returnPath == undefined || returnPath == "/signup" || returnPath == "/login"){
+                            return res.status(200).send("<script>alert('"+row[0].nickname+"님 반갑습니다!');location.href = '/';</script>")
+                        }else{
+                            return res.status(200).send("<script>alert('"+row[0].nickname+"님 반갑습니다!');location.href = '"+returnPath+"';</script>")
+                        }
                     } catch (err) {
                         res.status(500).json({err});
                     }
                 } else{
                 //비밀번호 불일치
-                res.send("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.');location.href = document.referrer;</script>");
+                res.send("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.');history.go(-1)</script>");
             }
             } else{
             //존재하지 않는 계정
-            res.send("<script>alert('아이디가 존재하지 않습니다.');location.href = document.referrer;</script>");
+            res.send("<script>alert('아이디가 존재하지 않습니다.');history.go(-1);</script>");
             }
         })},
     logout: (req,res) => {
-        const id = jwt.verify(req.cookies.AccessToken).id
-        redisClient.del(id)
-        res.clearCookie('AccessToken')
-        res.clearCookie('RefreshToken')
-        res.redirect("/")
+        console.log(req.cookies.AccessToken)
+        if(req.cookies.AccessToken){
+            try{
+                const id = jwt.verify(req.cookies.AccessToken).id
+                redisClient.del(id)
+                res.clearCookie('AccessToken')
+                res.clearCookie('RefreshToken')
+                res.redirect("/")    
+            }catch (err){
+                res.status(500).json({err})
+            }
+        }else{
+            res.redirect("/")
+        }
     },
     signup: (req,res) => {
         checkbody = [
@@ -94,7 +110,7 @@ module.exports = {
                     [user_info.id, hashPw, user_info.phonenumber, user_info.nickname, user_info.authority, user_info.required_check1,
                      user_info.required_check2, user_info.optional_check1, user_info.optional_check2, user_info.info_period], (err, rows, fields)=>{
                     if(err) return res.json({ success: false, err})
-                    return res.status(200).send("<script>alert('회원가입이 완료되었습니다.');location.href = '/login';</script>");
+                    return res.status(200).send("<script>alert('회원가입이 완료되었습니다. 로그인하신 후 서비스를 이용해주세요');location.href = '/login';</script>");
                     })}
             else {
                 res.json({ success: false, err}) //아이디 중복일 때 에러 부분 추후 자바스크립트로 구현 필요
