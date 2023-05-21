@@ -135,6 +135,26 @@ input{
   margin-right:8px;
   background:url(images/ico_signup.png) no-repeat center/contain;
 }
+footer{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.btn_toTop {
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	right: calc(10% + 10px);
+	bottom: 7%;
+	background: url(./images/toTop_gray.png) no-repeat center;
+	background-size: 100%;
+	border-radius: 60px;
+	cursor:pointer;
+	z-index: 9;
+}
+
+
+
 /* mobile-end */
 
 @media screen and (min-width:768px) {
@@ -190,6 +210,15 @@ nav{
 .usersign a:first-child{
   margin-right:40px;
 }
+
+
+footer{
+  width:86%;
+}
+
+.btn_toTop {
+  right: calc(10% + 20px);
+}
 }
 /* 768 end */
 /* 1024 */
@@ -204,6 +233,11 @@ nav{
 }
 @media screen and (min-width:1280px){
 header{
+  width:67%;
+}
+
+
+footer{
   width:67%;
 }
 }

@@ -120,18 +120,6 @@ main{
 	cursor:pointer;
 	z-index: 9;
 }
-.btn_toTop {
-	position: fixed;
-	width: 40px;
-	height: 40px;
-	right: calc(10% + 10px);
-	bottom: 7%;
-	background: url(./images/toTop_gray.png) no-repeat center;
-	background-size: 100%;
-	border-radius: 60px;
-	cursor:pointer;
-	z-index: 9;
-}
 .contents_wrap {
 	width: 80%;
 	margin: 0 auto;
@@ -454,9 +442,6 @@ main{
 	.btn_write {
 		width: 80px;
 		height: 80px;
-	}
-	.btn_toTop {
-		right: calc(10% + 20px);
 	}
 	.contents_wrap {
 		width: 86%;

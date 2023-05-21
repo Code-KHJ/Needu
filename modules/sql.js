@@ -35,6 +35,7 @@ module.exports = {
         pool.query(sql, (err, row, fields)=>{
         return resolve(row[0])
         });
+        
       } catch (err) {
         console.log(err);
         return reject(err);

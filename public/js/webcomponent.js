@@ -1,5 +1,4 @@
-const header = document.getElementById('header_wrap');
-
+//헤더 웹 컴포넌트
 class header_component extends HTMLElement{
   constructor(){
     super();
@@ -9,8 +8,7 @@ class header_component extends HTMLElement{
   }
   render(){
     const name = this.dataset.name;
-    console.log(name)
-    header.innerHTML = `
+    this.innerHTML = `
     <div class="modal"></div>
     <header>
       <h1 class="blind"><a href="/">logo</a></h1>
@@ -49,10 +47,9 @@ class header_component extends HTMLElement{
   `
   }
 }
-
 customElements.define('header-component', header_component)
 
-
+//nav 모달 width에 따라 구현
 const btn_ham_gnb = document.querySelector('.btn_ham_gnb');
 const modal = document.querySelector('.modal');
 const nav = document.querySelector('nav');
@@ -73,3 +70,42 @@ window.addEventListener('resize', () => {
     nav.style.display = 'none'
   }
 })
+
+
+//푸터 웹 컴포넌트
+class footer_component extends HTMLElement{
+  constructor(){
+    super();
+  }
+  connectedCallback(){
+    this.render();
+  }
+  render(){
+    this.innerHTML = `
+    <div >푸터 내용 입력 필요합니다.</div>
+  `
+  }
+}
+customElements.define('footer-component', footer_component)
+
+
+//toTop 웹 컴포넌트
+class toTop_component extends HTMLElement{
+  constructor(){
+    super();
+  }
+  connectedCallback(){
+    this.render();
+  }
+  render(){
+    this.innerHTML = `
+    <button class="btn_toTop"></button>
+  `
+    this.onclick = function(){
+      if(window.pageYOffset > 0){
+        window.scrollTo({top:0, behavior: "smooth"});
+      }    
+    }
+  }
+}
+customElements.define('totop-component', toTop_component)

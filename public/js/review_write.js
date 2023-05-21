@@ -97,7 +97,7 @@ function checkCons() {
 cons.addEventListener('keydown', checkCons)
 
 //폼입력 여부 체크 후 버튼 활성화
-const form = document.querySelector('form');
+const form = document.querySelector('#review_form');
 const btnSubmit = document.querySelector('#btnSubmit');
 
 form.addEventListener('change', ()=>{
@@ -109,6 +109,7 @@ form.addEventListener('change', ()=>{
   const check_pros = document.getElementById('pros').value.length > 10;
   const check_cons = document.getElementById('cons').value.length > 10;
   const checkAll = [check_firstdate, check_lastdate, check_worktype, score_array, check_highlight, check_pros, check_cons];
+  console.log(checkAll)
   if(checkAll.every((ck) => ck==true)){
     btnSubmit.disabled="";
     btnSubmit.style.backgroundColor = '#2D65FE';

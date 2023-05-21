@@ -316,14 +316,6 @@ main{
 	font-weight: 700;
   color: #333333;
 }
-footer {
-	width: 100%;
-	margin: 80px auto;
-}
-footer>div {
-	width: 80%;
-	margin: 0 auto;
-}
 .sidebar {
 	display: none;
 }
@@ -448,9 +440,6 @@ footer>div {
 	.contents>button {
 		margin-right: 0;
 	}
-	footer>div {
-		width: 86%;
-	}
 }
 
 /* PC 1024 사이즈 반응형 */
@@ -496,8 +485,5 @@ footer>div {
 		background-color: rgba(0,0,0,0.03);
 		border-radius: 5px;
 		margin-bottom: 40px;
-	}
-	footer>div {
-		width: 67%;
 	}
 }

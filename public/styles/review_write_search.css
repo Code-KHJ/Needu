@@ -85,14 +85,6 @@
   font-weight: 700;
 }
 
-footer {
-	width: 100%;
-	margin: 80px auto;
-}
-footer>div {
-	width: 80%;
-	margin: 0 auto;
-}
 /* mobile-end */
 
 @media screen and (min-width:768px) {
@@ -126,9 +118,6 @@ footer>div {
   }
   .register>button{
     font-size: 1.8rem;
-  }
-  footer>div {
-    width: 86%;
   }
 }
 /* 768 end */
