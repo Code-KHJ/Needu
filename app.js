@@ -34,7 +34,7 @@ app.get("/", auth, (req, res)=>{
     res.render('main.html', {User: req.user})
 })
 
-app.get("/logout", logout)
+app.get("/logout", auth, logout)
 app.use("/signup", require("./routes/signup"));
 app.use("/login", require("./routes/login"));
 app.use("/review", require("./routes/review"));

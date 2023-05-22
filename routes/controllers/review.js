@@ -33,11 +33,11 @@ module.exports = {
       cons : req.body.cons,
     }
     const hashtag = {
-      hashtag_1 : Boolean(req.body.hash_1),
-      hashtag_2 : Boolean(req.body.hash_2),
-      hashtag_3 : Boolean(req.body.hash_3),
-      hashtag_4 : Boolean(req.body.hash_4),
-      hashtag_5 : Boolean(req.body.hash_5)
+      hashtag_1 : req.body.hash_1,
+      hashtag_2 : req.body.hash_2,
+      hashtag_3 : req.body.hash_3,
+      hashtag_4 : req.body.hash_4,
+      hashtag_5 : req.body.hash_5
     }
     try{
       //기관리뷰 create
@@ -58,7 +58,7 @@ module.exports = {
             pool.query('UPDATE user SET authority = 1 WHERE nickname = "' + contents.nickname + '"', (err, row)=>{
               if(err) return res.json({ success: false, err})
               else{
-                return res.status(200).send("<script>alert('소중한 후기 감사합니다.');history.go(-1);</script>");
+                return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/review/"+contents.Corp_name+"';</script>");
               }
             })
           }})}

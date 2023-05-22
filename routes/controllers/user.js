@@ -64,14 +64,22 @@ module.exports = {
             }
         })},
     logout: (req,res) => {
-        console.log(req.cookies.AccessToken)
         if(req.cookies.AccessToken){
             try{
                 const id = jwt.verify(req.cookies.AccessToken).id
-                redisClient.del(id)
-                res.clearCookie('AccessToken')
-                res.clearCookie('RefreshToken')
-                res.redirect("/")    
+                const userid = req.user.id
+                if(id !== undefined){
+                    redisClient.del(id)
+                    res.clearCookie('AccessToken')
+                    res.clearCookie('RefreshToken')
+                    res.redirect("/")        
+                }
+                else if(userid){
+                    redisClient.del(userid)
+                    res.clearCookie('AccessToken')
+                    res.clearCookie('RefreshToken')
+                    res.redirect("/")    
+                }
             }catch (err){
                 res.status(500).json({err})
             }
