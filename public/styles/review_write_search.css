@@ -51,9 +51,8 @@
   font-size: 1.4rem;
 }
 .active{
-  background-color: gray;
+  background-color: #ededed;
 }
-
 
 #btnSubmit{
   position: absolute;
@@ -62,10 +61,6 @@
   height: 28px;
   background: url(images/btn_search_black.svg) no-repeat center/contain;
   cursor: pointer;
-}
-
-.active{
-  background: red;
 }
 
 .auto_corp>li{
