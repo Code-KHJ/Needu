@@ -120,33 +120,35 @@ function removeList(){
 //자동완성 리스트 방향키 포커스 이동 구현
 function focusNav(e, corpList){
     const keyCode = e.keyCode;
-    //방향키 위쪽 누를 때
-    switch (keyCode) {
-      // Up key
-      case 38:
-        nowIndex = Math.max(nowIndex - 1, -1);
-        updateFocus(corpList)
-        break;
-      // Down key
-      case 40:
-        nowIndex = Math.min(nowIndex + 1, corpBtn.length - 1);
-        updateFocus(corpList);
-        break;
-      // Enter key
-      case 13:
-        if(nowIndex !== -1){
-          Array.from(corpList).map((item, index)=>{
-            if(index == nowIndex){
-              input_data(item)
-              nowIndex = -1;
-            }
-          })
-          break
-        }
-      // 그 외
-      default:
-        nowIndex = -1;
-        break;
+    if(e.isComposing === false){
+      //방향키 위쪽 누를 때
+      switch (keyCode) {
+        // Up key
+        case 38:
+          nowIndex = Math.max(nowIndex - 1, -1);
+          updateFocus(corpList)
+          break;
+        // Down key
+        case 40:
+          nowIndex = Math.min(nowIndex + 1, corpBtn.length - 1);
+          updateFocus(corpList);
+          break;
+        // Enter key
+        case 13:
+          if(nowIndex !== -1){
+            Array.from(corpList).map((item, index)=>{
+              if(index == nowIndex){
+                input_data(item)
+                nowIndex = -1;
+              }
+            })
+            break
+          }
+        // 그 외
+        default:
+          nowIndex = -1;
+          break;
+      }
     }
   }
 
