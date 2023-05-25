@@ -4,6 +4,8 @@ const rootdir = require("../../modules/path");
 const { body, validationResult } = require("express-validator");
 const { use } = require('..');
 const { NodeResolveLoader } = require("nunjucks");
+const { hash } = require("bcrypt");
+const { connect, connection } = require("mongoose");
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -151,11 +153,35 @@ module.exports = {
         );
         `
       try {
-        pool.query(update_sql, (err, rows)=>{
+        pool.getConnection((err, connection) => {
           if(err) throw err;
-          pool.query(select_sql, (err, rows)=>{
-            res.send(JSON.stringify(rows[0].likes))})  
-          })
+          connection.beginTransaction((err)=>{
+            if(err) throw err;
+            connection.query(update_sql, (err, rows)=>{
+              if(err){
+                return connection.rollback(()=>{
+                  throw err;
+                })
+              }
+              connection.query(select_sql, (err, rows)=>{
+                if(err){
+                  return connection.rollback(()=>{
+                    throw err;
+                  });
+                }
+                connection.commit((err)=>{
+                  if(err){
+                    return connection.rollback(()=>{
+                      throw err;
+                    })
+                  }
+                  res.send(JSON.stringify(rows[0].likes))
+                  connection.release();
+                })
+              })
+            })
+         })
+        })
       } catch(err){
         console.log(err);
       }

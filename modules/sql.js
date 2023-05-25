@@ -60,23 +60,39 @@ module.exports = {
   Hash_info: (Corp_name) => {
     return new Promise((resolve, reject)=>{
       const sql = `
-        SELECT *
-        FROM
-          (SELECT 
-            sum(HP.hashtag_1) as hash_1,
-            sum(HP.hashtag_2) as hash_2,
-            sum(HP.hashtag_3) as hash_3,
-            sum(HP.hashtag_4) as hash_4,
-            sum(HP.hashtag_5) as hash_5
-          FROM Review_Posts as RP
-            LEFT JOIN Hashtag_Posts as HP
-            on RP.No = HP.review_no
-          WHERE RP.Corp_name = "${Corp_name}") as hashtag
-          ;
+        SELECT hash FROM(
+          SELECT hashtag_1 as hash FROM Hashtag_Posts as HP
+            LEFT JOIN Review_Posts as RP
+            on HP.review_no = RP.No
+          WHERE RP.Corp_name = "${Corp_name}"
+            UNION ALL
+          SELECT hashtag_2 as hash FROM Hashtag_Posts as HP
+            LEFT JOIN Review_Posts as RP
+            on HP.review_no = RP.No
+          WHERE RP.Corp_name = "${Corp_name}"
+          UNION ALL
+          SELECT hashtag_3 as hash FROM Hashtag_Posts as HP
+            LEFT JOIN Review_Posts as RP
+            on HP.review_no = RP.No
+          WHERE RP.Corp_name = "${Corp_name}"
+          UNION ALL
+          SELECT hashtag_4 as hash FROM Hashtag_Posts as HP
+            LEFT JOIN Review_Posts as RP
+            on HP.review_no = RP.No
+          WHERE RP.Corp_name = "${Corp_name}"
+            UNION ALL
+          SELECT hashtag_5 as hash FROM Hashtag_Posts as HP
+            LEFT JOIN Review_Posts as RP
+            on HP.review_no = RP.No
+          WHERE RP.Corp_name = "${Corp_name}"
+        ) AS hashtag
+        Group by hash
+        ORDER by count(hash) DESC
+        LIMIT 4;
         `
       try {
-        pool.query(sql, (err, row, fields)=>{
-        return resolve(row[0])
+        pool.query(sql, (err, rows)=>{
+        return resolve(rows)
         });
       } catch (err) {
         console.log(err);

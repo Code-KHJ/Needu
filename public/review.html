@@ -32,10 +32,10 @@
 							<span>({{Corp.cnt}}개 리뷰)</span>
 						</div>
 						<ul class="hashtag_top">
-							<li>#{{hash.hash_1}}</li>
-							<li>#해시태그2</li>
-							<li>#해시태그3</li>
-							<li>#해시태그4</li>
+							<li>{{hash[0].hash}}</li>
+							<li>{{hash[1].hash}}</li>
+							<li>{{hash[2].hash}}</li>
+							<li>{{hash[3].hash}}</li>
 						</ul>
 					</div>
 					<a href="/review_write/{{Corp.name}}" class="btn_review">이 기관 리뷰하기</a>
@@ -154,10 +154,11 @@
 									<div class="comment_hashtag_wrap">
 										<div class="hashtag_fade"></div>
 										<div class="comment_hashtag">
-											<span>#역에서 가까운</span>
-											<span>#중식제공</span>
-											<span>#유연근무제</span>
-											<span>#휴가눈치안봄</span>
+											<span>{{review.hashtag_1}}</span>
+											<span>{{review.hashtag_2}}</span>
+											<span>{{review.hashtag_3}}</span>
+											<span>{{review.hashtag_4}}</span>
+											<span>{{review.hashtag_5}}</span>
 										</div>	
 									</div>
 									<button class="comment_like">
