@@ -18,7 +18,6 @@ async function likesClick(btn, i) {
   const likes_cnt = btn.querySelectorAll("span")[2];
   const currentColor = btn.style.backgroundColor;
   const review_num = i;
-  console.log(review_num)
   if (currentColor === 'rgb(61, 71, 255)'){
     //db로 좋아요 취소 보내기
     const res = await axios.post(corp_name+"/likes", {
@@ -161,10 +160,11 @@ async function More_contents() {
             <div class="comment_hashtag_wrap">
               <div class="hashtag_fade"></div>
               <div class="comment_hashtag">
-                <span>#역에서 가까운</span>
-                <span>#중식제공</span>
-                <span>#유연근무제</span>
-                <span>#휴가눈치안봄</span>
+                <span>${review.hashtag_1 !== null ? review.hashtag_1 : ''}</span>
+                <span>${review.hashtag_2 !== null ? review.hashtag_2 : ''}</span>
+                <span>${review.hashtag_3 !== null ? review.hashtag_3 : ''}</span>
+                <span>${review.hashtag_4 !== null ? review.hashtag_4 : ''}</span>
+                <span>${review.hashtag_5 !== null ? review.hashtag_5 : ''}</span>
               </div>	
             </div>
             <button class="comment_like">

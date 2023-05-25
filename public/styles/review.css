@@ -336,7 +336,6 @@ main{
 }
 .comment_hashtag {
 	position: relative;
-	gap: 12px;
 	width: 100%;
 	height: 22px;
 	overflow-x: scroll;
@@ -346,11 +345,13 @@ main{
 	display: none;
 }
 .comment_hashtag>span {
-	margin-right: 12px;
 	font-size: 1.4rem;
 	line-height: 160%;
 	width: auto;
 	height: 22px;
+}
+.comment_hashtag>span:not(:empty) {
+	margin-right: 12px;
 }
 .hashtag_fade {
 	position: absolute;
