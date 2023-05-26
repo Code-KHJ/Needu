@@ -28,7 +28,7 @@
 							<div class="star_bg">
 								<span style="width:{{Corp.avg_total*20}}%"></span>
 							</div>
-							<span>{{Corp.avg_total}}</span>
+							<span>{{Corp.avg_total.toFixed(1)}}</span>
 							<span>({{Corp.cnt}}개 리뷰)</span>
 						</div>
 						<ul class="hashtag_top">
@@ -48,7 +48,7 @@
 						<div class="total_score_corpname">{{Corp.name}} 리뷰</div>
 						<div class="total_score_wrap">
 							<div class="total_score_main">
-								<p>{{Corp.avg_total}}</p>
+								<p>{{Corp.avg_total.toFixed(1)}}</p>
 								<div class="star_bg">
 									<span style="width: {{Corp.avg_total*20}}%"></span>
 								</div>
