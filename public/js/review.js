@@ -75,8 +75,6 @@ more_btn.addEventListener('click', async()=>{
 
 
 
-
-
 //리뷰 무한스크롤
 const url = new URL(location.href);
 const corp_name = decodeURI(decodeURIComponent(url.pathname.split('/')[2])); // 한글 깨짐 디코딩
@@ -193,6 +191,7 @@ async function More_contents() {
   }
 }
 window.addEventListener('scroll', async function(){
+  console.log('123')
   if(more_btn_div.style.display=='none'){
     if(window.scrollY + window.innerHeight >= this.document.documentElement.scrollHeight) {
       await More_contents()

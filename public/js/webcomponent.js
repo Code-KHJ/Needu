@@ -82,7 +82,19 @@ class footer_component extends HTMLElement{
   }
   render(){
     this.innerHTML = `
-    <div >푸터 내용 입력 필요합니다.</div>
+    <div class="footer_main">
+      <div class="logo"></div>
+      <a>이용약관</a>
+      <a>개인정보 처리방침</a>
+    </div>
+    <div class="footer_data">
+      <span>상호명: 00000</span>
+      <span>사업자번호: 000-00-00000</span>
+      <span>통신판매업: 00000</span>
+      <span>대표자: 000</span>
+      <span>이메일: 00000@000000.com</span>
+      <span>주소: 서울시 00구 00로 00길 00-00</span>
+    </div>
   `
   }
 }

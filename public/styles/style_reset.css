@@ -9,7 +9,7 @@
 
 html, body{
   width:100%;
-  /* height:100% */
+  height:100%;
 }
 html{
   color:#333333;
@@ -17,6 +17,11 @@ html{
   font-family: NanumSquare;
   font-weight:400;
   /* font-family: 'NanumSquareNeo-Variable'; */
+}
+.container{
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 200px;
 }
 a{
   text-decoration: none;
