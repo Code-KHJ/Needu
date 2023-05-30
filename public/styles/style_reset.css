@@ -19,8 +19,12 @@ html{
   /* font-family: 'NanumSquareNeo-Variable'; */
 }
 .container{
-  position: relative;
+  width:100%;;
+  height: auto;
   min-height: 100%;
+  background-color: #fafafa;
+	overflow:auto;
+  position: relative;
   padding-bottom: 200px;
 }
 a{

@@ -22,6 +22,7 @@ searchFrm.addEventListener('keyup', async (e)=>{
     //css 조정
     corpUl.style.display = '';
     corpAdd.style.display = '';
+    searchFrm.style.marginBottom = '150px';
 
     //li 추가
     if(searchInput.value.length !== 0){
@@ -195,3 +196,10 @@ searchInput.addEventListener('keydown', (e)=>{
       btn.click();
     }
 }})
+
+const btn_addCorp = document.querySelector('.btn_addCorp');
+const modal_box = document.querySelector('.modal-box');
+btn_addCorp.addEventListener('click', ()=>{
+  modal_box.style.display = 'block'
+
+})
