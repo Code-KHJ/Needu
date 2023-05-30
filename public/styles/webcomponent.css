@@ -160,14 +160,16 @@ input{
   background:url(images/ico_logout.png) no-repeat center/contain;
 }
 footer{
-  position: absolute;
+  position: relative;
   width: 100%;
+  height: 200px;
   font-size: 1.2rem;
+  transform: translateY(-100%);
 }
 footer-component{
   display: flex;
   width: 80%;
-  margin: 30px auto;
+  margin: 0 auto;
   flex-direction: column;
 }
 .footer_main{

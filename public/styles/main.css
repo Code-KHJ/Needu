@@ -2,11 +2,6 @@
 /* z-index: modal 11, header10; button9 */
 
 
-.container{
-    width: 100;height: 100%;
-    background-color: #fafafa;
-    overflow: auto;
-}
 main{
     width: 100%;
     height: auto;

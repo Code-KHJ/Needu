@@ -1,10 +1,12 @@
 @charset "utf-8";
-/* z-index: header10; button9 */
+/* z-index: madal12 modal-box11 header10; button9 */
 
-.container{
-	width:100%;height:100%;
-	background-color: #fafafa;
-	overflow:auto;
+.main_wrap{
+  display: block;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 240px;
 }
 .search{
   position: relative;
@@ -12,8 +14,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  width: 80%;
-  margin: 240px auto;
   padding: 20px 32px;
   background: #ffffff;
   border: 2px solid #000;
@@ -75,16 +75,109 @@
   margin-top: 40px;
   margin-bottom: 20px;
 }
-.register>button{
+.register>span:nth-of-type(2){
   font-size: 1.4rem;
   font-weight: 700;
 }
-
+.modal-box{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  z-index: 11;
+}
+.modal_addCorp{
+  position: fixed;
+  width: 80%;
+  height: auto;
+  max-width: 760px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.modal_addCorp>div{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  height: 30px;
+  background: #3D47FF;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+.Corp_data{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  background: #ffffff;
+  font-size: 1.2rem;
+}
+.Corp_data>div{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.Corp_data>div>label{
+  font-weight: 700;
+}
+.Corp_data>div>input{
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+}
+.Corp_data>div>input::placeholder{
+  color: #aaaaaa;
+}
+.Corp_data>div>div{
+  width: 70%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.Corp_data>div>div>select{
+  width: 45%;
+  padding: 5px 10px;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+}
+.btn_modalSubmit{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  background: #eeeeee;
+  border-radius: 0px 0px 5px 5px;
+}
+.modal_cancel{
+  width: 30%;
+  max-width: 180px;
+  height: 30px;
+  background: #ffffff;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.modal_submit{
+  width: 30%;
+  max-width: 180px;
+  height: 30px;
+  background: #000dff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
 /* mobile-end */
 
 @media screen and (min-width:768px) {
-  .search{
+  .main_wrap{
     width: 86%;
+  }
+  .search{
     padding: 20px 60px;
   }
   #search_input{
@@ -111,8 +204,45 @@
   .register{
     font-size: 1.8rem;
   }
-  .register>button{
+  .register>span:nth-of-type(2){
     font-size: 1.8rem;
+  }
+  .modal_addCorp>div{
+    height: 68px;
+    font-size: 2.0rem;
+  }
+  .Corp_data{
+    padding: 40px;
+    gap: 40px;
+    font-size: 1.8rem;
+  }
+  .Corp_data>div>input{
+    max-width: 468px;
+    height: 54px;
+    padding: 17px 20px;
+    font-size: 1.8rem;
+  }
+  .Corp_data>div>div{
+    max-width: 468px;
+    height: 54px;
+  }
+  .Corp_data>div>div>select{
+    width: 45%;
+    padding: 17px 20px;
+    font-size: 1.8rem;
+  }
+  .btn_modalSubmit{
+    padding: 20px 28px;
+    height: 94px;
+  }
+  .modal_cancel{
+    height: 54px;
+    font-size: 1.8rem;
+  }
+  .modal_submit{
+    height: 54px;
+    font-size: 1.8rem;
+
   }
 }
 /* 768 end */
@@ -140,12 +270,12 @@
   .register{
     font-size: 2.0rem;
   }
-  .register>button{
+  .register>span:nth-of-type(2){
     font-size: 2.0rem;
   }
 }
 @media screen and (min-width:1280px){
-  .search{
+  .main_wrap{
     width: 67%;
     max-width: 1000px;
   }
