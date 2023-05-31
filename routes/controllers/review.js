@@ -5,7 +5,6 @@ const { body, validationResult } = require("express-validator");
 const { use } = require('..');
 const { NodeResolveLoader } = require("nunjucks");
 const { hash } = require("bcrypt");
-const { connect, connection } = require("mongoose");
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -92,11 +91,16 @@ module.exports = {
     }
   },
   review: (req, res) => {
+    let cnt = true
+    if(req.corp.cnt == 0){
+      cnt = false
+    }
     const middle_info = {
       User: req.user,
       Corp: req.corp,
       hash: req.hash,
-      content: req.content.slice(0, 1)
+      content: req.content.slice(0, 1),
+      cnt : cnt
     }
     res.render(rootdir+'/public/review.html', middle_info)
   },

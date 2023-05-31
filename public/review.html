@@ -22,8 +22,9 @@
 					<div class="corp_info_data">
 						<div>
 							<span id="Corp_name">{{Corp.name}}</span>
-							<span>{{Corp.location}}</span>    
+							<span>{{Corp.sido+" "+Corp.gugun}}</span>    
 						</div>
+						{% if cnt %}
 						<div>
 							<div class="star_bg">
 								<span style="width:{{Corp.avg_total*20}}%"></span>
@@ -37,6 +38,15 @@
 							<li>{{hash[2].hash}}</li>
 							<li>{{hash[3].hash}}</li>
 						</ul>
+						{% else %}
+						<div>
+							<div class="star_bg">
+								<span style="width:{{Corp.avg_total*20}}%"></span>
+							</div>
+							<span>0.0</span>
+							<span>({{Corp.cnt}}개 리뷰)</span>
+						</div>
+						{% endif %}
 					</div>
 					<a href="/review_write/{{Corp.name}}" class="btn_review">이 기관 리뷰하기</a>
 				</div>
@@ -44,6 +54,7 @@
 			</div>
 			<div class="contents_wrap">
 				<div class="contents_main">
+					{% if cnt %}
 					<div class="total_score">
 						<div class="total_score_corpname">{{Corp.name}} 리뷰</div>
 						<div class="total_score_wrap">
@@ -83,6 +94,11 @@
 							</ul>
 						</div>
 					</div>
+					{% else %}
+					<div class="total_score">
+						<div class="total_score_corpname">아직 작성된 리뷰가 없습니다.</div>
+					</div>
+					{% endif %}
 					<div class="contents" id="contents">
 						<ul id="content">
 							{% for review in content %}
