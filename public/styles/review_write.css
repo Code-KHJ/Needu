@@ -287,6 +287,7 @@ main{
 	font-size: 1.3rem;
 	line-height: 140%;
 	color: #000;
+	resize: none;
 }
 .write_item textarea::placeholder {
 	font-size: 1.3rem;

@@ -30,13 +30,13 @@ class header_component extends HTMLElement{
             </div>
             <ul class="gnb">
               <li><a href="/review/연습용기관">기업리뷰</a></li>
-              <li><a href="/review_write">리뷰작성</a></li>
+              <li><a href="/search_write">리뷰작성</a></li>
             </ul>
           </div>
           <div class="usersign">
             ${name ? `
             <a href="#" class="nickname">${name}님</a>
-            <a href="/logout" class="logout"><span>로그아웃</span></a>` : `
+            <a href="/logout" class="logout"><span >로그아웃</span></a>` : `
             <a href="/login" class="login">로그인</a>
             <a href="/signup" class="signup">회원가입</a>`
             }

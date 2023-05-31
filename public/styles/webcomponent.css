@@ -138,7 +138,7 @@ input{
 }
 .nickname{
   display: inline-block !important;
-  width: calc(100% - 100px);
+  width: calc(100% - 30px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -158,6 +158,9 @@ input{
   width:18px; height:18px;
   margin-right:8px;
   background:url(images/ico_logout.png) no-repeat center/contain;
+}
+.logout span{
+  display: none;
 }
 footer{
   position: relative;

@@ -19,8 +19,9 @@ module.exports = {
       const sql = `
         SELECT 
           C.Corp_name as name,
-          C.Corp_location as location, 
-          count(*) as cnt, 
+          C.sido as sido,
+          C.gugun as gugun,
+          count(total_score) as cnt, 
           round(avg(total_score),1) as avg_total, 
           round(avg(career_score),1) as avg_career, 
           round(avg(worklife_score),1) as avg_worklife, 
@@ -119,5 +120,18 @@ module.exports = {
         console.log(err);
         return reject(err);
       };
+    })},
+  Add_corp: (Corp_name, sido, gugun) => {
+    return new Promise((resolve, reject)=>{
+      const sql = 'insert into Corp (Corp_name, sido, gugun) values (?, ?, ?)';
+      try {
+        pool.query(sql, [Corp_name, sido, gugun], (err, result)=>{
+          if(err) return err;
+          return resolve(result.protocol41)
+        })
+      } catch (err){
+          console.log(err);
+          return reject(err);
+      }
     })},
   }

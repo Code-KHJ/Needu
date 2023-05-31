@@ -22,21 +22,31 @@
 						<div class="corp_info_data">
 							<div>
 								<span>{{Corp.name}}</span>
-								<span>{{Corp.location}}</span>    
+								<span>{{Corp.sido+" "+Corp.gugun}}</span>    
 							</div>
+							{% if cnt %}
 							<div>
 								<div class="star_bg">
-									<span style="width: {{Corp.avg_total*20}}%"></span>
+									<span style="width:{{Corp.avg_total*20}}%"></span>
 								</div>
-								<span>{{Corp.avg_total}}</span>
+								<span>{{Corp.avg_total.toFixed(1)}}</span>
 								<span>({{Corp.cnt}}개 리뷰)</span>
 							</div>
 							<ul class="hashtag_top">
-								<li>#해시태그1</li>
-								<li>#해시태그2</li>
-								<li>#해시태그3</li>
-								<li>#해시태그4</li>
+								<li>{{hash[0].hash}}</li>
+								<li>{{hash[1].hash}}</li>
+								<li>{{hash[2].hash}}</li>
+								<li>{{hash[3].hash}}</li>
 							</ul>
+							{% else %}
+							<div>
+								<div class="star_bg">
+									<span style="width:{{Corp.avg_total*20}}%"></span>
+								</div>
+								<span>0.0</span>
+								<span>({{Corp.cnt}}개 리뷰)</span>
+							</div>
+							{% endif %}	
 						</div>
 					</div>
 				</div>
