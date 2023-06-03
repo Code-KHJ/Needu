@@ -91,7 +91,6 @@ module.exports = {
     }
   },
   review: (req, res) => {
-    console.log(req.content)
     let cnt = true
     if(req.corp.cnt == 0){
       cnt = false
@@ -100,7 +99,7 @@ module.exports = {
       User: req.user,
       Corp: req.corp,
       hash: req.hash,
-      content: req.content[0],
+      content: req.content.slice(0,1),
       cnt : cnt
     }
     res.render(rootdir+'/public/review.html', middle_info)
