@@ -91,6 +91,7 @@ module.exports = {
     }
   },
   review: (req, res) => {
+    console.log(req.content)
     let cnt = true
     if(req.corp.cnt == 0){
       cnt = false
