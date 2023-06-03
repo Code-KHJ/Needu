@@ -99,7 +99,7 @@ module.exports = {
       User: req.user,
       Corp: req.corp,
       hash: req.hash,
-      content: req.content.slice(0, 1),
+      content: req.content[0],
       cnt : cnt
     }
     res.render(rootdir+'/public/review.html', middle_info)
