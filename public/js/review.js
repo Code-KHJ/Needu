@@ -16,21 +16,24 @@ function starOpen(i){
 //좋아요 버튼
 async function likesClick(btn, i) {
   const likes_cnt = btn.querySelectorAll("span")[2];
+  const like = likes_cnt.querySelector("span");
   const currentColor = btn.style.backgroundColor;
   const review_num = i;
+  console.log(like.innerHTML)
   if (currentColor === 'rgb(61, 71, 255)'){
     //db로 좋아요 취소 보내기
     const res = await axios.post(corp_name+"/likes", {
         name : corp_name, 
         num : review_num, 
         likes : -1})
+    console.log(res.data)
     if (res.data == "권한없음"){
       alert('로그인이 필요한 서비스입니다.');
     }
     else{
       btn.style.backgroundColor = '';
       btn.style.color = '#333333';
-      likes_cnt.innerHTML = "("+res.data+")"  
+      like.innerHTML = parseInt(like.innerHTML,10)-1;
     }
   } else {
     //db로 좋아요 보내기
@@ -45,12 +48,22 @@ async function likesClick(btn, i) {
     else{
       btn.style.backgroundColor = '#3D47FF';
       btn.style.color = '#ffffff';
-      likes_cnt.innerHTML = "("+res.data+")"        
+      like.innerHTML = parseInt(like.innerHTML,10)+1;
     }
   }
 }
 let likes_btn = document.querySelectorAll(".comment_like");
 likes_btn.forEach((btn, i) => btn.addEventListener('click', ()=>likesClick(btn, i)))
+
+const ul = document.querySelector("ul");
+ul.addEventListener("click", function(e){
+  console.log(e)
+  const target = e.target;
+  if(target.classList.contains('comment_like')){
+    likesClick(target)
+  }})
+
+
 
 //더보기 버튼
 const more_btn_div = document.querySelector('#more')
@@ -59,20 +72,19 @@ more_btn.addEventListener('click', async()=>{
   await More_contents()
   if(page == 2){
     more_btn_div.style.display='none';
-    const more_likes_btn = document.querySelectorAll(".comment_like");
-    more_likes_btn.forEach((new_btn,i)=>{
-      if(!new_btn.__click_event_registered__){
-        new_btn.__click_event_registered__ = true;
-        new_btn.addEventListener('click', ()=>likesClick(new_btn,i))
-      }
-    });
-    likes_btn.forEach((oldBtn)=>{
-      oldBtn.removeEventListener('click',likesClick);
-      delete oldBtn.__click_event_registered__;
-    });  
+    // const more_likes_btn = document.querySelectorAll(".comment_like");
+    // more_likes_btn.forEach((new_btn,i)=>{
+    //   if(!new_btn.__click_event_registered__){
+    //     new_btn.__click_event_registered__ = true;
+    //     new_btn.addEventListener('click', ()=>likesClick(new_btn,i))
+    //   }
+    // });
+    // likes_btn.forEach((oldBtn)=>{
+    //   oldBtn.removeEventListener('click',likesClick);
+    //   delete oldBtn.__click_event_registered__;
+    // });  
   }
 })
-
 
 
 //리뷰 무한스크롤
@@ -168,7 +180,7 @@ async function More_contents() {
             <button class="comment_like">
               <span></span>
               <span>도움이 돼요</span>
-              <span>(${review.likes})</span>
+              <span>(<span>${review.likes}</span>)</span>
             </button>
           </div>
           `
@@ -191,7 +203,6 @@ async function More_contents() {
   }
 }
 window.addEventListener('scroll', async function(){
-  console.log('123')
   if(more_btn_div.style.display=='none'){
     if(window.scrollY + window.innerHeight >= this.document.documentElement.scrollHeight) {
       await More_contents()

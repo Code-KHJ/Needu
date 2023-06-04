@@ -5,6 +5,7 @@ const { body, validationResult } = require("express-validator");
 const { use } = require('..');
 const { NodeResolveLoader } = require("nunjucks");
 const { hash } = require("bcrypt");
+const sql = require("../../modules/sql");
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -99,7 +100,7 @@ module.exports = {
       User: req.user,
       Corp: req.corp,
       hash: req.hash,
-      content: req.content.slice(0,1),
+      content: req.content[0],
       cnt : cnt
     }
     res.render(rootdir+'/public/review.html', middle_info)
@@ -143,49 +144,53 @@ module.exports = {
           ) AS subquery
         );
         `
-      const select_sql = `
-        SELECT likes FROM Review_Posts
-        WHERE No = (
-          SELECT No
-          FROM (
-            SELECT No
-            FROM Review_Posts
-            WHERE Corp_name = "${corp_name}"
-            ORDER BY No DESC
-            LIMIT 1 OFFSET ${review_num}
-          ) AS subquery
-        );
-        `
+      // const select_sql = `
+      //   SELECT likes FROM Review_Posts
+      //   WHERE No = (
+      //     SELECT No
+      //     FROM (
+      //       SELECT No
+      //       FROM Review_Posts
+      //       WHERE Corp_name = "${corp_name}"
+      //       ORDER BY No DESC
+      //       LIMIT 1 OFFSET ${review_num}
+      //     ) AS subquery
+      //   );
+      //   `
       try {
-        pool.getConnection((err, connection) => {
+        pool.query(update_sql, (err, rows)=>{
           if(err) throw err;
-          connection.beginTransaction((err)=>{
-            if(err) throw err;
-            connection.query(update_sql, (err, rows)=>{
-              if(err){
-                return connection.rollback(()=>{
-                  throw err;
-                })
-              }
-              connection.query(select_sql, (err, rows)=>{
-                if(err){
-                  return connection.rollback(()=>{
-                    throw err;
-                  });
-                }
-                connection.commit((err)=>{
-                  if(err){
-                    return connection.rollback(()=>{
-                      throw err;
-                    })
-                  }
-                  res.send(JSON.stringify(rows[0].likes))
-                  connection.release();
-                })
-              })
-            })
-         })
+          return res.send(JSON.stringify(req.user))
         })
+        // pool.getConnection((err, connection) => {
+        //   if(err) throw err;
+        //   connection.beginTransaction((err)=>{
+        //     if(err) throw err;
+        //     connection.query(update_sql, (err, rows)=>{
+        //       if(err){
+        //         return connection.rollback(()=>{
+        //           throw err;
+        //         })
+        //       }
+        //       connection.query(select_sql, (err, rows)=>{
+        //         if(err){
+        //           return connection.rollback(()=>{
+        //             throw err;
+        //           });
+        //         }
+        //       connection.commit((err)=>{
+        //         if(err){
+        //           return connection.rollback(()=>{
+        //             throw err;
+        //           })
+        //         }
+        //         connection.release();
+        //         res.send(JSON.stringify(req.user))
+        //       })
+        //       })
+        //     })
+        //  })
+        // })
       } catch(err){
         console.log(err);
       }
