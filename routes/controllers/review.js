@@ -144,53 +144,11 @@ module.exports = {
           ) AS subquery
         );
         `
-      // const select_sql = `
-      //   SELECT likes FROM Review_Posts
-      //   WHERE No = (
-      //     SELECT No
-      //     FROM (
-      //       SELECT No
-      //       FROM Review_Posts
-      //       WHERE Corp_name = "${corp_name}"
-      //       ORDER BY No DESC
-      //       LIMIT 1 OFFSET ${review_num}
-      //     ) AS subquery
-      //   );
-      //   `
       try {
         pool.query(update_sql, (err, rows)=>{
           if(err) throw err;
           return res.send(JSON.stringify(req.user))
         })
-        // pool.getConnection((err, connection) => {
-        //   if(err) throw err;
-        //   connection.beginTransaction((err)=>{
-        //     if(err) throw err;
-        //     connection.query(update_sql, (err, rows)=>{
-        //       if(err){
-        //         return connection.rollback(()=>{
-        //           throw err;
-        //         })
-        //       }
-        //       connection.query(select_sql, (err, rows)=>{
-        //         if(err){
-        //           return connection.rollback(()=>{
-        //             throw err;
-        //           });
-        //         }
-        //       connection.commit((err)=>{
-        //         if(err){
-        //           return connection.rollback(()=>{
-        //             throw err;
-        //           })
-        //         }
-        //         connection.release();
-        //         res.send(JSON.stringify(req.user))
-        //       })
-        //       })
-        //     })
-        //  })
-        // })
       } catch(err){
         console.log(err);
       }

@@ -109,7 +109,7 @@
 										<div class="star_bg">
 											<span style="width: {{content.total_score*20}}%"></span>
 										</div>
-										<button class="star_detail_open"></button>
+										<button type="button" class="star_detail_open" onclick="star_detailClick(this)"></button>
 									</div>
 									<div class="star_detail" style="display: none;">
 										<div>
@@ -177,7 +177,7 @@
 											<span>{{content.hashtag_5}}</span>
 										</div>	
 									</div>
-									<button type="button" class="comment_like">
+									<button type="button" class="comment_like" onclick="likesClick(this)">
 										<span></span>
 										<span>도움이 돼요</span>
 										<span>(<span>{{content.likes}}</span>)</span>

@@ -1,25 +1,28 @@
 
 // 별점 상세보기
-const btn_star_open = document.querySelectorAll('.star_detail_open');
-const star_detail = document.querySelectorAll('.star_detail')
-btn_star_open.forEach((e, i) => e.addEventListener("click", () => starOpen(i)));
-function starOpen(i){
-  let item = star_detail.item(i);
-  if(item.style.display == 'none'){
-    item.style="display: "
+function star_detailClick(element){
+  const liElement = element.closest("li");
+  const star_detail = liElement.querySelector('.star_detail');
+  console.log(star_detail)
+  if(star_detail.style.display == 'none'){
+    star_detail.style="display: "
   }
   else{
-    item.style="display: none"
+    star_detail.style="display: none"
   }
 }
 
 //좋아요 버튼
-async function likesClick(btn, i) {
-  const likes_cnt = btn.querySelectorAll("span")[2];
+async function likesClick(element) {
+  const likes_cnt = element.querySelectorAll("span")[2];
   const like = likes_cnt.querySelector("span");
-  const currentColor = btn.style.backgroundColor;
+  const currentColor = element.style.backgroundColor;
+  const liElement = element.closest("li");
+  let i = Array.from(liElement.parentNode.children).indexOf(liElement);
+  if(i > 0){
+    i = i-1;
+  }
   const review_num = i;
-  console.log(like.innerHTML)
   if (currentColor === 'rgb(61, 71, 255)'){
     //db로 좋아요 취소 보내기
     const res = await axios.post(corp_name+"/likes", {
@@ -31,8 +34,8 @@ async function likesClick(btn, i) {
       alert('로그인이 필요한 서비스입니다.');
     }
     else{
-      btn.style.backgroundColor = '';
-      btn.style.color = '#333333';
+      element.style.backgroundColor = '';
+      element.style.color = '#333333';
       like.innerHTML = parseInt(like.innerHTML,10)-1;
     }
   } else {
@@ -42,28 +45,17 @@ async function likesClick(btn, i) {
         num : review_num, 
         likes : 1
     })
+    console.log(res.data)
     if(res.data == "권한없음"){
       alert('로그인이 필요한 서비스입니다.');
     }
     else{
-      btn.style.backgroundColor = '#3D47FF';
-      btn.style.color = '#ffffff';
+      element.style.backgroundColor = '#3D47FF';
+      element.style.color = '#ffffff';
       like.innerHTML = parseInt(like.innerHTML,10)+1;
     }
   }
 }
-let likes_btn = document.querySelectorAll(".comment_like");
-likes_btn.forEach((btn, i) => btn.addEventListener('click', ()=>likesClick(btn, i)))
-
-const ul = document.querySelector("ul");
-ul.addEventListener("click", function(e){
-  console.log(e)
-  const target = e.target;
-  if(target.classList.contains('comment_like')){
-    likesClick(target)
-  }})
-
-
 
 //더보기 버튼
 const more_btn_div = document.querySelector('#more')
@@ -72,17 +64,6 @@ more_btn.addEventListener('click', async()=>{
   await More_contents()
   if(page == 2){
     more_btn_div.style.display='none';
-    // const more_likes_btn = document.querySelectorAll(".comment_like");
-    // more_likes_btn.forEach((new_btn,i)=>{
-    //   if(!new_btn.__click_event_registered__){
-    //     new_btn.__click_event_registered__ = true;
-    //     new_btn.addEventListener('click', ()=>likesClick(new_btn,i))
-    //   }
-    // });
-    // likes_btn.forEach((oldBtn)=>{
-    //   oldBtn.removeEventListener('click',likesClick);
-    //   delete oldBtn.__click_event_registered__;
-    // });  
   }
 })
 
@@ -113,7 +94,7 @@ async function More_contents() {
               <div class="star_bg">
                 <span style="width: ${review.total_score*20}%"></span>
               </div>
-              <button class="star_detail_open"></button>
+              <button type="button" class="star_detail_open" onclick="star_detailClick(this)"></button>
             </div>
             <div class="star_detail" style="display: none;">
               <div>
@@ -177,7 +158,7 @@ async function More_contents() {
                 <span>${review.hashtag_5 !== null ? review.hashtag_5 : ''}</span>
               </div>	
             </div>
-            <button class="comment_like">
+            <button type="button" class="comment_like" onclick="likesClick(this)">
               <span></span>
               <span>도움이 돼요</span>
               <span>(<span>${review.likes}</span>)</span>
@@ -202,22 +183,11 @@ async function More_contents() {
     }
   }
 }
+
 window.addEventListener('scroll', async function(){
   if(more_btn_div.style.display=='none'){
     if(window.scrollY + window.innerHeight >= this.document.documentElement.scrollHeight) {
       await More_contents()
-      const new_likes_btn = document.querySelectorAll(".comment_like");
-      new_likes_btn.forEach((new_btn,i)=>{
-        if(!new_btn.__click_event_registered__){
-          new_btn.__click_event_registered__ = true;
-          new_btn.addEventListener('click', ()=>likesClick(new_btn,i))
-        }
-      });
-      likes_btn.forEach((oldBtn)=>{
-        oldBtn.removeEventListener('click',likesClick);
-        delete oldBtn.__click_event_registered__;
-      })
     }
   }
 });
-
