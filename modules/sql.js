@@ -134,4 +134,40 @@ module.exports = {
           return reject(err);
       }
     })},
-  }
+  top10_corp: (item) => {
+    return new Promise((resolve, reject)=>{
+      const sql = `
+        SELECT 
+          C.Corp_name as name,
+          C.sido as sido,
+          C.gugun as gugun,
+          count(RP.total_score) as cnt, 
+          round(avg(RP.total_score),1) as avg_total, 
+          round(avg(RP.career_score),1) as avg_career, 
+          round(avg(RP.worklife_score),1) as avg_worklife, 
+          round(avg(RP.welfare_score),1) as avg_welfare, 
+          round(avg(RP.culture_score),1) as avg_culture, 
+          round(avg(RP.leadership_score),1) as avg_leadership,
+          RP.nickname as nickname,
+          RP.last_date as last_date,
+          RP.type as type,
+          DATE_FORMAT(RP.created_date, '%Y.%m') as date,
+          RP.highlight as highlight,
+          RP.pros as pros,
+          RP.cons as cons
+        FROM Corp as C 
+          LEFT JOIN Review_Posts as RP on C.Corp_name = RP.Corp_name
+        GROUP BY C.Corp_name
+        ORDER BY ${item} DESC
+        LIMIT 10;`;
+      try {
+        pool.query(sql, (err, rows)=>{
+          return resolve(rows)
+        });
+      } catch (err){
+        console.log(err);
+        return reject(err);
+      }
+    })
+  },
+}

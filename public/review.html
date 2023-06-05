@@ -195,48 +195,72 @@
 					<div class="side_contents">
 						<ul>
 							<li>
-								<p>기관명</p>
+								<p>{{top10[0].name}}</p>
 								<div>
 									<div class="star_bg">
-										<span style="width: 50%"></span>
+										<span style="width: {{top10[0].avg_total*20}}%"></span>
 									</div>
-									<span>3.0</span>
-									<span>(000개 리뷰)</span>		
+									<span>{{top10[0].avg_total.toFixed(1)}}</span>
+									<span>({{top10[0].cnt}}개 리뷰)</span>		
 								</div>
 								<div>
-									<p>fadshflkhwa;lehf;lwehlweahwe;hkwlefkhlwehwfeklhfwlkehfweklhefwlkewf후기</p>
-									<p>강남구 | 현직원 | 일시</p>
-									<button>리뷰보기</button>
+									<p>{{top10[0].pros}}</p>
+									<div>
+										{% if top10[0].last_date == '9999-12' %}
+										<span>현직원</span>
+										{% else %}
+										<span>전직원</span>
+										{% endif %}
+										<span>{{top10[0].type}}</span>
+										<span>{{top10[0].date}}</span>
+										<button type="button" onclick="location.href='/review/{{top10[0].name}}'">리뷰보기</button>	
+									</div>
 								</div>
 							</li>
 							<li>
-								<p>기관명</p>
+								<p>{{top10[1].name}}</p>
 								<div>
 									<div class="star_bg">
-										<span style="width: 50%"></span>
+										<span style="width: {{top10[1].avg_total*20}}%"></span>
 									</div>
-									<span>3.0</span>
-									<span>(000개 리뷰)</span>		
+									<span>{{top10[1].avg_total.toFixed(1)}}</span>
+									<span>({{top10[1].cnt}}개 리뷰)</span>		
 								</div>
 								<div>
-									<p>fadshflkhwa;lehf;lwehlweahwe;hkwlefkhlwehwfeklhfwlkehfweklhefwlkewf후기</p>
-									<p>강남구 | 현직원 | 일시</p>
-									<button>리뷰보기</button>
+									<p>{{top10[1].pros}}</p>
+									<div>
+										{% if top10[1].last_date == '9999-12' %}
+										<span>현직원</span>
+										{% else %}
+										<span>전직원</span>
+										{% endif %}
+										<span>{{top10[1].type}}</span>
+										<span>{{top10[1].date}}</span>
+										<button type="button" onclick="location.href='/review/{{top10[1].name}}'">리뷰보기</button>
+									</div>
 								</div>
 							</li>
 							<li>
-								<p>기관명</p>
+								<p>{{top10[2].name}}</p>
 								<div>
 									<div class="star_bg">
-										<span style="width: 50%"></span>
+										<span style="width: {{top10[2].avg_total*20}}%"></span>
 									</div>
-									<span>3.0</span>
-									<span>(000개 리뷰)</span>		
+									<span>{{top10[2].avg_total.toFixed(1)}}</span>
+									<span>({{top10[2].cnt}}개 리뷰)</span>		
 								</div>
 								<div>
-									<p>fadshflkhwa;lehf;lwehlweahwe;hkwlefkhlwehwfeklhfwlkehfweklhefwlkewf후기</p>
-									<p>강남구 | 현직원 | 일시</p>
-									<button>리뷰보기</button>
+									<p>{{top10[2].pros}}</p>
+									<div>
+										{% if top10[2].last_date == '9999-12' %}
+										<span>현직원</span>
+										{% else %}
+										<span>전직원</span>
+										{% endif %}
+										<span>{{top10[2].type}}</span>
+										<span>{{top10[2].date}}</span>
+										<button type="button" onclick="location.href='/review/{{top10[2].name}}'">리뷰보기</button>
+									</div>
 								</div>
 							</li>
 						</ul>
