@@ -101,7 +101,8 @@ module.exports = {
       Corp: req.corp,
       hash: req.hash,
       content: req.content[0],
-      cnt : cnt
+      cnt : cnt,
+      top10 : req.top10
     }
     res.render(rootdir+'/public/review.html', middle_info)
   },

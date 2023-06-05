@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const dbconfig = require("../../config/dbconfig.json");
-const { Corp_info, Corp_all, Hash_info } = require('../../modules/sql');
+const { Corp_info, Corp_all, Hash_info, top10_corp } = require('../../modules/sql');
 const rootdir = require("../../modules/path");
 
 
@@ -39,4 +39,11 @@ module.exports = {
     } else {
       next();
     }
-    }}
+  },
+  mid_top10_corp: async(req, res, next) => {
+    const avg_total = "avg_total";
+    const top10 = await top10_corp(avg_total);
+    req.top10 = top10
+    next()
+  }
+}
