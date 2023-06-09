@@ -21,7 +21,6 @@ main{
 	display: flex;
 	position: relative;
 	width: 80%;
-	height: 260px;
 	margin: auto;
 	margin-top: -40px;
 }
@@ -39,15 +38,13 @@ main{
 	flex-direction: column;
 	gap: 16px;
 	width: 67.5%;
-	height: 121px;
 	margin: 0 auto;
 	margin-top: 60px;
 	margin-left: 12px;
 }
 .corp_info_data div:nth-child(1) {
 	display: flex;
-	flex-direction: row;
-	align-items: flex-end;
+	flex-direction: column;
 	gap: 16px;
 }
 .corp_info_data>div>span:nth-child(1) {
@@ -98,7 +95,6 @@ main{
 	align-items: center;
 	gap: 12px;
 	width: 100%;
-	height: 44px;
 }
 .btn_toTop {
 	position: fixed;
@@ -460,12 +456,15 @@ main{
 	.contents_wrap {
 		width: 67%;
 	}
+	.contents>p {
+		height: 25px;
+	}
+}
+/* PC 1920 사이드바 추가 반응형 */
+@media screen and (min-width: 1920px) {
 	.contents {
 		float: left;
 		width: 78.5%;
-	}
-	.contents>p {
-		height: 25px;
 	}
 	.sidebar {
 		display: block;
