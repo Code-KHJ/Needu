@@ -8,7 +8,7 @@ const { review, review_more, review_likes } = require("./controllers/review");
 
 
 router.get('/', auth, (req,res)=>{
-  res.render('search_review.html', {User: req.user})
+  res.render(rootdir+'/public/search_review.html', {User: req.user})
 })
 
 router.get('/:name', auth, Corp_info, Hash_info, review_content, mid_top10_corp, review)
