@@ -104,7 +104,7 @@ module.exports = {
       cnt : cnt,
       top10 : req.top10
     }
-    res.render(rootdir+'/public/review.html', middle_info)
+    res.render(rootdir+'/public/review_detail.html', middle_info)
   },
   review_more: (req, res) => {
     const User = req.user
