@@ -91,7 +91,7 @@ module.exports = {
       return res.status(200).send("<script>alert('로그인 하신 후 이용할 수 있는 서비스입니다.');location.href = '/login';</script>");
     }
   },
-  review: (req, res) => {
+  review_detail: (req, res) => {
     let cnt = true
     if(req.corp.cnt == 0){
       cnt = false
@@ -156,8 +156,16 @@ module.exports = {
     } else {
       return res.send(JSON.stringify("권한없음"));
     }
-  }
-  }
+  },
+  search_review: (req, res) => {
+    const middle_info = {
+      User: req.user,
+      review: req.review_recent,
+      top10 : req.top10
+    }
+    res.render(rootdir+'/public/search_review.html', middle_info)
+  },
+}
 
 
       

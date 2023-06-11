@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const dbconfig = require("../../config/dbconfig.json");
-const { review_content } = require('../../modules/sql');
+const { review_content, review_recent } = require('../../modules/sql');
 const rootdir = require("../../modules/path");
 
 // Database connection pool
@@ -39,4 +39,9 @@ module.exports = {
       next();
     }
   },
+  mid_review_recent: async (req, res, next) => {
+    const review = await review_recent();
+    req.review_recent = review;
+    next();
+  }
 }

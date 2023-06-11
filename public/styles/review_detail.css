@@ -631,8 +631,8 @@ main{
 		margin-top: 6px;
 	}
 	.side_contents>ul>li>div:nth-of-type(1)>div {
-		width: 76px;
-		height: 16px;
+		width: 75px;
+		height: 15px;
 	}
 	.side_contents>ul>li>div:nth-of-type(1)>span:nth-of-type(1) {
 		font-size: 1.4rem;
