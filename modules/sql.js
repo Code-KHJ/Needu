@@ -169,5 +169,22 @@ module.exports = {
         return reject(err);
       }
     })
-  },
+    },
+  review_recent: () => {
+    return new Promise((resolve, reject)=>{
+      const sql = `
+        SELECT *, 
+        DATE_FORMAT(created_date, '%Y.%m') as date
+        FROM Review_Posts
+        ORDER BY No DESC
+        LIMIT 5;`;
+      try {
+        pool.query(sql, (err, rows)=>{
+        return resolve(rows)
+        });
+      } catch (err) {
+        console.log(err);
+        return reject(err);
+      };
+  })},
 }
