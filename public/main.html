@@ -7,61 +7,17 @@
     <title>Recruit-sw</title>
 
     <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
-<<<<<<< Updated upstream
-    <link href="./styles/style_mobile.css" rel="stylesheet" type="text/css">
-    <link href="./styles/style_pc.css" rel="stylesheet" type="text/css">
-=======
 		<link href="./styles/webcomponent.css" rel="stylesheet">
 		<link href="./styles/main.css" rel="stylesheet">
->>>>>>> Stashed changes
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 </head>
 <body>
   <div class="container">
-<<<<<<< Updated upstream
-    <div class="modal"></div>
-    <header>
-      <div class="header_wrap">
-        <h1><a href="/"></a></h1>
-        <button class="blind btn_ham">메뉴열기</button>
-        <nav>
-          <div class="clearfix">
-          <form id="formSearch" name="formSearch">
-            <fieldset>
-              <legend class="screen_out">검색영역</legend>
-              <input type="search" id="inputSearch" name="inputSearch" class="input_search" placeholder="검색어를 입력하세요">
-              <label for="inputSearch" class="screen_out">검색어입력</label>
-              <button></button>
-            </fieldset>
-          </form>
-          <ul>
-            <!-- <li><a href="#">채용공고</a></li> -->
-            <li><a href="#">기관후기</a></li>
-            <!-- <li><a href="#">커뮤니티</a></li> -->
-          </ul>
-          </div>
-            {% if user %}
-            <div>
-              <div>{{user}}님</div>
-              <a href="/logout">로그아웃</a>
-            </div>
-            {% else %}
-            <div>
-              <a href="/login">로그인/회원가입</a>
-            </div>
-            {% endif %}
-        </nav>
-      </div>
-    </header>
-    <!-- header end -->
-    <!-- main -->
-=======
     <div id="header_wrap">
       <header-component data-name="{{User.nickname}}"></header-component>
     </div>
->>>>>>> Stashed changes
     <main>
       <section class="visual_wrap">
         <div class="visual">
@@ -159,47 +115,6 @@
       </div>
     </main>
   <!-- main end -->
-<<<<<<< Updated upstream
-    <footer>
-      <div class="footer_wrap">
-        <div class="footer_top">
-          <div>
-            <h2>사회복지채용플랫폼</h2>
-            <ul>
-              <li><a href="#">기업소개</a></li>
-              <li><a href="#">이용약관</a></li>
-              <li><a href="#">고객센터</a></li>
-              <li><a href="#">개인정보처리방침</a></li>
-            </ul>
-          </div>
-          <div class="footer_sns">
-            <ul>
-              <li><a href="#" class="blind">인스타그램</a></li>
-              <li><a href="#" class="blind">페이스북</a></li>
-              <li><a href="#" class="blind">트위터</a></li>
-              <li><a href="#" class="blind">네이버블로그</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer_bottom">
-          <p>
-            <span>회사명</span> 
-            <span>회사주소(서울특별시 ㅇㅇ구 ㅇㅇ로 ㅇㅇ길 00-00)</span>
-            <span>대표명: ㅇㅇㅇ</span>
-            <span>사업자 등록번호: 123-435-325663</span>
-          </p>
-          <p>
-            <span>통신판매업번호: ㅇㅇ-제1239843</span>
-            <span>직업정보제공사업 번호: 서울 ㅇㅇ 제1294832-33</span>
-            <span>유료직업소개업 등록번호: 제 2343250989호</span>
-          </p>
-        </div>
-      </div>
-    </footer>  
-    <!-- footer end -->
-=======
-
->>>>>>> Stashed changes
   </div>
 
 </body>
