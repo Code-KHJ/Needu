@@ -109,25 +109,33 @@ main{
   height:12px;
   background:url(./images/ico_arrow_R.png) no-repeat center/contain;
 }
-.recenetReview_con_wrap{
+.recentReview_con_wrap{
   text-align:left;
   width:100%;
 }
+.recentReview_con_inner>div:last-child{
+  display:none;
+}
 
-.recenetReview_con{
+.recentReview_con{
   padding: 20px 9%;
   background-color: #ECECEC;
   border-radius: 5px;
   margin:20px 0;
 }
-.recenetReview_con strong{
+.recentReview_con strong{
   font-weight:normal;
   font-size:1.4rem;
+  line-height:1.4;
+  display:block;
+  width:100%;
+  height:2.3rem;
+  overflow-y:hidden;
 }
-.recenetReview_con p{
+.recentReview_con p{
   display:none;
 }
-.recenetReview_con_bottom{
+.recentReview_con_bottom{
   margin-top: 8px;
   width:100%;
   display:flex;
@@ -137,47 +145,39 @@ main{
   color:#888;
   font-size:1.2rem;
 }
-.recenetReview_con_bottom div{
+.recentReview_con_bottom div{
   width:27.8%;
   height:auto;
   line-height:1;
   padding-bottom:1vw;
-  background:url(./images/star_bg.png) no-repeat right/contain;
+  background:url(./images/star_bg.svg) no-repeat right/contain;
 }
-.recenetReview_con_bottom ul{
+.recentReview_con_bottom ul{
   display:flex;
   justify-content: right;
   gap: 8px;
 }
 
-.recenetReview_con strong{
-  line-height:1.4;
-  display:block;
-  width:100%;
-  height:2.3rem;
-  overflow-y:hidden;
-}
-
-.recenetReview_con.focus p{
+.recentReview_con.focus p{
   display:block;
 }
-.recenetReview_con.focus{
+.recentReview_con.focus{
   padding: 40px 9% 28px 9%;
   background-color: #EBECFF;
   border-radius:5px;
   font-size:1.2rem;
   line-height:1.4;
 }
-.recenetReview_con.focus strong{
+.recentReview_con.focus strong{
   font-size:1.4rem;
   font-family: 'NanumSquareBold';
   height:auto;
 }
-.recenetReview_con.focus p:nth-of-type(1){
+.recentReview_con.focus p:nth-of-type(1){
   margin-top:14px;
   margin-bottom:8px;
 }
-.recenetReview_con.focus span{
+.recentReview_con.focus span{
   display:block;
   font-family: 'NanumSquareBold';
 }
@@ -267,133 +267,139 @@ main{
     margin:0 auto; */
   }
   .search_main_wrap fieldset{
-    width:100%;
+    /* width:100%;
     display:flex;
     justify-content: space-around;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; */
   }
   .search_main_wrap input{
-    width:100%;
+    /* width:100%;
     background:none;
     border:none;
     color:#fff;
-    font-size:1.6rem;
+    font-size:1.6rem; */
   }
   .search_main_wrap input::placeholder{
-    color:rgba(255,255,255,0.6);
+    /* color:rgba(255,255,255,0.6); */
   }
   .search_btn{
-    width:24px; 
+    /* width:24px; 
     height:24px; 
-    background:url(./images/btn_search_wh.png) no-repeat center/contain;
+    background:url(./images/btn_search_wh.png) no-repeat center/contain; */
   }
   .visual>span:last-child{
-    display:block;
+    /* display:block;
     margin-top:20px;
-    font-size:1.6rem;
+    font-size:1.6rem; */
   }
   .visual>span:last-child a{
-    display:inline-block;
+    /* display:inline-block;
     margin-top:4px;
-    text-decoration: underline;
+    text-decoration: underline; */
   }
   /* visual end */
   .recentReview_wrap{
-    width:78.6%;
+    /* width:78.6%;
     margin:0 auto;
-    margin-top:160px;
+    margin-top:160px; */
   }
   .recentReview_wrap h2{
-    font-size:2rem;
-    font-family: 'NanumSquareExtraBold';
+    /* font-size:2rem;
+    font-family: 'NanumSquareExtraBold'; */
   }
   .recentReview{
-    width:100%;
+    /* width:100%;
     margin-top:16px;
-    text-align: right;
+    text-align: right; */
   }
   .btn_recentReview{
-    font-size:1.4rem;
+    /* font-size:1.4rem;
     cursor: pointer;
-    display:inline-block;
+    display:inline-block; */
   }
   .btn_recentReview::after{
-    content:"";
+    /* content:"";
     display:inline-block;
     margin-left:8px;
     width:12px;
     height:12px;
-    background:url(./images/ico_arrow_R.png) no-repeat center/contain;
+    background:url(./images/ico_arrow_R.png) no-repeat center/contain; */
   }
-  .recenetReview_con_wrap{
-    text-align:left;
-    width:100%;
+  .recentReview_con_wrap{
+    /* text-align:left; */
+    /* width:100%; */
+    display:flex;
+    justify-content: space-between;
   }
-  
-  .recenetReview_con{
-    padding: 20px 9%;
+  .recentReview_con_inner{
+    width:38.4%;
+  }
+  .recentReview_con_inner>div:last-child{
+    display:block;
+  }
+  .recentReview_con{
+    /* padding: 20px 9%; 
     background-color: #ECECEC;
     border-radius: 5px;
-    margin:20px 0;
+    margin:20px 0; */
   }
-  .recenetReview_con strong{
-    font-weight:normal;
-    font-size:1.4rem;
+  .recentReview_con strong{
+    /* font-weight:normal; */
+    font-size:1.6rem; 
+    /* line-height:1.4;
+    display:block;
+    width:100%; */
+    height:1.8rem;
+    /* overflow-y:hidden; */
   }
-  .recenetReview_con p{
-    display:none;
+  /* 여기 다시 봐야 함 (con height 조정) */
+  .recentReview_con p{
+    /* display:none; */
   }
-  .recenetReview_con_bottom{
-    margin-top: 8px;
-    width:100%;
+  .recentReview_con_bottom{
+    margin-top: 20px; 
+    /* width:100%;
     display:flex;
     justify-content: right;
     flex-wrap: wrap;
     gap:8px;
     color:#888;
-    font-size:1.2rem;
+    font-size:1.2rem; */
   }
-  .recenetReview_con_bottom div{
-    width:27.8%;
+  .recentReview_con_bottom div{
+    /* width:27.8%;
     height:auto;
     line-height:1;
     padding-bottom:1vw;
-    background:url(./images/star_bg.png) no-repeat right/contain;
+    background:url(./images/star_bg.svg) no-repeat right/contain; */
   }
-  .recenetReview_con_bottom ul{
-    display:flex;
+  .recentReview_con_bottom ul{
+    /* display:flex;
     justify-content: right;
-    gap: 8px;
+    gap: 8px; */
   }
   
-  .recenetReview_con strong{
-    line-height:1.4;
-    display:block;
-    width:100%;
-    height:2.3rem;
-    overflow-y:hidden;
+  .recentReview_con.focus p{
+    /* display:block; */
   }
-  
-  .recenetReview_con.focus p{
-    display:block;
-  }
-  .recenetReview_con.focus{
-    padding: 40px 9% 28px 9%;
-    background-color: #EBECFF;
-    border-radius:5px;
-    font-size:1.2rem;
-    line-height:1.4;
-  }
-  .recenetReview_con.focus strong{
+  .recentReview_con.focus{
+    padding: 40px 7% 28px 7%;
+    /* background-color: #EBECFF;
+    border-radius:5px; */
     font-size:1.4rem;
-    font-family: 'NanumSquareBold';
-    height:auto;
+    /* line-height:1.4; */
+    width: 58.4%;
   }
-  .recenetReview_con.focus p:nth-of-type(1){
-    margin-top:14px;
+  .recentReview_con.focus strong{
+    font-size:1.6rem;
+    /* font-family: 'NanumSquareBold'; */
+    /* height:auto; */
+  }
+  .recentReview_con.focus p:nth-of-type(1){
+    margin-top:22px;
     margin-bottom:8px;
   }
-  .recenetReview_con.focus span{
+  .recentReview_con.focus span{
     display:block;
     font-family: 'NanumSquareBold';
   }
