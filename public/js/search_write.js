@@ -1,62 +1,60 @@
-const searchFrm = document.getElementById("search_corp")
+//검색 자동완성
+const searchForm = document.querySelector(".search");
 const searchInput = document.getElementById("search_input");
 const corpUl = document.querySelector(".auto_corp");
 const corpAdd = document.querySelector(".register");
-const btn = document.querySelector('#btnSubmit');
+const btnSubmit = document.querySelector('#btnSubmit');
 
 let corp = []
 let corpList = []
-let corpBtn = []
+let corpbtnSubmit = []
 let nowIndex = -1;
 
 //검색 자동완성 기능
-searchFrm.addEventListener('keyup', async (e)=>{
-  if (corp.length > 0){
-    btn_reset()
-
-    //이전 li 삭제
-    removeList()
-
-    const results = load_data();  
-
-    //css 조정
-    corpUl.style.display = '';
-    corpAdd.style.display = '';
-    searchFrm.style.marginBottom = '150px';
-
-    //li 추가
-    if(searchInput.value.length !== 0){
-      results.forEach((data) => {
-        created_auto(data)
-      })
-      corpList = document.querySelectorAll(".auto_corp li");
-      corpBtn = document.querySelectorAll(".auto_data");
-
-      //키보드 네비게이션
-      focusNav(e, corpList)
-
-      //마우스 hover
-      mouseover(corpList)
-
-      //마우스 클릭
-      liClick(corpList)
-      
-      //버튼 활성화, 경로 지정
-      btn.disabled="";
-      searchFrm.action="/review_write/"+searchInput.value;  
-    }
-  } else{
+searchForm.addEventListener('keyup', async (e)=>{
+  if(corp.length == 0){
     const res = await axios.get("search_write/all")
     corp = res.data.corp
   }
-})
+  btnSubmit_reset()
 
+  //이전 li 삭제
+  removeList()
+
+  const results = load_data();
+
+  //css 조정
+  corpUl.style.display = '';
+  corpAdd.style.display = '';
+
+  //li 추가
+  if(searchInput.value.length !== 0){
+    results.forEach((data) => {
+      created_auto(data)
+    })
+    corpList = document.querySelectorAll(".auto_corp li");
+    corpbtnSubmit = document.querySelectorAll(".auto_data");
+
+    //키보드 네비게이션
+    focusNav(e, corpList)
+
+    //마우스 hover
+    mouseover(corpList)
+
+    //마우스 클릭
+    liClick(corpList)
+    
+    //버튼 활성화, 경로 지정
+    btnSubmit.disabled="";
+    searchForm.action="/review_write/"+searchInput.value;
+  }
+})
 
 //자동완성 데이터 가져오기
 function load_data(){
   //db 데이터 정리
   let value = searchInput.value.trim();
-  const filterCorp = corp.filter(data => {
+  let filterCorp = corp.filter(data => {
     const name = Hangul.disassemble(data.Corp_name).join('')
     const query = Hangul.disassemble(value).join('')
     return name.includes(query);
@@ -65,6 +63,13 @@ function load_data(){
       name: data.Corp_name,
       sido: data.sido,
       gugun: data.gugun}})
+  //시도 있는 경우 필터링
+  const sido = document.querySelector("#sido1").value;
+  if(sido !== "시/도"){
+    filterCorp = filterCorp.filter(data => {
+      return data.sido.includes(sido)
+    })
+  }
   //5개 이하로 갯수 보여주기
   const maxResults = 5;
   const resultsCount = Math.min(maxResults, filterCorp.length);
@@ -74,14 +79,21 @@ function load_data(){
 //자동완성 리스트 추가
 function created_auto(data) {
   const auto_corpList = document.createElement('li')
-  const corp_btn = document.createElement('button');
-  corp_btn.classList.add('auto_data');
-  corp_btn.innerHTML = `
+  const corp_btnSubmit = document.createElement('button');
+  const sido = document.querySelector('.search #sido1');
+  corp_btnSubmit.classList.add('auto_data');
+  if(sido !== null){
+  corp_btnSubmit.innerHTML = `
+    <span>${data.name}</span>
+  `
+  }else{
+  corp_btnSubmit.innerHTML = `
     <span>${data.name}</span>
     <span>|</span>
     <span>${data.sido+" "+data.gugun}</span>
   `
-  auto_corpList.appendChild(corp_btn);
+  }
+  auto_corpList.appendChild(corp_btnSubmit);
   corpUl.appendChild(auto_corpList);
 }
 
@@ -98,17 +110,17 @@ function liClick(corpList) {
 function input_data(target){
   const corp_selected = target.querySelector('button>span:nth-child(1)').textContent;
   searchInput.value = corp_selected;
-  searchFrm.action="/review_write/"+searchInput.value;
+  searchForm.action="/review_write/"+searchInput.value;
   removeList()
   nowIndex = -1
   searchInput.focus()
 }
 
 //초기화
-function btn_reset(){
-  if(btn.disabled == ""){
-    btn.disabled="disabled";
-    searchFrm.action=""
+function btnSubmit_reset(){
+  if(btnSubmit.disabled == ""){
+    btnSubmit.disabled="disabled";
+    searchForm.action=""
   }
 }
 
@@ -132,7 +144,7 @@ function focusNav(e, corpList){
           break;
         // Down key
         case 40:
-          nowIndex = Math.min(nowIndex + 1, corpBtn.length - 1);
+          nowIndex = Math.min(nowIndex + 1, corpbtnSubmit.length - 1);
           updateFocus(corpList);
           break;
         // Enter key
@@ -182,33 +194,31 @@ function mouseover (corpList){
 }
 
 //상하 스크롤 방지
-searchFrm.addEventListener('keydown', (e)=>{
+searchForm.addEventListener('keydown', (e)=>{
   const keyCode = e.keyCode;
   if (keyCode === 38 || keyCode === 40 || keyCode === 13){
     e.preventDefault();
   }
 })
 
-//submit btn 제출
+//submit btnSubmit 제출
 searchInput.addEventListener('keydown', (e)=>{
   const keyCode = e.keyCode;
   if (keyCode === 13){
     if (nowIndex === -1){
-      btn.click();
+      btnSubmit.click();
     }
 }})
 
 //모달 구현
 const btn_addCorp = document.querySelector('.btn_addCorp');
 const modal_box = document.querySelector('.modal-box');
-btn_addCorp.addEventListener('click', ()=>{
-  modal_box.style.display = 'block'
-})
-//모달 취소
-function modal_cancel(){
-  modal_box.style.display = 'none';
+if(btn_addCorp !== null){
+  btn_addCorp.addEventListener('click', ()=>{
+    modal_box.style.display = 'block'
+  })
+  //모달 취소
+  function modal_cancel(){
+    modal_box.style.display = 'none';
+  }  
 }
-
-
-
-

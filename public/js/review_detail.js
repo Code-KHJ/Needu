@@ -70,7 +70,7 @@ more_btn.addEventListener('click', async()=>{
 
 //리뷰 무한스크롤
 const url = new URL(location.href);
-const corp_name = decodeURI(decodeURIComponent(url.pathname.split('/')[2])); // 한글 깨짐 디코딩
+const corp_name = decodeURI(decodeURIComponent(url.pathname.split('/')[3])); // 한글 깨짐 디코딩
 let isLoading = false;
 let page = 1;
 const contents = document.getElementById('content');
@@ -89,7 +89,7 @@ async function More_contents() {
           content_elem.classList.add('contents_review')
           content_elem.innerHTML = `
             <div class="review_star">
-            <p>${review.total_score.toFixed(1)}</p>
+            <p>${review.total_score}</p>
             <div class="btn_star_detail">
               <div class="star_bg">
                 <span style="width: ${review.total_score*20}%"></span>

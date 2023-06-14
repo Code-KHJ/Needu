@@ -22,12 +22,12 @@ module.exports = {
           C.sido as sido,
           C.gugun as gugun,
           count(RP.total_score) as cnt, 
-          round(avg(RP.total_score),1) as avg_total, 
-          round(avg(RP.career_score),1) as avg_career, 
-          round(avg(RP.worklife_score),1) as avg_worklife, 
-          round(avg(RP.welfare_score),1) as avg_welfare, 
-          round(avg(RP.culture_score),1) as avg_culture, 
-          round(avg(RP.leadership_score),1) as avg_leadership
+          FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
+          FORMAT(round(avg(RP.career_score),1),1) as avg_career, 
+          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife, 
+          FORMAT(round(avg(RP.welfare_score),1),1) as avg_welfare, 
+          FORMAT(round(avg(RP.culture_score),1),1) as avg_culture, 
+          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership
         FROM Corp as C 
           LEFT JOIN Review_Posts as RP 
           on C.Corp_name = RP.Corp_name
@@ -105,6 +105,7 @@ module.exports = {
       const sql = `
         SELECT 
           RP.*,
+          FORMAT(RP.total_score,1) as total_score,
           DATE_FORMAT(RP.created_date, '%Y.%m') as date,
           HP.hashtag_1, HP.hashtag_2, HP.hashtag_3, HP.hashtag_4, HP.hashtag_5
         FROM Review_Posts as RP
@@ -142,12 +143,12 @@ module.exports = {
           C.sido as sido,
           C.gugun as gugun,
           count(RP.total_score) as cnt, 
-          round(avg(RP.total_score),1) as avg_total, 
-          round(avg(RP.career_score),1) as avg_career, 
-          round(avg(RP.worklife_score),1) as avg_worklife, 
-          round(avg(RP.welfare_score),1) as avg_welfare, 
-          round(avg(RP.culture_score),1) as avg_culture, 
-          round(avg(RP.leadership_score),1) as avg_leadership,
+          FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
+          FORMAT(round(avg(RP.career_score),1),1) as avg_career, 
+          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife, 
+          FORMAT(round(avg(RP.welfare_score),1),1) as avg_welfare, 
+          FORMAT(round(avg(RP.culture_score),1),1) as avg_culture, 
+          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership,
           RP.nickname as nickname,
           RP.last_date as last_date,
           RP.type as type,

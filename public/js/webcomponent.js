@@ -121,3 +121,43 @@ class toTop_component extends HTMLElement{
   }
 }
 customElements.define('totop-component', toTop_component)
+
+
+//기관 등록 모달 컴포넌트
+class register_component extends HTMLElement{
+  constructor(){
+    super();
+  }
+  connectedCallback(){
+    this.render();
+  }
+  render(){
+    this.innerHTML = `
+    <div class="modal-box" style="display: none;">
+      <div class="modal_addCorp">
+        <div>기관 등록하기</div>
+        <form id="frm_add_corp" method="post" action="/search_write/add">
+          <div class="Corp_data">
+            <div>
+              <label for="modal_Corp_name">기관명</label>
+              <input id="modal_Corp_name" type="text" placeholder="예) 행복사회복지사복지관" name="Corp_name" required>
+            </div>
+            <div>
+              <label>소재지</label>
+              <div>
+                <select name="sido" id="sido1"></select>
+                <select name="gugun" id="gugun1"></select>	
+              </div>
+            </div>
+          </div>
+          <div class="btn_modalSubmit">
+            <button class="modal_cancel" type="button" onclick="modal_cancel();">취소</button>
+            <button class="modal_submit" type="submit" form="frm_add_corp">등록</button>
+          </div>	
+        </form>
+      </div>
+    </div>
+    `
+  }
+}
+customElements.define('register-modal', register_component)
