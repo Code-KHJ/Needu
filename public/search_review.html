@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기관검색</title>
+  <link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+  <link href="/styles/webcomponent.css" rel="stylesheet">
+  <link href="/styles/search_review.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div id="header_wrap">
+      <header-component data-name="{{User.nickname}}"></header-component>
+    </div>
+    <main>
+      <section class="banner">
+        <div class="banner-search">
+          <h1>기관리뷰</h1>
+          <div>
+            <P>전/현직자들의 생생한 후기가 궁금하다면</P>
+            <P>지금 바로 찾아보세요!</P>  
+          </div>
+          <form class="search">
+            <fieldset>
+              <div class="user-input">
+                <label><select name="sido" id="sido1"></select></label>              
+                <input placeholder="기관 이름을 입력해주세요" type="text" id="search_input">
+              </div>
+              <button id="btnSubmit"></button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="banner-image"></div>
+      </section>
+      <section class="first-contents">
+        <div class="recent-reviews">
+          <h1>최근 리뷰</h1>
+          <div>
+            {% for review_item in review.slice(0,3) %}
+            <div class="review">
+              <div>
+                <span>{{review_item.Corp_name}}</span>
+                {% if review_item.last_date == '9999-12' %}
+                <span>현직원</span>
+                {% else %}
+                <span>전직원</span>
+                {% endif %}                
+                <span>{{review_item.date}}</span>  
+              </div>
+              <p>{{review_item.highlight}}</p>
+              <button type="button" onclick="location.href='/review/corp/{{review_item.Corp_name}}'">더보기</button>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="top-score">
+          <h1>전체 만족도 Top</h1>
+          <div class="top-score-contents">
+            {% for top in top10.slice(0,4) %}
+            <div class="top-score-item top1">
+              <div>이미지</div>
+              <div>
+                <div class="ts-item-detail">
+                  <p>{{top.name}}</p>
+                  <p>{{top.sido}} {{top.gugun}}</p>
+                  <div class="star_bg">
+                    <span style="width: {{top.avg_total*20}}%"></span>
+                  </div>
+                </div>
+                <span>{{top.avg_total}}</span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="top-score-banner">
+            <p>지금 후기 작성하면 전체 리뷰 확인 가능</p>
+            <p>별점 주고 후기 보러가기</p>
+            <span class="ts-banner-img"></span>
+          </div>
+        </div>
+      </section>
+      <section class="second-contents">
+        <h1>항목별 Top5</h1>
+        <div>
+          <div>
+            <ul class="details">
+              <li class="select-detail"><button value="avg_career">커리어 향상</button></li>
+              <li><button value="avg_worklife" >업무와 삶의 균형</button></li>
+              <li><button value="avg_welfare" >복리후생</button></li>
+              <li><button value="avg_culture" >조직 내 문화</button></li>
+              <li><button value="avg_leadership" >리더십</button></li>
+            </ul>
+          </div>
+          <ul class="detail-top5">
+            {% for detail in detail10.slice(0,5) %}
+            <li class="detail-top5-item">
+              <div class="detail-top5-no">{{loop.index}}</div>
+              <div class="detail-top5-content">
+                <div class="detail-top5-corp">
+                  <p>{{detail.name}}</p>
+                  <p>{{detail.sido}} {{detail.gugun}}</p>
+                </div>
+                <div class="detail-top5-highlight">
+                  <p>커리어 향상</p>
+                  <div>
+                    <img src="/styles/images/Star_1.png">
+                    <span>{{detail.avg_career}}</span>
+                  </div>
+                </div>
+                <ul class="detail-top5-details">
+                  <li style="display: none;">
+                    <p>커리어 향상</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_career*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>업무와 삶의 균형</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_worklife*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>복리후생</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_welfare*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>조직 내 문화</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_culture*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>리더십</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_leadership*20}}%"></span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          <button class="back"><span></span></button>
+          <button class="next"><span></span></button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer>
+    <footer-component></footer-component>
+  </footer>
+  <script type="module" src="/js/webcomponent.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/hangul-js" type="text/javascript"></script>
+  <script defer src="/js/search_review.js"></script>
+  <script defer src="/js/modules.js"></script>
+</body>
+</html>

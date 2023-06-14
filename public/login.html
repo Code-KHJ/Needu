@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
+    <link href="./styles/webcomponent.css" rel="stylesheet">
     <link href="./styles/login.css" rel="stylesheet" type="text/css">
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
       <header>
-        <h1><a href="#"><span>사회복지</span><span>채용</span>플랫폼</a></h1>
+        <header-component></header-component>
       </header>
       <main>
         <div class="main_wrap">
@@ -74,34 +75,11 @@
           </div>
         </div>      
       </main>
-      <footer>
-        <div class="footer_wrap">
-          <div class="footer_top">
-            <div>
-              <h2>사회복지채용플랫폼</h2>
-              <ul>
-                <li><a href="#">기업소개</a></li>
-                <li><a href="#">이용약관</a></li>
-                <li><a href="#">고객센터</a></li>
-                <li><a href="#">개인정보처리방침</a></li>
-              </ul>
-            </div>
-            <div class="footer_sns">
-              <ul>
-                <li><a href="#" class="screen_out">sns1</a></li>
-                <li><a href="#" class="screen_out">sns2</a></li>
-                <li><a href="#" class="screen_out">sns3</a></li>
-                <li><a href="#" class="screen_out">sns4</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="footer_bottom">
-            <p>회사명 | 회사주소(서울특별시 ㅇㅇ구 ㅇㅇ로 ㅇㅇ길 00-00) | 대표명: ㅇㅇㅇ | 사업자 등록번호: 123-435-325663</p>
-            <p>통신판매업번호: ㅇㅇ-제1239843 | 직업정보제공사업 번호: 서울 ㅇㅇ 제1294832-33 | 유료직업소개업 등록번호: 제 2343250989호</p>
-          </div>
-        </div>
-      </footer>
     </div>
+    <footer>
+			<footer-component></footer-component>
+		</footer>
+    <script type="module" src="./js/webcomponent.js"></script>
     <script defer src="./js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>

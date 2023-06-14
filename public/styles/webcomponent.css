@@ -1,0 +1,472 @@
+@charset "utf-8";
+
+/* mobile */
+/* z-index (.modal : 10) (.nav_wrap : 11) */
+#header_wrap{
+  position: fixed;
+  right: 0;left: 0;
+  width:100%;
+  height: 120px;;
+  z-index: 9;
+  background: #fafafa;
+}
+.modal{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background-color:#fff;
+  display:none;
+  z-index: 10;
+}
+header{
+  width: 80%;
+  display:flex;
+  justify-content: space-between;
+  margin:0 auto;
+  margin-top: 60px;
+  height: 28px;;
+  line-height:1.6;
+}
+header>h1{
+  width:105px;
+  height:28px;
+}
+header>h1>a{
+  display:block;
+  width:100%;
+  height:100%;
+  background: url(images/logo_NeedU.png) no-repeat center/95%;
+}
+.nav_wrap{
+  z-index: 11;
+  position:relative;
+}
+nav{
+  display:none;
+  width:100%;
+}
+.btn_ham_gnb{
+  position:absolute;
+  top:0; right:0;
+  width: 32px;
+  cursor:pointer;
+}
+.btn_ham_gnb span{
+  display:block;
+  width:100%;
+  height:2px;
+  margin-bottom:8px;
+  background-color:#000;
+  border-radius:4px;
+}
+.gnb_wrap{
+  margin-top:60px;
+  width:100%;
+  margin-right:60px;
+}
+.gnb_search{
+  width:100%;
+}
+.gnb_search>form{
+  padding-bottom:8px;
+  border-bottom:1px solid #000dff;
+  display:flex;
+  justify-content: space-between;
+}
+input{
+  border:none;
+  outline: none;
+}
+.search_text{
+  width: calc(100% - 25px);
+  font-size:1.6rem;
+  background: none;
+}
+.search_text::placeholder{
+  color:rgba(0,0,0,0.3)
+}
+.btn_search{
+  width:21px;
+  height:21px;
+  background:url(images/btn_search.png) no-repeat center/contain;
+  cursor: pointer;
+}
+
+.gnb li{
+  margin-bottom:60px;
+  margin-top:60px;
+  font-size:1.8rem;
+}
+.gnb li a{
+  display:block;
+  width:100%;
+  height:fit-content;
+  line-height:1.8;
+}
+.gnb li a::after{
+  content:"";
+  display:inline-block;
+  width:7px; height:14px;
+  margin-left:12px;
+  background:url(images/ico_arrow_R.png) no-repeat bottom/contain;
+}
+.usersign{
+  margin-top:80px; /* 중첩돼서 80px로 구현됨 */
+  display:flex;
+  font-size:1.8rem;
+  justify-content: space-between;
+}
+.usersign a{
+  display:block;
+  line-height:1.8;
+}
+.login::before{
+  content:"";
+  display:inline-block;
+  transform:translateY(4px);
+  width:18px; height:18px;
+  margin-right:8px;
+  background:url(images/ico_login.png) no-repeat center/contain;
+}
+.signup::before{
+  content:"";
+  display:inline-block;
+  transform:translateY(4px);
+  width:18px; height:18px;
+  margin-right:8px;
+  background:url(images/ico_signup.png) no-repeat center/contain;
+}
+.nickname{
+  display: inline-block !important;
+  width: calc(100% - 30px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nickname::before{
+  content:"";
+  display:inline-block;
+  transform:translateY(4px);
+  width:18px; height:18px;
+  margin-right:8px;
+  background:url(images/ico_login.png) no-repeat center/contain;
+}
+.logout::before{
+  content:"";
+  display:inline-block;
+  transform:translateY(4px);
+  width:18px; height:18px;
+  margin-right:8px;
+  background:url(images/ico_logout.png) no-repeat center/contain;
+}
+.logout span{
+  display: none;
+}
+footer{
+  position: relative;
+  width: 100%;
+  height: 200px;
+  font-size: 1.2rem;
+  transform: translateY(-100%);
+}
+footer-component{
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+}
+.footer_main{
+  display: flex;
+  align-items: end;
+  height: auto;
+  padding: 20px 0 ;
+  gap: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 13, 255, 0.1);
+}
+.logo{
+  width: 70px;
+  height: 20px;
+  background: url(images/logo_NeedU.png) no-repeat center/95%;;
+}
+.footer_data{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.footer_data>span{
+  line-height: 20px;
+}
+.footer_data>span:not(:last-child)::after{
+  content: '|';
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.btn_toTop {
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	right: calc(10% + 10px);
+	bottom: 7%;
+	background: url(./images/toTop_gray.png) no-repeat center;
+	background-size: 100%;
+	border-radius: 60px;
+	cursor:pointer;
+	z-index: 9;
+}
+
+/* 기관등록 모달 */
+.modal-box{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  z-index: 11;
+}
+.modal_addCorp{
+  position: fixed;
+  width: 80%;
+  height: auto;
+  max-width: 760px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.modal_addCorp>div{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  height: 30px;
+  background: #3D47FF;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+.modal-box .Corp_data{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  background: #ffffff;
+  font-size: 1.2rem;
+}
+.modal-box .Corp_data>div{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.modal-box .Corp_data>div>label{
+  font-weight: 700;
+  color: #000;
+}
+.modal-box .Corp_data>div>input{
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+}
+.modal-box .Corp_data>div>input::placeholder{
+  color: #aaaaaa;
+}
+.modal-box .Corp_data>div>div{
+  width: 70%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.modal-box .Corp_data>div>div>select{
+  width: 45%;
+  padding: 5px 10px;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  font-size: 1.0rem;
+  appearance: none;
+  background: url(images/btn_select.png) no-repeat right 12px center;
+  background-size: 12px 9px;
+}
+.btn_modalSubmit{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  background: #eeeeee;
+  border-radius: 0px 0px 5px 5px;
+}
+.modal_cancel{
+  width: 30%;
+  max-width: 180px;
+  height: 30px;
+  background: #ffffff;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.modal_submit{
+  width: 30%;
+  max-width: 180px;
+  height: 30px;
+  background: #000dff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+
+
+/* mobile-end */
+
+@media screen and (min-width:768px) {
+header{
+  width:86%;
+}
+.nav_wrap{
+  width:100%;
+}
+.btn_ham_gnb{
+  display:none;
+}
+nav{
+  display:block !important;
+  display:flex !important;
+  justify-content: space-between !important;
+}
+.gnb_wrap{
+  margin:0;
+  margin-right: 20px;
+  width:70%;
+  display:flex;
+  justify-content: space-around;
+  flex-flow: row-reverse;
+}
+.gnb_search{
+  margin-top:4px;
+  margin-left: 20px;
+  width:fit-content;
+  min-width: 180px;
+  height:28px;
+}
+.gnb{
+  display:flex;
+  min-width:fit-content;
+} /* ul */
+.gnb li{
+  margin:0;
+  margin-left:40px;
+}
+.gnb li a::after{
+  display:none;
+}
+.usersign{
+  margin:0;
+  margin-left: 20px;
+  width: 25%;
+  justify-content: space-around;
+}
+.usersign a{
+  margin:0;
+}
+.login::before{
+  display:none;
+}
+.signup::before{
+  display:none;
+}
+.nickname::before{
+  display:none;
+}
+.nickname{
+  width: auto;
+}
+.logout{
+  display: inline-block !important;
+}
+.logout span{
+  display: none;
+}
+.usersign a:first-child{
+  margin-right:20px;
+}
+
+footer-component{
+  width:86%;
+}
+
+.btn_toTop {
+  right: calc(10% + 20px);
+}
+
+/* 기관등록 모달 */
+.modal_addCorp>div{
+  height: 68px;
+  font-size: 2.0rem;
+}
+.modal-box .Corp_data{
+  padding: 40px;
+  gap: 40px;
+  font-size: 1.8rem;
+}
+.modal-box .Corp_data>div>input{
+  max-width: 468px;
+  height: 54px;
+  padding: 17px 20px;
+  font-size: 1.8rem;
+}
+.modal-box .Corp_data>div>div{
+  max-width: 468px;
+  height: 54px;
+}
+.modal-box .Corp_data>div>div>select{
+  width: 45%;
+  padding: 17px 20px;
+  font-size: 1.8rem;
+}
+.btn_modalSubmit{
+  padding: 20px 28px;
+  height: 94px;
+}
+.modal_cancel{
+  height: 54px;
+  font-size: 1.8rem;
+}
+.modal_submit{
+  height: 54px;
+  font-size: 1.8rem;
+}
+
+}
+/* 768 end */
+/* 1024 */
+@media screen and (min-width:1024px) {
+.gnb_wrap{
+  width:75%;
+  /* border:1px solid red; */
+}
+.gnb_search{
+  width:36%;
+}
+.logout::before{
+  display:none;
+}
+.logout{
+  min-width: 66px;
+}
+.logout span{
+  display: block;
+  width: auto;
+}
+}
+@media screen and (min-width:1280px){
+header{
+  width:67%;
+}
+.usersign{
+  width: 20%;
+}
+
+footer-component{
+  width:67%;
+}
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>review</title>
+	<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+	<link href="/styles/webcomponent.css" rel="stylesheet">
+	<link href="/styles/review_detail.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="container">
+		<div id="header_wrap">
+			<header-component data-name="{{User.nickname}}"></header-component>
+		</div>
+		<main>
+			<div class="corp_info_wrap">
+				<div class="div_line"></div>
+				<div class="corp_info">
+					<div class="corp_info_image">기업이미지</div>
+					<div class="corp_info_data">
+						<div>
+							<span id="Corp_name">{{Corp.name}}</span>
+							<span>{{Corp.sido+" "+Corp.gugun}}</span>    
+						</div>
+						{% if cnt %}
+						<div>
+							<div class="star_bg">
+								<span style="width:{{Corp.avg_total*20}}%"></span>
+							</div>
+							<span>{{Corp.avg_total}}</span>
+							<span>({{Corp.cnt}}개 리뷰)</span>
+						</div>
+						<ul class="hashtag_top">
+							<li>{{hash[0].hash}}</li>
+							<li>{{hash[1].hash}}</li>
+							<li>{{hash[2].hash}}</li>
+							<li>{{hash[3].hash}}</li>
+						</ul>
+						{% else %}
+						<div>
+							<div class="star_bg">
+								<span style="width:{{Corp.avg_total*20}}%"></span>
+							</div>
+							<span>0.0</span>
+							<span>({{Corp.cnt}}개 리뷰)</span>
+						</div>
+						{% endif %}
+					</div>
+					<button type="button" onclick="location.href='/review_write/{{Corp.name}}'" class="btn_review">이 기관 리뷰하기</button>
+				</div>
+				<button type="button" onclick="location.href='/review_write/{{Corp.name}}'" class="btn_write"></button>
+			</div>
+			<div class="contents_wrap">
+				<div class="contents_main">
+					{% if cnt %}
+					<div class="total_score">
+						<div class="total_score_corpname">{{Corp.name}} 리뷰</div>
+						<div class="total_score_wrap">
+							<div class="total_score_main">
+								<p>{{Corp.avg_total}}</p>
+								<div class="star_bg">
+									<span style="width: {{Corp.avg_total*20}}%"></span>
+								</div>
+								<p>{{Corp.cnt}}개 리뷰</p>
+							</div>
+							<ul class="total_score_detail">
+								<li class="total_detail_star">
+									<span>{{Corp.avg_career}}</span>
+									<span></span>
+									<span>커리어 향상</span>
+								</li>
+								<li class="total_detail_star">
+									<span>{{Corp.avg_worklife}}</span>
+									<span></span>
+									<span>업무와 삶의 균형</span>
+								</li>
+								<li class="total_detail_star">
+									<span>{{Corp.avg_welfare}}</span>
+									<span></span>
+									<span>복리후생</span>
+								</li>
+								<li class="total_detail_star">
+									<span>{{Corp.avg_culture}}</span>
+									<span></span>
+									<span>조직문화</span>
+								</li>
+								<li class="total_detail_star">
+									<span>{{Corp.avg_leadership}}</span>
+									<span></span>
+									<span>리더십</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					{% else %}
+					<div class="total_score">
+						<div class="total_score_corpname">아직 작성된 리뷰가 없습니다.</div>
+					</div>
+					{% endif %}
+					<div class="contents" id="contents">
+						{% if content %}
+						<ul id="content">
+							<li class="contents_review">
+								<div class="review_star">
+									<p>{{content.total_score}}</p>
+									<div class="btn_star_detail">
+										<div class="star_bg">
+											<span style="width: {{content.total_score*20}}%"></span>
+										</div>
+										<button type="button" class="star_detail_open" onclick="star_detailClick(this)"></button>
+									</div>
+									<div class="star_detail" style="display: none;">
+										<div>
+											<div class="star_bg">
+												<span style="width: {{content.career_score*20}}%"></span>
+											</div>
+											<p>커리어 향상</p>
+										</div>
+										<div>
+											<div class="star_bg">
+												<span style="width: {{content.worklife_score*20}}%"></span>
+											</div>
+											<p>업무와 삶의 균형</p>
+										</div>
+										<div>
+											<div class="star_bg">
+												<span style="width: {{content.welfare_score*20}}%"></span>
+											</div>
+											<p>복리후생</p>
+										</div>
+										<div>
+											<div class="star_bg">
+												<span style="width: {{content.culture_score*20}}%"></span>
+											</div>
+											<p>조직 내 문화</p>
+										</div>
+										<div>
+											<div class="star_bg">
+												<span style="width: {{content.leadership_score*20}}%"></span>
+											</div>
+											<p>리더십</p>
+										</div>
+									</div>
+								</div>
+								<div class="review_comment">
+									<div class="highlight">
+										<p>{{content.highlight}}</p>
+										<div>
+											<span></span>
+											{% if content.last_date == '9999-12' %}
+											<span>현직원</span>
+											{% else %}
+											<span>전직원</span>
+											{% endif %}
+											<span>{{ content.nickname.slice(0,1) }}{{'*'.repeat(content.nickname.length - 1)}}</span>
+											<span>{{content.type}}</span>
+											<span>{{content.date}}</span>
+										</div>
+									</div>
+									<div class="pros_cons">
+										<p>장점</p>
+										<p>{{content.pros}}</p>
+									</div>
+									<div class="pros_cons">
+										<p>단점</p>
+										<p>{{content.cons}}</p>
+									</div>
+									<div class="comment_hashtag_wrap">
+										<div class="hashtag_fade"></div>
+										<div class="comment_hashtag">
+											<span>{{content.hashtag_1}}</span>
+											<span>{{content.hashtag_2}}</span>
+											<span>{{content.hashtag_3}}</span>
+											<span>{{content.hashtag_4}}</span>
+											<span>{{content.hashtag_5}}</span>
+										</div>	
+									</div>
+									<button type="button" class="comment_like" onclick="likesClick(this)">
+										<span></span>
+										<span>도움이 돼요</span>
+										<span>(<span>{{content.likes}}</span>)</span>
+									</button>
+								</div>
+							</li>
+							<div id="more"><button></button></div>
+						</ul>
+						{% endif %}
+					</div>
+				</div>
+				<div class="sidebar">
+					<p>다른 기관 리뷰도 찾아보기</p>
+					<input>
+					<div class="side_contents">
+						<ul>
+							{% for top in top10.slice(0,3) %}
+							<li class="side_content">
+								<p>{{top.name}}</p>
+								<div>
+									<div class="star_bg">
+										<span style="width: {{top.avg_total*20}}%"></span>
+									</div>
+									<span>{{top.avg_total}}</span>
+									<span>({{top.cnt}}개 리뷰)</span>		
+								</div>
+								<div>
+									<p>{{top.pros}}</p>
+									<div>
+										{% if top.last_date == '9999-12' %}
+										<span>현직원</span>
+										{% else %}
+										<span>전직원</span>
+										{% endif %}
+										<span>{{top.type}}</span>
+										<span>{{top.date}}</span>
+										<button type="button" onclick="location.href='{{top.name}}'">리뷰보기</button>	
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<footer>
+		<footer-component></footer-component>
+	</footer>
+	<totop-component></totop-component>
+	<script type="module" src="/js/webcomponent.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script defer src="/js/review_detail.js"></script>
+</body>
+</html>
