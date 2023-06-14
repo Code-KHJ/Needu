@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeedU</title>
 
-    <link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
-		<link href="/styles/webcomponent.css" rel="stylesheet">
-		<link href="/styles/main.css" rel="stylesheet">
+    <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
+		<link href="./styles/webcomponent.css" rel="stylesheet">
+		<link href="./styles/main.css" rel="stylesheet">
 
 
 </head>
@@ -17,27 +17,105 @@
     <div id="header_wrap">
       <header-component data-name="{{User.nickname}}"></header-component>
     </div>
-    <main>
-      <section class="banner_wrap">
-        배너부분
-      </section>
-      <section class="contents_wrap">
-        <div>최근 리뷰된 기관</div>
-        <div class="contents">
-          <ul class="list_con">
-            <li>
-              <div>
-                <div>박스</div>
-                <div>기관명</div>
-                <div>별점</div>
+        <!-- main -->
+        <main>
+          <section class="visual_wrap">
+            <div class="visual">
+              <h2 class="screen_out">메인 비주얼 영역</h2>
+              <p>어느 곳에서도 확인할 수 없는   
+                <p><span>사회복지기관</span>의 <span>실제 리뷰</span>
+                </p>
+              </p>
+              <p>오직 <span>NEEDU</span> 에서만</p>
+              <form class="search_main_wrap">
+                <fieldset>
+                  <legend class="screen_out">검색</legend>
+                  <input type="search" placeholder="궁금한 기관을 검색해보세요!" id="search_main" name="search_main">
+                  <button class="search_btn"></button>
+                </fieldset>
+              </form>
+              <span>찾으시는 기관이 없다면? <a href="#">후기를 알고 싶은 기관 신청하기</a></span>
+            </div>
+          </section>
+          <section class="recentReview_wrap">
+            <h2>최근 작성된 리뷰</h2>
+            <div class="recentReview">
+              <button class="btn_recentReview">더보기</button>
+              <div class="recenetReview_con_wrap">
+                <div class="recenetReview_con focus">
+                  <div class="recenetReview_con_top">
+                    <strong>아득히 가 버린 것 잊어버린 하늘과 아른아른 오지 않고 보고 싶은 하늘에 어쩌면 만도 질 볼이 고운 사람이 난 혼자 그리워라.</strong>
+                    <p>
+                      <span>장점</span>
+                      그렇게 손으로 턱을 괸 채 염소 모피를 두르고 있는 모습은, 그대로 귀여운 천국의 목자였습니다.
+                    </p>
+                    <p>
+                      <span>단점</span>
+                      양들이 뒤척이는 서슬에 짚이 버스럭거리며, 혹은 잠결에 매하고 울음소리를 내는 놈도 있었습니다.
+                    </p>
+                    <div class="recenetReview_con_bottom">
+                      <div class="blind">별점 영역</div>
+                      <ul>
+                        <li>서울사회복지사협회</li>
+                        <li>a***</li>
+                        <li>23.05.24</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="recenetReview_con">
+                  <div class="recenetReview_con_top">
+                    <strong>저 별에 관해 서는 목동들 사이에 다음과 같은 얘기가 전하고 있답니다.</strong>
+                    <p>
+                      <span>장점</span>
+                      그렇게 손으로 턱을 괸 채 염소 모피를 두르고 있는 모습은, 그대로 귀여운 천국의 목자였습니다.
+                    </p>
+                    <p>
+                      <span>단점</span>
+                      양들이 뒤척이는 서슬에 짚이 버스럭거리며, 혹은 잠결에 매하고 울음소리를 내는 놈도 있었습니다.
+                    </p>
+                    <div class="recenetReview_con_bottom">
+                      <div class="blind">별점 영역</div>
+                      <ul>
+                        <li>서울구로지역자활센터</li>
+                        <li>b***</li>
+                        <li>23.05.28</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="recenetReview_con">
+                  <div class="recenetReview_con_top">
+                    <strong>저 별에 관해 서는 목동들 사이에 다음과 같은 얘기가 전하고 있답니다.</strong>
+                    <p>
+                      <span>장점</span>
+                      그렇게 손으로 턱을 괸 채 염소 모피를 두르고 있는 모습은, 그대로 귀여운 천국의 목자였습니다.
+                    </p>
+                    <p>
+                      <span>단점</span>
+                      양들이 뒤척이는 서슬에 짚이 버스럭거리며, 혹은 잠결에 매하고 울음소리를 내는 놈도 있었습니다.
+                    </p>
+                    <div class="recenetReview_con_bottom">
+                      <div class="blind">별점 영역</div>
+                      <ul>
+                        <li>서울구로지역자활센터</li>
+                        <li>b***</li>
+                        <li>23.05.28</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div></div>
               </div>
-            </li>
-          </ul>
-          <div>화살표</div>
-        </div>
-      </section>
-    </main>
-  <!-- main end -->
+            </div>
+          </section>
+          <div class="main_bottom_banner_wrap">
+            <h2 class="screen_out">메인 하단 배너 영역</h2>
+            <div class="main_bottom_banner"></div>
+          </div>
+        </main>
+      <!-- main end -->
+    
   </div>
   <footer>
     <footer-component></footer-component>
