@@ -2,8 +2,19 @@
 
 /* mobile */
 /* z-index (.modal : 10) (.nav_wrap : 11) */
+<<<<<<< Updated upstream:public/styles/style_header.css
 .container{
   width:100%;height:100px;
+=======
+
+#header_wrap{
+  position: fixed;
+  top: 0;left: 0;
+  width:100%;
+  height: 120px;;
+  z-index: 9;
+  background: #fafafa;
+>>>>>>> Stashed changes:public/styles/webcomponent.css
 }
 .modal{
   position:fixed;
