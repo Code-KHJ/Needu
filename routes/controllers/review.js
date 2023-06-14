@@ -164,6 +164,7 @@ module.exports = {
       top10 : req.top10,
       detail10 : req.detail10,
     }
+    console.log('컨트롤러'+middle_info.detail10)
     res.render(rootdir+'/public/search_review.html', middle_info)
   },
   con_top10_detail: (req, res)=>{
