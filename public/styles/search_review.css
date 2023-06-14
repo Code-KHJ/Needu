@@ -29,11 +29,18 @@
   line-height: 19px;
 }
 .search{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 50px;
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid #ffffff;
-  border-radius: 360px;
+  border-radius: 40px;
   padding: 10px 20px;
+}
+.search fieldset{
+  display: flex;
+  justify-content: space-between;
 }
 .search select{
   width: 50px;
@@ -58,13 +65,18 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.4rem;
 }
-.search button{
+#btnSubmit{
   width: 20px;
   height: 20px;
   float: right;
   background: url(images/btn_search_white.png) no-repeat center/contain;
   cursor: pointer;
 }
+/* .auto_corp{
+  margin-top: 25px;
+  margin-left: 54px;
+  color: #fff;
+} */
 .banner-image{
   display: none;
   position: absolute;
@@ -250,6 +262,7 @@
   display: inline-block;
   white-space: nowrap;
   font-size: 1.6rem;
+  cursor: pointer;
 }
 .select-detail{
   background: #c2C5F4 !important;
@@ -259,11 +272,15 @@
 .detail-top5{
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  white-space: nowrap;
   gap: 40px;
-  overflow: hidden;
+  overflow: scroll;
   margin: 48px 15px 40px;
   height: 282px;
+}
+/* 스크롤바 없애기 */
+.detail-top5::-webkit-scrollbar {
+  display: none;
 }
 .detail-top5-item{
   width: 226px;
@@ -346,16 +363,17 @@
   width: 75px;
   height: 15px;
 }
-.btn-left{
+.back{
   position: absolute;
   top: 246px;
   left: 20px;
   width: 40px;
   height: 50px;
-  background: rgba(0,0,0,0.02);
+  background: rgba(0,0,0,0.1);
   border-radius: 50px;
+  cursor: pointer;
 }
-.btn-left>span{
+.back>span{
   display: block;
   width: 10px;
   height: 20px;
@@ -363,7 +381,7 @@
   background: url(./images/ico_arrow_L1.png) no-repeat;
   background-size: contain;
 }
-.btn-right{
+.next{
   position: absolute;
   top: 246px;
   right: 20px;
@@ -371,8 +389,9 @@
   height: 50px;
   background: rgba(0,0,0,0.1);
   border-radius: 50px;
+  cursor: pointer;
 }
-.btn-right>span{
+.next>span{
   display: block;
   width: 10px;
   height: 20px;
@@ -497,7 +516,10 @@
     font-size: 2.0rem;
   }
   .search{
-    padding: 10px 60px;
+    padding: 10px 40px;
+  }
+  .search select{
+    width: 90px;
   }
   .banner-image{
     width: 415px;
@@ -552,10 +574,10 @@
   .details>li{
     padding: 18px 40px;
   }
-  .btn-left{
+  .back{
     left: 40px;
   }
-  .btn-right{
+  .next{
     right: 40px;
   }
 }

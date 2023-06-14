@@ -45,5 +45,20 @@ module.exports = {
     const top10 = await top10_corp(avg_total);
     req.top10 = top10
     next()
+  },
+  mid_top10_detail: async(req, res, next) => {
+    if(req.query.data){
+      const detail_item = req.query.data;
+      const detail10 = await top10_corp(detail_item);
+      req.detail10 = detail10;
+      req.tf = true;
+      next();
+    } else{
+    const default_item = "avg_career";
+    const detail10 = await top10_corp(default_item);
+    req.detail10 = detail10;
+    req.tf = false;
+    next();
+    }
   }
 }

@@ -24,9 +24,11 @@
           </div>
           <form class="search">
             <fieldset>
-              <label><select name="sido" id="sido1"></select></label>              
-              <input placeholder="기관 이름을 입력해주세요">
-              <button></button>
+              <div class="user-input">
+                <label><select name="sido" id="sido1"></select></label>              
+                <input placeholder="기관 이름을 입력해주세요" type="text" id="search_input">
+              </div>
+              <button id="btnSubmit"></button>
             </fieldset>
           </form>
         </div>
@@ -48,7 +50,7 @@
                 <span>{{review_item.date}}</span>  
               </div>
               <p>{{review_item.highlight}}</p>
-              <button type="button" onclick="location.href='/review/{{review_item.Corp_name}}'">더보기</button>
+              <button type="button" onclick="location.href='/review/corp/{{review_item.Corp_name}}'">더보기</button>
             </div>
             {% endfor %}
           </div>
@@ -67,7 +69,7 @@
                     <span style="width: {{top.avg_total*20}}%"></span>
                   </div>
                 </div>
-                <span>{{top.avg_total.toFixed(1)}}</span>
+                <span>{{top.avg_total}}</span>
               </div>
             </div>
             {% endfor %}
@@ -84,210 +86,67 @@
         <div>
           <div>
             <ul class="details">
-              <li class="select-detail"><button>커리어 향상</button></li>
-              <li><button>업무와 삶의 균형</button></li>
-              <li><button>복리후생</button></li>
-              <li><button>조직 내 문화</button></li>
-              <li><button>리더십</button></li>
+              <li class="select-detail"><button value="avg_career">커리어 향상</button></li>
+              <li><button value="avg_worklife" >업무와 삶의 균형</button></li>
+              <li><button value="avg_welfare" >복리후생</button></li>
+              <li><button value="avg_culture" >조직 내 문화</button></li>
+              <li><button value="avg_leadership" >리더십</button></li>
             </ul>
           </div>
           <ul class="detail-top5">
-            <!-- for문써서 li 반복 처리 -->
+            {% for detail in detail10.slice(0,5) %}
             <li class="detail-top5-item">
-              <div class="detail-top5-no">1</div>
+              <div class="detail-top5-no">{{loop.index}}</div>
               <div class="detail-top5-content">
                 <div class="detail-top5-corp">
-                  <p>서울특별시사회복지사협회</p>
-                  <p>서울특별시 영등포구</p>
+                  <p>{{detail.name}}</p>
+                  <p>{{detail.sido}} {{detail.gugun}}</p>
                 </div>
                 <div class="detail-top5-highlight">
                   <p>커리어 향상</p>
                   <div>
                     <img src="/styles/images/Star_1.png">
-                    <span>3.6</span>
+                    <span>{{detail.avg_career}}</span>
                   </div>
                 </div>
                 <ul class="detail-top5-details">
                   <li style="display: none;">
                     <p>커리어 향상</p>
                     <div class="star_bg">
-                      <span style="width: 50%"></span>
+                      <span style="width: {{detail.avg_career*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>업무와 삶의 균형</p>
                     <div class="star_bg">
-                      <span style="width: 50%"></span>
+                      <span style="width: {{detail.avg_worklife*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>복리후생</p>
                     <div class="star_bg">
-                      <span style="width: 50%"></span>
+                      <span style="width: {{detail.avg_welfare*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>조직 내 문화</p>
                     <div class="star_bg">
-                      <span style="width: 50%"></span>
+                      <span style="width: {{detail.avg_culture*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>리더십</p>
                     <div class="star_bg">
-                      <span style="width: 50%"></span>
+                      <span style="width: {{detail.avg_leadership*20}}%"></span>
                     </div>
                   </li>
                 </ul>
               </div>
             </li>
-            <li class="detail-top5-item">
-              <div class="detail-top5-no">1</div>
-              <div class="detail-top5-content">
-                <div class="detail-top5-corp">
-                  <p>서울특별시사회복지사협회</p>
-                  <p>서울특별시 영등포구</p>
-                </div>
-                <div class="detail-top5-highlight">
-                  <p>커리어 향상</p>
-                  <div>
-                    <img src="/styles/images/Star_1.png">
-                    <span>3.6</span>
-                  </div>
-                </div>
-                <ul class="detail-top5-details">
-                  <li style="display: none;">
-                    <p>커리어 향상</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>업무와 삶의 균형</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>복리후생</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>조직 내 문화</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>리더십</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="detail-top5-item">
-              <div class="detail-top5-no">1</div>
-              <div class="detail-top5-content">
-                <div class="detail-top5-corp">
-                  <p>서울특별시사회복지사협회</p>
-                  <p>서울특별시 영등포구</p>
-                </div>
-                <div class="detail-top5-highlight">
-                  <p>커리어 향상</p>
-                  <div>
-                    <img src="/styles/images/Star_1.png">
-                    <span>3.6</span>
-                  </div>
-                </div>
-                <ul class="detail-top5-details">
-                  <li style="display: none;">
-                    <p>커리어 향상</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>업무와 삶의 균형</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>복리후생</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>조직 내 문화</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>리더십</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="detail-top5-item">
-              <div class="detail-top5-no">1</div>
-              <div class="detail-top5-content">
-                <div class="detail-top5-corp">
-                  <p>서울특별시사회복지사협회</p>
-                  <p>서울특별시 영등포구</p>
-                </div>
-                <div class="detail-top5-highlight">
-                  <p>커리어 향상</p>
-                  <div>
-                    <img src="/styles/images/Star_1.png">
-                    <span>3.6</span>
-                  </div>
-                </div>
-                <ul class="detail-top5-details">
-                  <li style="display: none;">
-                    <p>커리어 향상</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>업무와 삶의 균형</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>복리후생</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>조직 내 문화</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                  <li>
-                    <p>리더십</p>
-                    <div class="star_bg">
-                      <span style="width: 50%"></span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            {% endfor %}
           </ul>
-          <button class="btn-left"><span></span></button>
-          <button class="btn-right"><span></span></button>
+          <button class="back"><span></span></button>
+          <button class="next"><span></span></button>
         </div>
       </section>
     </main>

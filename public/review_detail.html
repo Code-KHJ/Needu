@@ -29,7 +29,7 @@
 							<div class="star_bg">
 								<span style="width:{{Corp.avg_total*20}}%"></span>
 							</div>
-							<span>{{Corp.avg_total.toFixed(1)}}</span>
+							<span>{{Corp.avg_total}}</span>
 							<span>({{Corp.cnt}}개 리뷰)</span>
 						</div>
 						<ul class="hashtag_top">
@@ -59,7 +59,7 @@
 						<div class="total_score_corpname">{{Corp.name}} 리뷰</div>
 						<div class="total_score_wrap">
 							<div class="total_score_main">
-								<p>{{Corp.avg_total.toFixed(1)}}</p>
+								<p>{{Corp.avg_total}}</p>
 								<div class="star_bg">
 									<span style="width: {{Corp.avg_total*20}}%"></span>
 								</div>
@@ -67,27 +67,27 @@
 							</div>
 							<ul class="total_score_detail">
 								<li class="total_detail_star">
-									<span>{{Corp.avg_career.toFixed(1)}}</span>
+									<span>{{Corp.avg_career}}</span>
 									<span></span>
 									<span>커리어 향상</span>
 								</li>
 								<li class="total_detail_star">
-									<span>{{Corp.avg_worklife.toFixed(1)}}</span>
+									<span>{{Corp.avg_worklife}}</span>
 									<span></span>
 									<span>업무와 삶의 균형</span>
 								</li>
 								<li class="total_detail_star">
-									<span>{{Corp.avg_welfare.toFixed(1)}}</span>
+									<span>{{Corp.avg_welfare}}</span>
 									<span></span>
 									<span>복리후생</span>
 								</li>
 								<li class="total_detail_star">
-									<span>{{Corp.avg_culture.toFixed(1)}}</span>
+									<span>{{Corp.avg_culture}}</span>
 									<span></span>
 									<span>조직문화</span>
 								</li>
 								<li class="total_detail_star">
-									<span>{{Corp.avg_leadership.toFixed(1)}}</span>
+									<span>{{Corp.avg_leadership}}</span>
 									<span></span>
 									<span>리더십</span>
 								</li>
@@ -104,7 +104,7 @@
 						<ul id="content">
 							<li class="contents_review">
 								<div class="review_star">
-									<p>{{content.total_score.toFixed(1)}}</p>
+									<p>{{content.total_score}}</p>
 									<div class="btn_star_detail">
 										<div class="star_bg">
 											<span style="width: {{content.total_score*20}}%"></span>
@@ -201,7 +201,7 @@
 									<div class="star_bg">
 										<span style="width: {{top.avg_total*20}}%"></span>
 									</div>
-									<span>{{top.avg_total.toFixed(1)}}</span>
+									<span>{{top.avg_total}}</span>
 									<span>({{top.cnt}}개 리뷰)</span>		
 								</div>
 								<div>
@@ -214,7 +214,7 @@
 										{% endif %}
 										<span>{{top.type}}</span>
 										<span>{{top.date}}</span>
-										<button type="button" onclick="location.href='/review/{{top.name}}'">리뷰보기</button>	
+										<button type="button" onclick="location.href='{{top.name}}'">리뷰보기</button>	
 									</div>
 								</div>
 							</li>

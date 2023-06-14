@@ -161,9 +161,17 @@ module.exports = {
     const middle_info = {
       User: req.user,
       review: req.review_recent,
-      top10 : req.top10
+      top10 : req.top10,
+      detail10 : req.detail10,
     }
     res.render(rootdir+'/public/search_review.html', middle_info)
+  },
+  con_top10_detail: (req, res)=>{
+    if(req.tf){
+      return res.send(JSON.stringify(req.detail10))
+    }else{
+      throw err;
+    }
   },
 }
 
