@@ -178,7 +178,7 @@ module.exports = {
         DATE_FORMAT(created_date, '%Y.%m') as date
         FROM Review_Posts
         ORDER BY No DESC
-        LIMIT 5;`;
+        LIMIT 10;`;
       try {
         pool.query(sql, (err, rows)=>{
         return resolve(rows)

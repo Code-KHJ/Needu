@@ -1,16 +1,3 @@
-
-//검색 자동완성 기능
-
-
-
-
-
-
-
-
-
-
-
 //Top5 섹션 기능구현
 //클릭된 요소로 class 바꾸기
 function select(i){
@@ -106,3 +93,35 @@ btnBack.addEventListener('click', ()=>{
     behavior: "smooth"
   })
 })
+
+
+//리뷰 데이터 swiper
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'vertical',
+  loop: true,
+  autoplay: true,
+  delay: 3000,
+  slidesPerView: 3,
+  spaceBetween: 20,
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+
+function submit(){
+  const form = document.querySelector('.search');
+  form.submit()
+}

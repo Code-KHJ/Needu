@@ -98,9 +98,12 @@
 }
 .recent-reviews>div{
   display: flex;
+  height: 370px;
   flex-direction: column;
   margin-top: 25px;
   gap: 20px;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 .review{
   display: block;
@@ -438,6 +441,7 @@
   }
   .recent-reviews>div{
     margin-top: 42px;
+    height: 400px;
   }
   .review{
     height: 120px;
