@@ -1,5 +1,14 @@
 @charset "utf-8";
-@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css');
+/* font-family: 
+'NanumSquareLight';
+'NanumSquare';
+'NanumSquareBold';
+'NanumSquareExtraBold';
+'NanumSquareAcb';
+'NanumSquareAceb';
+'NanumSquareAcl';
+'NanumSquareAcr'; */
 
 
 *{
@@ -14,8 +23,7 @@ html, body{
 html{
   color:#333333;
   font-size:0.625rem;
-  font-family: NanumSquare;
-  font-weight:400;
+  font-family: 'NanumSquare';
   /* font-family: 'NanumSquareNeo-Variable'; */
 }
 .container{
@@ -43,11 +51,10 @@ button{
 }
 .screen_out{
   position:absolute;
-  top:-9999px;
+  left:-9999px;
 }
 .blind{
   text-indent:-9999px;
-  line-height:0.001;
 }
 .clearfix::after{
   content:"";
@@ -58,3 +65,4 @@ i{
   font-style: normal;
 }
 /* reset-end */
+
