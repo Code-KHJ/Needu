@@ -292,7 +292,7 @@ main{
       font-size:2.4rem;
     }
     .recentReview_con strong{
-      font-size:1.8rem; 
+      font-size:1.6rem; 
       height:2.2rem;
     }
     .recentReview_con_bottom{
@@ -370,8 +370,8 @@ main{
       display:block;
     }
     .recentReview_con strong{
-      font-size:2rem; 
-      height:2.4rem;
+      font-size:1.8rem; 
+      height:2.2rem;
     }
     .recentReview_con_bottom{
       margin-top: 20px; 
