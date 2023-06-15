@@ -59,7 +59,6 @@ module.exports = {
     req.detail10 = detail10;
     req.tf = false;
     next();
-    console.log('미들웨어'+req.detail10)
     }
   }
 }
