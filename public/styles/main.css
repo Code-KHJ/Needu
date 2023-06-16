@@ -150,7 +150,7 @@ main{
   height:auto;
   line-height:1;
   padding-bottom:1vw;
-  background:url(./images/star_bg.svg) no-repeat right/contain;
+  background:url(./images/star_bg.svg) no-repeat top right/contain;
 }
 .recentReview_con_bottom ul{
   display:flex;
@@ -198,222 +198,204 @@ main{
 
 /* tablet_768 */
 @media screen and (min-width:768px) {
-
-  .input_search{
-    top:-52px;
-    font-size:2rem;
-  }
-    
-  nav form button{
-    top:-52px;
-    width:20px;
-    height:20px;
-  }
-  nav ul{
-    font-size:2rem;
-  }
-  nav>div:last-child{
-    font-size:2rem;
-  }
-  /* header end */
-  
-  /* main{
-    width:100%;
-  }
-  .visual_wrap{
-    width:100%;
-    background-color:#131987;
-  } */
   .visual{
     width:85.9%;
-    /* margin:0 auto; */
-    /* padding: 80px 0; */
     color:#fff;
-    /* font-family: 'NanumSquareLight'; */
-    /* line-height:1.2; */
-    /* text-align:center; */
   }
   .visual p:nth-of-type(1){
     font-size:2.4rem;
   }
   .visual p:nth-of-type(2){
-    /* margin-top:4px; */
-    /* display:inline-block; */
     font-size:2.4rem;
-  }
-  .visual p:nth-of-type(2) span{
-    /* display:inline-block; */
-    /* font-family: 'NanumSquareExtraBold'; */
   }
   .visual p:last-of-type{
     font-size: 4.8rem;
-    /* margin: 20px 0 48px; */
-  }
-  .visual p:last-of-type span{
-    /* font-family: 'NanumSquareExtraBold';
-    background-color:#fff;
-    color:#131987;
-    padding: 0 4px; */
   }
   .search_main_wrap{
-    /* width:100%; *
-    max-width:480px; */
     max-width:none;
     width:78.6%;
-    /* padding: 12px 40px;
-    background-color:rgba(255,255,255,0.3);
-    border:3px solid #fff;
-    border-radius: 36px;
-    margin:0 auto; */
-  }
-  .search_main_wrap fieldset{
-    /* width:100%;
-    display:flex;
-    justify-content: space-around;
-    flex-wrap: nowrap; */
-  }
-  .search_main_wrap input{
-    /* width:100%;
-    background:none;
-    border:none;
-    color:#fff;
-    font-size:1.6rem; */
-  }
-  .search_main_wrap input::placeholder{
-    /* color:rgba(255,255,255,0.6); */
-  }
-  .search_btn{
-    /* width:24px; 
-    height:24px; 
-    background:url(./images/btn_search_wh.png) no-repeat center/contain; */
-  }
-  .visual>span:last-child{
-    /* display:block;
-    margin-top:20px;
-    font-size:1.6rem; */
-  }
-  .visual>span:last-child a{
-    /* display:inline-block;
-    margin-top:4px;
-    text-decoration: underline; */
   }
   /* visual end */
-  .recentReview_wrap{
-    /* width:78.6%;
-    margin:0 auto;
-    margin-top:160px; */
-  }
-  .recentReview_wrap h2{
-    /* font-size:2rem;
-    font-family: 'NanumSquareExtraBold'; */
-  }
-  .recentReview{
-    /* width:100%;
-    margin-top:16px;
-    text-align: right; */
-  }
-  .btn_recentReview{
-    /* font-size:1.4rem;
-    cursor: pointer;
-    display:inline-block; */
-  }
-  .btn_recentReview::after{
-    /* content:"";
-    display:inline-block;
-    margin-left:8px;
-    width:12px;
-    height:12px;
-    background:url(./images/ico_arrow_R.png) no-repeat center/contain; */
-  }
   .recentReview_con_wrap{
-    /* text-align:left; */
-    /* width:100%; */
     display:flex;
     justify-content: space-between;
   }
   .recentReview_con_inner{
     width:38.4%;
+    display:flex;
+    flex-direction: column;
   }
   .recentReview_con_inner>div:last-child{
     display:block;
   }
-  .recentReview_con{
-    /* padding: 20px 9%; 
-    background-color: #ECECEC;
-    border-radius: 5px;
-    margin:20px 0; */
-  }
   .recentReview_con strong{
-    /* font-weight:normal; */
-    font-size:1.6rem; 
-    /* line-height:1.4;
-    display:block;
-    width:100%; */
-    height:1.8rem;
-    /* overflow-y:hidden; */
-  }
-  /* 여기 다시 봐야 함 (con height 조정) */
-  .recentReview_con p{
-    /* display:none; */
+    font-size:1.4rem; 
+    height:1.6rem;
   }
   .recentReview_con_bottom{
     margin-top: 20px; 
-    /* width:100%;
-    display:flex;
-    justify-content: right;
-    flex-wrap: wrap;
-    gap:8px;
-    color:#888;
-    font-size:1.2rem; */
   }
   .recentReview_con_bottom div{
-    /* width:27.8%;
-    height:auto;
-    line-height:1;
-    padding-bottom:1vw;
-    background:url(./images/star_bg.svg) no-repeat right/contain; */
+    background:url(./images/star_bg.svg) no-repeat top right/contain;
   }
-  .recentReview_con_bottom ul{
-    /* display:flex;
-    justify-content: right;
-    gap: 8px; */
-  }
-  
-  .recentReview_con.focus p{
-    /* display:block; */
+  .recentReview_con_bottom ul li:first-child{
+    width:33px;
+    height:1.2rem;
+    overflow-y: hidden;
   }
   .recentReview_con.focus{
     padding: 40px 7% 28px 7%;
-    /* background-color: #EBECFF;
-    border-radius:5px; */
     font-size:1.4rem;
-    /* line-height:1.4; */
     width: 58.4%;
   }
   .recentReview_con.focus strong{
     font-size:1.6rem;
-    /* font-family: 'NanumSquareBold'; */
-    /* height:auto; */
   }
   .recentReview_con.focus p:nth-of-type(1){
     margin-top:22px;
     margin-bottom:8px;
   }
-  .recentReview_con.focus span{
-    display:block;
-    font-family: 'NanumSquareBold';
-  }
-  
-  .main_bottom_banner_wrap{
-    width:78.6%;
-    margin: 120px auto 44px;
-  }
-  .main_bottom_banner{
-    width:100%;
-    height:234px;
-    border-radius: 5px;
-    background: #888 url() no-repeat center/contain;
+  .recentReview_con.focus ul li:first-child{
+    width:fit-content;
+    height:fit-content;
+    overflow-y: auto;
   }
   
 }
   /* main end */
+  /* tablet_768 end */
+
+  /* pc_1024 */
+  @media screen and (min-width:1024px) {
+    
+    .visual p:nth-of-type(1){
+      font-size:3.2rem;
+    }
+    .visual p:nth-of-type(2){
+      font-size:3.2rem;
+    }
+    .visual p:last-of-type{
+      font-size: 5.4rem;
+    }
+    .search_main_wrap input{
+      font-size:1.8rem; 
+    }
+    .search_btn{
+      width:32px; 
+      height:32px;
+    }
+    .visual>span:last-child{
+      font-size:1.8rem; 
+    }
+    /* visual end */
+    .recentReview_wrap h2{
+      font-size:2.4rem;
+    }
+    .recentReview_con strong{
+      font-size:1.6rem; 
+      height:2.2rem;
+    }
+    .recentReview_con_bottom{
+      margin-top: 20px; 
+      font-size:1.4rem;
+    }
+    .recentReview_con_bottom ul li:first-child{
+      width:40px;
+      height:1.4rem;
+      /* overflow-y: hidden; */
+    }
+    .recentReview_con.focus{
+      padding: 40px 5% 28px 5%;
+      font-size:1.6rem;
+    }
+    .recentReview_con.focus strong{
+      font-size:1.8rem;
+    }
+    .recentReview_con.focus p:nth-of-type(1){
+      margin-top:22px;
+      margin-bottom:8px;
+    }
+  }
+  /* main end */
+  /* pc_1024 end */
+
+  /* pc_1280 */
+  @media screen and (min-width:1280px) {
+    .visual{
+      width:1280px;
+    }
+    .visual p:nth-of-type(1){
+      font-size:4rem;
+    }
+    .visual p:nth-of-type(2){
+      font-size:4rem;
+    }
+    .visual p:last-of-type{
+      font-size: 6rem;
+    }
+    
+    .search_main_wrap input{
+      font-size:2rem; 
+    }
+    .search_btn{
+      width:32px; 
+      height:32px; 
+    }
+    .visual>span:last-child{
+      font-size:2rem; 
+    }
+    /* visual end */
+    .recentReview_wrap h2{
+      font-size:2.8rem;
+    }
+    .recentReview_wrap{
+      max-width:1280px;
+      margin:160px auto 0;
+    }
+    .btn_recentReview{
+      font-size:1.6rem;
+    }
+    .btn_recentReview::after{
+      width:14px;
+      height:14px;
+    }
+    .recentReview_con_wrap{
+      display:flex;
+      justify-content: space-between;
+    }
+    .recentReview_con_inner{
+      width:38.4%;
+    }
+    .recentReview_con_inner>div:last-child{
+      display:block;
+    }
+    .recentReview_con strong{
+      font-size:1.8rem; 
+      height:2.2rem;
+    }
+    .recentReview_con_bottom{
+      margin-top: 20px; 
+      font-size:1.8rem;
+    }
+    .recentReview_con_bottom ul li:first-child{
+      width:40px;
+      height:1.8rem;
+    }
+    
+    .recentReview_con.focus{
+      font-size:1.8rem;
+    }
+    .recentReview_con.focus strong{
+      font-size:2rem;
+    }
+    .recentReview_con.focus p:nth-of-type(1){
+      margin-top:40px;
+    }
+
+    .main_bottom_banner_wrap{
+      max-width: 1280px;
+    }
+    
+  }
+    /* main end */
+    /* pc_1280 end */
