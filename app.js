@@ -36,6 +36,10 @@ app.get("/404", auth, (req, res)=>{
     res.render('404.html', {User: req.user})
 })
 
+app.get("/test", auth, (req, res)=>{
+    res.render('search_result.html', {User: req.user})
+})
+
 app.get("/logout", auth, logout)
 app.use("/signup", require("./routes/signup"));
 app.use("/login", require("./routes/login"));

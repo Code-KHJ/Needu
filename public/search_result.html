@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>검색결과</title>
+
+  <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
+  <link href="./styles/webcomponent.css" rel="stylesheet">
+  <link href="./styles/search_result.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div id="header_wrap">
+      <header-component data-name="{{User.nickname}}"></header-component>
+    </div>
+    <main>
+      <section>
+        <div class="search-section">
+          <form class="search">
+            <fieldset>
+              <div class="filter">
+                <div class="city">
+                  <label>지역</label>
+                  <div>
+                    <div>
+                      <select name="sido" id="sido1"></select>
+                      <select name="gugun" id="gugun1"></select>  
+                    </div>
+                    <div>X 서울 강서구</div>
+                  </div>
+                </div>
+                <div class="score">
+                  <label>별점</label>
+                  <!-- <input type="image" src="/styles/images/1_point.png"> -->
+                </div>
+                <div class="hashtag">
+                  <label>키워드</label>
+                  <div class="tags">
+                    <button>#해시태그1</button>
+                    <button>#해시태그2</button>
+                    <button>#해시태그3</button>
+                    <button>#해시태그2</button>
+                    <button>#해시태그3</button>
+                  </div>
+                </div>
+              </div>
+              <div class="search-main">
+                <div class="corp">
+                  <label>기관명</label>
+                  <input placeholder="기관 이름을 입력해주세요">
+                </div>
+                <div class="buttons">
+                  <button class="submit-search" type="submit">검색</button>
+                  <button class="reset-search" type="reset">초기화</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+      <section>
+
+      </section>
+    </main>
+  </div>
+  <footer>
+    <footer-component></footer-component>
+  </footer>
+  <!-- footer end -->
+  <totop-component></totop-component>
+  <script type="module" src="/js/webcomponent.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script defer src="/js/search_result.js"></script>
+
+</body>
+</html>
