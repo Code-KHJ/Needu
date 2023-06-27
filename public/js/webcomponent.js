@@ -13,7 +13,7 @@ class header_component extends HTMLElement{
     <header>
       <h1 class="blind"><a href="/">logo</a></h1>
       <div class="nav_wrap">
-        <div class="btn_ham_gnb blind"> 메뉴버튼
+        <div class="btn_ham_gnb blind">
           <span></span>
           <span></span>
           <span></span>

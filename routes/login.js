@@ -6,7 +6,7 @@ const rootdir = require("../modules/path");
 
 router.get('/', auth, (req,res)=>{
   if(req.user){
-    res.redirect("/")    
+    res.redirect("/")
   }else{
     res.cookie('returnPage', req.header("referer"))
     res.sendFile(rootdir+'/public/login.html')

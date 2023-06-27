@@ -65,6 +65,14 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.4rem;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    -webkit-text-fill-color: #fff !important;
+}
 #btnSubmit{
   width: 20px;
   height: 20px;
