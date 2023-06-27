@@ -1,0 +1,117 @@
+main {
+  margin-top: 120px;
+  width: 100%;
+}
+
+section {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.search-section {
+  background-color: #F3F4FB;
+  padding: 40px 20px;
+}
+.search-section label {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.search-section .filter {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+.search-section .filter .city {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+.search-section .filter .city > div:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.search-section .filter .city > div:nth-of-type(1) > div:nth-of-type(1) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.search-section .filter .city > div:nth-of-type(1) > div:nth-of-type(1) select {
+  width: 225px;
+  height: 30px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: url(images/btn_detail.png) no-repeat right 20px center;
+  background-color: #fff;
+  background-size: 14px 7px;
+}
+.search-section .filter .city div:nth-of-type(2) {
+  font-size: 1.2rem;
+}
+.search-section .filter .score {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.search-section .filter .score input {
+  height: 32px;
+}
+.search-section .filter .hashtag {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.search-section .filter .hashtag div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.search-section .filter .hashtag button {
+  margin: 8px 10px;
+}
+.search-section .search-main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  gap: 40px;
+}
+.search-section .search-main .corp {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.search-section .search-main .corp input {
+  padding: 12px 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #fafafa;
+  font-size: 1.4rem;
+}
+.search-section .search-main .corp input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.search-section .search-main .corp input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.search-section .search-main button {
+  width: 88px;
+  height: 42px;
+  padding: 8px;
+  border-radius: 5px;
+}
+.search-section .search-main .submit-search {
+  color: #fafafa;
+  background-color: rgba(0, 13, 255, 0.6);
+}
+.search-section .search-main .reset-search {
+  background-color: #DDD;
+  margin-left: 20px;
+}/*# sourceMappingURL=search_result.css.map */
