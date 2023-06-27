@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeedU</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeedU</title>
 
-    <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
-		<link href="./styles/webcomponent.css" rel="stylesheet">
-		<link href="./styles/main.css" rel="stylesheet">
+  <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
+  <link href="./styles/webcomponent.css" rel="stylesheet">
+  <link href="./styles/main.css" rel="stylesheet">
+
+  <!-- SWIPER 외부 라이브러리 연결-->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
 
 </head>
@@ -22,15 +25,15 @@
           <section class="visual_wrap">
             <div class="visual">
               <h2 class="screen_out">메인 비주얼 영역</h2>
-              <p>어느 곳에서도 확인할 수 없는   
-                <p><span>사회복지기관</span>의 <span>실제 리뷰</span>
-                </p>
-              </p>
+              <div>
+                <p>어느 곳에서도 확인할 수 없는</p>
+                <p><span>사회복지기관</span>의 <span>실제 리뷰</span></p>  
+              </div>
               <p>오직 <span>NEEDU</span> 에서만</p>
               <form class="search_main_wrap">
                 <fieldset>
                   <legend class="screen_out">검색</legend>
-                  <input type="search" placeholder="궁금한 기관을 검색해보세요!" id="search_main" name="search_main">
+                  <input type="search" placeholder="궁금한 기관을 검색해보세요!" id="corp_name" name="corp_name">
                   <button class="search_btn"></button>
                 </fieldset>
               </form>
@@ -40,92 +43,61 @@
           <section class="recentReview_wrap">
             <h2>최근 작성된 리뷰</h2>
             <div class="recentReview">
-              <button class="btn_recentReview">더보기</button>
+              <button class="btn_recentReview" type="button" onclick="location.href='/review'">더보기</button>
               <div class="recentReview_con_wrap">
-                <div class="recentReview_con focus">
-                  <div class="recentReview_con_top">
-                    <strong>아득히 가 버린 것 잊어버린 하늘과 아른아른 오지 않고 보고 싶은 하늘에 어쩌면 만도 질 볼이 고운 사람이 난 혼자 그리워라.</strong>
-                    <p>
-                      <span>장점</span>
-                      그렇게 손으로 턱을 괸 채 염소 모피를 두르고 있는 모습은, 그대로 귀여운 천국의 목자였습니다.
-                    </p>
-                    <p>
-                      <span>단점</span>
-                      양들이 뒤척이는 서슬에 짚이 버스럭거리며, 혹은 잠결에 매하고 울음소리를 내는 놈도 있었습니다.
-                    </p>
+                <div class="slider-for">
+                  {% for review_item in review %}
+                  <div class="recentReview_con focus">
+                    <div class="recentReview_con_top">
+                      <strong>{{review_item.highlight}}</strong>
+                      <p>
+                        <span>장점</span>
+                        {{review_item.pros}}
+                      </p>
+                      <p>
+                        <span>단점</span>
+                        {{review_item.cons}}
+                      </p>
+                    </div>
+                    <div class="recentReview_con_bottom">
+                      <div class="star_bg">
+                        <span style="width: {{review_item.total_score*20}}%"></span>
+                      </div>
+                      <ul>
+                        <li>{{review_item.Corp_name}}</li>
+                        <li>{{review_item.nickname.slice(0,1)}}{{'*'.repeat(review_item.nickname.length - 1)}}</li>
+                        <li>{{review_item.date}}</li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="recentReview_con_bottom">
-                    <div class="blind">별점 영역</div>
-                    <ul>
-                      <li>서울사회복지사협회</li>
-                      <li>a***</li>
-                      <li>23.05.24</li>
-                    </ul>
-                  </div>
+                  {% endfor %}
                 </div>
-                <div class="recentReview_con_inner">
+                <div class="recentReview_con_inner slider-nav">
+                  {% for review_item in review %}
                   <div class="recentReview_con">
                     <div class="recentReview_con_top">
-                      <strong>저 별에 관해 서는 목동들 사이에 다음과 같은 얘기가 전하고 있답니다.</strong>
+                      <strong>{{review_item.highlight}}</strong>
                       <p>
                         <span>장점</span>
-                        그렇게 손으로 턱을 괸 채 염소 모피를 두르고 있는 모습은, 그대로 귀여운 천국의 목자였습니다.
+                        {{review_item.pros}}
                       </p>
                       <p>
                         <span>단점</span>
-                        양들이 뒤척이는 서슬에 짚이 버스럭거리며, 혹은 잠결에 매하고 울음소리를 내는 놈도 있었습니다.
+                        {{review_item.cons}}
                       </p>
                     </div>
                     <div class="recentReview_con_bottom">
-                      <div class="blind">별점 영역</div>
+                      <div class="star_bg">
+                        <span style="width: {{review_item.total_score*20}}%"></span>
+                      </div>
                       <ul>
-                        <li>서울구로지역자활센터</li>
-                        <li>b***</li>
-                        <li>23.05.28</li>
+                        <li>{{review_item.Corp_name}}</li>
+                        <li>{{review_item.nickname.slice(0,1)}}{{'*'.repeat(review_item.nickname.length - 1)}}</li>
+                        <li>{{review_item.date}}</li>
                       </ul>
                     </div>
                   </div>
-                  <div class="recentReview_con">
-                    <div class="recentReview_con_top">
-                      <strong>저 별에 관해 서는 목동들 사이에 다음과 같은 얘기가 전하고 있답니다.</strong>
-                      <p>
-                        <span>장점</span>
-                        그렇게 손으로 턱을 괸 채 염소 모피를 두르고 있는 모습은, 그대로 귀여운 천국의 목자였습니다.
-                      </p>
-                      <p>
-                        <span>단점</span>
-                        양들이 뒤척이는 서슬에 짚이 버스럭거리며, 혹은 잠결에 매하고 울음소리를 내는 놈도 있었습니다.
-                      </p>
-                    </div>
-                    <div class="recentReview_con_bottom">
-                      <div class="blind">별점 영역</div>
-                      <ul>
-                        <li>서울구로지역자활센터</li>
-                        <li>b***</li>
-                        <li>23.05.28</li>
-                      </ul>
-                    </div>
-                  </div><div class="recentReview_con">
-                    <div class="recentReview_con_top">
-                      <strong>저 별에 관해 서는 목동들 사이에 다음과 같은 얘기가 전하고 있답니다.</strong>
-                      <p>
-                        <span>장점</span>
-                        그렇게 손으로 턱을 괸 채 염소 모피를 두르고 있는 모습은, 그대로 귀여운 천국의 목자였습니다.
-                      </p>
-                      <p>
-                        <span>단점</span>
-                        양들이 뒤척이는 서슬에 짚이 버스럭거리며, 혹은 잠결에 매하고 울음소리를 내는 놈도 있었습니다.
-                      </p>
-                    </div>
-                    <div class="recentReview_con_bottom">
-                      <div class="blind">별점 영역</div>
-                      <ul>
-                        <li>서울구로지역자활센터</li>
-                        <li>b***</li>
-                        <li>23.05.28</li>
-                      </ul>
-                    </div>
-                  </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>
@@ -145,5 +117,9 @@
   <totop-component></totop-component>
   <script type="module" src="/js/webcomponent.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script defer src="/js/main.js"></script>
 </body>
 </html>

@@ -30,9 +30,8 @@ nunjucks.configure('./public', {
     express : app,
 })
 
-app.get("/", auth, (req, res)=>{
-    res.render('main.html', {User: req.user})
-})
+app.get("/", require("./routes/index"))
+
 app.get("/404", auth, (req, res)=>{
     res.render('404.html', {User: req.user})
 })

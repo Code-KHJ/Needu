@@ -46,6 +46,8 @@ module.exports = {
                             secure: false,
                             httpOnly: true,
                         })
+                        const current = new Date().toISOString().slice(0, 10);
+                        pool.query(`UPDATE user SET login_date = "${current}" WHERE id = "${id}"`);
                         if(returnPath == undefined || returnPath == "/signup" || returnPath == "/login"){
                             return res.status(200).send("<script>alert('"+row[0].nickname+"님 반갑습니다!');location.href = '/';</script>")
                         }else{
