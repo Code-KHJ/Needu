@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 main{
-  margin-top:120px;
+  margin-top:200px;
   width:100%;
 }
 section{
@@ -11,6 +11,7 @@ section{
 @mixin search-label{
   font-size: 1.6rem;
   font-weight: 700;
+  line-height: 32px;
 }
 @mixin filter-flex{
   display: flex;
@@ -27,8 +28,8 @@ section{
   .filter{
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    margin-bottom: 15px;
+    gap: 50px;
+    margin-bottom: 50px;
     .city{
       display: flex;
       flex-direction: row;
@@ -44,7 +45,7 @@ section{
         &>div:nth-of-type(1){
           display: flex;
           flex-wrap: wrap;
-          gap:15px;
+          gap:20px;
           select{
             width: 225px;
             height: 30px;
@@ -64,8 +65,35 @@ section{
     }
     .score{
       @include filter-flex;
-      input{
+      div{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      button:nth-of-type(1){
+        width: 36px;
         height: 32px;
+        background: url(images/1_point.png) no-repeat center/contain;
+      }
+      button:nth-of-type(2){
+        width: 55px;
+        height: 32px;
+        background: url(images/2_point.png) no-repeat center/contain;
+      }
+      button:nth-of-type(3){
+        width: 74px;
+        height: 32px;
+        background: url(images/3_point.png) no-repeat center/contain;
+      }
+      button:nth-of-type(4){
+        width: 93px;
+        height: 32px;
+        background: url(images/4_point.png) no-repeat center/contain;
+      }
+      button:nth-of-type(5){
+        width: 112px;
+        height: 32px;
+        background: url(images/5_point.png) no-repeat center/contain;
       }
     }
     .hashtag{
@@ -78,6 +106,7 @@ section{
       }
       button{
         margin: 8px 10px;
+        font-size: 1.4rem;
       }
     }
   }
@@ -102,6 +131,7 @@ section{
       height: 42px;
       padding: 8px;
       border-radius: 5px;
+      font-size: 1.4rem;
     }
     .submit-search{
       color: #fafafa;
@@ -113,5 +143,255 @@ section{
     }
   }
 }
+.list-section{
+  margin-top: 100px;
+  margin-bottom: 120px;
+  .sort{
+    display: flex;
+    justify-content: flex-end;
+    select{
+      width: 120px;
+      border: 1px solid #aaa;
+      border-radius: 3px;
+      padding: 6px 8px;
+      color: #aaa;
+      font-size: 1.4rem;
+    }
+  }
+  .corp-wrap{
+    margin-top: 20px;
+    li{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 28px 40px;
+      gap: 20px;
+      border-bottom: 1px solid #aaa;
+      .corp-img{
+        width: 80px;
+        height: 80px;
+        background-color: #aaa;
+      }
+      .corp-data{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 8px 0px;
+        &>div:nth-of-type(1){
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          h1{
+            font-size: 1.8rem;
+            font-weight: 700;
+          }
+          p{
+            font-size: 1.4rem;
+          }
+        }
+        .corp-hash{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 10px 20px;
+          font-size: 1.6rem;
+        }
+      }
+      .corp-score{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        &>div{
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          img{
+            width: 48px;
+            height: 48px;
+          }
+          p{
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 48px;
+            span{
+              font-size: 1.6rem;
+              font-weight: 400;
+            }
+          }
 
+        }
+        a{
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+  .page{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    button{
+      font-size: 1.8rem;
+      color: #888;
+      font-family: NanumSquare;
+    }
+  }
+}
 
+/* 테블릿 768 사이즈 반응형 */
+@media screen and (min-width: 768px) {
+  section{
+    width: 86%;
+  }
+  @mixin search-label{
+    font-size: 1.8rem;
+    width: 100px;
+  }
+  .search-section{
+    padding: 40px;
+    label{
+      @include search-label;
+    }
+    .filter{
+      gap: 30px;
+      .city{
+        justify-content: flex-start;
+        gap: 10px;
+      }
+      .score{
+        flex-direction: row;
+        gap: 10px;
+      }
+      .hashtag{
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+    .search-main{
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 20px;
+      .corp{
+        flex-grow: 1;
+        flex-direction: row;
+        gap: 10px;
+        input{
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+  .list-section{
+    .sort{
+      select{
+        font-size: 1.6rem;
+      }
+    }
+    .corp-wrap{
+      li{
+        justify-content: space-between;
+        gap: 40px;
+        .corp-data{
+          flex-grow: 1;
+          width: 50%;
+        }
+        .corp-score{
+          width: auto;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+/* 테블릿 1024 사이즈 반응형 */
+@media screen and (min-width: 1024px) {
+  @mixin search-label{
+    font-size: 2.0rem;
+  }
+  .search-section{
+    label{
+      @include search-label;
+    }
+    .filter{
+      .city, .score, .hashtag{
+        gap: 40px;
+      }
+      .score{
+        button:nth-of-type(1){
+          width: 40px;
+          height: 36px;
+        }
+        button:nth-of-type(2){
+          width: 63px;
+          height: 36px;
+        }
+        button:nth-of-type(3){
+          width: 86px;
+          height: 36px;
+        }
+        button:nth-of-type(4){
+          width: 109px;
+          height: 36px;
+        }
+        button:nth-of-type(5){
+          width: 132px;
+          height: 36px;
+        }
+      }
+    }
+    .search-main{
+      .corp{
+        gap: 40px;
+      }
+      button{
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .list-section{
+    .corp-wrap{
+      li{
+        .corp-data{
+          &>div:nth-of-type(1){
+            flex-direction: row;
+            align-items: end;
+            h1{
+              font-size: 2.0rem;
+            }
+            p{
+              font-size: 1.6rem;
+            }
+          }
+        }
+        .corp-score{
+          &>div>img{
+            width: 54px;
+            height: 54px;
+          }
+          &>div>p{
+            font-size: 2.0rem;
+            line-height: 54px;
+            span{
+              font-size: 1.8rem;
+            }
+          }
+          a{
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* PC 1280 사이즈 반응형 */
+@media screen and (min-width: 1280px) {
+  section{
+    width: 67%;
+  }
+}
