@@ -1,5 +1,6 @@
+@charset "UTF-8";
 main {
-  margin-top: 120px;
+  margin-top: 200px;
   width: 100%;
 }
 
@@ -15,12 +16,13 @@ section {
 .search-section label {
   font-size: 1.6rem;
   font-weight: 700;
+  line-height: 32px;
 }
 .search-section .filter {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  margin-bottom: 15px;
+  gap: 50px;
+  margin-bottom: 50px;
 }
 .search-section .filter .city {
   display: flex;
@@ -37,7 +39,7 @@ section {
 .search-section .filter .city > div:nth-of-type(1) > div:nth-of-type(1) {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
 }
 .search-section .filter .city > div:nth-of-type(1) > div:nth-of-type(1) select {
   width: 225px;
@@ -60,8 +62,35 @@ section {
   flex-direction: column;
   gap: 15px;
 }
-.search-section .filter .score input {
+.search-section .filter .score div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.search-section .filter .score button:nth-of-type(1) {
+  width: 36px;
   height: 32px;
+  background: url(images/1_point.png) no-repeat center/contain;
+}
+.search-section .filter .score button:nth-of-type(2) {
+  width: 55px;
+  height: 32px;
+  background: url(images/2_point.png) no-repeat center/contain;
+}
+.search-section .filter .score button:nth-of-type(3) {
+  width: 74px;
+  height: 32px;
+  background: url(images/3_point.png) no-repeat center/contain;
+}
+.search-section .filter .score button:nth-of-type(4) {
+  width: 93px;
+  height: 32px;
+  background: url(images/4_point.png) no-repeat center/contain;
+}
+.search-section .filter .score button:nth-of-type(5) {
+  width: 112px;
+  height: 32px;
+  background: url(images/5_point.png) no-repeat center/contain;
 }
 .search-section .filter .hashtag {
   display: flex;
@@ -76,6 +105,7 @@ section {
 }
 .search-section .filter .hashtag button {
   margin: 8px 10px;
+  font-size: 1.4rem;
 }
 .search-section .search-main {
   display: flex;
@@ -106,6 +136,7 @@ section {
   height: 42px;
   padding: 8px;
   border-radius: 5px;
+  font-size: 1.4rem;
 }
 .search-section .search-main .submit-search {
   color: #fafafa;
@@ -114,4 +145,224 @@ section {
 .search-section .search-main .reset-search {
   background-color: #DDD;
   margin-left: 20px;
+}
+
+.list-section {
+  margin-top: 100px;
+  margin-bottom: 120px;
+}
+.list-section .sort {
+  display: flex;
+  justify-content: flex-end;
+}
+.list-section .sort select {
+  width: 120px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  padding: 6px 8px;
+  color: #aaa;
+  font-size: 1.4rem;
+}
+.list-section .corp-wrap {
+  margin-top: 20px;
+}
+.list-section .corp-wrap li {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 28px 40px;
+  gap: 20px;
+  border-bottom: 1px solid #aaa;
+}
+.list-section .corp-wrap li .corp-img {
+  width: 80px;
+  height: 80px;
+  background-color: #aaa;
+}
+.list-section .corp-wrap li .corp-data {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 8px 0px;
+}
+.list-section .corp-wrap li .corp-data > div:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.list-section .corp-wrap li .corp-data > div:nth-of-type(1) h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.list-section .corp-wrap li .corp-data > div:nth-of-type(1) p {
+  font-size: 1.4rem;
+}
+.list-section .corp-wrap li .corp-data .corp-hash {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  font-size: 1.6rem;
+}
+.list-section .corp-wrap li .corp-score {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.list-section .corp-wrap li .corp-score > div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.list-section .corp-wrap li .corp-score > div img {
+  width: 48px;
+  height: 48px;
+}
+.list-section .corp-wrap li .corp-score > div p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 48px;
+}
+.list-section .corp-wrap li .corp-score > div p span {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.list-section .corp-wrap li .corp-score a {
+  font-size: 1.6rem;
+}
+.list-section .page {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+.list-section .page button {
+  font-size: 1.8rem;
+  color: #888;
+  font-family: NanumSquare;
+}
+
+/* 테블릿 768 사이즈 반응형 */
+@media screen and (min-width: 768px) {
+  section {
+    width: 86%;
+  }
+  .search-section {
+    padding: 40px;
+  }
+  .search-section label {
+    font-size: 1.8rem;
+    width: 100px;
+  }
+  .search-section .filter {
+    gap: 30px;
+  }
+  .search-section .filter .city {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .search-section .filter .score {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .search-section .filter .hashtag {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .search-section .search-main {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .search-section .search-main .corp {
+    flex-grow: 1;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .search-section .search-main .corp input {
+    flex-grow: 1;
+  }
+  .list-section .sort select {
+    font-size: 1.6rem;
+  }
+  .list-section .corp-wrap li {
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .list-section .corp-wrap li .corp-data {
+    flex-grow: 1;
+    width: 50%;
+  }
+  .list-section .corp-wrap li .corp-score {
+    width: auto;
+    justify-content: center;
+  }
+}
+/* 테블릿 1024 사이즈 반응형 */
+@media screen and (min-width: 1024px) {
+  .search-section label {
+    font-size: 2rem;
+  }
+  .search-section .filter .city, .search-section .filter .score, .search-section .filter .hashtag {
+    gap: 40px;
+  }
+  .search-section .filter .score button:nth-of-type(1) {
+    width: 40px;
+    height: 36px;
+  }
+  .search-section .filter .score button:nth-of-type(2) {
+    width: 63px;
+    height: 36px;
+  }
+  .search-section .filter .score button:nth-of-type(3) {
+    width: 86px;
+    height: 36px;
+  }
+  .search-section .filter .score button:nth-of-type(4) {
+    width: 109px;
+    height: 36px;
+  }
+  .search-section .filter .score button:nth-of-type(5) {
+    width: 132px;
+    height: 36px;
+  }
+  .search-section .search-main .corp {
+    gap: 40px;
+  }
+  .search-section .search-main button {
+    font-size: 1.6rem;
+  }
+  .list-section .corp-wrap li .corp-data > div:nth-of-type(1) {
+    flex-direction: row;
+    align-items: end;
+  }
+  .list-section .corp-wrap li .corp-data > div:nth-of-type(1) h1 {
+    font-size: 2rem;
+  }
+  .list-section .corp-wrap li .corp-data > div:nth-of-type(1) p {
+    font-size: 1.6rem;
+  }
+  .list-section .corp-wrap li .corp-score > div > img {
+    width: 54px;
+    height: 54px;
+  }
+  .list-section .corp-wrap li .corp-score > div > p {
+    font-size: 2rem;
+    line-height: 54px;
+  }
+  .list-section .corp-wrap li .corp-score > div > p span {
+    font-size: 1.8rem;
+  }
+  .list-section .corp-wrap li .corp-score a {
+    font-size: 1.8rem;
+  }
+}
+/* PC 1280 사이즈 반응형 */
+@media screen and (min-width: 1280px) {
+  section {
+    width: 67%;
+  }
 }/*# sourceMappingURL=search_result.css.map */
