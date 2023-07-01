@@ -18,48 +18,154 @@
     <main>
       <section>
         <div class="search-section">
-          <form class="search">
+          <form class="search" action="/" method="get">
             <fieldset>
               <div class="filter">
                 <div class="city">
                   <label>지역</label>
                   <div>
                     <div>
-                      <select name="sido" id="sido1"></select>
-                      <select name="gugun" id="gugun1"></select>  
+                      <div class="sido">전체</div>
+                      <div class="sido-list" style="display: none;">
+                        <ul>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="서울">
+                             <span>서울</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="인천">
+                             <span>인천</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="대전">
+                             <span>대전</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="광주">
+                             <span>광주</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="대구">
+                             <span>대구</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="울산">
+                             <span>울산</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="부산">
+                             <span>부산</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="경기">
+                             <span>경기</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="강원">
+                             <span>강원</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="충북">
+                             <span>충북</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="충남">
+                             <span>충남</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="전북">
+                             <span>전북</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="전남">
+                             <span>전남</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="경북">
+                             <span>경북</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="경남">
+                             <span>경남</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="제주">
+                             <span>제주</span>
+                            </label>
+                          </li>
+                        </ul>
+                        <div>
+                          <button type="button" class="reset-sido">초기화</button>
+                          <button type="button" class="submit-sido">적용</button>  
+                        </div>
+                      </div>
                     </div>
-                    <div>X 서울 강서구</div>
+                    <div class="checked-list"></div>
+                    <input class="city-input" name="city" value="" style="display: none;">
                   </div>
                 </div>
                 <div class="score">
                   <label>별점</label>
                   <div>
-                    <button type="button"></button>
-                    <button type="button"></button>
-                    <button type="button"></button>
-                    <button type="button"></button>
-                    <button type="button"></button>
+                    <button type="button" class="btn-score" value="1"><img src="/styles/images/Star_1.png" alt="1점"></button>
+                    <button type="button" class="btn-score" value="2"><img src="/styles/images/Star_2.png" alt="2점"></button>
+                    <button type="button" class="btn-score" value="3"><img src="/styles/images/Star_3.png" alt="3점"></button>
+                    <button type="button" class="btn-score" value="4"><img src="/styles/images/Star_4.png" alt="4점"></button>
+                    <button type="button" class="btn-score" value="5"><img src="/styles/images/Star_5.png" alt="5점"></button>
                   </div>
+                  <input name="score" class="score-input" style="display: none;">
                 </div>
                 <div class="hashtag">
                   <label>키워드</label>
                   <div class="tags">
-                    <button>#해시태그1</button>
-                    <button>#해시태그2</button>
-                    <button>#해시태그3</button>
-                    <button>#해시태그2</button>
-                    <button>#해시태그3</button>
+                    <button type="button" value="1">#해시태그1</button>
+                    <button type="button" value="2">#해시태그2</button>
+                    <button type="button" value="3">#해시태그3</button>
+                    <button type="button">#해시태그2</button>
+                    <button type="button">#해시태그3</button>
                   </div>
+                  <input name="hashtag" class="hashtag-input" value style="display: none;">
                 </div>
               </div>
               <div class="search-main">
                 <div class="corp">
                   <label>기관명</label>
-                  <input placeholder="기관 이름을 입력해주세요">
+                  <input type="text" name="corp_name" class="corpname-input"placeholder="기관 이름을 입력해주세요">
                 </div>
                 <div class="buttons">
                   <button class="submit-search" type="submit">검색</button>
-                  <button class="reset-search" type="reset">초기화</button>
+                  <button class="reset-search" type="button" onclick="resetAll()">초기화</button>
                 </div>
               </div>
             </fieldset>
@@ -110,6 +216,7 @@
       </section>
     </main>
   </div>
+  <div class="sidebar">사이드바</div>
   <footer>
     <footer-component></footer-component>
   </footer>
