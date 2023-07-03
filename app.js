@@ -11,6 +11,7 @@ const moment = require("moment");
 const {auth} = require("./routes/middleware/auth");
 const indexRouter = require("./routes/index");
 const {logout} = require("./routes/controllers/user.js");
+const {mid_search_result} = require("./routes/middleware/review");
 dotenv.config();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -34,10 +35,6 @@ app.get("/", require("./routes/index"))
 
 app.get("/404", auth, (req, res)=>{
     res.render('404.html', {User: req.user})
-})
-
-app.get("/test", auth, (req, res)=>{
-    res.render('search_result.html', {User: req.user})
 })
 
 app.get("/logout", auth, logout)

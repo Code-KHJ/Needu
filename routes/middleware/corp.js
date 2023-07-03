@@ -33,7 +33,7 @@ module.exports = {
   Hash_info: async (req, res, next) => {
     const Corp_name = req.params.name;
     const Hash = await Hash_info(Corp_name);
-    if (Hash.hash_1 !== null){
+    if (Hash[0] !== null){
       req.hash = Hash;
       next();  
     } else {

@@ -3,11 +3,13 @@ const router = express.Router();
 const rootdir = require("../modules/path");
 const {auth} = require("./middleware/auth");
 const {Corp_info, Hash_info, mid_top10_corp, mid_top10_detail} = require("./middleware/corp");
-const { review_content, review_auth, mid_review_recent } = require("./middleware/review");
-const { review_detail, review_more, review_likes, search_review, con_top10_detail } = require("./controllers/review");
+const { review_content, review_auth, mid_review_recent, mid_search_result } = require("./middleware/review");
+const { review_detail, review_more, review_likes, search_review, con_top10_detail, con_search_result } = require("./controllers/review");
 
 
-router.get('/', auth, mid_review_recent, mid_top10_corp, mid_top10_detail,  search_review)
+router.get('/', auth, mid_review_recent, mid_top10_corp, mid_top10_detail, search_review)
+
+router.get("/search", auth, mid_search_result, con_search_result)
 
 router.get('/detail', auth, mid_top10_detail, con_top10_detail)
 

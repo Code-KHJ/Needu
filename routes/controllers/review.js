@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 const { use } = require('..');
 const { NodeResolveLoader } = require("nunjucks");
 const { hash } = require("bcrypt");
-const sql = require("../../modules/sql");
+const { Hash_info, HashTop_update } = require("../../modules/sql");
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -52,15 +52,17 @@ module.exports = {
         const review_no = result.insertId
         try{
           //해시태그 create
-          pool.query('INSERT into Hashtag_Posts (review_no, hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5) values (?,?,?,?,?,?)',
-          [review_no, hashtag.hashtag_1, hashtag.hashtag_2, hashtag.hashtag_3, hashtag.hashtag_4, hashtag.hashtag_5
-          ], (err, rows, fields)=>{
+          pool.query('INSERT into Hashtag_Posts (Corp_name, review_no, hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5) values (?,?,?,?,?,?,?)',
+          [contents.Corp_name, review_no, hashtag.hashtag_1, hashtag.hashtag_2, hashtag.hashtag_3, hashtag.hashtag_4, hashtag.hashtag_5
+          ], async (err, rows, fields)=>{
           if(err) return res.json({ success: false, err})
           else{
+            const hashTopList = await Hash_info(contents.Corp_name);
+            const hashUpdate_result = await HashTop_update(contents.Corp_name, hashTopList);
             pool.query('UPDATE user SET authority = 1 WHERE nickname = "' + contents.nickname + '"', (err, row)=>{
               if(err) return res.json({ success: false, err})
               else{
-                return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/review/"+contents.Corp_name+"';</script>");
+                return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/review/corp/"+contents.Corp_name+"';</script>");
               }
             })
           }})}
@@ -172,6 +174,13 @@ module.exports = {
     }else{
       throw err;
     }
+  },
+  con_search_result: (req, res)=>{
+    const data = {
+      User: req.user,
+      Corp_data: req.corp_data,
+    }
+    res.render(rootdir+'/public/search_result.html', data);
   },
 }
 
