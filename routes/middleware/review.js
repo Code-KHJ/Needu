@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const dbconfig = require("../../config/dbconfig.json");
-const { review_content, review_recent } = require('../../modules/sql');
+const { review_content, review_recent, review_search_result } = require('../../modules/sql');
 const rootdir = require("../../modules/path");
 
 // Database connection pool
@@ -43,5 +43,15 @@ module.exports = {
     const review = await review_recent();
     req.review_recent = review;
     next();
+  },
+  mid_search_result: async(req, res, next) => {
+    const city = req.query.city;
+    const score = req.query.score;
+    const hashtag = req.query.hashtag;
+    const corpname = req.query.corp_name;
+    const page = req.query.page;
+    const data = await review_search_result(city, score, hashtag, corpname, page)
+    req.corp_data = data;
+    next()
   }
 }

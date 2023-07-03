@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>검색결과</title>
 
-  <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
-  <link href="./styles/webcomponent.css" rel="stylesheet">
-  <link href="./styles/search_result.css" rel="stylesheet">
+  <link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+  <link href="/styles/webcomponent.css" rel="stylesheet">
+  <link href="/styles/search_result.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -18,7 +18,7 @@
     <main>
       <section>
         <div class="search-section">
-          <form class="search" action="/" method="get">
+          <form class="search" action="/test" method="get">
             <fieldset>
               <div class="filter">
                 <div class="city">
@@ -149,9 +149,9 @@
                 <div class="hashtag">
                   <label>키워드</label>
                   <div class="tags">
-                    <button type="button" value="1">#해시태그1</button>
-                    <button type="button" value="2">#해시태그2</button>
-                    <button type="button" value="3">#해시태그3</button>
+                    <button type="button" value="#간식제공">#간식제공</button>
+                    <button type="button" value="#자유로운 휴가">#자유로운 휴가</button>
+                    <button type="button" value="#유연근무제">#유연근무제</button>
                     <button type="button">#해시태그2</button>
                     <button type="button">#해시태그3</button>
                   </div>
@@ -181,28 +181,34 @@
             </select>  
           </div>
           <ul class="corp-wrap">
+            {% for corp in Corp_data %}
             <li>
               <div class="corp-img">기관 이미지</div>
               <div class="corp-data">
                 <div>
-                  <h1>서울특별시사회복지사협회</h1>
-                  <p>서울특별시 영등포구</p>  
+                  <h1>{{corp.Corp_name}}</h1>
+                  <p>{{corp.sido}} {{corp.gugun}}</p>
                 </div>
                 <div class="corp-hash">
-                  <p>#해시태그1</p>
-                  <p>#해시태그2</p>
-                  <p>#해시태그3</p>
-                  <p>#해시태그4</p>
+                  <p>{{corp.hashTop1}}</p>
+                  <p>{{corp.hashTop2}}</p>
+                  <p>{{corp.hashTop3}}</p>
+                  <p>{{corp.hashTop4}}</p>
                 </div>
               </div>
               <div class="corp-score">
                 <div>
                   <img src="/styles/images/Star_1.png">
-                  <p>4.3<span> (3)</span></p>
+                  {% if corp.avg_total == undefined %}
+                  <p>0.0<span> (0)</span></p>
+                  {% else %}
+                  <p>{{corp.avg_total}}<span> ({{corp.cnt}})</span></p>
+                  {% endif %}
                 </div>
-                <a>리뷰보기</a>
+                <a href="/review/corp/{{corp.Corp_name}}">리뷰보기</a>
               </div>
             </li>
+            {% endfor %}
           </ul>
           <div class="page">
             <button>1</button>
