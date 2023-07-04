@@ -8,6 +8,10 @@ section{
   width: 80%;
   margin: 0 auto;
 }
+
+button{
+  cursor: pointer;
+}
 @mixin search-label{
   width: 80px;
   font-size: 1.6rem;
@@ -20,6 +24,7 @@ section{
   gap: 15px;
 }
 .search-section{
+  position: relative;
   background-color: #F3F4FB;
   padding: 40px 20px;
   
@@ -27,7 +32,7 @@ section{
     @include search-label;
   }
   .filter{
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 50px;
     margin-bottom: 50px;
@@ -234,11 +239,20 @@ section{
       margin-left: 20px;
     }
   }
+  .btn-filter{
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    cursor: pointer;
+    img{
+      width: 20px;
+    }
+  }
 }
 .list-section{
   margin-top: 100px;
   margin-bottom: 120px;
-  .sort{
+  .order{
     display: flex;
     justify-content: flex-end;
     select{
@@ -319,17 +333,21 @@ section{
       }
     }
   }
-  .page{
+  .pages{
     width: 100%;
     margin: 0 auto;
     margin-top: 100px;
     display: flex;
     justify-content: center;
     gap: 28px;
-    button{
+    li{
       font-size: 1.8rem;
       color: #888;
       font-family: NanumSquare;
+      cursor: pointer;
+    }
+    .page-active{
+      color: #000;
     }
   }
 }
@@ -349,6 +367,7 @@ section{
       @include search-label;
     }
     .filter{
+      display: flex;
       gap: 30px;
       .city{
         justify-content: flex-start;
@@ -381,9 +400,13 @@ section{
         }
       }
     }
+    .btn-filter{
+      display: none;
+    }
+
   }
   .list-section{
-    .sort{
+    .order{
       select{
         font-size: 1.6rem;
       }

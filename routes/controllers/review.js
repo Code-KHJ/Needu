@@ -179,7 +179,11 @@ module.exports = {
     const data = {
       User: req.user,
       Corp_data: req.corp_data,
+      Order: req.query.order,
+      Page: req.query.page,
+      Count: req.totalDataCnt
     }
+    if(data.Count !== undefined){res.cookie('totalCount', data.Count)};
     res.render(rootdir+'/public/search_result.html', data);
   },
 }
