@@ -209,7 +209,7 @@ module.exports = {
         return reject(err);
       };
   })},
-  review_search_result: (city,score,hashtag,corpname,page) => {
+  review_search_result: (city,score,hashtag,corpname,order,page) => {
     return new Promise((resolve, reject) =>{
       let sql = `
         SELECT
@@ -227,7 +227,7 @@ module.exports = {
             ON C.Corp_name = RP.Corp_name
         WHERE C.Corp_name LIKE '%${corpname}%'
         GROUP BY C.Corp_name
-      `;
+        `;
       if(city || score || hashtag || corpname){
         if(city !== undefined && city !== null && city !== ''){
           const cityArray = city.split(',');
@@ -246,7 +246,17 @@ module.exports = {
           if(city || score){sql += (`AND (${hash_query})`)}
           else{sql += (`HAVING (${hash_query})`)};
         };
-      }
+      };
+
+      //order 정렬
+      if(order == 'count'){sql += `ORDER BY cnt DESC\n`}
+      else{sql += `ORDER BY avg_total DESC\n`};
+
+      //페이지네이션
+      if(page !== undefined && page !== null && page !== ''){
+        sql += `LIMIT ${(page - 1)*10}, 10`;
+      }else{sql += `LIMIT 10`;}
+
       try{
         pool.query(sql, (err, rows)=>{
           return resolve(rows)
@@ -255,7 +265,50 @@ module.exports = {
         console.log(err);
         return reject(err);
       }
-    }
-  )
-  }
+    })
+  },
+  review_search_result_cnt: (city,score,hashtag,corpname) => {
+    return new Promise((resolve, reject) =>{
+      let sql = `
+        SELECT
+          C.Corp_name
+        FROM Corp as C
+          LEFT JOIN Review_Posts as RP
+            ON C.Corp_name = RP.Corp_name
+        WHERE C.Corp_name LIKE '%${corpname}%'
+        GROUP BY C.Corp_name
+        `;
+      if(city || score || hashtag || corpname){
+        if(city !== undefined && city !== null && city !== ''){
+          const cityArray = city.split(',');
+          let city_query = cityArray.map((c)=> `(C.sido = '${c}')`).join(' OR ');
+          sql += `HAVING (${city_query})`;
+        };
+        if(score !== undefined && score !== null && score !== ''){
+          const scoreArray = score.split(',');
+          let score_query = scoreArray.map((s)=> `(FORMAT(round(avg(RP.total_score),1),1) >= ${s} AND FORMAT(round(avg(RP.total_score),1),1) < ${parseInt(s) + 1})`).join(' OR ');
+          if(city){sql += (`AND (${score_query})`)}
+          else{sql += (`HAVING (${score_query})`)};
+        };
+        if(hashtag !== undefined && hashtag !== null && hashtag !== ''){
+          const hashtagArray = hashtag.split(',');
+          let hash_query = hashtagArray.map((h)=> `((C.hashTop1 = '${h}') OR (C.hashTop2 = '${h}') OR (C.hashTop3 = '${h}') OR (C.hashTop4 = '${h}'))`).join(' OR ');
+          if(city || score){sql += (`AND (${hash_query})`)}
+          else{sql += (`HAVING (${hash_query})`)};
+        };
+      };
+      const sqlQuery = `
+        SELECT count(*) AS cnt
+        FROM (${sql}) AS T
+      `
+      try{
+        pool.query(sqlQuery, (err, rows)=>{
+          return resolve(rows)
+        });
+      } catch (err){
+        console.log(err);
+        return reject(err);
+      }
+    })
+  },
 }

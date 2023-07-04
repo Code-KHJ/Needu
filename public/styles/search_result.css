@@ -9,7 +9,12 @@ section {
   margin: 0 auto;
 }
 
+button {
+  cursor: pointer;
+}
+
 .search-section {
+  position: relative;
   background-color: #F3F4FB;
   padding: 40px 20px;
 }
@@ -20,7 +25,7 @@ section {
   line-height: 32px;
 }
 .search-section .filter {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 50px;
   margin-bottom: 50px;
@@ -230,16 +235,25 @@ section {
   background-color: #DDD;
   margin-left: 20px;
 }
+.search-section .btn-filter {
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  cursor: pointer;
+}
+.search-section .btn-filter img {
+  width: 20px;
+}
 
 .list-section {
   margin-top: 100px;
   margin-bottom: 120px;
 }
-.list-section .sort {
+.list-section .order {
   display: flex;
   justify-content: flex-end;
 }
-.list-section .sort select {
+.list-section .order select {
   width: 120px;
   border: 1px solid #aaa;
   border-radius: 3px;
@@ -315,7 +329,7 @@ section {
 .list-section .corp-wrap li .corp-score a {
   font-size: 1.6rem;
 }
-.list-section .page {
+.list-section .pages {
   width: 100%;
   margin: 0 auto;
   margin-top: 100px;
@@ -323,10 +337,14 @@ section {
   justify-content: center;
   gap: 28px;
 }
-.list-section .page button {
+.list-section .pages li {
   font-size: 1.8rem;
   color: #888;
   font-family: NanumSquare;
+  cursor: pointer;
+}
+.list-section .pages .page-active {
+  color: #000;
 }
 
 /* 테블릿 768 사이즈 반응형 */
@@ -342,6 +360,7 @@ section {
     width: 100px;
   }
   .search-section .filter {
+    display: flex;
     gap: 30px;
   }
   .search-section .filter .city {
@@ -374,7 +393,10 @@ section {
   .search-section .search-main .corp input {
     flex-grow: 1;
   }
-  .list-section .sort select {
+  .search-section .btn-filter {
+    display: none;
+  }
+  .list-section .order select {
     font-size: 1.6rem;
   }
   .list-section .corp-wrap li {

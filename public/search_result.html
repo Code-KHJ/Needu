@@ -18,7 +18,7 @@
     <main>
       <section>
         <div class="search-section">
-          <form class="search" action="/test" method="get">
+          <form class="search" action="/review/search" method="get">
             <fieldset>
               <div class="filter">
                 <div class="city">
@@ -169,20 +169,29 @@
                 </div>
               </div>
             </fieldset>
+            <button type="button" class="btn-filter" onclick="filter_active()">
+              <img class="filter-black" src="/styles/images/btn_filter.png">
+              <img class="filter-blue" src="/styles/images/btn_filter_blue.png" style="display: none;">
+            </button>
           </form>
         </div>
       </section>
       <section>
         <div class="list-section">
-          <div class="sort">
-            <select>
-              <option>별점 순</option>
-              <option>리뷰 많은 순</option>
-            </select>  
+          <div class="order">
+            <select name="order">
+              {% if Order == 'count' %}
+              <option value="count">리뷰많은순</option>
+              <option value="score">별점순</option>
+              {% else %}
+              <option value="score">별점순</option>
+              <option value="count">리뷰많은순</option>
+              {% endif %}
+            </select>
           </div>
           <ul class="corp-wrap">
             {% for corp in Corp_data %}
-            <li>
+            <li class="corp-li">
               <div class="corp-img">기관 이미지</div>
               <div class="corp-data">
                 <div>
@@ -210,13 +219,7 @@
             </li>
             {% endfor %}
           </ul>
-          <div class="page">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>></button>
+          <div class="pages">
           </div>
         </div>
       </section>
@@ -233,6 +236,5 @@
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script defer src="/js/search_result.js"></script>
-
 </body>
 </html>
