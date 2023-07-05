@@ -211,6 +211,7 @@ module.exports = {
   })},
   review_search_result: (city,score,hashtag,corpname,order,page) => {
     return new Promise((resolve, reject) =>{
+      if(corpname == undefined){corpname = ''};
       let sql = `
         SELECT
           C.Corp_name as Corp_name,
@@ -256,7 +257,7 @@ module.exports = {
       if(page !== undefined && page !== null && page !== ''){
         sql += `LIMIT ${(page - 1)*10}, 10`;
       }else{sql += `LIMIT 10`;}
-
+      console.log(sql)
       try{
         pool.query(sql, (err, rows)=>{
           return resolve(rows)
@@ -269,6 +270,7 @@ module.exports = {
   },
   review_search_result_cnt: (city,score,hashtag,corpname) => {
     return new Promise((resolve, reject) =>{
+      if(corpname == undefined){corpname = ''};
       let sql = `
         SELECT
           C.Corp_name

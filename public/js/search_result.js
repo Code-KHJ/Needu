@@ -136,12 +136,17 @@ function filter_active(){
 //////정렬 기능 구현//////
 const order = document.querySelector('select[name="order"]');
 order.addEventListener('change', ()=>{
-  const location = window.location.search;
+  let location = window.location.search;
   let queryString
+  if(location.includes('page')){
+    location = location.replace(/page=\d+/, "page=1");
+  }
   if(location.includes('order')){
     queryString = location.split('&').map((s)=> s.includes('order') ? s = `order=${order.value}` : s).join('&');
-  }else{
-    queryString = location+`&order=${order.value}`;
+  } else if (location == ''){
+    queryString = location+`?order=${order.value}`;
+  } else{
+    queryString = location+`&order=${order.value}`;    
   }
   window.location.href = `/review/search${queryString}`;
 })
@@ -154,13 +159,74 @@ const cookieData = document.cookie.split('; ')
   .find(row => row.startsWith('totalCount='))
   .split('=')[1];
 const totalCount = JSON.parse(decodeURIComponent(cookieData).split('[')[1].split(']')[0]).cnt;
-const corpPerPage = 10;
-const pageCount = Math.ceil(totalCount/corpPerPage);
-const pages = document.querySelector('.pages')
+
+const pageCount = Math.ceil(totalCount/10);
+const pages = document.querySelector('.pages');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+
+let curruntPage = window.location.search.includes('page') ? new URLSearchParams(window.location.search).get('page') : 1; //현재 page
+
+let maxPageCnt = 5; //페이지그룹 당 페이지 수
+let pageActiveIdx = Math.ceil(curruntPage/maxPageCnt); //현재 페이지그룹 번호
+let startIdx = ((pageActiveIdx-1)*maxPageCnt)+1;
+let endIdx = pageActiveIdx*maxPageCnt;
 //페이지 생성
-for (let i=1; i<=pageCount; i++){
-  pages.innerHTML+=`<li value="${i}">${i}</li>`
+for (let i=startIdx; i<=endIdx; i++){
+  if(i<=pageCount){pages.innerHTML+=`<li value="${i}">${i}</li>`}
 }
+const pageNumber = pages.querySelectorAll('li');
+function pagination_Load(){
+  //prev, next 버튼
+  if(pageActiveIdx == 1){
+    prevBtn.style.display = 'none';
+  }else{
+    prevBtn.style.display = 'block';
+  }
+  if(pageActiveIdx == Math.ceil(pageCount/maxPageCnt)){
+    nextBtn.style.display = 'none';
+  }else{
+    nextBtn.style.display = 'block';
+  }
+  //현재 페이지 클래스 추가
+  pageNumber.forEach((nb)=>{
+    console.log(nb.value)
+    if(nb.value == curruntPage){
+      nb.classList.add('page-active');
+    }else{
+      nb.classList.remove('page-active');
+    }
+  })
+}
+pagination_Load()
+
+//페이지그룹 이동
+nextBtn.addEventListener('click', ()=>{
+  const lastNumber = pageNumber[pageNumber.length - 1].value;
+  movePage(lastNumber + 1);
+})
+prevBtn.addEventListener('click', ()=>{
+  const firstNumber = pageNumber[0].value;
+  movePage(firstNumber - 1);
+})
+
+function movePage(toPage){
+  const location = window.location.search;
+  let queryString
+  if(location.includes('page')){
+    if(location.split('&')[0].includes('page')){
+      queryString = location.split('&').map((p)=>p.includes('page') ? p = `?page=${toPage}` : p).join('&');
+    }else{
+      queryString = location.split('&').map((p)=>p.includes('page') ? p = `page=${toPage}` : p).join('&');
+    }
+  } else if(location == ''){
+    queryString = location+`?page=${toPage}`;
+  } else{
+    queryString = location+`&page=${toPage}`;
+  }
+  window.location.href = `/review/search${queryString}`;
+}
+
 
 //페이지 이동
 const page = document.querySelectorAll('.pages li');
@@ -169,20 +235,19 @@ page.forEach((e)=>{
     const location = window.location.search;
     let queryString
     if(location.includes('page')){
-      queryString = location.split('&').map((p)=>p.includes('page') ? p = `page=${this.value}` : p).join('&');
-    }else{
+      if(location.split('&')[0].includes('page')){
+        queryString = location.split('&').map((p)=>p.includes('page') ? p = `?page=${this.value}` : p).join('&');
+      }else{
+        queryString = location.split('&').map((p)=>p.includes('page') ? p = `page=${this.value}` : p).join('&');
+      }
+    } else if(location == ''){
+      queryString = location+`?page=${this.value}`;
+    } else{
       queryString = location+`&page=${this.value}`;
     }
     window.location.href = `/review/search${queryString}`;
   })
 });
-
-
-
-
-
-
-
 
 
 

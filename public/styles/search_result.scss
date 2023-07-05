@@ -333,21 +333,40 @@ button{
       }
     }
   }
-  .pages{
+  .page-wrap{
     width: 100%;
     margin: 0 auto;
     margin-top: 100px;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 28px;
-    li{
-      font-size: 1.8rem;
-      color: #888;
-      font-family: NanumSquare;
-      cursor: pointer;
+    .prev{
+      background: url(images/ico_arrow_L.png) no-repeat;
+      background-size: contain;
+      width: 7px;
+      height: 14px;
     }
-    .page-active{
-      color: #000;
+    .next{
+      background: url(images/ico_arrow_R.png) no-repeat;
+      background-size: contain;
+      width: 7px;
+      height: 14px;
+    }
+    .pages{
+      display: flex;
+      flex-direction: row;
+      gap: 28px;
+      justify-content: center;
+      li{
+        font-size: 1.8rem;
+        color: #888;
+        font-family: NanumSquare;
+        cursor: pointer;
+      }
+      .page-active{
+        color: #000;
+      }
     }
   }
 }
