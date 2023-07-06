@@ -99,27 +99,9 @@ async function More_contents() {
             <div class="star_detail" style="display: none;">
               <div>
                 <div class="star_bg">
-                  <span style="width: ${review.career_score*20}%"></span>
+                  <span style="width: ${review.growth_score*20}%"></span>
                 </div>
-                <p>커리어 향상</p>
-              </div>
-              <div>
-                <div class="star_bg">
-                  <span style="width: ${review.worklife_score*20}%"></span>
-                </div>
-                <p>업무와 삶의 균형</p>
-              </div>
-              <div>
-                <div class="star_bg">
-                  <span style="width: ${review.welfare_score*20}%"></span>
-                </div>
-                <p>복리후생</p>
-              </div>
-              <div>
-                <div class="star_bg">
-                  <span style="width: ${review.culture_score*20}%"></span>
-                </div>
-                <p>조직 내 문화</p>
+                <p>성장 가능성</p>
               </div>
               <div>
                 <div class="star_bg">
@@ -127,6 +109,30 @@ async function More_contents() {
                 </div>
                 <p>리더십</p>
               </div>
+              <div>
+                <div class="star_bg">
+                  <span style="width: ${review.reward_score*20}%"></span>
+                </div>
+                <p>급여 및 복지</p>
+              </div>
+              <div>
+                <div class="star_bg">
+                  <span style="width: ${review.worth_score*20}%"></span>
+                </div>
+                <p>일 가치감</p>
+              </div>
+              <div>
+                <div class="star_bg">
+                  <span style="width: ${review.culture_score*20}%"></span>
+                </div>
+                <p>사내 문화</p>
+              </div>
+              <div>
+              <div class="star_bg">
+                <span style="width: ${review.worklife_score*20}%"></span>
+              </div>
+              <p>워라밸</p>
+            </div>
             </div>
           </div>
           <div class="review_comment">
@@ -156,6 +162,17 @@ async function More_contents() {
                 <span>${review.hashtag_3 !== null ? review.hashtag_3 : ''}</span>
                 <span>${review.hashtag_4 !== null ? review.hashtag_4 : ''}</span>
                 <span>${review.hashtag_5 !== null ? review.hashtag_5 : ''}</span>
+                <span>${review.hashtag_6 !== null ? review.hashtag_6 : ''}</span>
+                <span>${review.hashtag_7 !== null ? review.hashtag_7 : ''}</span>
+                <span>${review.hashtag_8 !== null ? review.hashtag_8 : ''}</span>
+                <span>${review.hashtag_9 !== null ? review.hashtag_9 : ''}</span>
+                <span>${review.hashtag_10 !== null ? review.hashtag_10 : ''}</span>
+                <span>${review.hashtag_11 !== null ? review.hashtag_11 : ''}</span>
+                <span>${review.hashtag_12 !== null ? review.hashtag_12 : ''}</span>
+                <span>${review.hashtag_13 !== null ? review.hashtag_13 : ''}</span>
+                <span>${review.hashtag_14 !== null ? review.hashtag_14 : ''}</span>
+                <span>${review.hashtag_15 !== null ? review.hashtag_15 : ''}</span>
+                <span>${review.hashtag_16 !== null ? review.hashtag_16 : ''}</span>
               </div>	
             </div>
             <button type="button" class="comment_like" onclick="likesClick(this)">

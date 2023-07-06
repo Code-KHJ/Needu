@@ -27,32 +27,14 @@ async function change_select(index){
         <p>${select.querySelector('button').innerText}</p>
         <div>
           <img src="/styles/images/Star_1.png">
-          <span>${res.data[i].avg_career}</span>
+          <span>${res.data[i][value]}</span>
         </div>
       </div>
       <ul class="detail-top5-details">
         <li>
-          <p>커리어 향상</p>
+          <p>성장 가능성</p>
           <div class="star_bg">
-            <span style="width: ${res.data[i].avg_career*20}%"></span>
-          </div>
-        </li>
-        <li>
-          <p>업무와 삶의 균형</p>
-          <div class="star_bg">
-            <span style="width: ${res.data[i].avg_worklife*20}%"></span>
-          </div>
-        </li>
-        <li>
-          <p>복리후생</p>
-          <div class="star_bg">
-            <span style="width: ${res.data[i].avg_welfare*20}%"></span>
-          </div>
-        </li>
-        <li>
-          <p>조직 내 문화</p>
-          <div class="star_bg">
-            <span style="width: ${res.data[i].avg_culture*20}%"></span>
+            <span style="width: ${res.data[i].avg_growth*20}%"></span>
           </div>
         </li>
         <li>
@@ -61,6 +43,30 @@ async function change_select(index){
             <span style="width: ${res.data[i].avg_leadership*20}%"></span>
           </div>
         </li>
+        <li>
+          <p>급여 및 복지</p>
+          <div class="star_bg">
+            <span style="width: ${res.data[i].avg_reward*20}%"></span>
+          </div>
+        </li>
+        <li>
+          <p>일 가치감</p>
+          <div class="star_bg">
+            <span style="width: ${res.data[i].avg_worth*20}%"></span>
+          </div>
+        </li>
+        <li>
+          <p>사내 문화</p>
+          <div class="star_bg">
+            <span style="width: ${res.data[i].avg_culture*20}%"></span>
+          </div>
+        </li>
+        <li>
+        <p>워라밸</p>
+        <div class="star_bg">
+          <span style="width: ${res.data[i].avg_worklife*20}%"></span>
+        </div>
+      </li>
       </ul>
     </div>
     `

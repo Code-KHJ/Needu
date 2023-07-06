@@ -24,11 +24,12 @@ module.exports = {
           C.gugun as gugun,
           count(RP.total_score) as cnt, 
           FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
-          FORMAT(round(avg(RP.career_score),1),1) as avg_career, 
-          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife, 
-          FORMAT(round(avg(RP.welfare_score),1),1) as avg_welfare, 
+          FORMAT(round(avg(RP.growth_score),1),1) as avg_growth, 
+          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership, 
+          FORMAT(round(avg(RP.reward_score),1),1) as avg_reward, 
+          FORMAT(round(avg(RP.worth_score),1),1) as avg_worth, 
           FORMAT(round(avg(RP.culture_score),1),1) as avg_culture, 
-          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership
+          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife
         FROM Corp as C 
           LEFT JOIN Review_Posts as RP 
           on C.Corp_name = RP.Corp_name
@@ -61,32 +62,18 @@ module.exports = {
   },
   Hash_info: (Corp_name) => {
     return new Promise((resolve, reject)=>{
+      let list = [];
+      for (i=1; i<=16; i++){
+        let query = `SELECT hashtag_${i} as hash FROM Hashtag_Posts as HP
+        LEFT JOIN Review_Posts as RP
+          on HP.review_no = RP.No
+        WHERE RP.Corp_name = "${Corp_name}"`
+        list.push(query);
+      }
+      let sqlquery = list.join(' UNION ALL ');
       const sql = `
         SELECT hash FROM(
-          SELECT hashtag_1 as hash FROM Hashtag_Posts as HP
-            LEFT JOIN Review_Posts as RP
-            on HP.review_no = RP.No
-          WHERE RP.Corp_name = "${Corp_name}"
-            UNION ALL
-          SELECT hashtag_2 as hash FROM Hashtag_Posts as HP
-            LEFT JOIN Review_Posts as RP
-            on HP.review_no = RP.No
-          WHERE RP.Corp_name = "${Corp_name}"
-          UNION ALL
-          SELECT hashtag_3 as hash FROM Hashtag_Posts as HP
-            LEFT JOIN Review_Posts as RP
-            on HP.review_no = RP.No
-          WHERE RP.Corp_name = "${Corp_name}"
-          UNION ALL
-          SELECT hashtag_4 as hash FROM Hashtag_Posts as HP
-            LEFT JOIN Review_Posts as RP
-            on HP.review_no = RP.No
-          WHERE RP.Corp_name = "${Corp_name}"
-            UNION ALL
-          SELECT hashtag_5 as hash FROM Hashtag_Posts as HP
-            LEFT JOIN Review_Posts as RP
-            on HP.review_no = RP.No
-          WHERE RP.Corp_name = "${Corp_name}"
+          ${sqlquery}
         ) AS hashtag
         Group by hash
         ORDER by count(hash) DESC
@@ -123,12 +110,16 @@ module.exports = {
   },
   review_content: (Corp_name) => {
     return new Promise((resolve, reject)=>{
+      let hashList = 'HP.hashtag_1';
+      for (i=2; i<=16; i++){
+        hashList += `, HP.hashtag_${i}`
+      }
       const sql = `
         SELECT 
           RP.*,
           FORMAT(RP.total_score,1) as total_score,
           DATE_FORMAT(RP.created_date, '%Y.%m') as date,
-          HP.hashtag_1, HP.hashtag_2, HP.hashtag_3, HP.hashtag_4, HP.hashtag_5
+          ${hashList}
         FROM Review_Posts as RP
           LEFT JOIN Hashtag_Posts as HP
           on RP.No = HP.review_no
@@ -165,11 +156,12 @@ module.exports = {
           C.gugun as gugun,
           count(RP.total_score) as cnt, 
           FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
-          FORMAT(round(avg(RP.career_score),1),1) as avg_career, 
-          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife, 
-          FORMAT(round(avg(RP.welfare_score),1),1) as avg_welfare, 
+          FORMAT(round(avg(RP.growth_score),1),1) as avg_growth, 
+          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership, 
+          FORMAT(round(avg(RP.reward_score),1),1) as avg_reward, 
+          FORMAT(round(avg(RP.worth_score),1),1) as avg_worth, 
           FORMAT(round(avg(RP.culture_score),1),1) as avg_culture, 
-          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership,
+          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife,
           RP.nickname as nickname,
           RP.last_date as last_date,
           RP.type as type,
@@ -257,7 +249,6 @@ module.exports = {
       if(page !== undefined && page !== null && page !== ''){
         sql += `LIMIT ${(page - 1)*10}, 10`;
       }else{sql += `LIMIT 10`;}
-      console.log(sql)
       try{
         pool.query(sql, (err, rows)=>{
           return resolve(rows)

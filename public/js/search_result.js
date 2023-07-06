@@ -251,32 +251,3 @@ page.forEach((e)=>{
 
 
 
-
-
-// //////페이지네이션 구현//////
-// const corpPerPage = 10;
-// const corpLi = document.querySelectorAll('.corp-li');
-// const corpCount = corpLi.length;
-// const pageCount = Math.ceil(corpCount/corpPerPage);
-// const numbers = document.querySelector('.pages');
-
-// //페이지 생성
-// for (let i=1; i<=pageCount; i++){
-//   numbers.innerHTML+=`<li>${i}</li>`
-// }
-
-// //페이지 넘버 css, 이벤트 실행
-// const numberBtn = numbers.querySelectorAll('li');
-// numberBtn.forEach((item, index)=>{
-//   item.addEventListener('click', (e)=>{
-//     numberBtn.forEach(nb => nb.classList.remove('page-active'));
-//     e.target.classList.add('page-active');
-//     displayList(index);
-//   })
-// })
-
-// //페이지 이동 이벤트
-// function displayList(index){
-//   let listArray = [...corpLi].slice((index-1)*10,index*10);
-//   console.log(listArray);
-// }
