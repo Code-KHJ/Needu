@@ -25,35 +25,36 @@ module.exports = {
       first_date : req.body.first_date,
       last_date : req.body.last_date,
       type : req.body.work_type,
-      career_score : parseInt(req.body.career)/2,
-      worklife_score : parseInt(req.body.worklife)/2,
-      welfare_score : parseInt(req.body.welfare)/2,
-      culture_score : parseInt(req.body.culture)/2,
+      growth_score : parseInt(req.body.growth)/2,
       leadership_score : parseInt(req.body.leadership)/2,
+      reward_score : parseInt(req.body.reward)/2,
+      worth_score : parseInt(req.body.worth)/2,
+      culture_score : parseInt(req.body.culture)/2,
+      worklife_score : parseInt(req.body.worklife)/2,
       highlight : req.body.highlight,
       pros : req.body.pros,
       cons : req.body.cons,
     }
-    const hashtag = {
-      hashtag_1 : req.body.hash_1,
-      hashtag_2 : req.body.hash_2,
-      hashtag_3 : req.body.hash_3,
-      hashtag_4 : req.body.hash_4,
-      hashtag_5 : req.body.hash_5
+    const hashtag = {};
+    for (let i = 1; i<=16; i++){
+      const key = `hashtag_${i}`;
+      const value = req.body[`hash_${i}`];
+      hashtag[key] = value;
     }
+    console.log(hashtag)
     try{
       //기관리뷰 create
-      pool.query('INSERT into Review_Posts (Corp_name, nickname, first_date, last_date, type, career_score, worklife_score, welfare_score, culture_score, leadership_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?)',
+      pool.query('INSERT into Review_Posts (Corp_name, nickname, first_date, last_date, type, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
       [contents.Corp_name, contents.nickname, contents.first_date, contents.last_date, contents.type,
-       contents.career_score, contents.worklife_score, contents.welfare_score, contents.culture_score, contents.leadership_score,
+       contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score,
        contents.highlight, contents.pros, contents.cons], (err, result)=>{
       if(err) return res.json({ success: false, err})
       else {
         const review_no = result.insertId
         try{
           //해시태그 create
-          pool.query('INSERT into Hashtag_Posts (Corp_name, review_no, hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5) values (?,?,?,?,?,?,?)',
-          [contents.Corp_name, review_no, hashtag.hashtag_1, hashtag.hashtag_2, hashtag.hashtag_3, hashtag.hashtag_4, hashtag.hashtag_5
+          pool.query('INSERT into Hashtag_Posts (Corp_name, review_no, hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5, hashtag_6, hashtag_7, hashtag_8, hashtag_9, hashtag_10, hashtag_11, hashtag_12, hashtag_13, hashtag_14, hashtag_15, hashtag_16) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+          [contents.Corp_name, review_no, hashtag.hashtag_1, hashtag.hashtag_2, hashtag.hashtag_3, hashtag.hashtag_4, hashtag.hashtag_5, hashtag.hashtag_6, hashtag.hashtag_7, hashtag.hashtag_8, hashtag.hashtag_9, hashtag.hashtag_10, hashtag.hashtag_11, hashtag.hashtag_12, hashtag.hashtag_13, hashtag.hashtag_14, hashtag.hashtag_15, hashtag.hashtag_16
           ], async (err, rows, fields)=>{
           if(err) return res.json({ success: false, err})
           else{

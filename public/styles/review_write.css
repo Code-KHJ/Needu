@@ -130,7 +130,6 @@ main{
 	gap: 40px;
 }
 .working_info label {
-	width: 100px;
 	font-size: 1.4rem;
 	font-weight: 700;
 }
@@ -158,9 +157,7 @@ main{
 	border: 1px solid #aaaaaa;
 	border-radius: 5px;
 }
-.period>div>div>div>div {
-	width: 60px;
-}
+
 .period>div>div>div>div input {
 	width: 20px;
 }
@@ -171,6 +168,13 @@ main{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+.quit{
+	float: left;
+}
+.working{
+	float: right;
+	text-align: end;
 }
 .work_type {
 	margin-top: 40px;

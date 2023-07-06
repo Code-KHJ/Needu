@@ -54,7 +54,7 @@ module.exports = {
       req.tf = true;
       next();
     } else{
-    const default_item = "avg_career";
+    const default_item = "avg_growth";
     const detail10 = await top10_corp(default_item);
     req.detail10 = detail10;
     req.tf = false;

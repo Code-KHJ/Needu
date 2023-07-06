@@ -26,10 +26,10 @@ score_input.forEach((e,i) => e.addEventListener('input', () => {
 check_score.addEventListener('change', () => {
   let sum = 0;
   let avg = 0;
-  for (let i = 0; i<5; i++ ){
+  for (let i = 0; i<6; i++ ){
     sum += Number(score_input[i].value)
   }
-  total_score.style.width = `${(sum * 10)/5}%`
+  total_score.style.width = `${(sum * 10)/6}%`
 })
 
 //해시태그 체크
@@ -109,7 +109,6 @@ form.addEventListener('change', ()=>{
   const check_pros = document.getElementById('pros').value.length > 10;
   const check_cons = document.getElementById('cons').value.length > 10;
   const checkAll = [check_firstdate, check_lastdate, check_worktype, score_array, check_highlight, check_pros, check_cons];
-  console.log(checkAll)
   if(checkAll.every((ck) => ck==true)){
     btnSubmit.disabled="";
     btnSubmit.style.backgroundColor = '#2D65FE';
