@@ -20,7 +20,7 @@ module.exports = {
       const sql = `
         SELECT 
           C.Corp_name as name,
-          C.sido as sido,
+          C.city as city,
           C.gugun as gugun,
           count(RP.total_score) as cnt, 
           FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
@@ -134,11 +134,11 @@ module.exports = {
         return reject(err);
       };
     })},
-  Add_corp: (Corp_name, sido, gugun) => {
+  Add_corp: (Corp_name, city, gugun) => {
     return new Promise((resolve, reject)=>{
-      const sql = 'insert into Corp (Corp_name, sido, gugun) values (?, ?, ?)';
+      const sql = 'insert into Corp (Corp_name, city, gugun) values (?, ?, ?)';
       try {
-        pool.query(sql, [Corp_name, sido, gugun], (err, result)=>{
+        pool.query(sql, [Corp_name, city, gugun], (err, result)=>{
           if(err) return err;
           return resolve(result.protocol41)
         })
@@ -152,7 +152,7 @@ module.exports = {
       const sql = `
         SELECT 
           C.Corp_name as name,
-          C.sido as sido,
+          C.city as city,
           C.gugun as gugun,
           count(RP.total_score) as cnt, 
           FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
@@ -207,7 +207,7 @@ module.exports = {
       let sql = `
         SELECT
           C.Corp_name as Corp_name,
-          C.sido as sido,
+          C.city as city,
           C.gugun as gugun,
           C.hashtag_top1 as hashTop1,
           C.hashtag_top2 as hashTop2,
@@ -222,9 +222,9 @@ module.exports = {
         GROUP BY C.Corp_name
         `;
       if(city || score || hashtag || corpname){
-        if(city !== undefined && city !== null && city !== ''){
+        if(city !== undefined && city !== null && city !== '' && city !== '시/도'){
           const cityArray = city.split(',');
-          let city_query = cityArray.map((c)=> `(sido = '${c}')`).join(' OR ');
+          let city_query = cityArray.map((c)=> `(city = '${c}')`).join(' OR ');
           sql += `HAVING (${city_query})`;
         };
         if(score !== undefined && score !== null && score !== ''){
@@ -272,9 +272,9 @@ module.exports = {
         GROUP BY C.Corp_name
         `;
       if(city || score || hashtag || corpname){
-        if(city !== undefined && city !== null && city !== ''){
+        if(city !== undefined && city !== null && city !== '' && city !== '시/도'){
           const cityArray = city.split(',');
-          let city_query = cityArray.map((c)=> `(C.sido = '${c}')`).join(' OR ');
+          let city_query = cityArray.map((c)=> `(C.city = '${c}')`).join(' OR ');
           sql += `HAVING (${city_query})`;
         };
         if(score !== undefined && score !== null && score !== ''){

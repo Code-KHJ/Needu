@@ -25,7 +25,7 @@
                   <label>지역</label>
                   <div>
                     <div>
-                      <div class="sido">전체</div>
+                      <div class="city-sido">전체</div>
                       <div class="sido-list" style="display: none;">
                         <ul>
                           <li>
@@ -124,6 +124,12 @@
                              <span>제주</span>
                             </label>
                           </li>
+                          <li>
+                            <label class="sido-label">
+                             <input type="checkbox" name="" value="세종">
+                             <span>세종</span>
+                            </label>
+                          </li>
                         </ul>
                         <div>
                           <button type="button" class="reset-sido">초기화</button>
@@ -207,7 +213,7 @@
               <div class="corp-data">
                 <div>
                   <h1>{{corp.Corp_name}}</h1>
-                  <p>{{corp.sido}} {{corp.gugun}}</p>
+                  <p>{{corp.city}} {{corp.gugun}}</p>
                 </div>
                 <div class="corp-hash">
                   <p>{{corp.hashTop1}}</p>

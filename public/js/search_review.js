@@ -21,7 +21,7 @@ async function change_select(index){
     <div class="detail-top5-content">
       <div class="detail-top5-corp">
         <p>${res.data[i].name}</p>
-        <p>${res.data[i].sido} ${res.data[i].gugun}</p>
+        <p>${res.data[i].city} ${res.data[i].gugun}</p>
       </div>
       <div class="detail-top5-highlight">
         <p>${select.querySelector('button').innerText}</p>

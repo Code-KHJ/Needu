@@ -28,7 +28,7 @@
           <form class="search" id="search" method="get" action="review/search">
             <fieldset>
               <div class="user-input">
-                <label><select name="sido" id="sido1"></select></label>              
+                <label><select name="city" id="city1"></select></label>              
                 <input placeholder="기관 이름을 입력해주세요" type="text" name="corp_name" id="search_input">
               </div>
               <button form="search" id="btnSubmit" onclick="submit()"></button>
@@ -69,7 +69,7 @@
               <div>
                 <div class="ts-item-detail">
                   <p>{{top.name}}</p>
-                  <p>{{top.sido}} {{top.gugun}}</p>
+                  <p>{{top.city}} {{top.gugun}}</p>
                   <div class="star_bg">
                     <span style="width: {{top.avg_total*20}}%"></span>
                   </div>
@@ -106,7 +106,7 @@
               <div class="detail-top5-content">
                 <div class="detail-top5-corp">
                   <p>{{detail.name}}</p>
-                  <p>{{detail.sido}} {{detail.gugun}}</p>
+                  <p>{{detail.city}} {{detail.gugun}}</p>
                 </div>
                 <div class="detail-top5-highlight">
                   <p>성장 가능성</p>

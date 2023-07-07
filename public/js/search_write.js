@@ -61,13 +61,13 @@ function load_data(){
   }).map(data => {
     return {
       name: data.Corp_name,
-      sido: data.sido,
+      city: data.city,
       gugun: data.gugun}})
   //시도 있는 경우 필터링
-  const sido = document.querySelector("#sido1").value;
-  if(sido !== "시/도"){
+  const city = document.querySelector("#city1").value;
+  if(city !== "시/도"){
     filterCorp = filterCorp.filter(data => {
-      return data.sido.includes(sido)
+      return data.city.includes(city)
     })
   }
   //5개 이하로 갯수 보여주기
@@ -80,9 +80,9 @@ function load_data(){
 function created_auto(data) {
   const auto_corpList = document.createElement('li')
   const corp_btnSubmit = document.createElement('button');
-  const sido = document.querySelector('.search #sido1');
+  const city = document.querySelector('.search #city1');
   corp_btnSubmit.classList.add('auto_data');
-  if(sido !== null){
+  if(city !== null){
   corp_btnSubmit.innerHTML = `
     <span>${data.name}</span>
   `
@@ -90,7 +90,7 @@ function created_auto(data) {
   corp_btnSubmit.innerHTML = `
     <span>${data.name}</span>
     <span>|</span>
-    <span>${data.sido+" "+data.gugun}</span>
+    <span>${data.city+" "+data.gugun}</span>
   `
   }
   auto_corpList.appendChild(corp_btnSubmit);

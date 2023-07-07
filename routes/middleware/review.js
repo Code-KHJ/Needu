@@ -55,6 +55,7 @@ module.exports = {
     let totalDataCnt
     if(page == undefined){
       totalDataCnt = await review_search_result_cnt(city, score, hashtag, corpname)
+      if(totalDataCnt == undefined){totalDataCnt = [{cnt : 0}]}
     }
     req.corp_data = data;
     req.totalDataCnt = totalDataCnt

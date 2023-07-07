@@ -52,7 +52,7 @@ button{
           display: flex;
           flex-wrap: wrap;
           gap:20px;
-          .sido{
+          .city-sido{
             width: 255px;
             height: 30px;
             border-radius: 5px;
@@ -391,7 +391,7 @@ button{
       .city{
         justify-content: flex-start;
         gap: 10px;
-        .sido{
+        .city-sido{
           height: 35px !important;
           font-size: 1.6rem !important;
           line-height: 25px !important;
