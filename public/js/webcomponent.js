@@ -145,7 +145,7 @@ class register_component extends HTMLElement{
             <div>
               <label>소재지</label>
               <div>
-                <select name="sido" id="sido1"></select>
+                <select name="city" id="sido1"></select>
                 <select name="gugun" id="gugun1"></select>	
               </div>
             </div>

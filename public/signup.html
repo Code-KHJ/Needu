@@ -24,7 +24,17 @@
                         <!-- 아이디 -->
                         <div class="item">
                             <label for="id">이메일(ID)</label>
-                            <input type="email" name="id" id="id" clsss="" maxlength="40" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="이메일(ID)를 입력해주세요." onchange="checkId()" required>
+                            <div>
+                                <input type="email" name="id" id="id" clsss="" maxlength="40" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="이메일(ID)를 입력해주세요." required>
+                                <button class="req-btn" disabled="disabled">인증요청</button>
+                            </div>
+                            <div class="checkmsg" id="checkidmsg" style="display: none;"></div>
+                        </div>
+                        <div class="item checkEmail">
+                            <div>
+                                <input type="text" class="authCode-input" maxlength="40" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="인증번호를 입력해주세요." required>
+                                <button class="confirm-btn" disabled="disabled">확인</button>
+                            </div>
                             <div class="checkmsg" id="checkidmsg" style="display: none;"></div>
                         </div>
                         <!-- 비밀번호 -->
@@ -42,10 +52,7 @@
                         <!-- 휴대폰 번호 -->
                         <div class="item">
                             <label for="phonenumber">휴대폰</label>
-                            <div>
-                                <input type="text" name="phonenumber" id="phonenumber" clsss="" autocomplete="off" placeholder="휴대전화 번호('-'빼고 숫자만 입력)" onchange="checkPn()" required>
-                                <button id="btn_phone" disabled="disabled">인증요청</button>
-                            </div>
+                            <input type="text" name="phonenumber" id="phonenumber" clsss="" autocomplete="off" placeholder="휴대전화 번호('-'빼고 숫자만 입력)" onchange="checkPn()" required>
                             <div class="checkmsg" id="checkPnmsg" style="display: none;"></div>
                         </div>
                         <!-- 닉네임 -->

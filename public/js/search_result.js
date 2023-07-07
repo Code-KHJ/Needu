@@ -1,7 +1,7 @@
 //필터링 세부 기능
 
 //////sido 버튼 기능 구현//////
-const sido = document.querySelector(".sido");
+const sido = document.querySelector(".city-sido");
 const sidoList = document.querySelector('.sido-list');
 const sidoLi = sidoList.querySelectorAll('.sido-label>input');
 const sidoSubmit = document.querySelector('.submit-sido');
@@ -160,7 +160,7 @@ const cookieData = document.cookie.split('; ')
   .split('=')[1];
 const totalCount = JSON.parse(decodeURIComponent(cookieData).split('[')[1].split(']')[0]).cnt;
 
-const pageCount = Math.ceil(totalCount/10);
+const pageCount = Math.ceil(totalCount/10) == 0 ? 1 : Math.ceil(totalCount/10);
 const pages = document.querySelector('.pages');
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');

@@ -116,7 +116,7 @@ module.exports = {
             if (row[0] == undefined){ //동일한 아이디가 없을 경우
                 const salt = bcrypt.genSaltSync(saltRounds);
                 const hashPw = bcrypt.hashSync(user_info.password, salt);
-                pool.query('insert into user (id, password, phonenumber, nickname, authority, required_check1, required_check2, optional_check1, optional_check2, info_period) values (?,?,?,?,?,?,?,?,?,?)',
+                pool.query('insert into user (id, password, phonenumber, nickname, authority, policy, personal_info, marketing_email, marketing_SMS, info_period) values (?,?,?,?,?,?,?,?,?,?)',
                     [user_info.id, hashPw, user_info.phonenumber, user_info.nickname, user_info.authority, user_info.required_check1,
                      user_info.required_check2, user_info.optional_check1, user_info.optional_check2, user_info.info_period], (err, rows, fields)=>{
                     if(err) return res.json({ success: false, err})

@@ -1,3 +1,5 @@
+let checkResultId = false;
+//id 중복 검사
 async function checkId(){
     const userid = document.getElementById('id');
     const msgid = document.getElementById('checkidmsg');
@@ -33,6 +35,66 @@ async function checkId(){
         }
     }
 }
+
+//이메일 인증
+const inputEmail = document.getElementById('id');
+const reqBtn = document.querySelector('.req-btn');
+const checkEmail = document.querySelector('.checkEmail');
+const confirmBtn = document.querySelector('.confirm-btn');
+const inputAuth = document.querySelector('.authCode-input')
+let authCode;
+inputEmail.addEventListener('change', ()=>{
+    checkId().then((result) => {
+        if(result === true){
+            reqBtn.disabled='';
+            reqBtn.style.backgroundColor = '#2D65FE'
+            reqBtn.style.borderColor = '#2D65FE'
+            reqBtn.style.color = '#EAEDF4';
+        }else{
+            reqBtn.disabled='disabled';
+            reqBtn.style.backgroundColor = 'rgba(51, 51, 51, 0.5)'
+            reqBtn.style.borderColor = 'rgba(51, 51, 51, 0.5)'
+            reqBtn.style.color = '';
+        }
+    })
+})
+reqBtn.addEventListener('click', async ()=>{
+    checkEmail.style.display = 'block';
+    
+    let res = await axios.post('signup/mail', {
+        mail: inputEmail.value,
+    });
+    authCode = res.data.authCode;
+});
+inputAuth.addEventListener('keydown', ()=>{
+    if(inputAuth.value == ''){
+        confirmBtn.disabled='disabled';
+        confirmBtn.style.backgroundColor = 'rgba(51, 51, 51, 0.5)'
+        confirmBtn.style.borderColor = 'rgba(51, 51, 51, 0.5)'
+        confirmBtn.style.color = '';
+    }else{
+        confirmBtn.disabled='';
+        confirmBtn.style.backgroundColor = '#2D65FE'
+        confirmBtn.style.borderColor = '#2D65FE'
+        confirmBtn.style.color = '#EAEDF4';
+    }
+});
+confirmBtn.addEventListener('click', ()=>{
+    if(inputAuth.value == authCode){
+        checkResultId = true;
+        inputEmail.readOnly = true;
+        reqBtn.disabled='disabled';
+        inputAuth.readOnly = true;
+        confirmBtn.disabled='disabled;'
+        confirmBtn.innerHTML='인증완료';
+        alert('이메일이 인증되었습니다.')
+    }else{
+        alert('인증번호가 틀립니다. 재발송을 원하시면 인증요청 버튼을 다시 클릭해주세요.')
+    }
+});
+
+
+//비밀번호 검사
 function checkPw1(){
     const password1 = document.getElementById('password1');
     const msgpw1 = document.getElementById('checkpw1msg');
@@ -111,22 +173,14 @@ async function checkNm(){
 function checkPn(){
     const phone = document.getElementById('phonenumber');
     const msgPn = document.getElementById('checkPnmsg');
-    const btnPn = document.getElementById('btn_phone');
     const regPn = /^(010)[0-9]{7,8}$/ //전화번호 정규식
     if(!regPn.test(phone.value)){
         phone.style.borderColor = '#dc3434';
         msgPn.style="display: "
         msgPn.innerHTML="휴대폰 번호를 바르게 입력해주세요."
-        btnPn.disabled="disabled";
-        btnPn.style.backgroundColor = 'rgba(51, 51, 51, 0.5)';
-        btnPn.style.borderColor = 'rgba(51, 51, 51, 0.5)';
     } else{ //통과
         phone.style.borderColor = '#2D65FE';
         msgPn.style="display: none;"
-        btnPn.disabled="";
-        btnPn.style.backgroundColor = '#2D65FE';
-        btnPn.style.borderColor = "#2D65FE";
-        btnPn.style.color = "#EAEDF4";
         return true;
     }}
 
@@ -157,7 +211,7 @@ function checkRd(){
 async function checkSubmit(){
     const ckbox2 = document.getElementById('check_2').checked;
     const ckbox3 = document.getElementById('check_3').checked;
-    const checkid = await checkId();
+    const checkid = checkResultId;
     const checknm = await checkNm();
     const list = [checkid, checkPw1(), checkPw2(), checknm, checkPn(), ckbox2, ckbox3, checkRd()];
     if(list.every((ck)=>ck==true)){ return true }
