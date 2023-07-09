@@ -41,7 +41,6 @@ module.exports = {
       const value = req.body[`hash_${i}`];
       hashtag[key] = value;
     }
-    console.log(hashtag)
     try{
       //기관리뷰 create
       pool.query('INSERT into Review_Posts (Corp_name, nickname, first_date, last_date, type, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
@@ -85,9 +84,9 @@ module.exports = {
     }
     if (middle_info.User) {
       if (middle_info.Corp){
-        res.render(rootdir+'/public/review_write.html', middle_info)
+        res.render(rootdir+'/public/write_detail.html', middle_info)
       }else{
-        return res.status(200).send("<script>alert('아직 등록되지 않은 기관이므로, 기관정보를 먼저 알려주세요.');location.href = '/';</script>");
+        return res.status(200).send("<script>alert('아직 등록되지 않은 기관이므로, 기관정보를 먼저 알려주세요.');history.go(-1);</script>");
       }
     }
     else {
@@ -160,15 +159,6 @@ module.exports = {
       return res.send(JSON.stringify("권한없음"));
     }
   },
-  search_review: (req, res) => {
-    const middle_info = {
-      User: req.user,
-      review: req.review_recent,
-      top10 : req.top10,
-      detail10 : req.detail10,
-    }
-    res.render(rootdir+'/public/search_review.html', middle_info)
-  },
   con_top10_detail: (req, res)=>{
     if(req.tf){
       return res.send(JSON.stringify(req.detail10))
@@ -176,7 +166,7 @@ module.exports = {
       throw err;
     }
   },
-  con_search_result: (req, res)=>{
+  con_review_search: (req, res)=>{
     const data = {
       User: req.user,
       Corp_data: req.corp_data,
@@ -185,7 +175,7 @@ module.exports = {
       Count: req.totalDataCnt
     }
     if(data.Count !== undefined){res.cookie('totalCount', data.Count)};
-    res.render(rootdir+'/public/search_result.html', data);
+    res.render(rootdir+'/public/review_search.html', data);
   },
 }
 

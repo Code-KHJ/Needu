@@ -4,122 +4,173 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeedU</title>
-
-  <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
-  <link href="./styles/webcomponent.css" rel="stylesheet">
-  <link href="./styles/main.css" rel="stylesheet">
-
+  <title>기관검색</title>
+  <link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+  <link href="/styles/webcomponent.css" rel="stylesheet">
+  <link href="/styles/main.css" rel="stylesheet">
   <!-- SWIPER 외부 라이브러리 연결-->
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
-
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 </head>
 <body>
   <div class="container">
     <div id="header_wrap">
       <header-component data-name="{{User.nickname}}"></header-component>
     </div>
-    <!-- main -->
     <main>
-      <section class="visual_wrap">
-        <div class="visual">
-          <h2 class="screen_out">메인 비주얼 영역</h2>
+      <section class="banner">
+        <div class="banner-search">
+          <h1>기관리뷰</h1>
           <div>
-            <p>어느 곳에서도 확인할 수 없는</p>
-            <p><span>사회복지기관</span>의 <span>실제 리뷰</span></p>  
+            <P>전/현직자들의 생생한 후기가 궁금하다면</P>
+            <P>지금 바로 찾아보세요!</P>  
           </div>
-          <p>오직 <span>NEEDU</span> 에서만</p>
-          <form class="search_main_wrap">
+          <form class="search" id="search" method="get" action="review/search">
             <fieldset>
-              <legend class="screen_out">검색</legend>
-              <input type="search" placeholder="궁금한 기관을 검색해보세요!" id="corp_name" name="corp_name">
-              <button class="search_btn"></button>
+              <div class="user-input">
+                <label><select name="city" id="city1"></select></label>              
+                <input placeholder="기관 이름을 입력해주세요" type="text" name="corp_name" id="search_input">
+              </div>
+              <button form="search" id="btnSubmit" onclick="submit()"></button>
             </fieldset>
           </form>
-          <span>찾으시는 기관이 없다면? <a href="#">후기를 알고 싶은 기관 신청하기</a></span>
         </div>
+        <div class="banner-image"></div>
       </section>
-      <section class="recentReview_wrap">
-        <h2>최근 작성된 리뷰</h2>
-        <div class="recentReview">
-          <button class="btn_recentReview" type="button" onclick="location.href='/review'">더보기</button>
-          <div class="recentReview_con_wrap">
-            <div class="slider-for">
-              {% for review_item in review %}
-              <div class="recentReview_con focus">
-                <div class="recentReview_con_top">
-                  <strong>{{review_item.highlight}}</strong>
-                  <p>
-                    <span>장점</span>
-                    {{review_item.pros}}
-                  </p>
-                  <p>
-                    <span>단점</span>
-                    {{review_item.cons}}
-                  </p>
+      <section class="first-contents">
+        <div class="recent-reviews">
+          <h1>최근 리뷰</h1>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {% for review_item in review.slice(0,10) %}
+              <div class="review swiper-slide">
+                <div>
+                  <span>{{review_item.Corp_name}}</span>
+                  {% if review_item.last_date == '9999-12' %}
+                  <span>현직원</span>
+                  {% else %}
+                  <span>전직원</span>
+                  {% endif %}                
+                  <span>{{review_item.date}}</span>  
                 </div>
-                <div class="recentReview_con_bottom">
-                  <div class="star_bg">
-                    <span style="width: {{review_item.total_score*20}}%"></span>
-                  </div>
-                  <ul>
-                    <li>{{review_item.Corp_name}}</li>
-                    <li>{{review_item.nickname.slice(0,1)}}{{'*'.repeat(review_item.nickname.length - 1)}}</li>
-                    <li>{{review_item.date}}</li>
-                  </ul>
-                </div>
+                <p>{{review_item.highlight}}</p>
+                <button type="button" onclick="location.href='/review/corp/{{review_item.Corp_name}}'">더보기</button>
               </div>
-              {% endfor %}
-            </div>
-            <div class="recentReview_con_inner slider-nav">
-              {% for review_item in review %}
-              <div class="recentReview_con">
-                <div class="recentReview_con_top">
-                  <strong>{{review_item.highlight}}</strong>
-                  <p>
-                    <span>장점</span>
-                    {{review_item.pros}}
-                  </p>
-                  <p>
-                    <span>단점</span>
-                    {{review_item.cons}}
-                  </p>
-                </div>
-                <div class="recentReview_con_bottom">
-                  <div class="star_bg">
-                    <span style="width: {{review_item.total_score*20}}%"></span>
-                  </div>
-                  <ul>
-                    <li>{{review_item.Corp_name}}</li>
-                    <li>{{review_item.nickname.slice(0,1)}}{{'*'.repeat(review_item.nickname.length - 1)}}</li>
-                    <li>{{review_item.date}}</li>
-                  </ul>
-                </div>
-              </div>
-              {% endfor %}
+              {% endfor %}  
             </div>
           </div>
         </div>
+        <div class="top-score">
+          <h1>전체 만족도 Top</h1>
+          <div class="top-score-contents">
+            {% for top in top10.slice(0,4) %}
+            <div class="top-score-item top1">
+              <div>이미지</div>
+              <div>
+                <div class="ts-item-detail">
+                  <p>{{top.name}}</p>
+                  <p>{{top.city}} {{top.gugun}}</p>
+                  <div class="star_bg">
+                    <span style="width: {{top.avg_total*20}}%"></span>
+                  </div>
+                </div>
+                <span>{{top.avg_total}}</span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="top-score-banner">
+            <p>지금 후기 작성하면 전체 리뷰 확인 가능</p>
+            <p>별점 주고 후기 보러가기</p>
+            <span class="ts-banner-img"></span>
+          </div>
+        </div>
       </section>
-      <div class="main_bottom_banner_wrap">
-        <h2 class="screen_out">메인 하단 배너 영역</h2>
-        <div class="main_bottom_banner"></div>
-      </div>
+      <section class="second-contents">
+        <h1>항목별 Top5</h1>
+        <div>
+          <div>
+            <ul class="details">
+              <li class="select-detail"><button value="avg_growth">성장 가능성</button></li>
+              <li><button value="avg_leadership" >리더십</button></li>
+              <li><button value="avg_reward">급여 및 복지</button></li>
+              <li><button value="avg_worth">일 가치감</button></li>
+              <li><button value="avg_culture">사내 문화</button></li>
+              <li><button value="avg_worklife">워라밸</button></li>
+            </ul>
+          </div>
+          <ul class="detail-top5">
+            {% for detail in detail10.slice(0,5) %}
+            <li class="detail-top5-item">
+              <div class="detail-top5-no">{{loop.index}}</div>
+              <div class="detail-top5-content">
+                <div class="detail-top5-corp">
+                  <p>{{detail.name}}</p>
+                  <p>{{detail.city}} {{detail.gugun}}</p>
+                </div>
+                <div class="detail-top5-highlight">
+                  <p>성장 가능성</p>
+                  <div>
+                    <img src="/styles/images/Star_1.png">
+                    <span>{{detail.avg_growth}}</span>
+                  </div>
+                </div>
+                <ul class="detail-top5-details">
+                  <li style="display: none;">
+                    <p>성장 가능성</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_growth*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>리더십</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_leadership*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>급여 및 복지</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_reward*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>일 가치감</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_worth*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>사내 문화</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_culture*20}}%"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>워라밸</p>
+                    <div class="star_bg">
+                      <span style="width: {{detail.avg_worklife*20}}%"></span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          <button class="back"><span></span></button>
+          <button class="next"><span></span></button>
+        </div>
+      </section>
     </main>
-  <!-- main end -->
-    
   </div>
   <footer>
     <footer-component></footer-component>
   </footer>
-  <!-- footer end -->
-  <totop-component></totop-component>
   <script type="module" src="/js/webcomponent.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/hangul-js" type="text/javascript"></script>
   <script defer src="/js/main.js"></script>
+  <script defer src="/js/modules.js"></script>
 </body>
 </html>

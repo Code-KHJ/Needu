@@ -29,8 +29,8 @@ class header_component extends HTMLElement{
               </form>
             </div>
             <ul class="gnb">
-              <li><a href="/review">기업리뷰</a></li>
-              <li><a href="/search_write">리뷰작성</a></li>
+              <li><a href="/review/search">기업리뷰</a></li>
+              <li><a href="/review/write">리뷰작성</a></li>
             </ul>
           </div>
           <div class="usersign">
@@ -92,7 +92,7 @@ class footer_component extends HTMLElement{
       <span>사업자번호: 000-00-00000</span>
       <span>통신판매업: 00000</span>
       <span>대표자: 000</span>
-      <span>이메일: 00000@000000.com</span>
+      <span>이메일: needu.sw@gmail.com</span>
       <span>주소: 서울시 00구 00로 00길 00-00</span>
     </div>
   `
