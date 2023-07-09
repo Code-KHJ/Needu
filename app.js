@@ -31,18 +31,16 @@ nunjucks.configure('./public', {
     express : app,
 })
 
-app.get("/", require("./routes/index"))
-
-app.get("/404", auth, (req, res)=>{
-    res.render('404.html', {User: req.user})
-})
-
+app.use("/", require("./routes/index"))
 app.get("/logout", auth, logout)
 app.use("/signup", require("./routes/signup"));
 app.use("/login", require("./routes/login"));
 app.use("/review", require("./routes/review"));
-app.use("/review_write", require("./routes/review_write"));
-app.use("/search_write", require("./routes/search_write"));
+app.use("/review/write", require("./routes/review_write"));
+
+app.get("/404", auth, (req, res)=>{
+    res.render('404.html', {User: req.user})
+})
 
 // app.use((err, req, res, next)=>{
 //     console.log(err);

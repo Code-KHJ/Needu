@@ -13,7 +13,7 @@ let nowIndex = -1;
 //검색 자동완성 기능
 searchForm.addEventListener('keyup', async (e)=>{
   if(corp.length == 0){
-    const res = await axios.get("search_write/all")
+    const res = await axios.get("/review/write/all")
     corp = res.data.corp
   }
   btnSubmit_reset()
@@ -46,7 +46,7 @@ searchForm.addEventListener('keyup', async (e)=>{
     
     //버튼 활성화, 경로 지정
     btnSubmit.disabled="";
-    searchForm.action="/review_write/"+searchInput.value;
+    searchForm.action="/review/write/corp/"+searchInput.value;
   }
 })
 
@@ -64,12 +64,12 @@ function load_data(){
       city: data.city,
       gugun: data.gugun}})
   //시도 있는 경우 필터링
-  const city = document.querySelector("#city1").value;
-  if(city !== "시/도"){
-    filterCorp = filterCorp.filter(data => {
-      return data.city.includes(city)
-    })
-  }
+  // const city = document.querySelector("#city1").value;
+  // if(city !== "시/도"){
+  //   filterCorp = filterCorp.filter(data => {
+  //     return data.city.includes(city)
+  //   })
+  // }
   //5개 이하로 갯수 보여주기
   const maxResults = 5;
   const resultsCount = Math.min(maxResults, filterCorp.length);
@@ -110,7 +110,8 @@ function liClick(corpList) {
 function input_data(target){
   const corp_selected = target.querySelector('button>span:nth-child(1)').textContent;
   searchInput.value = corp_selected;
-  searchForm.action="/review_write/"+searchInput.value;
+  searchForm.action="/review/write/corp/"+searchInput.value;
+  console.log(searchInput)
   removeList()
   nowIndex = -1
   searchInput.focus()

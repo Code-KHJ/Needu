@@ -7,7 +7,7 @@
 		<title>리뷰작성</title>
 		<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
 		<link href="/styles/webcomponent.css" rel="stylesheet">
-		<link href="/styles/review_write.css" rel="stylesheet" type="text/css">
+		<link href="/styles/write_detail.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div class="container">
@@ -53,7 +53,7 @@
 				<div class="contents_wrap">
 					<div class="contents">
 						<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
-						<form class="review_form" id="review_form" method="post" action="/review_write/{{Corp.name}}">
+						<form class="review_form" id="review_form" method="post" action="/review/write/corp/{{Corp.name}}">
 							<div class="working_info">
 								<div class="period">
 									<label>근무기간</label>
@@ -248,6 +248,6 @@
 		<totop-component></totop-component>
 		<script type="module" src="/js/webcomponent.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script defer src="/js/review_write.js"></script>
+		<script defer src="/js/write_detail.js"></script>
 	</body>
 </html>

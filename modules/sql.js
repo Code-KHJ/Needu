@@ -304,4 +304,19 @@ module.exports = {
       }
     })
   },
+  addCareer: (nickname, Corp_name, first_date, last_date, review_no) => {
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        insert into user_career (nickname, Corp_name, first_date, last_date, review_no) values (?, ?, ?, ?, ?)
+      `
+      try{
+        pool.query(sql, [nickname, Corp_name, first_date, last_date, review_no], (err, result)=>{
+          return resolve(result)
+        })  
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  }
 }
