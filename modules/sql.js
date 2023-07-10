@@ -130,7 +130,6 @@ module.exports = {
         return resolve(rows)
         });
       } catch (err) {
-        console.log(err);
         return reject(err);
       };
     })},
@@ -304,13 +303,61 @@ module.exports = {
       }
     })
   },
-  addCareer: (nickname, Corp_name, first_date, last_date, review_no) => {
+  insert_review: (contents) => {
     return new Promise((resolve, reject) =>{
       const sql = `
-        insert into user_career (nickname, Corp_name, first_date, last_date, review_no) values (?, ?, ?, ?, ?)
+        INSERT into Review_Posts (Corp_name, nickname, first_date, last_date, type, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+      `
+      const data = [contents.Corp_name, contents.nickname, contents.first_date, contents.last_date, contents.type, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
+      try{
+        pool.query(sql, data, (err, result)=>{
+          return resolve(result)
+          })
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  insert_hashtag: (contents, review_no, hashtag) => {
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        INSERT into Hashtag_Posts (Corp_name, review_no, hashtag_1, hashtag_2, hashtag_3, hashtag_4, hashtag_5, hashtag_6, hashtag_7, hashtag_8, hashtag_9, hashtag_10, hashtag_11, hashtag_12, hashtag_13, hashtag_14, hashtag_15, hashtag_16) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+      `
+      const data = [contents.Corp_name, review_no, hashtag.hashtag_1, hashtag.hashtag_2, hashtag.hashtag_3, hashtag.hashtag_4, hashtag.hashtag_5, hashtag.hashtag_6, hashtag.hashtag_7, hashtag.hashtag_8, hashtag.hashtag_9, hashtag.hashtag_10, hashtag.hashtag_11, hashtag.hashtag_12, hashtag.hashtag_13, hashtag.hashtag_14, hashtag.hashtag_15, hashtag.hashtag_16];
+      try{
+        pool.query(sql, data, (err, result)=>{
+          return resolve(result)
+          })
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  select_auth: (nickname) => {
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        SELECT authority FROM user WHERE nickname = "${nickname}"
       `
       try{
-        pool.query(sql, [nickname, Corp_name, first_date, last_date, review_no], (err, result)=>{
+        pool.query(sql, (err, rows)=>{
+          if(err){console.log(err)}
+          return resolve(rows)
+        })
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  update_auth: (contents) => {
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        UPDATE user SET authority = 1 WHERE nickname = "${contents.nickname}"
+      `
+      try{
+        pool.query(sql, (err, result)=>{
           return resolve(result)
         })  
       }catch(err){
@@ -318,5 +365,46 @@ module.exports = {
         return reject(err)
       }
     })
-  }
+  },
+  add_career: (contents, review_no) => {
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        insert into user_career (nickname, Corp_name, first_date, last_date, review_no) values (?, ?, ?, ?, ?)
+      `
+      const data = [contents.nickname, contents.Corp_name, contents.first_date, contents.last_date, review_no]
+      try{
+        pool.query(sql, data, (err, result)=>{
+          return resolve(result)
+        })  
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  update_review_likes: (corp_name, review_num, review_like) => {
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        UPDATE Review_Posts 
+          SET likes = likes + ${review_like}
+          WHERE No = (
+            SELECT No FROM (
+              SELECT No
+              FROM Review_Posts
+              WHERE Corp_name = "${corp_name}"
+              ORDER BY No DESC
+              LIMIT 1 OFFSET ${review_num}
+            ) AS subquery
+          );
+      `
+      try{
+        pool.query(sql, (err, result)=>{
+          return resolve(result)
+        })  
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
 }

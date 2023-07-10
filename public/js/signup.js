@@ -66,7 +66,7 @@ reqBtn.addEventListener('click', async ()=>{
     });
     authCode = res.data.authCode;
 });
-inputAuth.addEventListener('keydown', ()=>{
+inputAuth.addEventListener('input', ()=>{
     if(inputAuth.value == ''){
         confirmBtn.disabled='disabled';
         confirmBtn.style.backgroundColor = 'rgba(51, 51, 51, 0.5)'
@@ -79,6 +79,7 @@ inputAuth.addEventListener('keydown', ()=>{
         confirmBtn.style.color = '#EAEDF4';
     }
 });
+
 confirmBtn.addEventListener('click', ()=>{
     if(inputAuth.value == authCode){
         checkResultId = true;

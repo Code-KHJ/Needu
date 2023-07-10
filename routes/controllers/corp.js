@@ -1,6 +1,8 @@
 const {Corp_info, Add_corp } = require('../../modules/sql');
 
-
+process.on('uncaughtException', (err)=>{
+  console.error(err)
+})
 
 module.exports = {
   corp: (req, res) => {
