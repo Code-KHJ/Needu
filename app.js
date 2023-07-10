@@ -19,16 +19,16 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname+"/public"));
 app.use(cookieParser());
 app.use(cors({
-    origin : 'http://localhost:3000',
-    methods : ['GET', 'POST'],
-    credentials : true,
+  origin : 'http://localhost:3000',
+  methods : ['GET', 'POST'],
+  credentials : true,
 }))
 
 app.set('view engine', 'html')
 nunjucks.configure('./public', {
-    autoescape : true,
-    watch : true,
-    express : app,
+  autoescape : true,
+  watch : true,
+  express : app,
 })
 
 app.use("/", require("./routes/index"))
@@ -38,12 +38,17 @@ app.use("/login", require("./routes/login"));
 app.use("/review", require("./routes/review"));
 app.use("/review/write", require("./routes/review_write"));
 
-app.get("/404", auth, (req, res)=>{
-    res.render('404.html', {User: req.user})
+// app.get("/404", auth, (req, res)=>{
+//     res.render('404.html', {User: req.user})
+// })
+
+app.use((req, res, next)=>{
+    res.status(404).render('404.html')
 })
 
-// app.use((err, req, res, next)=>{
-//     console.log(err);
-//     res.render('404.html', {})
-// })
+app.use((err, req, res, next)=>{
+  console.error(err.stack);
+  res.status(500).render('500.html')
+})
+
 app.listen(port, () => {console.log(`Server started on port ${port}`)});
