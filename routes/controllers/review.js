@@ -27,6 +27,10 @@ module.exports = {
       pros : req.body.pros,
       cons : req.body.cons,
     }
+    const isEmpty = (object) => !Object.values(object).every(x=> (x !== null && x !== ''));
+    if(isEmpty(contents)){
+      return res.status(400).json({"msg":"입력누락"})
+    }
     const hashtag = {};
     for (let i = 1; i<=16; i++){
       const key = `hashtag_${i}`;
@@ -50,7 +54,7 @@ module.exports = {
       return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/review/corp/"+contents.Corp_name+"';</script>");
     } catch(err){
       console.log(err)
-      return err
+      return res.status(500).json({err});
     }
   },
   write_auth: (req, res) => {
@@ -61,13 +65,13 @@ module.exports = {
     }
     if (middle_info.User) {
       if (middle_info.Corp){
-        res.render(rootdir+'/public/write_detail.html', middle_info)
+        res.status(200).render(rootdir+'/public/write_detail.html', middle_info)
       }else{
         return res.status(404).send("<script>alert('아직 등록되지 않은 기관이므로, 기관정보를 먼저 알려주세요.');history.go(-1);</script>");
       }
     }
     else {
-      return res.status(200).send("<script>alert('로그인 하신 후 이용할 수 있는 서비스입니다.');location.href = '/login';</script>");
+      return res.status(401).send("<script>alert('로그인 하신 후 이용할 수 있는 서비스입니다.');location.href = '/login';</script>");
     }
   },
   review_detail: (req, res) => {
@@ -84,7 +88,7 @@ module.exports = {
         cnt : cnt,
         top10 : req.top10
       }
-      return res.render(rootdir+'/public/review_detail.html', middle_info)
+      return res.status(200).render(rootdir+'/public/review_detail.html', middle_info)
     } else{
       return res.status(404).render(rootdir+'/public/404.html')
     }
@@ -99,14 +103,14 @@ module.exports = {
     const newContents = content.slice(startIndex, endIndex)
     if(User){
       if(User.auth > 0){
-        res.json({auth: User.auth, content: newContents})
+        res.status(200).json({auth: User.auth, content: newContents})
       }
       else{
-        res.json({auth: User.auth})
+        res.status(204).json({auth: User.auth})
       }
     }
     else {
-      res.json({auth: 'none'})
+      res.status(401).json({auth: 'none'})
     }
   },
   review_likes: async (req, res) => {
@@ -117,10 +121,12 @@ module.exports = {
       const review_like = req.body.likes
       const updateRviewLikes = await update_review_likes(corp_name, review_num, review_like);
       if(updateRviewLikes !== undefined){
-        return res.send(JSON.stringify(req.user))
+        return res.status(200).send(JSON.stringify(req.user))
+      }else{
+        return res.status(500).json({err})
       }
     } else {
-      return res.send(JSON.stringify("권한없음"));
+      return res.status(401).send(JSON.stringify("권한없음"));
     }
   },
   con_top10_detail: (req, res)=>{
@@ -139,7 +145,7 @@ module.exports = {
       Count: req.totalDataCnt
     }
     if(data.Count !== undefined){res.cookie('totalCount', data.Count)};
-    res.render(rootdir+'/public/review_search.html', data);
+    res.status(200).render(rootdir+'/public/review_search.html', data);
   },
 }
 

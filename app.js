@@ -4,17 +4,14 @@ const port = 3000;
 const path = require("path");
 const bodyParser = require("body-parser");
 const app = express();
-const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const moment = require("moment");
 const {auth} = require("./routes/middleware/auth");
 const indexRouter = require("./routes/index");
 const {logout} = require("./routes/controllers/user.js");
-const {mid_search_result} = require("./routes/middleware/review");
-dotenv.config();
+const swaggerUi = require('swagger-ui-express');
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname+"/public"));
 app.use(cookieParser());
@@ -30,6 +27,9 @@ nunjucks.configure('./public', {
   watch : true,
   express : app,
 })
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(require('./swagger/swagger')));
+
 
 app.use("/", require("./routes/index"))
 app.get("/logout", auth, logout)
