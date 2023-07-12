@@ -37,7 +37,7 @@ module.exports = {
     const returnPath = url.parse(returnUrl).pathname;
     try{
       pool.query('SELECT id, password, nickname FROM user WHERE id = "' + id + '"', (err, row)=>{
-        if(err) return console.log(err)
+        if(err) return res.status(500).json({err})
         else if(row[0] !== undefined){
           const match = bcrypt.compareSync(password, row[0].password)
           if(match){
@@ -69,15 +69,15 @@ module.exports = {
             }
           } else{
           //비밀번호 불일치
-          res.send("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.');history.go(-1)</script>");
+            return res.status(404).send("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.');history.go(-1)</script>");
         }
         } else{
         //존재하지 않는 계정
-        res.send("<script>alert('아이디가 존재하지 않습니다.');history.go(-1);</script>");
+        res.status(404).send("<script>alert('아이디가 존재하지 않습니다.');history.go(-1);</script>");
         }
       })
     } catch(err){
-      console.error(err)
+      return res.status(500).json({err})
     }
     //로그인 유효성검사
   },
@@ -141,17 +141,18 @@ module.exports = {
             user_info.required_check2, user_info.optional_check1, user_info.optional_check2, user_info.info_period
           ];
           pool.query(sql, data, (err, rows, fields)=>{
-            if(err) return res.json({ success: false, err})
+            if(err) return res.status(500).json({ success: false, err})
             return res.status(200).send("<script>alert('회원가입이 완료되었습니다. 로그인하신 후 서비스를 이용해주세요');location.href = '/login';</script>");
           })
         }
           else {
             res.json({ success: false, err}) //아이디 중복일 때 에러 부분 추후 자바스크립트로 구현 필요
-            res.send("<script>alert('중복된 아이디가 있습니다.');location.href = document.referrer;</script>");
+            res.status(400).send("<script>alert('중복된 아이디가 있습니다.');location.href = document.referrer;</script>");
           }
       })
     } catch(err){
       console.error(err)
+      res.status(500).json({err})
     }
   },
   duplic: (req,res) => {
@@ -163,32 +164,34 @@ module.exports = {
       if(check == "id"){
         pool.query('SELECT id FROM user WHERE id = "' + checkId + '"', (err, row)=>{
           if(row[0] == undefined){
-            res.send(JSON.stringify(result))
+            return res.status(200).send(JSON.stringify(result))
           } else{
             result = 2
-            res.send(JSON.stringify(result))
+            return res.status(200).send(JSON.stringify(result))
           }
         })
       } else{
         if(check == "nickname"){
           pool.query('SELECT nickname FROM user WHERE nickname = "' + checkName + '"', (err, row)=>{
             if(row[0] == undefined){
-              res.send(JSON.stringify(result))
+              return res.status(200).send(JSON.stringify(result))
             } else{
               result = 2
-              res.send(JSON.stringify(result))
+              return res.status(200).send(JSON.stringify(result))
             }
           })
+        } else{
+          return res.status(400).json({"msg":"잘못된 요청"})
         }
       }
     } catch(err){
-      console.error(err)
+      return res.status(500).json({err})
     }
   },
   mailAuth: (req, res) => {
     let authNum = Math.random().toString().substr(2,6);
     let emailTemplate;
-    ejs.renderFile(rootdir+'/template/autoMail.ejs', {authCode : authNum}, function(err, data){
+    ejs.renderFile(rootdir+'/template/autoMail.ejs', {authCode : authNum}, function(err, data){c
       if(err){console.log(err)}
       emailTemplate = data
     });
@@ -216,6 +219,6 @@ module.exports = {
       console.log('finish sending : ' + info.response);
       transporter.close()
     });
-    return res.json({authCode: authNum});
+    return res.status(200).json({authCode: authNum});
   },
 }

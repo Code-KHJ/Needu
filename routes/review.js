@@ -19,3 +19,105 @@ router.get('/corp/:name/more',auth, review_content, review_auth, review_more)
 router.post('/corp/:name/likes', auth, review_auth, review_likes)
 
 module.exports = router;
+
+
+/**
+ * @swagger
+ * /review/search:
+ *   get:
+ *     tags: [Review]
+ *     summary: 기관검색
+ *     parameters:
+ *       - in: query
+ *         name: city
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: score
+ *         schema:
+ *           type: integer
+ *       - in: query
+ *         name: hashtag
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: corp_name
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       '200':
+ *         description: "조회 성공"
+ * 
+ * /review/corp/{corp_name}:
+ *   get:
+ *     tags: [Review]
+ *     summary: 리뷰 상세페이지
+ *     parameters:
+ *       - in: path
+ *         name: corp_name
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: "요청 성공"
+ *       '404':
+ *         description: "존재하지 않는 기관"
+ * 
+ * /review/corp/{corp_name}/more:
+ *   get:
+ *     tags: [Review]
+ *     summary: 리뷰 상세페이지 더보기
+ *     parameters:
+ *       - in: path
+ *         name: corp_name
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: "요청 성공"
+ *       '204':
+ *         description: "접근 권한 없음"
+ *       '401':
+ *         description: "로그인 필요"
+ * 
+ * /review/corp/{corp_name}/likes:
+ *   post:
+ *     tags: [Review]
+ *     summary: 리뷰 좋아요
+ *     parameters:
+ *       - in: path
+ *         name: corp_name
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               num:
+ *                 type: integer
+ *               likes:
+ *                 type: integer
+ *     responses:
+ *       '200':
+ *         description: "요청 성공"
+ *       '401':
+ *         description: "로그인 필요"
+ *       '500':
+ *         description: "오류 발생"
+*/
