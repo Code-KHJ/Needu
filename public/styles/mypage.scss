@@ -1,0 +1,390 @@
+@charset "utf-8";
+
+//공통
+.mo-show{
+  display: block;
+}
+.mo-none{
+  display: none;
+}
+
+main{
+  margin-top:120px;
+  width:100%;
+}
+section{
+  width: 80%;
+  margin: 0 auto;
+}
+.main-nav{
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 60px;
+  h1{
+    font-size: 1.8rem;
+    font-weight: 700;
+  };
+  &>div{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    div{
+      height: 56px;
+      padding: 20px 40px;
+      font-size: 1.4rem;
+    }
+    .nav-active{
+      border-bottom: 2px solid #6269F5;
+    }
+  }
+}
+.user-wrap{
+  margin-top: 50px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 5px;
+  &>h1{
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #444;
+  }
+  .user-data{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .id-card{
+      width: 100%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 5px;
+      background-color: #efefef;
+      img{
+        width: 60px;
+      }
+      .user-id{
+        margin-top: 16px;
+        text-align: center;
+        &>p:nth-child(1){
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: #444;
+        }
+        &>p:nth-child(2){
+          margin-top: 4px;
+          color: #888;
+          font-size: 1.1rem;
+        }
+      }
+      .user-career{
+        margin-top: 32px;
+        text-align: center;
+        &>p{
+          color: #444;
+          font-size: 1.2rem;
+        }
+        &>div{
+          display: flex;
+          flex-direction: row;
+          gap: 4px;
+          align-items: end;
+          margin-top: 4px;
+          color: #444;
+          font-size: 1.2rem;
+          strong{
+            font-size: 1.8rem;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    .update-data{
+      width: 100%;
+      margin-top: 40px;
+      overflow-x: hidden;
+      label{
+        color: #444;
+        font-size: 1.4rem;
+        font-weight: 700;
+        padding: 4px 12px;
+      }
+      fieldset{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .userdata-id{
+          display: flex;
+          flex-direction: column;
+          p{
+            padding: 10px 12px;
+            color: #444;
+            font-size: 1.4rem;
+          }
+        }
+        .userdata-pw{
+          display: flex;
+          button{
+            margin-left: 25px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background: linear-gradient(0deg, #ccc 0%, #ccc 100%), #6269F5;
+            box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.4);
+            color: #444;
+            font-size: 1.4rem;
+          }
+        }
+        .userdata-nickname, .userdata-phone{
+          display: flex;
+          flex-direction: column;
+          input{
+            width: 250px;
+            margin-top: 5px;
+            margin-left: 12px;
+            padding: 10px 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 2px 0px #aaa;
+            color: #444;
+            font-size: 1.4rem;
+          }
+          .checkmsg{
+            color: #ff4444;
+            font-size: 1.2rem;
+            margin-left: 12px;
+            margin-top: 5px;
+          }
+        }
+        .userdata-policy{
+          display: flex;
+          flex-direction: column;
+          ul{
+            padding: 4px 12px;
+            display: flex;
+            flex-direction: row;
+            li{
+              height: 20px;
+              input{
+                height: 20px;
+              }
+              label{
+                font-size: 1.4rem;
+                font-weight: 400;
+                padding: 0 8px;
+                line-height: 20px;
+                vertical-align: top;
+              }
+            }
+          }
+        }
+      }
+      .save-btn{
+        margin-top: 20px;
+        width: 70px;
+        height: 38px;
+        float: right;
+        padding: 10px 20xp;
+        background: #6269F5;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+/* 테블릿 768 사이즈 반응형 */
+@media screen and (min-width: 768px) {
+  .tab-show{
+    display: block;
+  }
+  .tab-none{
+    display: none;
+  }
+  section{
+    width: 86%;
+  }
+  .main-nav{
+    width: 86%;
+    margin: 0 auto;
+    padding-top: 60px;
+  }
+  .user-wrap{
+    .user-data{
+      justify-content: space-between;
+      .id-card{
+        width: 30%;
+        height: 287px;
+      }
+      .update-data{
+        width: 60%;
+        margin-top: 0px;
+        label{
+          width: 100px;
+          padding: 10px 12px;
+        }
+        fieldset{
+          height: 287px;
+          .userdata-id{
+            flex-direction: row;
+          }
+          .userdata-pw{
+            button{
+              margin-left: 12px;
+            }
+          }
+          .userdata-nickname, .userdata-phone{
+            flex-direction: row;
+            input{
+              margin: 0;
+              margin-left: 12px;
+              width: 225px;
+            }
+          }
+          .userdata-policy{
+            flex-direction: row;
+            ul{
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 테블릿 1024 사이즈 반응형 */
+@media screen and (min-width: 1024px) {
+  .main-nav{
+    h1{
+      font-size: 2.0rem;
+    }
+    &>div{
+      div{
+        height: 58px;
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .user-wrap{
+    &>h1{
+      font-size: 1.8rem;
+    }
+    .user-data{
+      .id-card{
+        width: 26.5%;
+        height: auto;
+        .user-id{
+          &>p:nth-child(1){
+            font-size: 1.6rem;
+          }
+          &>p:nth-child(2){
+            font-size: 1.2rem;
+          }
+        }
+        .user-career{
+          &>p{
+            font-size: 1.4rem;
+          }
+          &>div{
+            font-size: 1.4rem;
+            strong{
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+      .update-data{
+        width: 57.5%;
+        label{
+          font-size: 1.6rem;
+        }
+        form{
+          display: flex;
+          flex-direction: row;
+          align-items: end;
+        }
+        fieldset{
+          height: auto;
+          flex-grow: 1;
+          .userdata-id{
+            p{
+              font-size: 1.6rem;
+            }
+          }
+          .userdata-pw{
+            button{
+              font-size: 1.6rem;
+            }
+          }
+          .userdata-nickname, .userdata-phone{
+            input{
+              font-size: 1.6rem;
+            }
+          }
+          .userdata-policy{
+            ul{
+              li{
+                input{
+                  width: 18px;
+                }
+                label{
+                  font-size: 1.6rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* PC 1280 사이즈 반응형 */
+@media screen and (min-width: 1280px) {
+  section{
+    width: 67%;
+  }
+  .main-nav{
+    width: 67%;
+  }
+  .user-wrap{
+    .user-data{
+      .id-card{
+        max-width: 210px;
+        height: auto;
+      }
+      .update-data{
+        width: calc(100% - 270px);
+        // fieldset{
+        //   .userdata-nickname, .userdata-phone{
+        //     &>div{
+        //       display: flex;
+        //       flex-direction: row;
+        //       .checkmsg{
+        //         margin-top: 0;
+        //         line-height: 38.5px;
+        //       }
+        //     }
+        //   }
+        // }
+      }
+    }
+  }
+}
+
+/* PC 1400 사이즈 반응형 */
+@media screen and (min-width: 1400px) {
+  .userdata-nickname, .userdata-phone{
+    &>div{
+      display: flex;
+      flex-direction: row;
+      .checkmsg{
+        margin-top: 0;
+        line-height: 38.5px;
+      }
+    }
+  }
+}
