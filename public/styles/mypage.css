@@ -1,0 +1,343 @@
+@charset "UTF-8";
+.mo-show {
+  display: block;
+}
+
+.mo-none {
+  display: none;
+}
+
+main {
+  margin-top: 120px;
+  width: 100%;
+}
+
+section {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main-nav {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+.main-nav h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.main-nav > div {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.main-nav > div div {
+  height: 56px;
+  padding: 20px 40px;
+  font-size: 1.4rem;
+}
+.main-nav > div .nav-active {
+  border-bottom: 2px solid #6269F5;
+}
+
+.user-wrap {
+  margin-top: 50px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.user-wrap > h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #444;
+}
+.user-wrap .user-data {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.user-wrap .user-data .id-card {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #efefef;
+}
+.user-wrap .user-data .id-card img {
+  width: 60px;
+}
+.user-wrap .user-data .id-card .user-id {
+  margin-top: 16px;
+  text-align: center;
+}
+.user-wrap .user-data .id-card .user-id > p:nth-child(1) {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #444;
+}
+.user-wrap .user-data .id-card .user-id > p:nth-child(2) {
+  margin-top: 4px;
+  color: #888;
+  font-size: 1.1rem;
+}
+.user-wrap .user-data .id-card .user-career {
+  margin-top: 32px;
+  text-align: center;
+}
+.user-wrap .user-data .id-card .user-career > p {
+  color: #444;
+  font-size: 1.2rem;
+}
+.user-wrap .user-data .id-card .user-career > div {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: end;
+  margin-top: 4px;
+  color: #444;
+  font-size: 1.2rem;
+}
+.user-wrap .user-data .id-card .user-career > div strong {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.user-wrap .user-data .update-data {
+  width: 100%;
+  margin-top: 40px;
+  overflow-x: hidden;
+}
+.user-wrap .user-data .update-data label {
+  color: #444;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 4px 12px;
+}
+.user-wrap .user-data .update-data fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.user-wrap .user-data .update-data fieldset .userdata-id {
+  display: flex;
+  flex-direction: column;
+}
+.user-wrap .user-data .update-data fieldset .userdata-id p {
+  padding: 10px 12px;
+  color: #444;
+  font-size: 1.4rem;
+}
+.user-wrap .user-data .update-data fieldset .userdata-pw {
+  display: flex;
+}
+.user-wrap .user-data .update-data fieldset .userdata-pw button {
+  margin-left: 25px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: linear-gradient(0deg, #ccc 0%, #ccc 100%), #6269F5;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.4);
+  color: #444;
+  font-size: 1.4rem;
+}
+.user-wrap .user-data .update-data fieldset .userdata-nickname, .user-wrap .user-data .update-data fieldset .userdata-phone {
+  display: flex;
+  flex-direction: column;
+}
+.user-wrap .user-data .update-data fieldset .userdata-nickname input, .user-wrap .user-data .update-data fieldset .userdata-phone input {
+  width: 250px;
+  margin-top: 5px;
+  margin-left: 12px;
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 0px #aaa;
+  color: #444;
+  font-size: 1.4rem;
+}
+.user-wrap .user-data .update-data fieldset .userdata-nickname .checkmsg, .user-wrap .user-data .update-data fieldset .userdata-phone .checkmsg {
+  color: #ff4444;
+  font-size: 1.2rem;
+  margin-left: 12px;
+  margin-top: 5px;
+}
+.user-wrap .user-data .update-data fieldset .userdata-policy {
+  display: flex;
+  flex-direction: column;
+}
+.user-wrap .user-data .update-data fieldset .userdata-policy ul {
+  padding: 4px 12px;
+  display: flex;
+  flex-direction: row;
+}
+.user-wrap .user-data .update-data fieldset .userdata-policy ul li {
+  height: 20px;
+}
+.user-wrap .user-data .update-data fieldset .userdata-policy ul li input {
+  height: 20px;
+}
+.user-wrap .user-data .update-data fieldset .userdata-policy ul li label {
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: 0 8px;
+  line-height: 20px;
+  vertical-align: top;
+}
+.user-wrap .user-data .update-data .save-btn {
+  margin-top: 20px;
+  width: 70px;
+  height: 38px;
+  float: right;
+  padding: 10px 20xp;
+  background: #6269F5;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+/* 테블릿 768 사이즈 반응형 */
+@media screen and (min-width: 768px) {
+  .tab-show {
+    display: block;
+  }
+  .tab-none {
+    display: none;
+  }
+  section {
+    width: 86%;
+  }
+  .main-nav {
+    width: 86%;
+    margin: 0 auto;
+    padding-top: 60px;
+  }
+  .user-wrap .user-data {
+    justify-content: space-between;
+  }
+  .user-wrap .user-data .id-card {
+    width: 30%;
+    height: 287px;
+  }
+  .user-wrap .user-data .update-data {
+    width: 60%;
+    margin-top: 0px;
+  }
+  .user-wrap .user-data .update-data label {
+    width: 100px;
+    padding: 10px 12px;
+  }
+  .user-wrap .user-data .update-data fieldset {
+    height: 287px;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-id {
+    flex-direction: row;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-pw button {
+    margin-left: 12px;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-nickname, .user-wrap .user-data .update-data fieldset .userdata-phone {
+    flex-direction: row;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-nickname input, .user-wrap .user-data .update-data fieldset .userdata-phone input {
+    margin: 0;
+    margin-left: 12px;
+    width: 225px;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-policy {
+    flex-direction: row;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-policy ul {
+    align-items: center;
+  }
+}
+/* 테블릿 1024 사이즈 반응형 */
+@media screen and (min-width: 1024px) {
+  .main-nav h1 {
+    font-size: 2rem;
+  }
+  .main-nav > div div {
+    height: 58px;
+    font-size: 1.6rem;
+  }
+  .user-wrap > h1 {
+    font-size: 1.8rem;
+  }
+  .user-wrap .user-data .id-card {
+    width: 26.5%;
+    height: auto;
+  }
+  .user-wrap .user-data .id-card .user-id > p:nth-child(1) {
+    font-size: 1.6rem;
+  }
+  .user-wrap .user-data .id-card .user-id > p:nth-child(2) {
+    font-size: 1.2rem;
+  }
+  .user-wrap .user-data .id-card .user-career > p {
+    font-size: 1.4rem;
+  }
+  .user-wrap .user-data .id-card .user-career > div {
+    font-size: 1.4rem;
+  }
+  .user-wrap .user-data .id-card .user-career > div strong {
+    font-size: 1.8rem;
+  }
+  .user-wrap .user-data .update-data {
+    width: 57.5%;
+  }
+  .user-wrap .user-data .update-data label {
+    font-size: 1.6rem;
+  }
+  .user-wrap .user-data .update-data form {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+  }
+  .user-wrap .user-data .update-data fieldset {
+    height: auto;
+    flex-grow: 1;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-id p {
+    font-size: 1.6rem;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-pw button {
+    font-size: 1.6rem;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-nickname input, .user-wrap .user-data .update-data fieldset .userdata-phone input {
+    font-size: 1.6rem;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-policy ul li input {
+    width: 18px;
+  }
+  .user-wrap .user-data .update-data fieldset .userdata-policy ul li label {
+    font-size: 1.6rem;
+  }
+}
+/* PC 1280 사이즈 반응형 */
+@media screen and (min-width: 1280px) {
+  section {
+    width: 67%;
+  }
+  .main-nav {
+    width: 67%;
+  }
+  .user-wrap .user-data .id-card {
+    max-width: 210px;
+    height: auto;
+  }
+  .user-wrap .user-data .update-data {
+    width: calc(100% - 270px);
+  }
+}
+/* PC 1400 사이즈 반응형 */
+@media screen and (min-width: 1400px) {
+  .userdata-nickname > div, .userdata-phone > div {
+    display: flex;
+    flex-direction: row;
+  }
+  .userdata-nickname > div .checkmsg, .userdata-phone > div .checkmsg {
+    margin-top: 0;
+    line-height: 38.5px;
+  }
+}/*# sourceMappingURL=mypage.css.map */
