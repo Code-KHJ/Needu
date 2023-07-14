@@ -111,7 +111,6 @@ function input_data(target){
   const corp_selected = target.querySelector('button>span:nth-child(1)').textContent;
   searchInput.value = corp_selected;
   searchForm.action="/review/write/corp/"+searchInput.value;
-  console.log(searchInput)
   removeList()
   nowIndex = -1
   searchInput.focus()

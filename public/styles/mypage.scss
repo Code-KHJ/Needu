@@ -7,7 +7,15 @@
 .mo-none{
   display: none;
 }
-
+.content-font{
+  font-size: 1.4rem;
+}
+.content-font-small{
+  font-size: 1.3rem;
+}
+.bold{
+  font-weight: 700;
+}
 main{
   margin-top:120px;
   width:100%;
@@ -140,7 +148,7 @@ section{
           display: flex;
           flex-direction: column;
           input{
-            width: 250px;
+            width: 200px;
             margin-top: 5px;
             margin-left: 12px;
             padding: 10px 20px;
@@ -191,6 +199,209 @@ section{
         color: #fff;
         font-size: 1.6rem;
       }
+    }
+  }
+}
+.career-wrap{
+  margin-top: 40px;
+  margin-bottom: 150px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 40px 0 0;
+  &>h1{
+    padding: 0 40px;
+    font-size: 1.8rem;
+    color: #444;
+    font-weight: 700;
+  }
+  .total-career{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: #444;
+    gap: 8px;
+    &>div{
+      background: linear-gradient(to top, #eeefff 50%, transparent 50%);
+      padding: 0px 5px;
+      strong{
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #000;
+      }
+    }
+  }
+  .career-contents{
+    margin-top: 40px;
+    .career-content{
+      border-bottom: 1px solid #efefef;
+      padding: 40px;
+      fieldset{
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        .career-item{
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 8px;
+          input, select{
+            padding: 10px 20px;
+            background-color: #efefef;
+            border-radius: 5px;
+            box-shadow: 0px 0px 2px 0px #aaa;
+            color: #444;            
+          }
+        }
+        .career-period{
+          .period-wrap{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 5px;
+            &>div{
+              width: 215px;
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+              font-size: 1.3rem;
+              color: #000;
+              .quit{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                &>div{
+                  display: flex;
+                  gap: 4px;
+                  vertical-align: top;
+                }
+              }
+            }
+          }
+        }
+        .career-type{
+          select{
+            border: 0px;
+            appearance: none;
+            background: url(images/btn_detail.png) no-repeat right 20px center;
+            background-size: 14px 7px;
+            background-color: #efefef;
+          }
+        }
+      }
+      .btn-line{
+        margin-top: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        &>a{
+          color: #6269F5;
+          font-weight: 700;
+        }
+        &>button{
+          padding: 10px 20px;
+          background: #d9d9d9;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+  .career-write{
+    margin-top: 0px;
+    background-color: #efefef;
+    .career-content{
+      fieldset{
+        .career-item{
+          input, select{
+            background-color: #fff;
+          }
+        }
+      }
+      .btn-line{
+        button{
+          color: #fff;
+          background-color: #6269F5;
+        }
+      }
+    }
+  }
+}
+
+.modal-wrap{
+  position: fixed;
+  width: 80%;
+  height: auto;
+  max-width: 1120px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 80px 40px;
+  background-color: #fff;
+  border-radius: 5px;
+  &>div:nth-child(1){
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  &>div:nth-child(2){
+    margin-top: 10px;
+  }
+  .change-pw{
+    margin-top: 40px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    background-color: #efefef;
+    border-radius: 5px;
+    fieldset{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      .pw-item{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+        label{
+          width: 150px;
+          padding-left: 12px;
+        }
+        input{
+          padding: 10px 20px;
+          border-radius: 5px;
+          background-color: #fff;
+          box-shadow: 0px 0px 2px 0px #6269F5;
+        }
+        &>div>div{
+          padding: 0 12px;
+          font-size: 1.2rem;
+          margin-top: 5px;
+          overflow-wrap: break-word;
+        }
+      }
+    }
+    .submit-pw{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 20px;
+      button{
+        width: 70px;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+      &>button:nth-of-type(1){
+        background-color: #d9d9d9;
+      }
+      &>button:nth-of-type(2){
+        background-color: #a0a6ff;
+      }
+
     }
   }
 }
@@ -253,10 +464,72 @@ section{
       }
     }
   }
+  .career-wrap{
+    padding: 40px;
+    &>h1{
+      padding: 0;
+    }
+    .career-contents{
+      .career-content{
+        fieldset{
+          .career-item{
+            flex-direction: row;
+            label{
+              width: 100px;
+            }
+            input, select{
+              flex-grow: 1;
+            }
+          }
+          .career-period{
+            .period-wrap{
+              flex-grow: 1;
+              &>div{
+                width: auto;
+                flex-grow: 1;
+                label{
+                  width: 50px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .modal-wrap{
+    padding: 80px 60px;
+    .change-pw{
+      padding: 40px;
+      fieldset{
+        gap: 20px;
+        .pw-item{
+          width: 100%;
+          justify-content: center;
+          label{
+            width: 200px;
+          }
+          &>div{
+            flex-grow: 1;
+            max-width: 250px;
+            input{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /* 테블릿 1024 사이즈 반응형 */
 @media screen and (min-width: 1024px) {
+  .content-font{
+    font-size: 1.6rem;
+  }
+  .content-font-small{
+    font-size: 1.4rem;
+  }
   .main-nav{
     h1{
       font-size: 2.0rem;
@@ -270,7 +543,7 @@ section{
   }
   .user-wrap{
     &>h1{
-      font-size: 1.8rem;
+      font-size: 2.0rem;
     }
     .user-data{
       .id-card{
@@ -340,6 +613,25 @@ section{
       }
     }
   }
+  .career-wrap{
+    &>h1{
+      font-size: 2.0rem;
+    }
+    .total-career{
+      font-size: 2.0rem;
+      &>div{
+        strong{
+          font-size: 3.2rem;
+        }
+      }
+    }
+    .career-contents{
+      .career-content{
+        max-width: 760px;
+        margin: 0 auto;
+      }
+    }
+  }
 }
 
 /* PC 1280 사이즈 반응형 */
@@ -351,6 +643,7 @@ section{
     width: 67%;
   }
   .user-wrap{
+    padding: 40px 100px;
     .user-data{
       .id-card{
         max-width: 210px;
@@ -358,18 +651,30 @@ section{
       }
       .update-data{
         width: calc(100% - 270px);
-        // fieldset{
-        //   .userdata-nickname, .userdata-phone{
-        //     &>div{
-        //       display: flex;
-        //       flex-direction: row;
-        //       .checkmsg{
-        //         margin-top: 0;
-        //         line-height: 38.5px;
-        //       }
-        //     }
-        //   }
-        // }
+      }
+    }
+  }
+  .career-wrap{
+    padding: 40px 100px;
+  }
+  .modal-wrap{
+    padding: 80px;
+    .change-pw{
+      fieldset{
+        .pw-item{
+          justify-content: flex-start;
+          &>div{
+            max-width: none;
+            display: flex;
+            flex-direction: row;
+            input{
+              max-width: 320px;
+            }
+            &>div{
+              flex-grow: 1;
+            }
+          }
+        }
       }
     }
   }
@@ -379,8 +684,13 @@ section{
 @media screen and (min-width: 1400px) {
   .userdata-nickname, .userdata-phone{
     &>div{
+      flex-grow: 1;
       display: flex;
       flex-direction: row;
+      input{
+        flex-grow: 1;
+        max-width: 300px;
+      }
       .checkmsg{
         margin-top: 0;
         line-height: 38.5px;
