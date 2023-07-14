@@ -32,8 +32,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(require('./swagger/swagger
 
 
 app.use("/", require("./routes/index"));
-app.get("/mypage", auth, (req, res)=>{res.render('mypage.html', {User: req.user})});
-app.get("/logout", auth, logout)
+
+app.get("/logout", auth, logout);
+app.use("/mypage", require("./routes/mypage"));
 app.use("/signup", require("./routes/signup"));
 app.use("/login", require("./routes/login"));
 app.use("/review", require("./routes/review"));

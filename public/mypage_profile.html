@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지</title>
+  <link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+  <link href="/styles/webcomponent.css" rel="stylesheet">
+  <link href="/styles/mypage.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div id="header_wrap">
+      <header-component data-name="{{User.nickname}}"></header-component>
+    </div>
+    <main>
+      <div class="main-nav">
+        <h1>마이페이지</h1>
+        <div>
+          <div class="nav-user nav-active">회원정보</div>
+          <div class="nav-review">작성한 리뷰</div>
+        </div>
+      </div>
+      <section class="user-wrap">
+        <h1>기본정보</h1>
+        <div class="user-data">
+          <div class="id-card">
+            <img src="/styles/images/profile.png" alt="프로필사진">
+            <div class="user-id">
+              <p>닉네임이들어갑니다</p>
+              <p>Id(이메일)이들어갑니다</p>  
+            </div>
+            <div class="user-career">
+              <p>총 경력</p>
+              <div><strong>2</strong>년<strong>10</strong>개월</div>
+            </div>
+          </div>
+          <div class="update-data">
+            <form>
+              <fieldset>
+                <div class="userdata-id">
+                  <label>이메일(ID)</label>
+                  <p>test1234@1234google.com</p>
+                </div>
+                <div class="userdata-pw">
+                  <label>비밀번호</label>
+                  <button type="button">변경
+                </div>
+                <div class="userdata-nickname">
+                  <label>닉네임</label>
+                  <div>
+                    <input type="text" name="nickname" value="테스트입니다">
+                    <div class="checkmsg">asdfsdaf</div>  
+                  </div>
+                </div>
+                <div class="userdata-phone">
+                  <label>휴대폰번호</label>
+                  <div>
+                    <input type="text" name="phonenubmer" value="01046742754">
+                    <div class="checkmsg">asdfdsaf</div>  
+                  </div>
+                </div>
+                <div class="userdata-policy">
+                  <label class="mo-show tab-none">개인정보유효기간</label>
+                  <label class="mo-none tab-show">개인정보<br>유효기간</label>
+                  <ul>
+                    <li>
+                      <input type="radio" name="radio1" value="탈퇴시">
+                      <label>탈퇴시</label>
+                    </li>
+                    <li>
+                      <input type="radio" name="radio2" value="3년">
+                      <label>3년</label>
+                    </li>
+                    <li>
+                      <input type="radio" name="radio3" value="1년">
+                      <label>1년</label>
+                    </li>
+                  </ul>
+                </div>
+              </fieldset>
+              <button class="save-btn" type="submit">저장</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="career-wrap">
+        <h1>경력사항</h1>
+        <div class="total-career">총 경력: 
+          <div>
+            <strong>2</strong>
+            년
+            <strong>10</strong>
+            개월
+          </div>
+        </div>
+        <div class="career-contents">
+          <form class="career-content">
+            <fieldset>
+              <div class="career-item career-corpname">
+                <label class="content-font bold">기관명</label>
+                <input type="text" class="content-font" name="corp_name" value="서울시사회복지사협회">
+              </div>
+              <div class="career-item career-period">
+                <label class="content-font bold">근무기간</label>
+                <div class="period-wrap">
+                  <div>
+                    <div>
+                      <label class="content-font-small">입사일</label>
+                    </div>
+                    <input type="month" max="YYYY-MM" id="first_date" name="first_date" value="2023-01">
+                  </div>
+                  <div>
+                    <div class="quit">
+                      <label class="content-font-small">퇴사일</label>
+                      <div>
+                        <input type="checkbox">
+                        <label class="content-font-small">재직중</label>
+                      </div>
+                    </div>
+                    <input type="month" max="YYYY-MM" id="last_date" name="last_date" value="2023-05">
+                  </div>
+                </div>
+              </div>
+              <div class="career-item career-type">
+                <label class="content-font bold">근무직종</label>
+                <select>
+                  <option value="" selected disabled hidden>직종 선택</option>
+                  <option value="사회복지사">사회복지사</option>
+                  <option value="사무원">사무원</option>
+                  <option value="영양사">영양사</option>
+                </select>
+              </div>
+            </fieldset>
+            <div class="btn-line">
+              <a href="#" class="content-font bold">내가 쓴 리뷰</a>
+              <button>수정</button>
+            </div>
+          </form>
+        </div>
+        <div class="career-contents career-write">
+          <form class="career-content">
+            <fieldset>
+              <div class="career-item career-corpname">
+                <label class="content-font bold">기관명</label>
+                <input type="text" class="content-font" name="corp_name" placeholder="기관명을 입력해주세요." value="" required>
+              </div>
+              <div class="career-item career-period">
+                <label class="content-font bold">근무기간</label>
+                <div class="period-wrap">
+                  <div>
+                    <div>
+                      <label class="content-font-small">입사일</label>
+                    </div>
+                    <input type="month" max="YYYY-MM" id="first_date" name="first_date" value="" required>
+                  </div>
+                  <div>
+                    <div class="quit">
+                      <label class="content-font-small">퇴사일</label>
+                      <div>
+                        <input type="checkbox">
+                        <label class="content-font-small">재직중</label>
+                      </div>
+                    </div>
+                    <input type="month" max="YYYY-MM" id="last_date" name="last_date" value="" required>
+                  </div>
+                </div>
+              </div>
+              <div class="career-item career-type">
+                <label class="content-font bold">근무직종</label>
+                <select required>
+                  <option value="" selected disabled hidden>직종 선택</option>
+                  <option value="사회복지사">사회복지사</option>
+                  <option value="사무원">사무원</option>
+                  <option value="영양사">영양사</option>
+                </select>
+              </div>
+            </fieldset>
+            <div class="btn-line">
+              <a href="#" class="content-font bold">내가 쓴 리뷰</a>
+              <button>수정</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <div class="modal-box" style="display: none;">
+        <div class="modal-wrap">
+          <div>비밀번호 변경</div>
+          <div class="content-font">비밀번호는 8~16자리 영문 대소문자, 숫자, 특수문자를 사용할 수 있습니다.</div>
+          <form class="change-pw">
+            <fieldset>
+              <div class="pw-item">
+                <label class="content-font">현재 비밀번호</label>
+                <div>
+                  <input>
+                  <div>안내문구</div>
+                </div>
+              </div>
+              <div class="pw-item">
+                <label class="content-font">새로운 비밀번호</label>
+                <div>
+                  <input>
+                  <div>비밀번호가 일치합니다.</div>
+                </div>
+              </div>
+              <div class="pw-item">
+                <label class="content-font">새로운 비밀번호 확인</label>
+                <div>
+                  <input>
+                  <div>안내문구</div>
+                </div>
+              </div>
+            </fieldset>
+            <div class="submit-pw">
+              <button class="content-font">취소</button>
+              <button class="content-font">수정</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <footer-component></footer-component>
+  </footer>
+  <!-- footer end -->
+  <totop-component></totop-component>
+  <script type="module" src="/js/webcomponent.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer src="/js/mypage.js"></script>
+</body>
+</html>
