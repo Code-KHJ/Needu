@@ -40,7 +40,6 @@ module.exports = {
     try {
       //기관리뷰 create
       const insertReview = await insert_review(contents);
-      console.log(insertReview)
       const review_no = insertReview.insertId;
       //해시태그 create
       const insertHashtag = await insert_hashtag(contents, review_no, hashtag);
@@ -48,7 +47,9 @@ module.exports = {
       const hashTopList = await Hash_info(contents.Corp_name);
       //해시태그 TOP4 업데이트
       const hashUpdate_result = await HashTop_update(contents.Corp_name, hashTopList);
+      //권한 업데이트
       const updateAuth = await update_auth(contents);
+      //경력 추가
       const addCareer = await add_career(contents, review_no);
 
       return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/review/corp/"+contents.Corp_name+"';</script>");

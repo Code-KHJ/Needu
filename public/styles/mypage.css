@@ -149,10 +149,15 @@ section {
   margin-left: 25px;
   padding: 10px 20px;
   border-radius: 5px;
-  background: linear-gradient(0deg, #ccc 0%, #ccc 100%), #6269F5;
+  background: linear-gradient(0deg, #ccc 0%, #ccc 100%);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.4);
   color: #444;
   font-size: 1.4rem;
+  cursor: pointer;
+}
+.user-wrap .user-data .update-data fieldset .userdata-pw button:hover {
+  background: #6269F5;
+  color: #fff;
 }
 .user-wrap .user-data .update-data fieldset .userdata-nickname, .user-wrap .user-data .update-data fieldset .userdata-phone {
   display: flex;
@@ -169,7 +174,7 @@ section {
   color: #444;
   font-size: 1.4rem;
 }
-.user-wrap .user-data .update-data fieldset .userdata-nickname .checkmsg, .user-wrap .user-data .update-data fieldset .userdata-phone .checkmsg {
+.user-wrap .user-data .update-data fieldset .userdata-nickname .checkmsg-phone, .user-wrap .user-data .update-data fieldset .userdata-nickname .checkmsg-nick, .user-wrap .user-data .update-data fieldset .userdata-phone .checkmsg-phone, .user-wrap .user-data .update-data fieldset .userdata-phone .checkmsg-nick {
   color: #ff4444;
   font-size: 1.2rem;
   margin-left: 12px;
@@ -383,6 +388,7 @@ section {
   font-size: 1.2rem;
   margin-top: 5px;
   overflow-wrap: break-word;
+  color: #f44;
 }
 .modal-wrap .change-pw .submit-pw {
   display: flex;
@@ -394,6 +400,7 @@ section {
   width: 70px;
   padding: 10px 20px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .modal-wrap .change-pw .submit-pw > button:nth-of-type(1) {
   background-color: #d9d9d9;

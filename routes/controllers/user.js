@@ -221,4 +221,51 @@ module.exports = {
     });
     return res.status(200).json({authCode: authNum});
   },
+  changePw: (req, res) => {
+    const {id, nickname} = req.user;
+    const {password, new_password} = req.body;
+    const sql = `
+      SELECT id, password, nickname FROM user WHERE id = "${id}"
+    `
+    try{
+      pool.query(sql, (err, row)=>{
+        if(err) return res.status(500).json(err)
+        else if (row[0] !== undefined){
+          const match = bcrypt.compareSync(password, row[0].password)
+          if(match){
+            const salt = bcrypt.genSaltSync(saltRounds);
+            const hashPw = bcrypt.hashSync(new_password, salt);
+            const updateSql = `
+              UPDATE user SET password = "${hashPw}"
+              WHERE id = "${id}"
+            `
+            pool.query(updateSql, (err, row)=>{
+              if(err) return res.status(500).json(err)
+              else if(row.changedRows > 0){
+                return res.status(200).send("<script>alert('비밀번호 변경이 완료되었습니다.');location.href='/mypage/profile';</script>")
+              }
+            })
+          } else{
+            return res.status(400).send("<script>alert('비밀번호가 일치하지 않습니다.');history.go(-1);</script>")
+          }
+        } else{
+          return res.status(400).send("<script>alert('찾을 수 없는 정보입니다. 다시 로그인해주세요.').location.href='/login';</script>")
+        }
+      })
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  userData: (req, res, next) => {
+    const data = {
+      User: req.user,
+      info: req.userData,
+      career: req.userCareer
+    }
+    if(data.info.length > 0){
+      return res.status(200).render(rootdir+'/public/mypage_profile.html', data)
+    }else{
+      return res.status(401).render(rootdir+'/public/login.html')
+    }
+  },
 }
