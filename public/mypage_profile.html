@@ -28,8 +28,8 @@
           <div class="id-card">
             <img src="/styles/images/profile.png" alt="프로필사진">
             <div class="user-id">
-              <p>닉네임이들어갑니다</p>
-              <p>Id(이메일)이들어갑니다</p>  
+              <p>{{info[0].nickname}}</p>
+              <p>{{info[0].id}}</p>  
             </div>
             <div class="user-career">
               <p>총 경력</p>
@@ -37,28 +37,28 @@
             </div>
           </div>
           <div class="update-data">
-            <form>
+            <form method="post" action="/mypage/change/userinfo" onsubmit="return checkinfo()">
               <fieldset>
                 <div class="userdata-id">
                   <label>이메일(ID)</label>
-                  <p>test1234@1234google.com</p>
+                  <p>{{info[0].id}}</p>
                 </div>
                 <div class="userdata-pw">
                   <label>비밀번호</label>
-                  <button type="button">변경
+                  <button type="button" onclick="modal_show()">변경
                 </div>
                 <div class="userdata-nickname">
                   <label>닉네임</label>
                   <div>
-                    <input type="text" name="nickname" value="테스트입니다">
-                    <div class="checkmsg">asdfsdaf</div>  
+                    <input type="text" id="nickname" name="nickname" value="{{info[0].nickname}}" minlength="2" maxlength="20" autocomplete="off" onchange="checkNick()" required>
+                    <div class="checkmsg-nick"></div>  
                   </div>
                 </div>
                 <div class="userdata-phone">
                   <label>휴대폰번호</label>
                   <div>
-                    <input type="text" name="phonenubmer" value="01046742754">
-                    <div class="checkmsg">asdfdsaf</div>  
+                    <input type="text" id="phonenumber" name="phonenubmer" value="{{info[0].phonenumber}}" autocomplete="off" onchange="checkPhone()" required>
+                    <div class="checkmsg-phone"></div>  
                   </div>
                 </div>
                 <div class="userdata-policy">
@@ -66,15 +66,15 @@
                   <label class="mo-none tab-show">개인정보<br>유효기간</label>
                   <ul>
                     <li>
-                      <input type="radio" name="radio1" value="탈퇴시">
+                      <input type="radio" name="radio1" value="탈퇴시" {% if info[0].info_period == '탈퇴시' %}checked{% endif %}>
                       <label>탈퇴시</label>
                     </li>
                     <li>
-                      <input type="radio" name="radio2" value="3년">
+                      <input type="radio" name="radio1" value="3년" {% if info[0].info_period == '3년' %}checked{% endif %}>
                       <label>3년</label>
                     </li>
                     <li>
-                      <input type="radio" name="radio3" value="1년">
+                      <input type="radio" name="radio1" value="1년" {% if info[0].info_period == '1년' %}checked{% endif %}>
                       <label>1년</label>
                     </li>
                   </ul>
@@ -109,7 +109,7 @@
                     <div>
                       <label class="content-font-small">입사일</label>
                     </div>
-                    <input type="month" max="YYYY-MM" id="first_date" name="first_date" value="2023-01">
+                    <input type="month" max="YYYY-MM" id="first_date22" name="first_date" value="2023-01">
                   </div>
                   <div>
                     <div class="quit">
@@ -119,7 +119,7 @@
                         <label class="content-font-small">재직중</label>
                       </div>
                     </div>
-                    <input type="month" max="YYYY-MM" id="last_date" name="last_date" value="2023-05">
+                    <input type="month" max="YYYY-MM" id="last_date22" name="last_date" value="2023-05">
                   </div>
                 </div>
               </div>
@@ -153,7 +153,7 @@
                     <div>
                       <label class="content-font-small">입사일</label>
                     </div>
-                    <input type="month" max="YYYY-MM" id="first_date" name="first_date" value="" required>
+                    <input type="month" max="YYYY-MM" id="first_date11" name="first_date" value="" required>
                   </div>
                   <div>
                     <div class="quit">
@@ -163,7 +163,7 @@
                         <label class="content-font-small">재직중</label>
                       </div>
                     </div>
-                    <input type="month" max="YYYY-MM" id="last_date" name="last_date" value="" required>
+                    <input type="month" max="YYYY-MM" id="last_date11" name="last_date" value="" required>
                   </div>
                 </div>
               </div>
@@ -188,33 +188,33 @@
         <div class="modal-wrap">
           <div>비밀번호 변경</div>
           <div class="content-font">비밀번호는 8~16자리 영문 대소문자, 숫자, 특수문자를 사용할 수 있습니다.</div>
-          <form class="change-pw">
+          <form class="change-pw" method="post" action="/mypage/change/pw">
             <fieldset>
               <div class="pw-item">
                 <label class="content-font">현재 비밀번호</label>
                 <div>
-                  <input>
-                  <div>안내문구</div>
+                  <input type="password" name="password" class="password" style="ime-mode:disabled" autocomplete="off" required>
+                  <div></div>
                 </div>
               </div>
               <div class="pw-item">
                 <label class="content-font">새로운 비밀번호</label>
                 <div>
-                  <input>
-                  <div>비밀번호가 일치합니다.</div>
+                  <input type="password" name="new_password" class="new-password1" maxlength="16" style="ime-mode:disabled" autocomplete="off" required>
+                  <div class="msgpw1"></div>
                 </div>
               </div>
               <div class="pw-item">
                 <label class="content-font">새로운 비밀번호 확인</label>
                 <div>
-                  <input>
-                  <div>안내문구</div>
+                  <input type="password" class="new-password2" style="ime-mode:disabled" autocomplete="off" required>
+                  <div class="msgpw2"></div>
                 </div>
               </div>
             </fieldset>
             <div class="submit-pw">
-              <button class="content-font">취소</button>
-              <button class="content-font">수정</button>
+              <button type="reset" class="content-font pw-reset" onclick="modal_none()">취소</button>
+              <button type="submit" class="content-font pw-submit" disabled>수정</button>
             </div>
           </form>
         </div>
@@ -228,6 +228,6 @@
   <totop-component></totop-component>
   <script type="module" src="/js/webcomponent.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script defer src="/js/mypage.js"></script>
+  <script defer src="/js/mypage_profile.js"></script>
 </body>
 </html>

@@ -368,13 +368,16 @@ module.exports = {
   },
   add_career: (contents, review_no) => {
     return new Promise((resolve, reject) =>{
+      console.log('start')
       const sql = `
-        insert into user_career (nickname, Corp_name, first_date, last_date, review_no) values (?, ?, ?, ?, ?)
+        INSERT into user_career (nickname, Corp_name, first_date, last_date, type, review_no) values (?,?,?,?,?,?)
       `
-      const data = [contents.nickname, contents.Corp_name, contents.first_date, contents.last_date, review_no]
+      const data = [contents.nickname, contents.Corp_name, contents.first_date, contents.last_date, contents.type, review_no];
+      
       try{
-        pool.query(sql, data, (err, result)=>{
-          return resolve(result)
+        pool.query(sql, data, (err, row)=>{
+          console.log(row)
+          return resolve(row)
         })  
       }catch(err){
         console.log(err)
@@ -407,4 +410,34 @@ module.exports = {
       }
     })
   },
+  user_info: (userId) => {
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        SELECT id, nickname, phonenumber, info_period FROM user WHERE id = "${userId}"
+      `
+      try{
+        pool.query(sql, (err, row)=>{
+          return resolve(row)
+        })  
+      } catch(err){
+        console.error(err)
+        return reject(err)
+      }
+    })
+  },
+  user_career: (userNick) => {
+    return new Promise((resolve, reject) => {
+      const sql = `
+        SELECT Corp_name, first_date, last_date, type, review_no FROM user_career WHERE nickname = '${userNick}';
+      `
+      try{
+        pool.query(sql, (err, row)=>{
+          return resolve(row)
+        })
+      } catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  }
 }

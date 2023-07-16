@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
-    <link href="./styles/webcomponent.css" rel="stylesheet">
-    <link href="./styles/login.css" rel="stylesheet" type="text/css">
+    <link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+    <link href="/styles/webcomponent.css" rel="stylesheet">
+    <link href="/styles/login.css" rel="stylesheet" type="text/css">
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -25,7 +25,7 @@
                   <form id="form_user" method="post" action="/login">
                     <fieldset>
                       <input type="text" name="id" id="userid" placeholder="아이디(이메일형식)" required>
-                      <input type="password" name="password" id="userpw" autocomplete="off" placeholder="비밀번호를 입력하세요" required>
+                      <input type="password" name="password" id="userpw" autocomplete="off" style="ime-mode:disabled" placeholder="비밀번호를 입력하세요" required>
                       <button type="submit" class="" id="submit_user" disabled="disabled">로그인</button>
                       <input type="checkbox" id="saveId" name="saveId">
                       <label for="saveId">아이디 저장</label>
@@ -79,8 +79,8 @@
     <footer>
 			<footer-component></footer-component>
 		</footer>
-    <script type="module" src="./js/webcomponent.js"></script>
-    <script defer src="./js/login.js"></script>
+    <script type="module" src="/js/webcomponent.js"></script>
+    <script defer src="/js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>
