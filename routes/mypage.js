@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {userData, changePw} = require("./controllers/user");
+const {userData, changePw, changeInfo} = require("./controllers/user");
 const {auth} = require("./middleware/auth");
 const {mid_User_all, mid_User_career} = require("./middleware/user");
 const rootdir = require("../modules/path");
@@ -10,9 +10,7 @@ router.get("/profile", auth, mid_User_all, mid_User_career, userData);
 
 router.post('/change/pw', auth, changePw)
 
-router.post('/change/userinfo', auth, (req, res)=>{
-  console.log(req.body);
-})
+router.post('/change/userinfo', auth, changeInfo)
 
 
 /**

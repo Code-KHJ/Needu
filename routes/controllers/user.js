@@ -256,7 +256,27 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  userData: (req, res, next) => {
+  changeInfo: (req, res) => {
+    const {id, nickname} = req.user;
+    const new_nickname = req.body.nickname;
+    const new_phone = req.body.phonenumber;
+    const new_period = req.body.radio1;
+    const sql = `
+      UPDATE user SET nickname = "${new_nickname}", phonenumber = "${new_phone}", info_period = "${new_period}"
+      WHERE id = "${id}"
+    `
+    try{
+      pool.query(sql, (err, row)=>{
+        if(err) return res.status(500).json(err)
+        else if(row.changedRows > 0){
+          return res.status(200).send("<script>alert('회원정보 변경이 완료되었습니다.');location.href='/mypage/profile';</script>")
+        }
+      })
+    } catch (er){
+      res.status(500).json(err);
+    }
+  },
+  userData: (req, res) => {
     const data = {
       User: req.user,
       info: req.userData,

@@ -148,7 +148,6 @@ function checkPeriod(){
   }
 }
 
-
 function checkinfo(){
   console.log(nickResult);
   if(nickResult==true && phoneResult==true && periodResult==true){
@@ -159,4 +158,61 @@ function checkinfo(){
     alert('정보를 바르게 입력해주세요');
     return false;
   }
+}
+
+
+////경력사항
+//총경력
+function careerCount(){
+  const firstDate = [...(document.querySelectorAll('.first-date'))];
+  const lastDate = [...(document.querySelectorAll('.last-date'))];
+  let year = 0;
+  let month = 0;
+  let today = (new Date()).toISOString().slice(0,7);
+  for (var i=0; i<firstDate.length; i++){
+    if(lastDate[i].value.slice(0,4) !== '9999'){
+      year = year + (lastDate[i].value.slice(0,4)-firstDate[i].value.slice(0,4))
+      month = month + (lastDate[i].value(5,7) - firstDate[i].value.slice(5,7))
+    } else{
+      year = year + (today.slice(0,4) - firstDate[i].value.slice(0,4))
+      month = month + (today.slice(5,7) - firstDate[i].value.slice(5,7))
+    }
+  }
+  year = year + Math.floor(month / 12);
+  month = month % 12;
+  
+  const careerY = document.querySelectorAll('.career-year');
+  const careerM = document.querySelectorAll('.career-month');
+  careerY.forEach((element) => {
+    element.innerHTML = year;
+  })
+  careerM.forEach((element) => {
+    element.innerHTML = month;
+  })  
+}
+careerCount();
+
+//재직중 체크 해제
+const workignBtn = document.querySelectorAll('.working');
+workignBtn.forEach((e,i)=>{
+  e.addEventListener('click', (e)=>{
+    let target = e.target
+    workingClick(target,i)
+  })
+})
+function workingClick(target,i){
+  console.log(i)
+  const lastDate = document.querySelectorAll('.last-date');
+  console.log(target.checked)
+  console.log(lastDate[i])
+  if(target.checked){
+    console.log('che')
+    lastDate[i].style.display = 'none';
+    lastDate[i].value = '9999-12'
+  } else{
+    console.log('no')
+    lastDate[i].style.display = '';
+    lastDate[i].value = '2023-01'
+  }
+  console.log(lastDate[i].value)
 }

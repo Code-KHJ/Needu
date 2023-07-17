@@ -33,7 +33,7 @@
             </div>
             <div class="user-career">
               <p>총 경력</p>
-              <div><strong>2</strong>년<strong>10</strong>개월</div>
+              <div><strong class="career-year"></strong>년<strong class="career-month">10</strong>개월</div>
             </div>
           </div>
           <div class="update-data">
@@ -57,7 +57,7 @@
                 <div class="userdata-phone">
                   <label>휴대폰번호</label>
                   <div>
-                    <input type="text" id="phonenumber" name="phonenubmer" value="{{info[0].phonenumber}}" autocomplete="off" onchange="checkPhone()" required>
+                    <input type="text" id="phonenumber" name="phonenumber" value="{{info[0].phonenumber}}" autocomplete="off" onchange="checkPhone()" required>
                     <div class="checkmsg-phone"></div>  
                   </div>
                 </div>
@@ -89,18 +89,19 @@
         <h1>경력사항</h1>
         <div class="total-career">총 경력: 
           <div>
-            <strong>2</strong>
+            <strong class="career-year"></strong>
             년
-            <strong>10</strong>
+            <strong class="career-month">10</strong>
             개월
           </div>
         </div>
         <div class="career-contents">
+          {% for c in career %}
           <form class="career-content">
             <fieldset>
               <div class="career-item career-corpname">
                 <label class="content-font bold">기관명</label>
-                <input type="text" class="content-font" name="corp_name" value="서울시사회복지사협회">
+                <input type="text" class="content-font" name="corp_name" value="{{c.Corp_name}}">
               </div>
               <div class="career-item career-period">
                 <label class="content-font bold">근무기간</label>
@@ -109,27 +110,39 @@
                     <div>
                       <label class="content-font-small">입사일</label>
                     </div>
-                    <input type="month" max="YYYY-MM" id="first_date22" name="first_date" value="2023-01">
+                    <input type="month" max="YYYY-MM"
+                    class="first-date" name="first_date" value="{{c.first_date}}">
                   </div>
                   <div>
+                    {% if c.last_date == '9999-12' %}
                     <div class="quit">
                       <label class="content-font-small">퇴사일</label>
                       <div>
-                        <input type="checkbox">
+                        <input type="checkbox" class="working" checked>
                         <label class="content-font-small">재직중</label>
                       </div>
                     </div>
-                    <input type="month" max="YYYY-MM" id="last_date22" name="last_date" value="2023-05">
+                    <input type="month" max="YYYY-MM"
+                    class="last-date" name="last_date" value="{{c.last_date}}" style="display: none;">
+                    {% else %}
+                    <div class="quit">
+                      <label class="content-font-small">퇴사일</label>
+                      <div>
+                        <input type="checkbox" class="working">
+                        <label class="content-font-small">재직중</label>
+                      </div>
+                    </div>
+                    <input type="month" max="YYYY-MM" id="last_date22" name="last_date" value="{{c.last_date}}">
+                    {% endif %}
                   </div>
                 </div>
               </div>
               <div class="career-item career-type">
                 <label class="content-font bold">근무직종</label>
                 <select>
-                  <option value="" selected disabled hidden>직종 선택</option>
-                  <option value="사회복지사">사회복지사</option>
-                  <option value="사무원">사무원</option>
-                  <option value="영양사">영양사</option>
+                  <option value="사회복지사" {% if c.type == "사회복지사" %}selected{% endif %}>사회복지사</option>
+                  <option value="사무원" {% if c.type == "사무원" %}selected{% endif %}>사무원</option>
+                  <option value="영양사" {% if c.type == "영양사" %}selected{% endif %}>영양사</option>
                 </select>
               </div>
             </fieldset>
@@ -138,6 +151,7 @@
               <button>수정</button>
             </div>
           </form>
+          {% endfor %}
         </div>
         <div class="career-contents career-write">
           <form class="career-content">
@@ -153,7 +167,7 @@
                     <div>
                       <label class="content-font-small">입사일</label>
                     </div>
-                    <input type="month" max="YYYY-MM" id="first_date11" name="first_date" value="" required>
+                    <input type="month" max="YYYY-MM" id="first_date_add" name="first_date" value="" required>
                   </div>
                   <div>
                     <div class="quit">
@@ -163,7 +177,7 @@
                         <label class="content-font-small">재직중</label>
                       </div>
                     </div>
-                    <input type="month" max="YYYY-MM" id="last_date11" name="last_date" value="" required>
+                    <input type="month" max="YYYY-MM" id="last_date_add" name="last_date" value="" required>
                   </div>
                 </div>
               </div>
