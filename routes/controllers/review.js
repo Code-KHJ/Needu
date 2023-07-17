@@ -13,6 +13,7 @@ module.exports = {
   write: async (req, res) => {
     const contents = {
       Corp_name : req.params.name,
+      user_id : req.user.id,
       nickname : req.user.nickname,
       first_date : req.body.first_date,
       last_date : req.body.last_date,

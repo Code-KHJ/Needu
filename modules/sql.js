@@ -306,9 +306,9 @@ module.exports = {
   insert_review: (contents) => {
     return new Promise((resolve, reject) =>{
       const sql = `
-        INSERT into Review_Posts (Corp_name, nickname, first_date, last_date, type, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        INSERT into Review_Posts (Corp_name, user_id, nickname, first_date, last_date, type, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
       `
-      const data = [contents.Corp_name, contents.nickname, contents.first_date, contents.last_date, contents.type, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
+      const data = [contents.Corp_name, contents.user_id, contents.nickname, contents.first_date, contents.last_date, contents.type, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
       try{
         pool.query(sql, data, (err, result)=>{
           return resolve(result)

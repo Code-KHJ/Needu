@@ -3,6 +3,7 @@ const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const redisClient = require('./redis');
 const secret = require('../config/jwtsecret').JWT_KEY;
+const { accessConfig, refreshConfig } = require('../config/jwtsecret')
 
 module.exports = {
     sign: (id, nickname) => { // access token 발급
@@ -10,11 +11,7 @@ module.exports = {
             id: id,
             nickname: nickname,
         };
-        return jwt.sign(payload, secret, { // secret으로 sign하여 발급하고 return
-            issuer : 'adminHJ',  // 발급자
-            algorithm: 'HS256', // 암호화 알고리즘
-            expiresIn: '0.5m',  // 유효기간
-        });
+        return jwt.sign(payload, secret, accessConfig);
     },
     verify: (token) => { // access token 검증
         let decoded = null;
@@ -33,11 +30,7 @@ module.exports = {
         }
     },
     refresh: () => { // refresh token 발급
-        return jwt.sign({}, secret, { // refresh token은 payload 없이 발급
-            algorithm: 'HS256',
-            issuer : 'adminHJ',
-            expiresIn: '30d',
-        });
+        return jwt.sign({}, secret, refreshConfig);
     },
     refreshVerify: async (token, id) => { // refresh token 검증
         /* redis 모듈은 기본적으로 promise를 반환하지 않으므로,
