@@ -1,3 +1,4 @@
+
 ////비밀번호 변경 모달
 const changePwForm = document.querySelector('.change-pw');
 const changePwFieldset = document.querySelector('.change-pw>fieldset');
@@ -149,12 +150,14 @@ function checkPeriod(){
 }
 
 function checkinfo(){
-  console.log(nickResult);
+  checkPeriod()
   if(nickResult==true && phoneResult==true && periodResult==true){
-    window.confirm('회원정보를 변경하시겠습니까?');
-    return true;
+    if(window.confirm('회원정보를 변경하시겠습니까?')){
+      return true;
+    }else{
+      return false;
+    }
   } else{
-    console.log('no')
     alert('정보를 바르게 입력해주세요');
     return false;
   }
@@ -172,7 +175,7 @@ function careerCount(){
   for (var i=0; i<firstDate.length; i++){
     if(lastDate[i].value.slice(0,4) !== '9999'){
       year = year + (lastDate[i].value.slice(0,4)-firstDate[i].value.slice(0,4))
-      month = month + (lastDate[i].value(5,7) - firstDate[i].value.slice(5,7))
+      month = month + (lastDate[i].value.slice(5,7) - firstDate[i].value.slice(5,7))
     } else{
       year = year + (today.slice(0,4) - firstDate[i].value.slice(0,4))
       month = month + (today.slice(5,7) - firstDate[i].value.slice(5,7))
@@ -201,18 +204,70 @@ workignBtn.forEach((e,i)=>{
   })
 })
 function workingClick(target,i){
-  console.log(i)
   const lastDate = document.querySelectorAll('.last-date');
-  console.log(target.checked)
-  console.log(lastDate[i])
   if(target.checked){
-    console.log('che')
     lastDate[i].style.display = 'none';
     lastDate[i].value = '9999-12'
   } else{
-    console.log('no')
     lastDate[i].style.display = '';
     lastDate[i].value = '2023-01'
   }
-  console.log(lastDate[i].value)
+}
+
+//경력정보 입퇴사일 최대기간 설정
+const firstDate = document.querySelectorAll('.first-date');
+const lastDate = document.querySelectorAll('.last-date');
+const dateComponent = document.querySelectorAll('.first-date, .last-date, .first-date-add, .last-date-add')
+Array.from(dateComponent).map((item)=> item !== "9999-12" ? item.max = (new Date()).toISOString().slice(0,7) : item.max = "9999-12")
+firstDate.forEach((e, i) => {
+  e.addEventListener('change', ()=>
+  lastDate[i].min = firstDate[i].value
+  )
+})
+
+//form 제출 오류 방지
+function changeCareer(e, formId){
+  e.preventDefault();
+  const form = document.getElementById(formId);
+  if(window.confirm('경력정보를 변경하시겠습니까?')){
+    form.submit();
+  }
+}
+
+//재직중 체크 해제(추가)
+const workignBtn_add = document.querySelector('.working-add');
+workignBtn_add.addEventListener('click', (e)=>{
+  const target = e.target;
+  const lastDate = document.querySelector('.last-date-add');
+  if(target.checked){
+    lastDate.style.display = 'none';
+    lastDate.max = "9999-12"
+    lastDate.value = '9999-12'
+  } else{
+    lastDate.style.display = '';
+    lastDate.value = "reset";
+  }
+})
+
+////경력추가
+function addCareer(e){
+  e.preventDefault();
+  const corpname = document.getElementById('add-corpname').value;
+  axios.get("/mypage/check/corp", {
+    params: { corp : corpname }
+  })
+  .then((res)=>{
+    if(res.data.result == 0){
+      alert('등록되지 않은 기관입니다. 기관이름을 확인해주세요');
+      return false;
+    }
+    else if(res.data.result == 1){
+      if(window.confirm("경력을 추가하시겠습니까?")){
+        e.target.submit();
+        return true;
+      }else{
+        return false;
+      }
+    }  
+  })
 }

@@ -1,4 +1,4 @@
-const {Corp_info, Add_corp } = require('../../modules/sql');
+const {Corp_info, Add_corp, check_corp } = require('../../modules/sql');
 
 process.on('uncaughtException', (err)=>{
   console.error(err)
@@ -25,5 +25,9 @@ module.exports = {
         return res.status(500).send("<script>alert('오류가 발생했습니다. 다시 시도해주세요.');location.href = '/reiew/write';</script>");
       }
     }
+  },
+  check_corp: async (req, res)=>{
+    const result = await check_corp(req.query.corp);
+    return res.status(200).json({result : result.length})
   }
 }

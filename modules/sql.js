@@ -119,10 +119,16 @@ module.exports = {
           RP.*,
           FORMAT(RP.total_score,1) as total_score,
           DATE_FORMAT(RP.created_date, '%Y.%m') as date,
+          UC.type as type,
+          U.nickname as nickname,
           ${hashList}
         FROM Review_Posts as RP
           LEFT JOIN Hashtag_Posts as HP
           on RP.No = HP.review_no
+          LEFT JOIN user_career as UC
+          on RP.No = UC.review_no
+          LEFT JOIN user as U
+          on RP.user_id = U.id
         WHERE RP.Corp_name = "${Corp_name}"
         ORDER BY no DESC;`
       try {
@@ -160,14 +166,7 @@ module.exports = {
           FORMAT(round(avg(RP.reward_score),1),1) as avg_reward, 
           FORMAT(round(avg(RP.worth_score),1),1) as avg_worth, 
           FORMAT(round(avg(RP.culture_score),1),1) as avg_culture, 
-          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife,
-          RP.nickname as nickname,
-          RP.last_date as last_date,
-          RP.type as type,
-          DATE_FORMAT(RP.created_date, '%Y.%m') as date,
-          RP.highlight as highlight,
-          RP.pros as pros,
-          RP.cons as cons
+          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife
         FROM Corp as C 
           LEFT JOIN Review_Posts as RP on C.Corp_name = RP.Corp_name
         GROUP BY C.Corp_name
@@ -182,7 +181,43 @@ module.exports = {
         return reject(err);
       }
     })
-    },
+  },
+  sidebar_corp: () => {
+    return new Promise((resolve, reject)=>{
+      const sql = `
+        SELECT Corp_name, count(*) as cnt, FORMAT(round(avg(total_score),1),1) as avg_total FROM Review_Posts
+        group by Corp_name
+        ORDER by avg_total DESC
+        LIMIT 3;
+      `
+      try{
+        pool.query(sql, (err, rows)=>{
+          return resolve(rows)
+        })  
+      } catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  sidebar_corp: () => {
+    return new Promise((resolve, reject)=>{
+      const sql = `
+        SELECT Corp_name, count(*) as cnt, FORMAT(round(avg(total_score),1),1) as avg_total FROM Review_Posts
+        group by Corp_name
+        ORDER by avg_total DESC
+        LIMIT 3;
+      `
+      try{
+        pool.query(sql, (err, rows)=>{
+          return resolve(rows)
+        })  
+      } catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
   review_recent: () => {
     return new Promise((resolve, reject)=>{
       const sql = `
@@ -263,7 +298,7 @@ module.exports = {
       if(corpname == undefined){corpname = ''};
       let sql = `
         SELECT
-          C.Corp_name
+          C.Corp_name, C.city
         FROM Corp as C
           LEFT JOIN Review_Posts as RP
             ON C.Corp_name = RP.Corp_name
@@ -293,8 +328,10 @@ module.exports = {
         SELECT count(*) AS cnt
         FROM (${sql}) AS T
       `
+      console.log(sqlQuery)
       try{
         pool.query(sqlQuery, (err, rows)=>{
+          console.log(rows)
           return resolve(rows)
         });
       } catch (err){
@@ -306,9 +343,9 @@ module.exports = {
   insert_review: (contents) => {
     return new Promise((resolve, reject) =>{
       const sql = `
-        INSERT into Review_Posts (Corp_name, user_id, nickname, first_date, last_date, type, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        INSERT into Review_Posts (Corp_name, user_id, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?)
       `
-      const data = [contents.Corp_name, contents.user_id, contents.nickname, contents.first_date, contents.last_date, contents.type, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
+      const data = [contents.Corp_name, contents.user_id, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
       try{
         pool.query(sql, data, (err, result)=>{
           return resolve(result)
@@ -366,17 +403,52 @@ module.exports = {
       }
     })
   },
+  check_career: (contents) =>{
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        SELECT * FROM user_career
+        WHERE user_id = "${contents.user_id}"
+        AND Corp_name = "${contents.Corp_name}"
+        AND first_date = "${contents.first_date}"
+      `
+      try{
+        pool.query(sql, (err, rows)=>{
+          console.log(rows)
+          return resolve(rows)
+        })
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
   add_career: (contents, review_no) => {
     return new Promise((resolve, reject) =>{
-      console.log('start')
       const sql = `
-        INSERT into user_career (nickname, Corp_name, first_date, last_date, type, review_no) values (?,?,?,?,?,?)
+        INSERT into user_career (user_id, Corp_name, first_date, last_date, type, review_no) values (?,?,?,?,?,?)
       `
-      const data = [contents.nickname, contents.Corp_name, contents.first_date, contents.last_date, contents.type, review_no];
+      const data = [contents.user_id, contents.Corp_name, contents.first_date, contents.last_date, contents.type, review_no];
       
       try{
         pool.query(sql, data, (err, row)=>{
-          console.log(row)
+          return resolve(row)
+        })  
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  update_career: (contents, review_no) => {
+    return new Promise((resolve, reject) =>{
+      const sql = `
+        UPDATE user_career SET last_date = "${contents.last_date}", type = "${contents.type}", review_no = "${review_no}"
+        WHERE user_id = "${contents.user_id}"
+        AND Corp_name = "${contents.Corp_name}"
+        AND first_date = "${contents.first_date}"
+      `
+      try{
+        pool.query(sql, (err, row)=>{
           return resolve(row)
         })  
       }catch(err){
@@ -425,14 +497,30 @@ module.exports = {
       }
     })
   },
-  user_career: (userNick) => {
+  user_career: (id) => {
     return new Promise((resolve, reject) => {
       const sql = `
-        SELECT Corp_name, first_date, last_date, type, review_no FROM user_career WHERE nickname = '${userNick}';
+        SELECT no, Corp_name, first_date, last_date, type, review_no 
+        FROM user_career WHERE user_id = '${id}';
       `
       try{
         pool.query(sql, (err, row)=>{
           return resolve(row)
+        })
+      } catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  check_corp: (corpname)=>{
+    return new Promise((resolve, reject) => {
+      const sql = `
+        SELECT Corp_name FROM Corp WHERE Corp_name = '${corpname}';
+      `
+      try{
+        pool.query(sql, (err, rows)=>{
+          return resolve(rows)
         })
       } catch(err){
         console.log(err)

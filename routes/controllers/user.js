@@ -276,6 +276,43 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  changeCareer: (req, res) => {
+    const {id, nickname} = req.user;
+    const { no, review_no, corp_name, first_date, last_date, type } = req.body;
+    let sql = `
+      UPDATE user_career SET first_date = "${first_date}", last_date = "${last_date}", type = "${type}"
+      WHERE no = "${no}"
+    `
+    try{
+      pool.query(sql, (err, row)=>{
+        if(err) return res.status(500).json(err)
+        else if (row.changedRows > 0){
+          return res.status(200).send("<script>alert('경력정보 변경이 완료되었습니다.');location.href='/mypage/profile';</script>")
+        }
+      })
+    } catch(err){
+      return res.status(500).json(err)
+    }
+  },
+  addCareer: (req, res)=>{
+    const {id, nickname} = req.user;
+    const { corp_name, first_date, last_date, type } = req.body;
+    const sql = `
+      INSERT into user_career (user_id, Corp_name, first_date, last_date, type) values (?,?,?,?,?)
+    `
+    const data = [id, corp_name, first_date, last_date, type];
+    try{
+      pool.query(sql, data, (err, row)=>{
+        console.log(row)
+        if(err) return res.status(500).json(err)
+        else if (row.affectedRows > 0){
+          return res.status(200).send("<script>alert('경력정보 추가가 완료되었습니다.');location.href='/mypage/profile';</script>")
+        }
+      })
+    } catch(err){
+      return res.status(500).json(err)
+    }
+  },
   userData: (req, res) => {
     const data = {
       User: req.user,

@@ -311,6 +311,11 @@ section{
           padding: 10px 20px;
           background: #d9d9d9;
           border-radius: 5px;
+          cursor: pointer;
+        }
+        button:hover{
+          background: #6269F5;
+          color: #fff
         }
       }
     }
@@ -330,6 +335,11 @@ section{
         button{
           color: #fff;
           background-color: #6269F5;
+          cursor: pointer;
+        }
+        button:hover{
+          background: #6269F5;
+          color: #fff;
         }
       }
     }

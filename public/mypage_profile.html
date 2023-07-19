@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="update-data">
-            <form method="post" action="/mypage/change/userinfo" onsubmit="return checkinfo()">
+            <form id="user-info" method="post" action="/mypage/change/userinfo" onsubmit="return checkinfo()">
               <fieldset>
                 <div class="userdata-id">
                   <label>이메일(ID)</label>
@@ -80,7 +80,7 @@
                   </ul>
                 </div>
               </fieldset>
-              <button class="save-btn" type="submit">저장</button>
+              <button class="save-btn" type="submit" form="user-info">저장</button>
             </form>
           </div>
         </div>
@@ -96,12 +96,13 @@
           </div>
         </div>
         <div class="career-contents">
-          {% for c in career %}
-          <form class="career-content">
+          {% for c in career | reverse %}
+          <form id="career{{loop.index}}"class="career-content" method="post" action="/mypage/change/career">
             <fieldset>
+              <input style="display:none" name="no" value="{{c.no}}">
               <div class="career-item career-corpname">
                 <label class="content-font bold">기관명</label>
-                <input type="text" class="content-font" name="corp_name" value="{{c.Corp_name}}">
+                <input type="text" class="content-font" name="corp_name" value="{{c.Corp_name}}" readonly>
               </div>
               <div class="career-item career-period">
                 <label class="content-font bold">근무기간</label>
@@ -132,14 +133,14 @@
                         <label class="content-font-small">재직중</label>
                       </div>
                     </div>
-                    <input type="month" max="YYYY-MM" id="last_date22" name="last_date" value="{{c.last_date}}">
+                    <input type="month" max="YYYY-MM" class="last-date" name="last_date" value="{{c.last_date}}">
                     {% endif %}
                   </div>
                 </div>
               </div>
               <div class="career-item career-type">
                 <label class="content-font bold">근무직종</label>
-                <select>
+                <select name="type" required>
                   <option value="사회복지사" {% if c.type == "사회복지사" %}selected{% endif %}>사회복지사</option>
                   <option value="사무원" {% if c.type == "사무원" %}selected{% endif %}>사무원</option>
                   <option value="영양사" {% if c.type == "영양사" %}selected{% endif %}>영양사</option>
@@ -148,17 +149,19 @@
             </fieldset>
             <div class="btn-line">
               <a href="#" class="content-font bold">내가 쓴 리뷰</a>
-              <button>수정</button>
+              <button form="career{{loop.index}}" type="submit" onclick="return changeCareer(event, 'career{{loop.index}}')">수정</button>
             </div>
           </form>
           {% endfor %}
         </div>
         <div class="career-contents career-write">
-          <form class="career-content">
+          <form id="career-write" class="career-content" method="post" action="/mypage/add/career" onsubmit="return addCareer(event)">
             <fieldset>
               <div class="career-item career-corpname">
                 <label class="content-font bold">기관명</label>
-                <input type="text" class="content-font" name="corp_name" placeholder="기관명을 입력해주세요." value="" required>
+                <input type="text" 
+                id="add-corpname"
+                class="content-font" name="corp_name" placeholder="기관명을 입력해주세요." value="" required>
               </div>
               <div class="career-item career-period">
                 <label class="content-font bold">근무기간</label>
@@ -167,23 +170,26 @@
                     <div>
                       <label class="content-font-small">입사일</label>
                     </div>
-                    <input type="month" max="YYYY-MM" id="first_date_add" name="first_date" value="" required>
+                    <input type="month" max="YYYY-MM" 
+                    class="first-date-add" id="first_date_add" name="first_date" value="" required>
                   </div>
                   <div>
                     <div class="quit">
                       <label class="content-font-small">퇴사일</label>
                       <div>
-                        <input type="checkbox">
+                        <input type="checkbox" class="working-add">
                         <label class="content-font-small">재직중</label>
                       </div>
                     </div>
-                    <input type="month" max="YYYY-MM" id="last_date_add" name="last_date" value="" required>
+                    <input type="month" max="YYYY-MM"
+                    class="last-date-add" 
+                    id="last_date_add" name="last_date" value="" required>
                   </div>
                 </div>
               </div>
               <div class="career-item career-type">
                 <label class="content-font bold">근무직종</label>
-                <select required>
+                <select name="type" required>
                   <option value="" selected disabled hidden>직종 선택</option>
                   <option value="사회복지사">사회복지사</option>
                   <option value="사무원">사무원</option>
@@ -193,7 +199,7 @@
             </fieldset>
             <div class="btn-line">
               <a href="#" class="content-font bold">내가 쓴 리뷰</a>
-              <button>수정</button>
+              <button type="submit">추가</button>
             </div>
           </form>
         </div>

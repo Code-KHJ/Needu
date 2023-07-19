@@ -215,39 +215,7 @@
 						{% endif %}
 					</div>
 				</div>
-				<div class="sidebar">
-					<p>다른 기관 리뷰도 찾아보기</p>
-					<input>
-					<div class="side_contents">
-						<ul>
-							{% for top in top10.slice(0,3) %}
-							<li class="side_content">
-								<p>{{top.name}}</p>
-								<div>
-									<div class="star_bg">
-										<span style="width: {{top.avg_total*20}}%"></span>
-									</div>
-									<span>{{top.avg_total}}</span>
-									<span>({{top.cnt}}개 리뷰)</span>		
-								</div>
-								<div>
-									<p>{{top.pros}}</p>
-									<div>
-										{% if top.last_date == '9999-12' %}
-										<span>현직원</span>
-										{% else %}
-										<span>전직원</span>
-										{% endif %}
-										<span>{{top.type}}</span>
-										<span>{{top.date}}</span>
-										<button type="button" onclick="location.href='{{top.name}}'">리뷰보기</button>	
-									</div>
-								</div>
-							</li>
-							{% endfor %}
-						</ul>
-					</div>
-				</div>
+
 			</div>
 		</main>
 	</div>
