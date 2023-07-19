@@ -15,9 +15,9 @@ module.exports = {
     }
   },
   mid_User_career: async (req, res, next) => {
-    const userNick = req.user.nickname
+    const userId = req.user.id
     try{
-      const userCareeer = await user_career(userNick);
+      const userCareeer = await user_career(userId);
       req.userCareer = userCareeer
       next();
     } catch(err){

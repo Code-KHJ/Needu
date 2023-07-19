@@ -2,7 +2,7 @@ const rootdir = require("../../modules/path");
 const { body, validationResult } = require("express-validator");
 const { NodeResolveLoader } = require("nunjucks");
 const { hash } = require("bcrypt");
-const { Hash_info, HashTop_update, insert_review, insert_hashtag, update_auth, add_career, update_review_likes } = require("../../modules/sql");
+const { Hash_info, HashTop_update, insert_review, insert_hashtag, update_auth, add_career, update_review_likes, check_career, update_career } = require("../../modules/sql");
 
 
 process.on('uncaughtException', (err)=>{
@@ -50,8 +50,13 @@ module.exports = {
       const hashUpdate_result = await HashTop_update(contents.Corp_name, hashTopList);
       //권한 업데이트
       const updateAuth = await update_auth(contents);
-      //경력 추가
-      const addCareer = await add_career(contents, review_no);
+      const checkCareer = await check_career(contents);
+      if(checkCareer.length > 0){
+        const updateCareer = await update_career(contents, review_no);
+      }else{
+        //경력 추가
+        const addCareer = await add_career(contents, review_no);
+      }
 
       return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/review/corp/"+contents.Corp_name+"';</script>");
     } catch(err){
@@ -88,7 +93,7 @@ module.exports = {
         hash: req.hash,
         content: req.content[0],
         cnt : cnt,
-        top10 : req.top10
+        // top10 : req.top10
       }
       return res.status(200).render(rootdir+'/public/review_detail.html', middle_info)
     } else{

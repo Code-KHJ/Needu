@@ -1,4 +1,4 @@
-const { Corp_info, Corp_all, Hash_info, top10_corp } = require('../../modules/sql');
+const { Corp_info, Corp_all, Hash_info, top10_corp, sidebar_corp, sidebar_review } = require('../../modules/sql');
 const rootdir = require("../../modules/path");
 
 
@@ -50,6 +50,15 @@ module.exports = {
       console.error(err)
     }
   },
+  // mid_sidebar_corp: async (req, res, next) => {
+  //   try{
+  //     const corp = await sidebar_corp();
+  //     const review = await sidebar_review();
+  //     next()
+  //   } catch(err){
+  //     console.error(err)
+  //   }
+  // },
   mid_top10_detail: async(req, res, next) => {
     if(req.query.data){
       const detail_item = req.query.data;

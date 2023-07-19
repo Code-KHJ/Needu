@@ -35,7 +35,7 @@ class header_component extends HTMLElement{
           </div>
           <div class="usersign">
             ${name ? `
-            <a href="#" class="nickname">${name}님</a>
+            <a href="/mypage/profile" class="nickname">${name}님</a>
             <a href="/logout" class="logout"><span >로그아웃</span></a>` : `
             <a href="/login" class="login">로그인</a>
             <a href="/signup" class="signup">회원가입</a>`
