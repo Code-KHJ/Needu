@@ -2,7 +2,8 @@ const rootdir = require("../../modules/path");
 const { body, validationResult } = require("express-validator");
 const { NodeResolveLoader } = require("nunjucks");
 const { hash } = require("bcrypt");
-const { Hash_info, HashTop_update, insert_review, insert_hashtag, update_auth, add_career, update_review_likes, check_career, update_career } = require("../../modules/sql");
+const { Hash_info, HashTop_update, insert_review, insert_hashtag, update_auth, add_career, update_review_likes, check_career, update_career, mypage_review_info } = require("../../modules/sql");
+const review = require("../middleware/review");
 
 
 process.on('uncaughtException', (err)=>{
@@ -154,6 +155,19 @@ module.exports = {
     if(data.Count !== undefined){res.cookie('totalCount', data.Count)};
     res.status(200).render(rootdir+'/public/review_search.html', data);
   },
+  con_mypage_review: async (req, res)=>{
+    const User = req.user.id;
+    if(User){
+      const reviews = await mypage_review_info(User)
+      const data = {
+        User: req.user,
+        reviews: reviews
+      }
+      res.status(200).render(rootdir+'/public/mypage_review.html', data);
+    }else{
+      res.status(401).send("<script>alert('로그인 하신 후 이용할 수 있는 서비스입니다.');location.href = '/login';</script>");
+    }
+  }
 }
 
 

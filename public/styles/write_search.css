@@ -79,6 +79,7 @@
 .register>span:nth-of-type(2){
   font-size: 1.4rem;
   font-weight: 700;
+  cursor: pointer;
 }
 /* mobile-end */
 
