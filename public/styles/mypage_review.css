@@ -1,0 +1,311 @@
+@charset "UTF-8";
+.mo-show {
+  display: block;
+}
+
+.mo-none {
+  display: none;
+}
+
+.content-font {
+  font-size: 1.4rem;
+}
+
+.content-font-small {
+  font-size: 1.3rem;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.star_bg {
+  position: relative;
+  background: url(images/star_bg.svg) no-repeat;
+  background-size: contain;
+}
+
+.star_bg span {
+  position: absolute;
+  background: url(images/star_selected.svg) no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+main {
+  margin-top: 120px;
+  width: 100%;
+}
+
+section {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 40px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+section .contents {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+section .contents .contents_review {
+  padding: 60px 30px;
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+}
+section .contents .contents_review > h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+section .contents .contents_review .review_star {
+  position: relative;
+  width: 218px;
+  margin-top: 40px;
+}
+section .contents .contents_review .review_star > p {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+section .contents .contents_review .review_star .btn_star_detail {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  gap: 8px;
+}
+section .contents .contents_review .review_star .btn_star_detail > div:nth-of-type(1) {
+  width: 100px;
+  height: 20px;
+}
+section .contents .contents_review .review_star .btn_star_detail > button:nth-of-type(1) {
+  width: 16px;
+  height: 8px;
+  background: url(images/btn_detail.png) no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+section .contents .contents_review .review_star .star_detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 8px;
+  padding: 20px 16px;
+  gap: 4px;
+  width: 218px;
+  border: 1px solid #eeeeee;
+}
+section .contents .contents_review .review_star .star_detail > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  height: 16px;
+}
+section .contents .contents_review .review_star .star_detail > div > div {
+  width: 80px;
+  height: 16px;
+}
+section .contents .contents_review .review_star .star_detail > div > div > p {
+  width: 100px;
+  height: 16px;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: #aaaaaa;
+}
+section .contents .contents_review .review_comment {
+  display: flex;
+  flex-direction: column;
+  margin-top: 57px;
+  gap: 40px;
+  width: 100%;
+  overflow-x: scroll;
+}
+section .contents .contents_review .review_comment::-webkit-scrollbar {
+  display: none;
+}
+section .contents .contents_review .review_comment .highlight > p {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+section .contents .contents_review .review_comment .highlight > div {
+  display: flex;
+  margin-top: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px 0;
+}
+section .contents .contents_review .review_comment .highlight > div > span {
+  height: 16px;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 16px;
+}
+section .contents .contents_review .review_comment .highlight > div > span:not(:last-child)::after {
+  content: "·";
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+section .contents .contents_review .review_comment .highlight > div > span:nth-of-type(1) {
+  background: url(./images/airplane.png) no-repeat;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+}
+section .contents .contents_review .review_comment .pros_cons > p:nth-of-type(1) {
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 18px;
+}
+section .contents .contents_review .review_comment .pros_cons > p:nth-of-type(2) {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 160%;
+  margin-top: 12px;
+}
+section .contents .contents_review .review_comment .comment_hashtag_wrap {
+  position: relative;
+}
+section .contents .contents_review .review_comment .comment_hashtag_wrap .hashtag_fade {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100px;
+  height: 30px;
+  background: linear-gradient(270deg, #fff 10%, rgba(255, 255, 255, 0) 30%);
+  z-index: 2;
+}
+section .contents .contents_review .review_comment .comment_hashtag_wrap .comment_hashtag {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+section .contents .contents_review .review_comment .comment_hashtag_wrap .comment_hashtag::-webkit-scrollbar {
+  display: none;
+}
+section .contents .contents_review .review_comment .comment_hashtag_wrap .comment_hashtag > span {
+  font-size: 1.4rem;
+  line-height: 160%;
+  width: auto;
+  height: 30px;
+}
+section .contents .contents_review .review_comment .comment_hashtag_wrap .comment_hashtag > span:not(:empty) {
+  margin-right: 12px;
+}
+section .contents .contents_review .review_comment .comment_like {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 4px;
+  width: 135px;
+  height: 36px;
+  border-radius: 5px;
+  background-color: #efefef;
+}
+section .contents .contents_review .review_comment .comment_like > span:nth-of-type(1) {
+  background: url(./images/like.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+}
+section .contents .contents_review .review_comment .comment_like > span:nth-of-type(2) {
+  height: 20px;
+  font-size: 1.4rem;
+  line-height: 140%;
+  letter-spacing: -0.02rem;
+}
+section .contents .contents_review .review_comment .comment_like > span:nth-of-type(3) {
+  width: 25px;
+  height: 20px;
+  font-size: 1.4rem;
+  line-height: 140%;
+  color: #aaaaaa;
+}
+section .contents .contents_review .review-change {
+  float: right;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  color: #444;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+section .contents .contents_review .review-change:hover {
+  background: #6269F5;
+  color: #fff;
+}
+
+.main-nav {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+.main-nav h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.main-nav > div {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.main-nav > div div {
+  height: 56px;
+  padding: 20px 40px;
+  font-size: 1.4rem;
+}
+.main-nav > div .nav-active {
+  border-bottom: 2px solid #6269F5;
+}
+
+/* 테블릿 768 사이즈 반응형 */
+@media screen and (min-width: 768px) {
+  .tab-show {
+    display: block;
+  }
+  .tab-none {
+    display: none;
+  }
+  section {
+    width: 86%;
+  }
+  .main-nav {
+    width: 86%;
+    margin: 0 auto;
+    padding-top: 60px;
+  }
+}
+/* 테블릿 1024 사이즈 반응형 */
+@media screen and (min-width: 1024px) {
+  .content-font {
+    font-size: 1.6rem;
+  }
+  .content-font-small {
+    font-size: 1.4rem;
+  }
+  .main-nav h1 {
+    font-size: 2rem;
+  }
+  .main-nav > div div {
+    height: 58px;
+    font-size: 1.6rem;
+  }
+}
+/* PC 1280 사이즈 반응형 */
+@media screen and (min-width: 1280px) {
+  section {
+    width: 67%;
+  }
+  .main-nav {
+    width: 67%;
+  }
+}
+/* PC 1400 사이즈 반응형 *//*# sourceMappingURL=mypage_review.css.map */

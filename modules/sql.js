@@ -328,10 +328,8 @@ module.exports = {
         SELECT count(*) AS cnt
         FROM (${sql}) AS T
       `
-      console.log(sqlQuery)
       try{
         pool.query(sqlQuery, (err, rows)=>{
-          console.log(rows)
           return resolve(rows)
         });
       } catch (err){
@@ -517,6 +515,47 @@ module.exports = {
     return new Promise((resolve, reject) => {
       const sql = `
         SELECT Corp_name FROM Corp WHERE Corp_name = '${corpname}';
+      `
+      try{
+        pool.query(sql, (err, rows)=>{
+          return resolve(rows)
+        })
+      } catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  mypage_review_info: (user_id)=>{
+    return new Promise((resolve, reject) => {
+      const sql = `
+        SELECT
+          RP.No as Review_no,
+          RP.Corp_name as Corp_name,
+          FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
+          FORMAT(round(avg(RP.growth_score),1),1) as avg_growth, 
+          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership, 
+          FORMAT(round(avg(RP.reward_score),1),1) as avg_reward, 
+          FORMAT(round(avg(RP.worth_score),1),1) as avg_worth, 
+          FORMAT(round(avg(RP.culture_score),1),1) as avg_culture, 
+          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife,
+          RP.highlight as highlight,
+          RP.pros as pros,
+          RP.cons as cons,
+          DATE_FORMAT(RP.created_date, "%Y.%m") as date,
+          RP.likes as likes,
+          HP.*,
+          UC.first_date as first_date,
+          UC.last_date as last_date,
+          UC.type as type,
+          U.nickname as nickname
+        FROM Review_Posts as RP
+          LEFT JOIN Hashtag_Posts as HP on RP.No = HP.review_no
+          LEFT JOIN user_career as UC on RP.No = UC.review_no
+          LEFT JOIN user as U on RP.user_id = U.id
+        WHERE RP.user_id = "guswns21@hanmail.net"
+        GROUP BY RP.No
+        ORDER BY RP.No DESC;
       `
       try{
         pool.query(sql, (err, rows)=>{

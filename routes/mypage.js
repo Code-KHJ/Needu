@@ -2,12 +2,17 @@ const express = require("express");
 const router = express.Router();
 const {userData, changePw, changeInfo, changeCareer, addCareer} = require("./controllers/user");
 const {check_corp} = require("./controllers/corp");
+const {con_mypage_review} = require("./controllers/review");
+
 const {auth} = require("./middleware/auth");
 const {mid_User_all, mid_User_career} = require("./middleware/user");
 const rootdir = require("../modules/path");
 
 
 router.get("/profile", auth, mid_User_all, mid_User_career, userData);
+
+router.get("/review", auth, con_mypage_review);
+
 
 router.post('/change/pw', auth, changePw)
 

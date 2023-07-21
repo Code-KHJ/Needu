@@ -135,8 +135,12 @@ class register_component extends HTMLElement{
     this.innerHTML = `
     <div class="modal-box" style="display: none;">
       <div class="modal_addCorp">
-        <div>기관 등록하기</div>
-        <form id="frm_add_corp" method="post" action="/search_write/add">
+        <div>기관 등록하기
+          <button class="modal_cancel" type="reset" onclick="modal_cancel();">
+            <img src="../styles/images/cancel.png", alt="닫기">
+          </button>
+        </div>
+        <form id="frm_add_corp" method="post" action="/review/write/add">
           <div class="Corp_data">
             <div>
               <label for="modal_Corp_name">기관명</label>
@@ -145,13 +149,12 @@ class register_component extends HTMLElement{
             <div>
               <label>소재지</label>
               <div>
-                <select name="city" id="sido1"></select>
-                <select name="gugun" id="gugun1"></select>	
+                <select name="city" id="sido1" required></select>
+                <select name="gugun" id="gugun1" required></select>	
               </div>
             </div>
           </div>
           <div class="btn_modalSubmit">
-            <button class="modal_cancel" type="button" onclick="modal_cancel();">취소</button>
             <button class="modal_submit" type="submit" form="frm_add_corp">등록</button>
           </div>	
         </form>
