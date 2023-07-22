@@ -118,7 +118,7 @@ module.exports = {
         SELECT 
           RP.*,
           FORMAT(RP.total_score,1) as total_score,
-          DATE_FORMAT(RP.created_date, '%Y.%m') as date,
+          DATE_FORMAT(RP.created_date, '%Y.%m.%d') as date,
           UC.type as type,
           U.nickname as nickname,
           ${hashList}
@@ -222,7 +222,7 @@ module.exports = {
     return new Promise((resolve, reject)=>{
       const sql = `
         SELECT *, 
-        DATE_FORMAT(created_date, '%Y.%m') as date
+        DATE_FORMAT(created_date, '%Y.%m.%d') as date
         FROM Review_Posts
         ORDER BY No DESC
         LIMIT 10;`;
@@ -542,7 +542,7 @@ module.exports = {
           RP.highlight as highlight,
           RP.pros as pros,
           RP.cons as cons,
-          DATE_FORMAT(RP.created_date, "%Y.%m") as date,
+          DATE_FORMAT(RP.created_date, "%Y.%m.%d") as date,
           RP.likes as likes,
           HP.*,
           UC.first_date as first_date,

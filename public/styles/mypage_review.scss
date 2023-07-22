@@ -93,7 +93,7 @@ section{
               width: 80px;
               height: 16px;
             }
-            &>div>p {
+            &>p {
               width: 100px;
               height: 16px;
               font-weight: 400;
@@ -187,9 +187,6 @@ section{
               line-height: 160%;
               width: auto;
               height: 30px;
-              // padding: 4px 8px;
-              // border-radius: 12px;
-              // border: 1px solid #aaaaaa;
               &:not(:empty) {
                 margin-right: 12px;
               }
@@ -227,7 +224,8 @@ section{
         }
       }
       .review-change{
-        float: right;
+        display: flex;
+        margin-left: auto;
         padding: 8px 10px;
         border-radius: 5px;
         border: 1px solid #aaa;
@@ -284,7 +282,59 @@ section{
     margin: 0 auto;
     padding-top: 60px;
   }
-
+  section{
+    .contents {
+    	.contents_review {
+        padding: 60px 48px;
+        gap: 40px;
+        .review_main{
+          display: flex;
+          flex-direction: row;
+          margin-top: 40px;
+          gap: 60px;
+          .review_star {
+            margin-top: 0;
+            &>p{
+              font-size: 2.0rem;
+            }
+            .btn_star_detail>div:nth-of-type(1) {
+              width: 130px;
+              height: 26px;
+            }
+            .star_detail {
+              position: absolute;
+            }
+          }
+          .review_comment {
+            margin-top: 0px;
+            .highlight {
+              &>p {
+                font-size: 2.0rem;
+              }
+              &>div {
+                display: flex;
+                margin-top: 16px;
+                gap: 4px;
+                &>span:nth-of-type(1) {
+                  width: 18px;
+                  height: 18px;
+                }
+                &>span {
+                  font-size: 1.4rem;
+                }
+              }
+            }
+            .pros_cons>p:nth-of-type(1) {
+              font-size: 1.8rem;
+            }
+            .comment_hashtag {
+              height: 26px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /* 테블릿 1024 사이즈 반응형 */
@@ -306,7 +356,26 @@ section{
       }
     }
   }
-
+  section{
+    .contents {
+    	.contents_review {
+        .review_main{
+          gap: 80px;
+          .review_star>p {
+            font-size: 2.2rem;
+          }
+          .review_comment {
+            .highlight>p {
+              font-size: 2.2rem;
+            }
+            .pros_cons>p:nth-of-type(2) {
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /* PC 1280 사이즈 반응형 */
@@ -317,7 +386,30 @@ section{
   .main-nav{
     width: 67%;
   }
-
+  section{
+    .contents {
+    	.contents_review {
+        .review_main{
+          .review_star>p {
+            font-size: 2.4rem;
+          }
+          .review_comment {
+            .highlight {
+              &>p {
+                font-size: 2.4rem;
+              }
+              &>div>span {
+                font-size: 1.6rem;
+              }
+            }
+            .pros_cons>p:nth-of-type(1) {
+              font-size: 2.0rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /* PC 1400 사이즈 반응형 */
