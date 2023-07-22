@@ -105,7 +105,7 @@ section .contents .contents_review .review_star .star_detail > div > div {
   width: 80px;
   height: 16px;
 }
-section .contents .contents_review .review_star .star_detail > div > div > p {
+section .contents .contents_review .review_star .star_detail > div > p {
   width: 100px;
   height: 16px;
   font-weight: 400;
@@ -228,7 +228,8 @@ section .contents .contents_review .review_comment .comment_like > span:nth-of-t
   color: #aaaaaa;
 }
 section .contents .contents_review .review-change {
-  float: right;
+  display: flex;
+  margin-left: auto;
   padding: 8px 10px;
   border-radius: 5px;
   border: 1px solid #aaa;
@@ -282,6 +283,53 @@ section .contents .contents_review .review-change:hover {
     margin: 0 auto;
     padding-top: 60px;
   }
+  section .contents .contents_review {
+    padding: 60px 48px;
+    gap: 40px;
+  }
+  section .contents .contents_review .review_main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    gap: 60px;
+  }
+  section .contents .contents_review .review_main .review_star {
+    margin-top: 0;
+  }
+  section .contents .contents_review .review_main .review_star > p {
+    font-size: 2rem;
+  }
+  section .contents .contents_review .review_main .review_star .btn_star_detail > div:nth-of-type(1) {
+    width: 130px;
+    height: 26px;
+  }
+  section .contents .contents_review .review_main .review_star .star_detail {
+    position: absolute;
+  }
+  section .contents .contents_review .review_main .review_comment {
+    margin-top: 0px;
+  }
+  section .contents .contents_review .review_main .review_comment .highlight > p {
+    font-size: 2rem;
+  }
+  section .contents .contents_review .review_main .review_comment .highlight > div {
+    display: flex;
+    margin-top: 16px;
+    gap: 4px;
+  }
+  section .contents .contents_review .review_main .review_comment .highlight > div > span:nth-of-type(1) {
+    width: 18px;
+    height: 18px;
+  }
+  section .contents .contents_review .review_main .review_comment .highlight > div > span {
+    font-size: 1.4rem;
+  }
+  section .contents .contents_review .review_main .review_comment .pros_cons > p:nth-of-type(1) {
+    font-size: 1.8rem;
+  }
+  section .contents .contents_review .review_main .review_comment .comment_hashtag {
+    height: 26px;
+  }
 }
 /* 테블릿 1024 사이즈 반응형 */
 @media screen and (min-width: 1024px) {
@@ -298,6 +346,18 @@ section .contents .contents_review .review-change:hover {
     height: 58px;
     font-size: 1.6rem;
   }
+  section .contents .contents_review .review_main {
+    gap: 80px;
+  }
+  section .contents .contents_review .review_main .review_star > p {
+    font-size: 2.2rem;
+  }
+  section .contents .contents_review .review_main .review_comment .highlight > p {
+    font-size: 2.2rem;
+  }
+  section .contents .contents_review .review_main .review_comment .pros_cons > p:nth-of-type(2) {
+    font-size: 1.6rem;
+  }
 }
 /* PC 1280 사이즈 반응형 */
 @media screen and (min-width: 1280px) {
@@ -306,6 +366,18 @@ section .contents .contents_review .review-change:hover {
   }
   .main-nav {
     width: 67%;
+  }
+  section .contents .contents_review .review_main .review_star > p {
+    font-size: 2.4rem;
+  }
+  section .contents .contents_review .review_main .review_comment .highlight > p {
+    font-size: 2.4rem;
+  }
+  section .contents .contents_review .review_main .review_comment .highlight > div > span {
+    font-size: 1.6rem;
+  }
+  section .contents .contents_review .review_main .review_comment .pros_cons > p:nth-of-type(1) {
+    font-size: 2rem;
   }
 }
 /* PC 1400 사이즈 반응형 *//*# sourceMappingURL=mypage_review.css.map */
