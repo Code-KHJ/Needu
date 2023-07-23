@@ -1,4 +1,4 @@
-const { review_content, review_recent, review_search_result, review_search_result_cnt, select_auth } = require('../../modules/sql');
+const { review_content, review_recent, review_search_result, review_search_result_cnt, select_auth, mypage_review_edit } = require('../../modules/sql');
 const rootdir = require("../../modules/path");
 
 
@@ -63,5 +63,17 @@ module.exports = {
     } catch(err){
       console.error(err)
     }
-  }
+  },
+  mid_review_edit: async (req, res, next)=>{
+    const review_no = req.query.no;
+    const user = req.user;
+    try{
+      const data = await mypage_review_edit(review_no);
+      req.review = data;
+      req.params.name = data.Corp_name;
+      next()
+    } catch(err){
+      console.error(err)
+    }
+  },
 }

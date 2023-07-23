@@ -1,12 +1,14 @@
 //근무기간 퇴사일 기능 구현
 const first_date = document.getElementById('first_date');
 const last_date = document.getElementById('last_date');
+const dateComponent = document.querySelectorAll('#first_date, #last_date');
 const working = document.getElementById('working');
 first_date.addEventListener('change', ()=>{
   last_date.min = first_date.value;
 })
 working.addEventListener('change', ()=>{
   if (working.checked) {
+    last_date.max = "9999-12"
     last_date.style.visibility = "hidden";
     last_date.value = "9999-12";
   } else {
@@ -14,7 +16,6 @@ working.addEventListener('change', ()=>{
     last_date.style.visibility = "";
   }
 })
-const dateComponent = document.querySelectorAll('#first_date, #last_date');
 Array.from(dateComponent).map((item)=> item !== "9999-12" ? item.max = (new Date()).toISOString().slice(0,7) : item.max = "9999-12")
 
 // 별접 입력 구현
@@ -50,6 +51,16 @@ function hashClick(i) {
 }
 const hash = document.querySelectorAll('.item_hash label');
 hash.forEach((e,i) => e.addEventListener('click', hashClick))
+document.addEventListener("DOMContentLoaded", function(){
+  const hash = document.querySelectorAll('.checkhash');
+  const item = document.querySelectorAll('.item_hash');
+  hash.forEach((hashtag,i) => {
+    if(hashtag.checked == true){
+      item[i].querySelector('label').style.backgroundColor = '#3D47FF'
+      item[i].querySelector('label').style.color = '#ffffff'
+    }
+  })
+})
 
 
 //한줄평 작성 확인

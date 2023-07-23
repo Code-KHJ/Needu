@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>리뷰작성</title>
+		<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
+		<link href="/styles/webcomponent.css" rel="stylesheet">
+		<link href="/styles/write_detail.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div class="container">
+			<div id="header_wrap">
+				<header-component data-name="{{User.nickname}}"></header-component>
+			</div>
+			<main>
+				<div class="corp_info_wrap">
+					<div class="div_line"></div>
+					<div class="corp_info">
+						<div class="corp_info_image">{{기업이미지}}</div>
+						<div class="corp_info_data">
+							<div>
+								<span>{{Corp.name}}</span>
+								<span>{{Corp.city+" "+Corp.gugun}}</span>    
+							</div>
+							<div>
+								<div class="star_bg">
+									<span style="width:{{Corp.avg_total*20}}%"></span>
+								</div>
+								<span>{{Corp.avg_total}}</span>
+								<span>({{Corp.cnt}}개 리뷰)</span>
+							</div>
+							<ul class="hashtag_top">
+								<li>{{hash[0].hash}}</li>
+								<li>{{hash[1].hash}}</li>
+								<li>{{hash[2].hash}}</li>
+								<li>{{hash[3].hash}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="contents_wrap">
+					<div class="contents">
+						<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
+						<form class="review_form" id="review_form" method="post" action="/mypage/review/edit">
+							<input name="Corp_name" value="{{Corp.name}}" style="display: none;">
+							<input name="review_no" value="{{Review.review_no}}" style="display: none;">
+							<div class="working_info">
+								<div class="period">
+									<label>근무기간</label>
+									<div>
+										<div>
+											<div>
+												<label for="first_date">입사일</label>
+												<div>
+												</div>
+											</div>
+											<input type="month" max="YYYY-MM" id="first_date" name="first_date" required value="{{Review.first_date}}">
+										</div>
+										<div>
+											{% if Review.last_date == '9999-12' %}
+											<div>
+												<label for="last_date" class="quit">퇴사일</label>
+												<div class="working">
+													<input type="checkbox" id="working" checked>
+													<label for="working">재직중</label>
+												</div>
+											</div>
+											<input type="month" max="YYYY-MM" id="last_date" name="last_date" value="9999-12" required style="visibility: hidden">
+											{% else %}
+											<div>
+												<label for="last_date" class="quit">퇴사일</label>
+												<div class="working">
+													<input type="checkbox" id="working">
+													<label for="working">재직중</label>
+												</div>
+											</div>
+											<input type="month" max="YYYY-MM" id="last_date" name="last_date" value="{{Review.last_date}}" required>
+											{% endif %}
+										</div>
+									</div>	
+								</div>
+								<div class="work_type">
+									<label for="work_type">근무직종</label>
+									<select id="work_type" name="work_type"required>
+										<option value="" selected disabled hidden>직종 선택</option>
+										<option value="사회복지사">사회복지사</option>
+										<option value="사무원">사무원</option>
+										<option value="영양사">영양사</option>
+									</select>
+								</div>
+							</div>
+							<p>평가하기</p>
+							<div class="check_score">
+								<p>별을 클릭해 총점을 평가해주세요.</p>
+								<div class="item">
+									<label for="growth">성장 가능성</label>
+									<div class="star_bg">
+										<span style="width: {{Review.growth*20}}%;"></span>
+										<input name="growth" type="range" value="{{Review.growth*2}}" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="leadership">리더십</label>
+									<div class="star_bg">
+										<span style="width: {{Review.leadership*20}}%;"></span>
+										<input name="leadership" type="range" value="{{Review.leadership*2}}" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="reward">급여 및 복지</label>
+									<div class="star_bg">
+										<span style="width: {{Review.reward*20}}%;"></span>
+										<input name="reward" type="range" value="{{Review.reward*2}}" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="worth">일 가치감</label>
+									<div class="star_bg">
+										<span style="width: {{Review.worth*20}}%;"></span>
+										<input name="worth" type="range" value="{{Review.worth*2}}" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="culture">사내 문화</label>
+									<div class="star_bg">
+										<span style="width: {{Review.culture*20}}%;"></span>
+										<input name="culture" type="range" value="{{Review.culture*2}}" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="worklife">워라밸</label>
+									<div class="star_bg">
+										<span style="width: {{Review.worklife*20}}%;"></span>
+										<input name="worklife" type="range" value="{{Review.worklife*2}}" step="1" min="0" max="10" required>
+									</div>
+								</div>
+								<div class="item">
+									<label for="total">총점</label>
+									<div class="star_bg">
+										<span name="totalScore" id="total_score" style="width: {{Review.total*20}}%;"></span>
+									</div>
+								</div>
+								<div class="hashtag">
+									<div>키워드 선택하기</div>
+									<div>
+										<div class="item_hash">
+											<label for="hash_1">#역세권위치</label>
+											<input type="checkbox" id="hash_1" class="checkhash" name="hash_1" value="#역세권위치" {% if Review.hashtag_1 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_2">#시차출근제운영</label>
+											<input type="checkbox" id="hash_2" class="checkhash" name="hash_2" value="#시차출근제운영" {% if Review.hashtag_2 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_3">#성과급지급</label>
+											<input type="checkbox" id="hash_3" class="checkhash" name="hash_3" value="#성과급지급" {% if Review.hashtag_3 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_4">#재택근무운영</label>
+											<input type="checkbox" id="hash_4" class="checkhash" name="hash_4" value="#재택근무운영" {% if Review.hashtag_4 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_5">#간식제공</label>
+											<input type="checkbox" id="hash_5" class="checkhash" name="hash_5" value="#간식제공" {% if Review.hashtag_5 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_6">#자유로운휴가</label>
+											<input type="checkbox" id="hash_6" class="checkhash" name="hash_6" value="#자유로운휴가" {% if Review.hashtag_6 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_7">#반차/반반차운영</label>
+											<input type="checkbox" id="hash_7" class="checkhash" name="hash_7" value="#반차/반반차운영" {% if Review.hashtag_7 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_8">#고급사양의업무장비</label>
+											<input type="checkbox" id="hash_8" class="checkhash" name="hash_8" value="#고급사양의업무장비" {% if Review.hashtag_8 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_9">#수평적호칭</label>
+											<input type="checkbox" id="hash_9" class="checkhash" name="hash_9" value="#수평적호칭" {% if Review.hashtag_9 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_10">#편안한자율복장</label>
+											<input type="checkbox" id="hash_10" class="checkhash" name="hash_10" value="#편안한자율복장" {% if Review.hashtag_10 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_11">#생일축하금지급</label>
+											<input type="checkbox" id="hash_11" class="checkhash" name="hash_11" value="#생일축하금지급" {% if Review.hashtag_11 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_12">#팀회식비지원</label>
+											<input type="checkbox" id="hash_12" class="checkhash" name="hash_12" value="#팀회식비지원" {% if Review.hashtag_12 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_13">#사내동아리활동비지원</label>
+											<input type="checkbox" id="hash_13" class="checkhash" name="hash_13" value="#사내동아리활동비지원" {% if Review.hashtag_13 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_14">#자기계발비지원</label>
+											<input type="checkbox" id="hash_14" class="checkhash" name="hash_14" value="#자기계발비지원" {% if Review.hashtag_14 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_15">#야근식대지원</label>
+											<input type="checkbox" id="hash_15" class="checkhash" name="hash_15" value="#야근식대지원" {% if Review.hashtag_15 !== null %}checked{% endif %}>
+										</div>
+										<div class="item_hash">
+											<label for="hash_16">#야근택시비지원</label>
+											<input type="checkbox" id="hash_16" class="checkhash" name="hash_16" value="#야근택시비지원" {% if Review.hashtag_16 !== null %}checked{% endif %}>
+										</div>
+									</div>
+									<div id="selected_hashtag" style="display: none;"></div>
+								</div>
+							</div>
+							<div class="write_review">
+								<div class="write_item">
+									<label for="highlight">한줄평</label>
+									<div>
+										<textarea name="highlight" type="text" id="highlight" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." onchange="checkHigh()" required>{{Review.highlight}}</textarea>
+									</div>
+								</div>
+								<div class="write_item">
+									<label for="pros">장점</label>
+									<div>
+										<span id="pros_cnt">현재 글자수:000자</span>
+										<textarea name="pros" type="text" id="pros" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 50자)" required>{{Review.pros}}</textarea>
+									</div>
+								</div>
+								<div class="write_item">
+									<label for="cons">단점</label>
+									<div>
+										<span id="cons_cnt">현재 글자수:000자</span>
+										<textarea name="cons" type="text" id="cons" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 50자)" required>{{Review.cons}}</textarea>
+									</div>
+								</div>
+							</div>
+						</form>
+						<button type="submit" form="review_form" id="btnSubmit" disabled="disabled">제출</button>
+					</div>
+					<div class="sidebar">
+						<div>광고</div>
+						<div>광고</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<footer>
+			<footer-component></footer-component>
+		</footer>
+		<totop-component></totop-component>
+		<script type="module" src="/js/webcomponent.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script defer src="/js/modify_review.js"></script>
+	</body>
+</html>
