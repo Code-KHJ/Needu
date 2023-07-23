@@ -354,6 +354,34 @@ module.exports = {
       }
     })
   },
+  update_review: (contents) => {
+    return new Promise((resolve, reject) =>{
+      let today = (new Date()).toISOString().slice(0,10);
+      const sql = `
+        UPDATE Review_Posts SET
+        total_score = "${contents.total_score}",
+        growth_score = "${contents.growth_score}",
+        leadership_score = "${contents.leadership_score}",
+        reward_score = "${contents.reward_score}",
+        worth_score = "${contents.worth_score}",
+        culture_score = "${contents.culture_score}",
+        worklife_score = "${contents.worklife_score}",
+        highlight = "${contents.highlight}",
+        pros = "${contents.pros}",
+        cons = "${contents.cons}",
+        modified_date = "${today}"
+        WHERE No = "${contents.review_no}";
+      `
+      try{
+        pool.query(sql, (err, result)=>{
+          return resolve(result)
+          })
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
   insert_hashtag: (contents, review_no, hashtag) => {
     return new Promise((resolve, reject) =>{
       const sql = `
@@ -362,6 +390,45 @@ module.exports = {
       const data = [contents.Corp_name, review_no, hashtag.hashtag_1, hashtag.hashtag_2, hashtag.hashtag_3, hashtag.hashtag_4, hashtag.hashtag_5, hashtag.hashtag_6, hashtag.hashtag_7, hashtag.hashtag_8, hashtag.hashtag_9, hashtag.hashtag_10, hashtag.hashtag_11, hashtag.hashtag_12, hashtag.hashtag_13, hashtag.hashtag_14, hashtag.hashtag_15, hashtag.hashtag_16];
       try{
         pool.query(sql, data, (err, result)=>{
+          return resolve(result)
+          })
+      }catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  update_hashtag: (review_no, hashtag) => {
+    return new Promise((resolve, reject) =>{
+      let loopquery = '';
+      for (let i=1; i<16; i++){
+        let data;
+        let hash = `${hashtag[`hashtag_${i}`]}`
+        console.log(hash)
+        if(hash !== 'undefined'){
+          console.log('1')
+          data = `hashtag_${i} = "${hash}", `
+        }else{
+          console.log('2')
+          data = `hashtag_${i} = `+'NULL, '
+        }
+        console.log(data)
+        loopquery += data
+      }
+      let hash16 = `${hashtag.hashtag_16}`;
+      if(hash16 !== undefined){
+        loopquery += `hashtag_16 = "${hashtag.hashtag_16}"`
+      } else{
+        loopquery += `hashtag_16 = `+'NULL'
+      }
+      const sql = `
+        UPDATE Hashtag_Posts SET
+        ${loopquery}
+        WHERE review_no = ${review_no}
+      `
+      console.log(sql)
+      try{
+        pool.query(sql, (err, result)=>{
           return resolve(result)
           })
       }catch(err){
@@ -411,7 +478,6 @@ module.exports = {
       `
       try{
         pool.query(sql, (err, rows)=>{
-          console.log(rows)
           return resolve(rows)
         })
       }catch(err){
@@ -532,13 +598,13 @@ module.exports = {
         SELECT
           RP.No as Review_no,
           RP.Corp_name as Corp_name,
-          FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
-          FORMAT(round(avg(RP.growth_score),1),1) as avg_growth, 
-          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership, 
-          FORMAT(round(avg(RP.reward_score),1),1) as avg_reward, 
-          FORMAT(round(avg(RP.worth_score),1),1) as avg_worth, 
-          FORMAT(round(avg(RP.culture_score),1),1) as avg_culture, 
-          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife,
+          RP.total_score as total, 
+          RP.growth_score as growth, 
+          RP.leadership_score as leadership, 
+          RP.reward_score as reward, 
+          RP.worth_score as worth, 
+          RP.culture_score as culture, 
+          RP.worklife_score as worklife,
           RP.highlight as highlight,
           RP.pros as pros,
           RP.cons as cons,
@@ -553,13 +619,54 @@ module.exports = {
           LEFT JOIN Hashtag_Posts as HP on RP.No = HP.review_no
           LEFT JOIN user_career as UC on RP.No = UC.review_no
           LEFT JOIN user as U on RP.user_id = U.id
-        WHERE RP.user_id = "guswns21@hanmail.net"
+        WHERE RP.user_id = "${user_id}"
         GROUP BY RP.No
         ORDER BY RP.No DESC;
       `
       try{
         pool.query(sql, (err, rows)=>{
           return resolve(rows)
+        })
+      } catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
+  },
+  mypage_review_edit: (review_no)=>{
+    return new Promise((resolve, reject) => {
+      const sql = `
+        SELECT
+          RP.No as Review_no,
+          RP.Corp_name as Corp_name,
+          RP.total_score as total, 
+          RP.growth_score as growth, 
+          RP.leadership_score as leadership, 
+          RP.reward_score as reward, 
+          RP.worth_score as worth, 
+          RP.culture_score as culture, 
+          RP.worklife_score as worklife,
+          RP.highlight as highlight,
+          RP.pros as pros,
+          RP.cons as cons,
+          DATE_FORMAT(RP.created_date, "%Y.%m.%d") as date,
+          RP.likes as likes,
+          HP.*,
+          UC.first_date as first_date,
+          UC.last_date as last_date,
+          UC.type as type,
+          U.nickname as nickname
+        FROM Review_Posts as RP
+          LEFT JOIN Hashtag_Posts as HP on RP.No = HP.review_no
+          LEFT JOIN user_career as UC on RP.No = UC.review_no
+          LEFT JOIN user as U on RP.user_id = U.id
+        WHERE RP.No = "${review_no}"
+        GROUP BY RP.No
+        ORDER BY RP.No DESC;
+      `
+      try{
+        pool.query(sql, (err, row)=>{
+          return resolve(row[0])
         })
       } catch(err){
         console.log(err)

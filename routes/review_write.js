@@ -15,7 +15,6 @@ router.get('/all', Corp_all, corp)
 
 router.post('/add', Add_Corp)
 
-
 router.get('/corp/:name', auth, Corp_info, Hash_info, write_auth)
 
 router.post('/corp/:name', auth, write)
