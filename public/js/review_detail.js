@@ -29,7 +29,6 @@ async function likesClick(element) {
         name : corp_name, 
         num : review_num, 
         likes : -1})
-    console.log(res.data)
     if (res.data == "권한없음"){
       alert('로그인이 필요한 서비스입니다.');
     }
@@ -45,7 +44,6 @@ async function likesClick(element) {
         num : review_num, 
         likes : 1
     })
-    console.log(res.data)
     if(res.data == "권한없음"){
       alert('로그인이 필요한 서비스입니다.');
     }
@@ -80,7 +78,8 @@ async function More_contents() {
     isLoading = true; //  로딩 중
     const res = await axios.get(corp_name+"/more", { 
       params: { name : corp_name, page : page },
-      })
+    })
+    console.log(res)
     const contentContainer = document.getElementById('content');
     if (res.data.auth == 1){
       if (res.content !== null) {
@@ -189,7 +188,7 @@ async function More_contents() {
       }
       else { console.log('test') }
     }
-    if (res.data.auth == 0){
+    if (res.status == '204'){
       isLoading = false;
       alert('더 많은 리뷰를 보시려면 먼저 리뷰를 1건 이상 작성해주세요.')
     }

@@ -368,7 +368,7 @@ main{
 	align-items: center;
 	padding: 8px;
 	gap: 4px;
-	width: 135px;
+	width: fit-content;
 	height: 36px;
 	border: 1px solid #999fff;
 	border-radius: 5px;

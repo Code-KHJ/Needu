@@ -187,10 +187,12 @@ button {
   gap: 5px;
 }
 .search-section .filter .hashtag button {
-  padding: 8px 8px;
+  padding: 4px 8px;
   font-size: 1.4rem;
-  border-radius: 5px;
+  border: 1px solid #aaa;
+  border-radius: 12px;
   color: #000;
+  background-color: #fff;
 }
 .search-section .filter .hashtag .hashtag-active {
   background-color: rgba(0, 13, 255, 0.6) !important;
@@ -329,6 +331,25 @@ button {
 .list-section .corp-wrap li .corp-score a {
   font-size: 1.6rem;
 }
+.list-section .result-none-wrap {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+.list-section .result-none-wrap > img {
+  width: 210px;
+  height: 216px;
+}
+.list-section .result-none-wrap > div {
+  margin-top: 40px;
+  font-size: 1.6rem;
+}
+.list-section .result-none-wrap > div > button {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
 .list-section .page-wrap {
   width: 100%;
   margin: 0 auto;
@@ -343,12 +364,14 @@ button {
   background-size: contain;
   width: 7px;
   height: 14px;
+  cursor: pointer;
 }
 .list-section .page-wrap .next {
   background: url(images/ico_arrow_R.png) no-repeat;
   background-size: contain;
   width: 7px;
   height: 14px;
+  cursor: pointer;
 }
 .list-section .page-wrap .pages {
   display: flex;
@@ -508,6 +531,12 @@ button {
   }
   .list-section .corp-wrap li .corp-score a {
     font-size: 1.8rem;
+  }
+  .list-section .result-none-wrap > div {
+    font-size: 2rem;
+  }
+  .list-section .result-none-wrap > div > button {
+    font-size: 2rem;
   }
 }
 /* PC 1280 사이즈 반응형 */

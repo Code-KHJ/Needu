@@ -18,60 +18,28 @@
       <main>
         <div class="main_wrap">
           <div class="login_wrap">
-            <!-- <button type="button" class="btn_login_tap_per" id="login_user" onclick="changeToUser()">개인회원</button>
-            <button type="button" class="btn_login_tap_cor" id="login_corp" onclick="changeToCorp()">기업회원</button> -->
-              <div class="login_box" id="form_login_user">
-                <div class="login_input_wrap">
-                  <form id="form_user" method="post" action="/login">
-                    <fieldset>
-                      <input type="text" name="id" id="userid" placeholder="아이디(이메일형식)" required>
-                      <input type="password" name="password" id="userpw" autocomplete="off" style="ime-mode:disabled" placeholder="비밀번호를 입력하세요" required>
-                      <button type="submit" class="" id="submit_user" disabled="disabled">로그인</button>
-                      <input type="checkbox" id="saveId" name="saveId">
-                      <label for="saveId">아이디 저장</label>
-                    </fieldset>
-                  </form>
-                  <p><a href="#">아이디/비밀번호 찾기</a></p>
-                </div>
-                <div class="login_social_wrap">
-                  <p>소셜계정으로 로그인</p>
-                  <ul>
-                    <li><a href="#" class="blind">naver</a></li>
-                    <li><a href="#" class="blind">kakao</a></li>
-                    <li><a href="#" class="blind">google</a></li>
-                    <li><a href="#" class="blind">facebook</a></li>
-                    <li><a href="#" class="blind">apple</a></li>
-                  </ul>
+            <div class="login_box" id="form_login_user">
+              <div class="login_input_wrap">
+                <form id="form_user" method="post" action="/login">
+                  <fieldset>
+                    <input type="text" name="id" id="userid" placeholder="아이디(이메일형식)를 입력하세요" required>
+                    <input type="password" name="password" id="userpw" autocomplete="off" style="ime-mode:disabled" placeholder="비밀번호를 입력하세요" required>
+                  </fieldset>
+                </form>
+                <div class="login_option">
+                  <div class="save_id">
+                    <input type="checkbox" id="saveId">
+                    <label for="saveId">아이디 저장</label>  
+                  </div>
+                  <button type="button">아이디/비밀번호 찾기</button>  
                 </div>
               </div>
-              <!-- <div class="login_box" id="form_login_corp" style="display: none;">
-                <div class="login_input_wrap">
-                  <form id="form_corp" method="post" action="" onsubmit="">
-                    <fieldset>
-                      <input type="text" id="corpid" placeholder="기업아이디를 입력하세요" required>
-                      <input type="password" id="corppw" autocomplete="off" placeholder="비밀번호를 입력하세요" required>
-                      <button type="submit" class="" id="submit_corp" disabled="disabled">로그인</button>
-                      <input type="checkbox" id="saveId" name="saveId">
-                      <label for="saveId">아이디 저장</label>
-                    </fieldset>
-                  </form>
-                  <p><a href="#">아이디/비밀번호 찾기</a></p>
-                </div>
-                <div class="login_social_wrap">
-                  <p>소셜계정으로 로그인</p>
-                  <ul>
-                    <li><a href="#" class="screen_out">naver</a></li>
-                    <li><a href="#" class="screen_out">kakao</a></li>
-                    <li><a href="#" class="screen_out">google</a></li>
-                    <li><a href="#" class="screen_out">facebook</a></li>
-                    <li><a href="#" class="screen_out">apple</a></li>
-                  </ul>
-                </div>
-              </div> -->
+              <button type="submit" class="" id="submit_user" form="form_user" disabled="disabled">로그인</button>
+            </div>
+            <div class="to_signup">아직 회원이 아니신가요?<a href="/signup">회원가입</a></div>
           </div>
-          <div class="ad_wrap">
+          <div class="ad_wrap mo_none pc_show">
             <div class="ad">광고배너</div>
-            <div class="btn_signup"><a href="/signup">회원가입</a></div>
           </div>
         </div>      
       </main>

@@ -206,13 +206,14 @@
               {% endif %}
             </select>
           </div>
+          {% if Corp_data.length > 0 %}
           <ul class="corp-wrap">
             {% for corp in Corp_data %}
             <li class="corp-li">
               <div class="corp-img">기관 이미지</div>
               <div class="corp-data">
                 <div>
-                  <h1>{{corp.Corp_name}}</h1>
+                  <h1><a href="/review/corp/{{corp.Corp_name}}">{{corp.Corp_name}}</a></h1>
                   <p>{{corp.city}} {{corp.gugun}}</p>
                 </div>
                 <div class="corp-hash">
@@ -236,6 +237,13 @@
             </li>
             {% endfor %}
           </ul>
+          {% else %}
+          <div class="result-none-wrap">
+            <img src="/styles/images/search_none.png">
+            <div>결과가 없습니다. <button type="button" class="btn_addCorp">기관 등록하기</button></div>
+          </div>
+          <register-modal></register-modal>
+          {% endif %}
           <div class="page-wrap">
             <div class="prev"></div>
             <div class="pages"></div>
@@ -256,5 +264,6 @@
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script defer src="/js/review_search.js"></script>
+  <script defer src="/js/modules.js"></script>
 </body>
 </html>

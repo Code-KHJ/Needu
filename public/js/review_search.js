@@ -190,7 +190,6 @@ function pagination_Load(){
   }
   //현재 페이지 클래스 추가
   pageNumber.forEach((nb)=>{
-    console.log(nb.value)
     if(nb.value == curruntPage){
       nb.classList.add('page-active');
     }else{
@@ -249,5 +248,16 @@ page.forEach((e)=>{
   })
 });
 
-
+//모달 구현
+const btn_addCorp = document.querySelector('.btn_addCorp');
+const modal_box = document.querySelector('.modal-box');
+if(btn_addCorp !== null){
+  btn_addCorp.addEventListener('click', ()=>{
+    modal_box.style.display = 'block'
+  })
+  //모달 취소
+  function modal_cancel(){
+    modal_box.style.display = 'none';
+  }  
+}
 

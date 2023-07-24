@@ -114,11 +114,11 @@ module.exports = {
         res.status(200).json({auth: User.auth, content: newContents})
       }
       else{
-        res.status(204).json({auth: User.auth})
+        res.status(204).json({auth: '권한 필요'})
       }
     }
     else {
-      res.status(401).json({auth: 'none'})
+      res.status(200).json({auth: 'none'})
     }
   },
   review_likes: async (req, res) => {
@@ -134,7 +134,8 @@ module.exports = {
         return res.status(500).json({err})
       }
     } else {
-      return res.status(401).send(JSON.stringify("권한없음"));
+      console.log('11')
+      return res.status(200).send(JSON.stringify("권한없음"));
     }
   },
   con_top10_detail: (req, res)=>{
