@@ -7,10 +7,11 @@ async function checkId(){
 
     //아이디 정규식 검사
     if(!regid.test(userid.value)){
-        userid.style.borderColor = '#dc3434';
+        userid.style.backgroundColor = '#FFFFFF';
+        userid.style.borderColor = '#FF4444';
         msgid.style="display: "
         msgid.innerHTML="이메일을 바르게 입력해주세요."
-        userid.value = "";
+        // userid.value = "";
         return false;
     } else{
         //아이디 중복체크
@@ -20,11 +21,11 @@ async function checkId(){
                 checkId: userid.value
             })
             if(res.data == 1){
-                userid.style.borderColor = '#2D65FE';
+                userid.style.borderColor = '#6269F5';
                 msgid.style="display: none;"
                 return true;
             } else{
-                userid.style.borderColor = '#dc3434';
+                userid.style.borderColor = '#FF4444';
                 msgid.style="display: "
                 msgid.innerHTML="이미 존재하는 아이디입니다."
                 return false;
@@ -47,13 +48,11 @@ inputEmail.addEventListener('change', ()=>{
     checkId().then((result) => {
         if(result === true){
             reqBtn.disabled='';
-            reqBtn.style.backgroundColor = '#2D65FE'
-            reqBtn.style.borderColor = '#2D65FE'
-            reqBtn.style.color = '#EAEDF4';
+            reqBtn.style.backgroundColor = '#6269F5'
+            reqBtn.style.color = '#FFFFFF';
         }else{
             reqBtn.disabled='disabled';
-            reqBtn.style.backgroundColor = 'rgba(51, 51, 51, 0.5)'
-            reqBtn.style.borderColor = 'rgba(51, 51, 51, 0.5)'
+            reqBtn.style.backgroundColor = '#AAAAAA'
             reqBtn.style.color = '';
         }
     })
@@ -69,14 +68,14 @@ reqBtn.addEventListener('click', async ()=>{
 inputAuth.addEventListener('input', ()=>{
     if(inputAuth.value == ''){
         confirmBtn.disabled='disabled';
-        confirmBtn.style.backgroundColor = 'rgba(51, 51, 51, 0.5)'
-        confirmBtn.style.borderColor = 'rgba(51, 51, 51, 0.5)'
+        confirmBtn.style.backgroundColor = '#AAAAAA'
+        confirmBtn.style.borderColor = '#AAAAAA'
         confirmBtn.style.color = '';
     }else{
         confirmBtn.disabled='';
-        confirmBtn.style.backgroundColor = '#2D65FE'
-        confirmBtn.style.borderColor = '#2D65FE'
-        confirmBtn.style.color = '#EAEDF4';
+        confirmBtn.style.backgroundColor = '#6269F5'
+        confirmBtn.style.borderColor = '#6269F5'
+        confirmBtn.style.color = '#FFFFFF';
     }
 });
 
@@ -102,20 +101,23 @@ function checkPw1(){
     var regPw = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,16}$/ //영어, 숫자만 가능한 정규식
     //비밀번호 글자 수 검사
     if(password1.value.length < 8){
-        password1.style.borderColor = '#dc3434';
+        password1.style.backgroundColor = '#FFFFFF';
+        password1.style.borderColor = '#FF4444';
         msgpw1.style="display: "
         msgpw1.innerHTML="비밀번호는 8~16자리로 입력해주세요."
     } else{
         //비밀번호 유효성 검사
         if(!regPw.test(password1.value)){
-            password1.style.borderColor = '#dc3434';
+            password1.style.backgroundColor = '#FFFFFF';
+            password1.style.borderColor = '#FF4444';
             msgpw1.style="display: "
             msgpw1.innerHTML="영문 대소문자, 숫자, 특수문자만 입력 가능하며 반드시 영문, 숫자 필요합니다."
-            password1.value = "";
+            // password1.value = "";
             return false;
         } else{
             //통과
-            password1.style.borderColor = '#2D65FE';
+            password1.style.backgroundColor = '#FFFFFF';
+            password1.style.borderColor = '#6269F5';
             msgpw1.style="display: none;"
             return true;
         }
@@ -125,12 +127,14 @@ function checkPw2(){
     const password2 = document.getElementById('password2');
     const msgpw2 = document.getElementById('checkpw2msg');
     if(password2.value !== password1.value){ //비밀번호 일치 확인
-    password2.style.borderColor = '#dc3434';
+    password2.style.backgroundColor = '#FFFFFF';
+    password2.style.borderColor = '#FF4444';
     msgpw2.style="display: "
     msgpw2.innerHTML="비밀번호가 일치하지 않습니다."
     } else{
         //통과
-        password2.style.borderColor = '#2D65FE';
+        password2.style.backgroundColor = '#FFFFFF';
+        password2.style.borderColor = '#6269F5';
         msgpw2.style="display: none;"
         return true;
     }}
@@ -139,12 +143,13 @@ async function checkNm(){
     const msgnm = document.getElementById('checknmmsg')
     const regnm = /^[A-Za-z가-힣0-9._-]{2,}$/ //영어, 한글, 숫자만 가능한 정규식
     if(nickname.value.length == 0){
-        nickname.style.borderColor = '#dc3434';
+        nickname.style.borderColor = '#FF4444';
         msgnm.style="display: "
         msgnm.innerHTML="닉네임을 입력해주세요."
     } else{
         if(!regnm.test(nickname.value)){
-            nickname.style.borderColor = '#dc3434';
+            nickname.style.backgroundColor = '#FFFFFF';
+            nickname.style.borderColor = '#FF4444';
             msgnm.style="display: "
             msgnm.innerHTML="닉네임은 영어, 한글, 숫자로 만들어주세요."
         } else{
@@ -156,11 +161,13 @@ async function checkNm(){
                 })
                 //통과
                 if(res.data == 1){
-                    nickname.style.borderColor = '#2D65FE';
+                    nickname.style.backgroundColor = '#FFFFFF';
+                    nickname.style.borderColor = '#6269F5';
                     msgnm.style="display: none;"
                     return true;
                 } else{
-                    nickname.style.borderColor = '#dc3434';
+                    nickname.style.backgroundColor = '#FFFFFF';
+                    nickname.style.borderColor = '#FF4444';
                     msgnm.style="display: "
                     msgnm.innerHTML="이미 존재하는 닉네임입니다."
                     return false;
@@ -176,11 +183,13 @@ function checkPn(){
     const msgPn = document.getElementById('checkPnmsg');
     const regPn = /^(010)[0-9]{7,8}$/ //전화번호 정규식
     if(!regPn.test(phone.value)){
-        phone.style.borderColor = '#dc3434';
+        phone.style.backgroundColor = '#FFFFFF';
+        phone.style.borderColor = '#FF4444';
         msgPn.style="display: "
         msgPn.innerHTML="휴대폰 번호를 바르게 입력해주세요."
     } else{ //통과
-        phone.style.borderColor = '#2D65FE';
+        phone.style.backgroundColor = '#FFFFFF';
+        phone.style.borderColor = '#6269F5';
         msgPn.style="display: none;"
         return true;
     }}
@@ -231,14 +240,14 @@ form.addEventListener('change', ()=>{
             const checksubmit = await checkSubmit()
             if(checksubmit == true){
                 btnSubmit.disabled="";
-                btnSubmit.style.backgroundColor = '#2D65FE';
-                btnSubmit.style.borderColor = "#2D65FE";
-                btnSubmit.style.color = "#EAEDF4";    
+                btnSubmit.style.backgroundColor = '#6269F5';
+                btnSubmit.style.borderColor = "#6269F5";
+                btnSubmit.style.color = "#efefef";    
             }
             else{
             btnSubmit.disabled="disabled";
-            btnSubmit.style.backgroundColor = 'rgba(51, 51, 51, 0.5)';
-            btnSubmit.style.borderColor = 'rgba(51, 51, 51, 0.5)';
+            btnSubmit.style.backgroundColor = '#AAAAAA';
+            btnSubmit.style.borderColor = '#AAAAAA';
         }})();
     }
 })

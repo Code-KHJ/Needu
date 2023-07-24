@@ -10,19 +10,19 @@ header {
   width: 100%;
   height: 72px;
   padding: 20px 0 20px 10%;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+  border-bottom: 1px solid #d9d9d9;
   align-items: center;
 }
 header .area_logo{
   display: flex;
   font-size: 2.4rem;
-  color: #333333;
+  color: #444444;
   align-items: center;
   text-align: center;
 }
 header .logo{
-  width:100px;
-  height:2.4rem;
+  width:120px;
+  height:40px;
   margin-right:10px;
   background:url(./images/logo_NeedU.png) no-repeat center/contain;
 }
@@ -39,16 +39,18 @@ form input {
   height: 48px;
   font-size: 1.6rem;
   line-height: 24px;
-  border: 1px solid rgba(0, 13, 255, 0.5);
+  border: 1px solid #aaaaaa;
   border-radius: 4px;
-  color: #373F57;
+  color: #444444;
+  background-color:#efefef;
   letter-spacing: -1px;
 }
 form input:hover {
-  background-color: #EFF5FF;
+  background-color: #fff;
 }
 form input:focus {
-  border: #2D65FE;
+  border: #6269F5;
+  outline: 1px solid #6269F5;
 }
 form .item {
   margin-top: 30px;
@@ -56,7 +58,7 @@ form .item {
 form .item label {
   display: flex;
   font-size: 1.8rem;
-  color: #333333;
+  color: #444444;
   margin-bottom: 8px;
 }
 form .item:nth-child(1) div {
@@ -70,8 +72,8 @@ form .item:nth-child(2) div {
 .req-btn, .confirm-btn {
   width: 40%;
   cursor: pointer;
-  background-color: rgba(51, 51, 51, 0.5);
-  border: 1px solid rgba(51, 51, 51, 0.5);
+  font-size:1.8rem;
+  background-color: #aaaaaa;
   border-radius: 4px;
 }
 .checkEmail{
@@ -81,7 +83,7 @@ form .checkmsg {
   font-size: 1.4rem;
   margin-top: 6px;
   margin-left: 6px;
-  color: red;
+  color: #FF4444;
 }
 .join_agree {
   display: flex;
@@ -90,7 +92,7 @@ form .checkmsg {
   margin-top: 40px;
   width: 100%;
   padding: 30px 20px;
-  border: 1px solid rgba(51, 51, 51, 0.5);
+  border: 1px solid #aaaaaa;
   border-radius: 12px;
 }
 .join_input_all {
@@ -99,18 +101,18 @@ form .checkmsg {
   text-align: center;
   width: 100%;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+  border-bottom: 1px solid #aaaaaa;
 }
 .join_input_all input {
   width: 25px;
   height: 25px;
   background: #FAFAFA;
-  border: 1px solid rgba(51, 51, 51, 0.5);
+  border: 1px solid #aaaaaa;
   border-radius: 4px;
 }
 .join_input_all label {
   font-size: 1.8rem;
-  color: #333333;
+  color: #444444;
   font-weight: 700;
   line-height: 27px;
   margin-left: 8px;
@@ -126,12 +128,12 @@ form .checkmsg {
   width: 20px;
   height: 20px;
   background: #FAFAFA;
-  border: 1px solid rgba(51, 51, 51, 0.5);
+  border: 1px solid #aaa;
   border-radius: 4px;
 }
 .join_input label {
   font-size: 1.6rem;
-  color: #333333;
+  color: #444444;
   font-weight: 700;
   margin-left: 8px;
 }
@@ -139,7 +141,7 @@ form .checkmsg {
   font-size: 1.6rem;
   position: absolute;
   right: 0px;
-  color: rgba(51, 51, 51, 0.5);
+  color: #aaa;
   cursor: pointer;
 }
 .join_input2 label {
@@ -165,7 +167,7 @@ form .checkmsg {
   width: 20px;
   height: 20px;
   background-color: #FAFAFA;
-  border: 1px solid rgba(51, 51, 51, 0.5);
+  border: 1px solid #aaa;
   margin-right: 8px;
 }
 .join_radio ul li label {
@@ -184,8 +186,8 @@ form .checkmsg {
   border-radius: 4px;
   letter-spacing: -1px;
   text-align: center;
-  color: #333333;
-  background-color: rgba(51, 51, 51, 0.5);
+  color: #444444;
+  background-color: #aaa;
   overflow: visible;
   cursor: pointer;
 }
@@ -214,7 +216,7 @@ form .checkmsg {
     width: 120px;
   }
   form .checkmsg {
-    font-size: 2.0rem;
+    font-size: 1.6rem;
   }
   .join_agree {
     margin-top: 60px;
