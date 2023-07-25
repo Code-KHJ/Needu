@@ -112,6 +112,7 @@ input:-webkit-autofill:active {
   gap: 20px;
   flex-wrap: nowrap;
   overflow: hidden;
+  padding-bottom: 5px;
 }
 .review{
   display: block;
@@ -164,8 +165,12 @@ input:-webkit-autofill:active {
 .top-score-item>div:nth-child(1){
   width: 70px;
   height: 70px;
-  background-color: red;
   border-radius: 50px;
+  background-color: #fff;
+  font-size: 2.0rem;
+  text-align: center;
+  line-height: 70px;
+  vertical-align: middle;
 }
 .top-score-item>div:nth-child(2){
   min-width: 165px;
@@ -210,6 +215,9 @@ input:-webkit-autofill:active {
 }
 .top-score-contents>div:nth-child(1){
   background: #a0a6ff !important;
+}
+.top-score-contents>div:nth-child(1)>div:nth-child(1){
+  background-color: radial-gradient(64.91% 64.91% at 44.29% 40.71%, #F9F9F9 0%, #E4E4E4 100%);
 }
 .top-score-banner{
   position: relative;

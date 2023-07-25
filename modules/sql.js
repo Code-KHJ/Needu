@@ -120,6 +120,7 @@ module.exports = {
           FORMAT(RP.total_score,1) as total_score,
           DATE_FORMAT(RP.created_date, '%Y.%m.%d') as date,
           UC.type as type,
+          UC.last_date as last_date,
           U.nickname as nickname,
           ${hashList}
         FROM Review_Posts as RP

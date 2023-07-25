@@ -65,8 +65,8 @@
           <h1>전체 만족도 Top</h1>
           <div class="top-score-contents">
             {% for top in top10.slice(0,4) %}
-            <div class="top-score-item top1">
-              <div>이미지</div>
+            <div class="top-score-item top1" onclick="location.href='/review/corp/{{top.name}}'">
+              <div>{{top.name.slice(0,2)}}</div>
               <div>
                 <div class="ts-item-detail">
                   <p>{{top.name}}</p>
@@ -80,7 +80,7 @@
             </div>
             {% endfor %}
           </div>
-          <div class="top-score-banner">
+          <div class="top-score-banner" onclick="location.href='/review/write'">
             <p>지금 후기 작성하면 전체 리뷰 확인 가능</p>
             <p>별점 주고 후기 보러가기</p>
             <span class="ts-banner-img"></span>
@@ -102,7 +102,7 @@
           </div>
           <ul class="detail-top5">
             {% for detail in detail10.slice(0,5) %}
-            <li class="detail-top5-item">
+            <li class="detail-top5-item" onclick="location.href='/review/corp/{{detail.name}}'">
               <div class="detail-top5-no">{{loop.index}}</div>
               <div class="detail-top5-content">
                 <div class="detail-top5-corp">

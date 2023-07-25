@@ -18,7 +18,7 @@
 			<div class="corp_info_wrap">
 				<div class="div_line"></div>
 				<div class="corp_info">
-					<div class="corp_info_image">기업이미지</div>
+					<div class="corp_info_image"><img src="/styles/images/ico_building.png"></div>
 					<div class="corp_info_data">
 						<div>
 							<span id="Corp_name">{{Corp.name}}</span>
@@ -163,10 +163,11 @@
 									<div class="highlight">
 										<p>{{content.highlight}}</p>
 										<div>
-											<span></span>
 											{% if content.last_date == '9999-12' %}
+											<img class="work-status" src="/styles/images/ico_working.png">
 											<span>현직원</span>
 											{% else %}
+											<img class="work-status" src="/styles/images/ico_worked.png">
 											<span>전직원</span>
 											{% endif %}
 											<span>{{ content.nickname.slice(0,1) }}{{'*'.repeat(content.nickname.length - 1)}}</span>

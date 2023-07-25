@@ -7,11 +7,14 @@ first_date.addEventListener('change', ()=>{
 })
 working.addEventListener('change', ()=>{
   if (working.checked) {
+    last_date.max = "9999-12";
     last_date.style.visibility = "hidden";
     last_date.value = "9999-12";
   } else {
     last_date.value = "";
-    last_date.style.visibility = "";
+    last_date.style.visibility = ""
+    last_date.max = (new Date()).toISOString().slice(0,7);
+
   }
 })
 const dateComponent = document.querySelectorAll('#first_date, #last_date');
@@ -69,7 +72,7 @@ const pros = document.getElementById('pros')
 function checkPros() {
   const pros_cnt = document.getElementById('pros_cnt');
   pros_cnt.innerHTML=`현재 글자수: ${pros.value.length}자`
-  if(pros.value.length>10){
+  if(pros.value.length>50){
     pros.style.borderColor = '#2D65FE';
     pros_cnt.style.color = '#aaaaaa';
     return true
@@ -86,7 +89,7 @@ const cons = document.getElementById('cons');
 function checkCons() {
   const cons_cnt = document.getElementById('cons_cnt');
   cons_cnt.innerHTML=`현재 글자수: ${cons.value.length}자`
-  if(cons.value.length>10){
+  if(cons.value.length>50){
     cons.style.borderColor = '#2D65FE';
     cons_cnt.style.color = '#aaaaaa';
     return true
@@ -108,8 +111,8 @@ form.addEventListener('change', ()=>{
   const check_worktype = document.getElementById('work_type').value !== "";
   const score_array = Array.prototype.slice.call(score_input).every(input => input.value > 0);
   const check_highlight = document.getElementById('highlight').value.length > 0;
-  const check_pros = document.getElementById('pros').value.length > 10;
-  const check_cons = document.getElementById('cons').value.length > 10;
+  const check_pros = document.getElementById('pros').value.length > 50;
+  const check_cons = document.getElementById('cons').value.length > 50;
   const checkAll = [check_firstdate, check_lastdate, check_worktype, score_array, check_highlight, check_pros, check_cons];
   if(checkAll.every((ck) => ck==true)){
     btnSubmit.disabled="";
