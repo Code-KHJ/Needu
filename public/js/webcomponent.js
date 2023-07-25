@@ -20,7 +20,7 @@ class header_component extends HTMLElement{
         </div>
         <nav>          
           <div class="gnb_wrap">
-            <div class="gnb_search">
+            <div class="gnb_search" style=display:none>
               <form>
                 <label for="search" class="screen_out">검색</label>
                 <input type="search" name="search" id="search" class="search_text" placeholder="검색어를 입력하세요">
@@ -86,14 +86,7 @@ class footer_component extends HTMLElement{
       <div class="logo"></div>
       <a>이용약관</a>
       <a>개인정보 처리방침</a>
-    </div>
-    <div class="footer_data">
-      <span>상호명: 00000</span>
-      <span>사업자번호: 000-00-00000</span>
-      <span>통신판매업: 00000</span>
-      <span>대표자: 000</span>
-      <span>이메일: needu.sw@gmail.com</span>
-      <span>주소: 서울시 00구 00로 00길 00-00</span>
+      <span>문의: needu.sw@gmail.com</span>
     </div>
   `
   }

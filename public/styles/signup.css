@@ -7,9 +7,9 @@
 }
 header {
   display: flex;
-  width: 100%;
+  width: 80%;
   height: 72px;
-  padding: 20px 0 20px 10%;
+  margin: 0 auto;
   border-bottom: 1px solid #d9d9d9;
   align-items: center;
 }
@@ -26,7 +26,6 @@ header .logo{
   margin-right:10px;
   background:url(./images/logo_NeedU.png) no-repeat center/contain;
 }
-
 .signup {
   width: 80%;
   margin: 0 auto;
@@ -195,7 +194,7 @@ form .checkmsg {
 /* 테블릿 768 사이즈 반응형 */
 @media screen and (min-width: 768px) {
   header {
-    padding: 20px 0px 20px 120px;
+    width: 510px;
   }
   header .area_logo .logo {
     font-size: 2.4rem;

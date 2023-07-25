@@ -8,6 +8,12 @@
   margin: 0 auto;
   margin-top: 240px;
 }
+.main_wrap>h1{
+  text-align: center;
+  font-size: 2.0rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
 .search{
   position: relative;
   display: flex;
@@ -87,6 +93,9 @@
   .main_wrap{
     width: 86%;
   }
+  .main_wrap>h1{
+    font-size: 2.4rem;
+  }
   .search{
     padding: 20px 60px;
   }
@@ -152,6 +161,9 @@
   .main_wrap{
     width: 67%;
     max-width: 1000px;
+  }
+  .main_wrap>h1{
+    font-size: 2.8rem;
   }
   #search_input{
     font-size: 2.4rem;

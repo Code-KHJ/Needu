@@ -275,9 +275,16 @@ button {
   border-bottom: 1px solid #aaa;
 }
 .list-section .corp-wrap li .corp-img {
+  padding: 20px 10px;
   width: 80px;
   height: 80px;
-  background-color: #aaa;
+  border-radius: 50px;
+  background-color: radial-gradient(56.13% 56.13% at 50.00% 50%, #EFEFEF 74.48%, rgba(238, 239, 255, 0.00) 100%), #D9D9D9;
+  font-size: 2.8rem;
+  color: #aaa;
+  font-weight: 800;
+  text-align: center;
+  line-height: 40px;
 }
 .list-section .corp-wrap li .corp-data {
   display: flex;

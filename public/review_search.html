@@ -210,7 +210,7 @@
           <ul class="corp-wrap">
             {% for corp in Corp_data %}
             <li class="corp-li">
-              <div class="corp-img">기관 이미지</div>
+              <div class="corp-img">{{corp.Corp_name.slice(0,2)}}</div>
               <div class="corp-data">
                 <div>
                   <h1><a href="/review/corp/{{corp.Corp_name}}">{{corp.Corp_name}}</a></h1>
