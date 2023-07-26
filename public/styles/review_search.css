@@ -279,7 +279,7 @@ button {
   width: 80px;
   height: 80px;
   border-radius: 50px;
-  background-color: radial-gradient(56.13% 56.13% at 50.00% 50%, #EFEFEF 74.48%, rgba(238, 239, 255, 0.00) 100%), #D9D9D9;
+  background: radial-gradient(56.13% 56.13% at 50% 50%, #EFEFEF 74.48%, rgba(238, 239, 255, 0) 100%), #D9D9D9;
   font-size: 2.8rem;
   color: #aaa;
   font-weight: 800;

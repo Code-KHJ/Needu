@@ -166,7 +166,8 @@ input:-webkit-autofill:active {
   width: 70px;
   height: 70px;
   border-radius: 50px;
-  background-color: #fff;
+  background: radial-gradient(64.91% 64.91% at 44.29% 40.71%, #F9F9F9 0%, #E4E4E4 100%);
+  background-blend-mode: soft-light;
   font-size: 2.0rem;
   text-align: center;
   line-height: 70px;
@@ -217,7 +218,7 @@ input:-webkit-autofill:active {
   background: #a0a6ff !important;
 }
 .top-score-contents>div:nth-child(1)>div:nth-child(1){
-  background-color: radial-gradient(64.91% 64.91% at 44.29% 40.71%, #F9F9F9 0%, #E4E4E4 100%);
+  background: radial-gradient(64.91% 64.91% at 44.29% 40.71%, #F9F9F9 0%, #E4E4E4 100%);
 }
 .top-score-banner{
   position: relative;
