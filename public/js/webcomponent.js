@@ -29,7 +29,7 @@ class header_component extends HTMLElement{
               </form>
             </div>
             <ul class="gnb">
-              <li><a href="/review/search">기업리뷰</a></li>
+              <li><a href="/review/search">기관리뷰</a></li>
               <li><a href="/review/write">리뷰작성</a></li>
             </ul>
           </div>
