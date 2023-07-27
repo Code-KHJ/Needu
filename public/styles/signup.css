@@ -112,7 +112,7 @@ form .checkmsg {
 .join_input_all label {
   font-size: 1.8rem;
   color: #444444;
-  font-weight: 700;
+  font-family: 'NanumSquareBold';
   line-height: 27px;
   margin-left: 8px;
 }
@@ -133,7 +133,7 @@ form .checkmsg {
 .join_input label {
   font-size: 1.6rem;
   color: #444444;
-  font-weight: 700;
+  font-family: 'NanumSquareBold';
   margin-left: 8px;
 }
 .material-symbols-outlined {
@@ -144,7 +144,7 @@ form .checkmsg {
   cursor: pointer;
 }
 .join_input2 label {
-  font-weight: 400;
+  font-family: 'NanumSquareLight';
   font-size: 1.6rem;
 }
 .join_radio {
@@ -209,7 +209,7 @@ form .checkmsg {
   }
   form .item label {
     font-size: 1.8rem;
-    font-weight:bold;
+    font-family: 'NanumSquareBold';
   }
   form .item:nth-child(4) button {
     width: 120px;

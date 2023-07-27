@@ -56,7 +56,7 @@ main{
 .login_input_wrap form input::placeholder{
   color: #000;
   font-size: 1.2rem;
-  font-family: NanumSquare_ac;
+  font-family: 'NanumSquareAcl';
 }
 .login_option{
   display: flex;
@@ -76,8 +76,7 @@ main{
 .login_option>button{
   font-size: 1.2rem;
   vertical-align: top;
-  font-weight: 400;
-  font-family: NanumSquare_ac;
+  font-family: 'NanumSquareAcl';
 }
 #submit_user{
   width: 100%;
@@ -86,8 +85,7 @@ main{
   background-color: #6269f5;
   color: #fafafa;
   font-size: 1.4rem;
-  font-weight: 700;
-  font-family: NanumSquare_ac;
+  font-family: 'NanumSquareAcb';
 }
 .to_signup{
   margin: 0 auto;
@@ -95,7 +93,7 @@ main{
 }
 .to_signup>a{
   margin-left: 16px;
-  font-weight: 700;
+  font-family: 'NanumSquareBold';
 }
 .ad_wrap{
   width:270px;
