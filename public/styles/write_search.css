@@ -11,7 +11,7 @@
 .main_wrap>h1{
   text-align: center;
   font-size: 2.0rem;
-  font-weight: 700;
+  font-family: 'NanumSquareBold';
   margin-bottom: 50px;
 }
 .search{
@@ -84,7 +84,7 @@
 }
 .register>span:nth-of-type(2){
   font-size: 1.4rem;
-  font-weight: 700;
+  font-family: 'NanumSquareBold';
   cursor: pointer;
 }
 /* mobile-end */
