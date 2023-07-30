@@ -1,7 +1,7 @@
 <img src="https://github.com/Code-KHJ/Needu/assets/124508326/ab53f977-0de7-4ec6-a681-3a04f932f68a" width="337px" height="104.5px" alt="NeedU">
 
 ***
-# 사이트 주소 [NeedU](needu.site)
+# 사이트 주소 [NeedU](https://needu.site)
 
 ## 서비스 소개
 > NeedU는 사회복지 생태계의 더 나은 조직문화를 만들어가는 커뮤니티 플랫폼을 지향합니다.   
