@@ -27,6 +27,10 @@ main{
   border-radius: 12px;
   background-color: #eeefff;
 }
+.login_wrap>h1{
+  text-align: center;
+  font-size: 1.8rem;
+}
 .login_box{
   display: flex;
   flex-direction: column;
@@ -52,6 +56,7 @@ main{
   border: 1px solid #aaa;
   background-color: #fafafa;
   font-size: 1.4rem;
+  margin-top: -1px;
 }
 .login_input_wrap form input::placeholder{
   color: #000;

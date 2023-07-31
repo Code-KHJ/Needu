@@ -191,7 +191,7 @@ module.exports = {
   mailAuth: (req, res) => {
     let authNum = Math.random().toString().substr(2,6);
     let emailTemplate;
-    ejs.renderFile(rootdir+'/template/autoMail.ejs', {authCode : authNum}, function(err, data){c
+    ejs.renderFile(rootdir+'/template/autoMail.ejs', {authCode : authNum}, function(err, data){
       if(err){console.log(err)}
       emailTemplate = data
     });
@@ -219,6 +219,7 @@ module.exports = {
       console.log('finish sending : ' + info.response);
       transporter.close()
     });
+    console.log(authNum);
     return res.status(200).json({authCode: authNum});
   },
   changePw: (req, res) => {

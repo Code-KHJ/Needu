@@ -20,7 +20,7 @@ async function change_select(index){
     <div class="detail-top5-no">${i+1}</div>
     <div class="detail-top5-content">
       <div class="detail-top5-corp">
-        <p>${res.data[i].name}</p>
+        <p onclick="location.href='/review/corp/${res.data[i].name}'">${res.data[i].name.slice(0,12)}</p>
         <p>${res.data[i].city} ${res.data[i].gugun}</p>
       </div>
       <div class="detail-top5-highlight">
