@@ -1,118 +1,126 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:description" content="사회복지기관 리뷰 서비스 NeedU"/>
-		<meta property="og:image" content="https://github.com/Code-KHJ/Needu/assets/124508326/39be237d-699c-42fc-aa1b-8b3e4fe22cfe"/>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="사회복지기관 리뷰 서비스 NeedU"/>
+    <meta property="og:image" content="https://github.com/Code-KHJ/Needu/assets/124508326/39be237d-699c-42fc-aa1b-8b3e4fe22cfe"/>
 		<link rel="icon" href="/styles/images/favicon.svg">
-        <title>회원가입</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="stylesheet" href="./styles/style_reset.css">
-        <link rel="stylesheet" href="./styles/signup.css">
-    </head>
-    <body>
-        <div class="signin_container">
-            <header>
-                <div class = "area_logo">
-                    <a href="/">
-                        <div class="logo"></div>
-                    </a>
-                    회원가입
-                </div>
-            </header>
-            <!-- 회원가입 입력폼 --> <!-- name 부분은 DB 필드이름하고 매치-->
-            <div class="signup">
-                <form name="frm" id="frm" method="post" action="/signup" onsubmit="return checkSubmit()"><!-- 데이터 넘길 곳을 액션 안에 넣기   -->
-                    <div class="write_base">
-                        <!-- 아이디 -->
-                        <div class="item">
-                            <label for="id">이메일(ID)</label>
-                            <div>
-                                <input type="email" name="id" id="id" clsss="" maxlength="40" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="이메일(ID)를 입력해주세요." required>
-                                <button class="req-btn" disabled="disabled">인증요청</button>
-                            </div>
-                            <div class="checkmsg" id="checkidmsg" style="display: none;"></div>
-                        </div>
-                        <div class="item checkEmail">
-                            <div>
-                                <input type="text" class="authCode-input" maxlength="40" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="인증번호를 입력해주세요." required>
-                                <button class="confirm-btn" disabled="disabled">확인</button>
-                            </div>
-                            <div class="checkmsg" id="checkidmsg" style="display: none;"></div>
-                        </div>
-                        <!-- 비밀번호 -->
-                        <div class="item">
-                            <label for="password1">비밀번호</label>
-                            <input type="password" name="password" id="password1" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호(8~16자리) 영문 대소문자, 숫자, 특수문자 조합" onchange="checkPw1()" required>
-                            <div class="checkmsg" id="checkpw1msg" style="display: none;"></div>
-                        </div>
-                        <!-- 비밀번호 확인 -->
-                        <div class="item">
-                            <label for="password2">비밀번호 확인</label>
-                            <input type="password" id="password2" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호를 다시 한번 입력해주세요" onchange="checkPw2()" required>
-                            <div class="checkmsg" id="checkpw2msg" style="display: none;"></div>
-                        </div>
-                        <!-- 휴대폰 번호 -->
-                        <div class="item">
-                            <label for="phonenumber">휴대폰</label>
-                            <input type="text" name="phonenumber" id="phonenumber" clsss="" autocomplete="off" placeholder="휴대전화 번호('-'빼고 숫자만 입력)" onchange="checkPn()" required>
-                            <div class="checkmsg" id="checkPnmsg" style="display: none;"></div>
-                        </div>
-                        <!-- 닉네임 -->
-                        <div class="item">
-                            <label for="nickname">닉네임</label>
-                            <input type="text" name="nickname" id="nickname" clsss="" minlength="2" maxlength="20" autocomplete="off" placeholder="닉네임을 입력해주세요" onblur="checkNm()" required>
-                            <div class="checkmsg" id="checknmmsg" style="display: none;"></div>
-                        </div>
-                    </div>
-                    <div class="join_agree">
-                        <div class="join_input_all">
-                            <input type="checkbox" id="check_1" onclick="checkBox1()">
-                            <label for="check_1">전체동의</label>
-                        </div>
-                        <div class="join_input">
-                            <input type="checkbox" name= "check_2" id="check_2" required>
-                            <label for="check_2">(필수) 개인 회원 약관에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
-                        </div>
-                        <div class="join_input">
-                            <input type="checkbox" name= "check_3" id="check_3" required>
-                            <label for="check_3">(필수) 개인정보 수집 및 이용에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
-                        </div>
-                        <div class="join_input join_input2">
-                            <input type="checkbox" name= "check_4" id="check_4">
-                            <label for="check_4">(선택) 마케팅 정보 수신 동의 - 이메일</label><span class="material-symbols-outlined">arrow_forward_ios</span>
-                        </div>
-                        <div class="join_input join_input2">
-                            <input type="checkbox" name= "check_5" id="check_5">
-                            <label for="check_5">(선택) 마케팅 정보 수신 동의 - SMS/MMS</label><span class="material-symbols-outlined">arrow_forward_ios</span>
-                        </div>
-                    </div>
-                    <div class="join_radio">
-                        <div>정보보유기간</div>
-                        <ul class="join_radio_ul">
-                            <li>
-                                <input type="radio" name="radio1" value="탈퇴시" id="input_radio1">
-                                <label for="input_radio1">탈퇴시</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radio1" value="3년" id="input_radio2">
-                                <label for="input_radio2">3년</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="radio1" value="1년" id="input_radio3">
-                                <label for="input_radio3">1년</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="btn_signup">
-                        <button type="submit" id="btnSubmit" class="" disabled="disabled">회원가입 완료</button>
-                    </div>
-                </form>
-            </div>
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./styles/style_reset.css">
+    <link rel="stylesheet" href="./styles/signup.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5XZB713D0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G5XZB713D0');
+    </script>
+  </head>
+  <body>
+    <div class="signin_container">
+      <header>
+        <div class = "area_logo">
+          <a href="/">
+            <div class="logo"></div>
+          </a>
+          회원가입
         </div>
-        <script defer src="./js/signup.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    </body>
+      </header>
+      <!-- 회원가입 입력폼 --> <!-- name 부분은 DB 필드이름하고 매치-->
+      <div class="signup">
+        <form name="frm" id="frm" method="post" action="/signup" onsubmit="return checkSubmit()">
+          <div class="write_base">
+            <!-- 아이디 -->
+            <div class="item">
+              <label for="id">이메일(ID)</label>
+              <div>
+                <input type="email" name="id" id="id" clsss="" maxlength="40" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="이메일(ID)를 입력해주세요." required>
+                <button class="req-btn" disabled="disabled">인증요청</button>
+              </div>
+              <div class="checkmsg" id="checkidmsg" style="display: none;"></div>
+            </div>
+            <div class="item checkEmail">
+              <div>
+                <input type="text" class="authCode-input" maxlength="40" style="ime-mode:disabled" autocapitalize="off" autocomplete="off" placeholder="인증번호를 입력해주세요." required>
+                <button class="confirm-btn" disabled="disabled">확인</button>
+              </div>
+              <div class="checkmsg" id="checkidmsg" style="display: none;"></div>
+            </div>
+            <!-- 비밀번호 -->
+            <div class="item">
+              <label for="password1">비밀번호</label>
+              <input type="password" name="password" id="password1" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호(8~16자리) 영문 대소문자, 숫자, 특수문자 조합" onchange="checkPw1()" required>
+              <div class="checkmsg" id="checkpw1msg" style="display: none;"></div>
+            </div>
+            <!-- 비밀번호 확인 -->
+            <div class="item">
+              <label for="password2">비밀번호 확인</label>
+              <input type="password" id="password2" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호를 다시 한번 입력해주세요" onchange="checkPw2()" required>
+              <div class="checkmsg" id="checkpw2msg" style="display: none;"></div>
+            </div>
+            <!-- 휴대폰 번호 -->
+            <div class="item">
+              <label for="phonenumber">휴대폰</label>
+              <input type="text" name="phonenumber" id="phonenumber" clsss="" autocomplete="off" placeholder="휴대전화 번호('-'빼고 숫자만 입력)" onchange="checkPn()" required>
+              <div class="checkmsg" id="checkPnmsg" style="display: none;"></div>
+            </div>
+            <!-- 닉네임 -->
+            <div class="item">
+              <label for="nickname">닉네임</label>
+              <input type="text" name="nickname" id="nickname" clsss="" minlength="2" maxlength="20" autocomplete="off" placeholder="닉네임을 입력해주세요" onblur="checkNm()" required>
+              <div class="checkmsg" id="checknmmsg" style="display: none;"></div>
+            </div>
+          </div>
+          <div class="join_agree">
+            <div class="join_input_all">
+              <input type="checkbox" id="check_1" onclick="checkBox1()">
+              <label for="check_1">전체동의</label>
+            </div>
+            <div class="join_input">
+              <input type="checkbox" name= "check_2" id="check_2" required>
+              <label for="check_2">(필수) 개인 회원 약관에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
+            </div>
+            <div class="join_input">
+              <input type="checkbox" name= "check_3" id="check_3" required>
+              <label for="check_3">(필수) 개인정보 수집 및 이용에 동의</label><span class="material-symbols-outlined">arrow_forward_ios</span>
+            </div>
+            <div class="join_input join_input2">
+              <input type="checkbox" name= "check_4" id="check_4">
+              <label for="check_4">(선택) 마케팅 정보 수신 동의 - 이메일</label><span class="material-symbols-outlined">arrow_forward_ios</span>
+            </div>
+            <div class="join_input join_input2">
+              <input type="checkbox" name= "check_5" id="check_5">
+              <label for="check_5">(선택) 마케팅 정보 수신 동의 - SMS/MMS</label><span class="material-symbols-outlined">arrow_forward_ios</span>
+            </div>
+          </div>
+          <div class="join_radio">
+            <div>정보보유기간</div>
+            <ul class="join_radio_ul">
+              <li>
+                <input type="radio" name="radio1" value="탈퇴시" id="input_radio1" checked>
+                <label for="input_radio1">탈퇴시</label>
+              </li>
+              <li>
+                <input type="radio" name="radio1" value="3년" id="input_radio2">
+                <label for="input_radio2">3년</label>
+              </li>
+              <li>
+                <input type="radio" name="radio1" value="1년" id="input_radio3">
+                <label for="input_radio3">1년</label>
+              </li>
+            </ul>
+          </div>
+          <div class="btn_signup">
+            <button type="submit" id="btnSubmit" class="" disabled="disabled">회원가입 완료</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script defer src="./js/signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
 </html>

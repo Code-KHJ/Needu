@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* z-index: madal12 modal-box11 header10; button9 */
-
+button{
+  color: #000;
+}
+.mo_none{
+  display: none;
+}
 .banner{
   position: relative;
   display: flex;
@@ -42,6 +47,9 @@
   display: flex;
   justify-content: space-between;
 }
+.user-input{
+  width: calc(100% - 20px);
+}
 .search select{
   width: 50px;
   height: 20px;
@@ -55,7 +63,8 @@
   font-size: 1.4rem;
 }
 .search input{
-  margin: 0 10px;
+  width: calc(100% - 70px);
+  margin: 0 0 0 10px;
   height: 20px;
   background-color: rgba(255, 255, 255, 0);
   color: rgba(255, 255, 255, 0.8);
@@ -116,6 +125,7 @@ input:-webkit-autofill:active {
 }
 .review{
   display: block;
+  width: 99% !important;
   height: 110px;
   position: relative;
   border-radius: 5px 60px 60px 60px;
@@ -299,7 +309,7 @@ input:-webkit-autofill:active {
   gap: 40px;
   overflow: scroll;
   margin: 48px 15px 40px;
-  height: 282px;
+  height: 300px;
 }
 /* 스크롤바 없애기 */
 .detail-top5::-webkit-scrollbar {
@@ -427,6 +437,9 @@ input:-webkit-autofill:active {
 
 /* 테블릿 768 사이즈 반응형 */
 @media screen and (min-width: 768px) {
+  .tab_show{
+    display: block;
+  }
   .banner-search{
     margin: 100px auto 200px;
     width: 86%;
@@ -447,6 +460,7 @@ input:-webkit-autofill:active {
     font-size: 1.6rem;
   }
   .search input{
+    margin: 0 0 0 10px;
     font-size: 1.6rem;
   }
   .search input::placeholder{
@@ -541,6 +555,9 @@ input:-webkit-autofill:active {
   }
   .search select{
     width: 90px;
+  }
+  .search input{
+    width: calc(100% - 110px);
   }
   .banner-image{
     width: 415px;

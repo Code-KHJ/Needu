@@ -12,6 +12,14 @@
     <link href="/styles/webcomponent.css" rel="stylesheet">
     <link href="/styles/login.css" rel="stylesheet" type="text/css">
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5XZB713D0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G5XZB713D0');
+    </script>
   </head>
   <body>
     <div class="container">
@@ -21,6 +29,7 @@
       <main>
         <div class="main_wrap">
           <div class="login_wrap">
+            <h1>NeedU에 오신걸 환영합니다.</h1>
             <div class="login_box" id="form_login_user">
               <div class="login_input_wrap">
                 <form id="form_user" method="post" action="/login">

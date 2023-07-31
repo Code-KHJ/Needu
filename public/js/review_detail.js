@@ -34,7 +34,7 @@ async function likesClick(element) {
     }
     else{
       element.style.backgroundColor = '';
-      element.style.color = '#333333';
+      [...element.querySelectorAll('span')].map(element=>element.style.color='#333333');
       like.innerHTML = parseInt(like.innerHTML,10)-1;
     }
   } else {
@@ -49,7 +49,7 @@ async function likesClick(element) {
     }
     else{
       element.style.backgroundColor = '#3D47FF';
-      element.style.color = '#ffffff';
+      [...element.querySelectorAll('span')].map(element=>element.style.color='#ffffff');
       like.innerHTML = parseInt(like.innerHTML,10)+1;
     }
   }
@@ -138,8 +138,10 @@ async function More_contents() {
             <div class="highlight">
               <p>${review.highlight}</p>
               <div>
-                <span></span>
-                <span>${review.last_date == '9999-12' ? '현직원' : '전직원'}</span>
+                ${review.last_date == '9999-12' ? 
+                '<img class="work-status" src="/styles/images/ico_working.png"><span>현직원</span>'
+                 : 
+                '<img class="work-status" src="/styles/images/ico_worked.png"><span>전직원</span>'}
                 <span>${ review.nickname.slice(0,1) }${'*'.repeat(review.nickname.length - 1)}</span>
                 <span>${review.type}</span>
                 <span>${review.date}</span>

@@ -285,6 +285,7 @@ footer-component{
   border: 1px solid #aaaaaa;
   border-radius: 5px;
   font-size: 1.0rem;
+  color: #000;
   appearance: none;
   background: url(images/btn_select.png) no-repeat right 12px center;
   background-size: 12px 9px;

@@ -10,6 +10,7 @@ section{
 
 button{
   cursor: pointer;
+  color: #000;
 }
 @mixin search-label{
   width: 80px;
@@ -115,6 +116,9 @@ button{
         flex-wrap: wrap;
         gap: 10px;
         font-size: 1.2rem;
+        .sido-checked>span:nth-of-type(1){
+          cursor: pointer;
+        }
       }
     }
     .score{
