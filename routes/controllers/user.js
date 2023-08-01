@@ -279,7 +279,7 @@ module.exports = {
   },
   changeCareer: (req, res) => {
     const {id, nickname} = req.user;
-    const { no, review_no, corp_name, first_date, last_date, type } = req.body;
+    const { no, corp_name, first_date, last_date, type } = req.body;
     let sql = `
       UPDATE user_career SET first_date = "${first_date}", last_date = "${last_date}", type = "${type}"
       WHERE no = "${no}"

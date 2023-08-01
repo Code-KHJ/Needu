@@ -11,13 +11,13 @@ router.get('/', auth, (req, res)=>{
   res.render(rootdir+'/public/write_search.html', {User: req.user})
 })
 
-router.get('/all', Corp_all, corp)
+router.get('/all', Corp_all, corp);
 
-router.post('/add', Add_Corp)
+router.post('/add', Add_Corp);
 
-router.get('/corp/:name', auth, Corp_info, Hash_info, write_auth)
+router.get('/corp/:name', auth, Corp_info, Hash_info, write_auth);
 
-router.post('/corp/:name', auth, write)
+router.post('/corp/:name', auth, write);
 
 module.exports = router;
 

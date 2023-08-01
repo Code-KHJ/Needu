@@ -701,9 +701,6 @@ section{
 @media screen and (min-width: 1400px) {
   .userdata-nickname, .userdata-phone{
     &>div{
-      flex-grow: 1;
-      display: flex;
-      flex-direction: row;
       input{
         flex-grow: 1;
         max-width: 300px;

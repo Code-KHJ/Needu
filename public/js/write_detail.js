@@ -71,7 +71,12 @@ function checkHigh() {
 const pros = document.getElementById('pros')
 function checkPros() {
   const pros_cnt = document.getElementById('pros_cnt');
-  pros_cnt.innerHTML=`현재 글자수: ${pros.value.length}자`
+  pros_cnt.innerHTML=`현재 글자수: ${pros.value.length}자`;
+  if(pros.value.length>2000){
+    pros.value = pros.value.substring(0, 2000);
+    pros_cnt.innerHTML = `현재 글자수: ${pros.value.length}자`;
+    alert('최대 2000자까지만 작성이 가능합니다.')
+  }
   if(pros.value.length>50){
     pros.style.borderColor = '#2D65FE';
     pros_cnt.style.color = '#aaaaaa';
@@ -82,13 +87,18 @@ function checkPros() {
     return false
   }
 }
-pros.addEventListener('keydown', checkPros)
+pros.addEventListener('input', checkPros)
 
 //단점 작성 확인 및 글자수 체크
 const cons = document.getElementById('cons');
 function checkCons() {
   const cons_cnt = document.getElementById('cons_cnt');
   cons_cnt.innerHTML=`현재 글자수: ${cons.value.length}자`
+  if(cons.value.length>2000){
+    cons.value = cons.value.substring(0, 2000);
+    cons_cnt.innerHTML = `현재 글자수: ${cons.value.length}자`;
+    alert('최대 2000자까지만 작성이 가능합니다.')
+  }
   if(cons.value.length>50){
     cons.style.borderColor = '#2D65FE';
     cons_cnt.style.color = '#aaaaaa';
@@ -99,13 +109,13 @@ function checkCons() {
     return false
   }
 }
-cons.addEventListener('keydown', checkCons)
+cons.addEventListener('input', checkCons)
 
 //폼입력 여부 체크 후 버튼 활성화
 const form = document.querySelector('#review_form');
 const btnSubmit = document.querySelector('#btnSubmit');
 
-form.addEventListener('change', ()=>{
+form.addEventListener('input', ()=>{
   const check_firstdate = document.getElementById('first_date').value !== "";
   const check_lastdate = document.getElementById('last_date').value !== "";
   const check_worktype = document.getElementById('work_type').value !== "";
@@ -125,3 +135,11 @@ form.addEventListener('change', ()=>{
     btnSubmit.style.borderColor = 'rgba(51, 51, 51, 0.5)';
   }
 })
+
+function confirmSubmit(){
+  if(window.confirm('부적절한 내용 혹은 사실이 아닌 내용이 포함되어 있을 경우 작성하신 리뷰가 삭제될 수 있습니다. 리뷰를 제출하시겠습니까?')){
+    return true;
+  }else{
+    return false;
+  }
+}

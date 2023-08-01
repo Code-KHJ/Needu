@@ -1,6 +1,10 @@
 @charset "utf-8";
 
 //공통
+button{
+  color: #000;
+  cursor: pointer;
+}
 .mo-show{
   display: block;
 }
@@ -124,6 +128,11 @@ section{
             align-items: center;
             flex-wrap: wrap;
             gap: 5px 0;
+            .work-status{
+              width: 16px;
+              height: 16px;
+              margin-right: 2px;
+            }
             &>span {
               height: 16px;
               font-weight: 400;
@@ -135,15 +144,7 @@ section{
                 margin-left: 5px;
                 margin-right: 5px;
               }
-              &:nth-of-type(1) {
-                background: url(./images/airplane.png) no-repeat;
-                width: 16px;
-                height: 16px;
-                background-size: contain;
-              }
             }
-
-
           }
         }
         .pros_cons{
@@ -198,7 +199,7 @@ section{
           align-items: center;
           padding: 8px;
           gap: 4px;
-          width: 135px;
+          width: fit-content;
           height: 36px;
           border-radius: 5px;
           background-color: #efefef;
@@ -213,6 +214,7 @@ section{
             font-size: 1.4rem;
             line-height: 140%;
             letter-spacing: -0.02rem;
+            color: #aaaaaa;
           }
           &>span:nth-of-type(3) {
             width: 25px;
@@ -315,7 +317,7 @@ section{
                 display: flex;
                 margin-top: 16px;
                 gap: 4px;
-                &>span:nth-of-type(1) {
+                .work-status{
                   width: 18px;
                   height: 18px;
                 }

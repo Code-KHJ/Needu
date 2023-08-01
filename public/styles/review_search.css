@@ -93,6 +93,7 @@ button {
 .search-section .filter .city > div:nth-of-type(1) > div:nth-of-type(1) .sido-list > div button {
   width: 60px;
   color: #fff;
+  font-size: 1.2rem;
   padding: 6px 12px;
   border-radius: 3px;
 }

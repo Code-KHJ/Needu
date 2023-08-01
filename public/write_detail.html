@@ -29,7 +29,7 @@
 				<div class="corp_info_wrap">
 					<div class="div_line"></div>
 					<div class="corp_info">
-						<div class="corp_info_image">{{기업이미지}}</div>
+						<div class="corp_info_image"><img src="/styles/images/ico_building.png"></div>
 						<div class="corp_info_data">
 							<div>
 								<span>{{Corp.name}}</span>
@@ -64,7 +64,7 @@
 				<div class="contents_wrap">
 					<div class="contents">
 						<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
-						<form class="review_form" id="review_form" method="post" action="/review/write/corp/{{Corp.name}}">
+						<form class="review_form" id="review_form" method="post" action="/review/write/corp/{{Corp.name}}" onsubmit="return confirmSubmit()">
 							<div class="working_info">
 								<div class="period">
 									<label>근무기간</label>
@@ -225,7 +225,9 @@
 								<div class="write_item">
 									<label for="highlight">한줄평</label>
 									<div>
-										<textarea name="highlight" type="text" id="highlight" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." onchange="checkHigh()" required></textarea>
+										<input name="highlight" type="text" id="highlight" 
+										maxlength="50"
+										placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." onchange="checkHigh()" required>
 									</div>
 								</div>
 								<div class="write_item">
