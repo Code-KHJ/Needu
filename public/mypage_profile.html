@@ -217,9 +217,14 @@
       </section>
       <div class="modal-box" style="display: none;">
         <div class="modal-wrap">
-          <div>비밀번호 변경</div>
-          <div class="content-font">비밀번호는 8~16자리 영문 대소문자, 숫자, 특수문자를 사용할 수 있습니다.</div>
-          <form class="change-pw" method="post" action="/mypage/change/pw">
+          <div class="modal-header">
+            <span>비밀번호 변경</span>
+            <button class="modal_cancel" type="reset" onclick="modal_none();">
+              <img src="../styles/images/cancel.png", alt="닫기">
+            </button>
+          </div>
+          <form class="change-pw" id="changePw" method="post" action="/mypage/change/pw">
+            <div class="content-font">비밀번호는 8~16자리 영문 대소문자, 숫자, 특수문자를 사용할 수 있습니다.</div>
             <fieldset>
               <div class="pw-item">
                 <label class="content-font">현재 비밀번호</label>
@@ -243,11 +248,10 @@
                 </div>
               </div>
             </fieldset>
-            <div class="submit-pw">
-              <button type="reset" class="content-font pw-reset" onclick="modal_none()">취소</button>
-              <button type="submit" class="content-font pw-submit" disabled>수정</button>
-            </div>
           </form>
+          <div class="submit-pw">
+            <button form="changePw" type="submit" class="content-font pw-submit" disabled>수정</button>
+          </div>
         </div>
       </div>
     </main>
