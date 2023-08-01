@@ -65,7 +65,7 @@ newPasswordCheck.addEventListener('keyup', ()=>{
   }
 })
 
-changePwFieldset.addEventListener('keyup', ()=>{
+changePwFieldset.addEventListener('input', ()=>{
   if(presentPassword.value.length >= 8 && checkPw1==true && checkPw2==true){
     changePwSubmit.disabled = '';
   } else{
@@ -87,11 +87,13 @@ async function checkNick(){
   const regnick = /^[A-Za-z가-힣0-9._-]{2,}$/
   if(nickname.value.length == 0){
     nickname.style.border = '1px solid #dc3434';
+    nickname.style.boxShadow = 'none';
     msgnm.style="display: "
     msgnm.innerHTML="닉네임을 입력해주세요."
   } else{
     if(!regnick.test(nickname.value)){
       nickname.style.border = '1px solid #dc3434';
+      nickname.style.boxShadow = 'none';
       msgnm.style="display: "
       msgnm.innerHTML="닉네임은 영어, 한글, 숫자로 만들어주세요."
     } else{
@@ -104,6 +106,7 @@ async function checkNick(){
         //통과
         if(res.data == 1){
           nickname.style.border = '1px solid #2D65FE';
+          nickname.style.boxShadow = 'none';
           msgnm.style="display: none;"
           nickResult = true;
         } else{
@@ -132,10 +135,12 @@ function checkPhone(){
   const regPn = /^(010)[0-9]{7,8}$/ //전화번호 정규식
   if(!regPn.test(phone.value)){
     phone.style.border = '1px solid #dc3434';
+    phone.style.boxShadow = 'none';
     msgPn.style="display: "
     msgPn.innerHTML="휴대폰 번호를 바르게 입력해주세요."
   } else{ //통과
     phone.style.border = '1px solid #2D65FE';
+    phone.style.boxShadow = 'none';
     msgPn.style="display: none;"
     phoneResult = true
   }

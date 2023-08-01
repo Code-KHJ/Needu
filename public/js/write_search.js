@@ -83,15 +83,16 @@ function created_auto(data) {
   const city = document.querySelector('.search #city1');
   corp_btnSubmit.classList.add('auto_data');
   if(city !== null){
-  corp_btnSubmit.innerHTML = `
-    <span>${data.name}</span>
-  `
+    corp_btnSubmit.innerHTML = `
+      <span>${data.name}</span>
+    `
   }else{
-  corp_btnSubmit.innerHTML = `
-    <span>${data.name}</span>
-    <span>|</span>
-    <span>${data.city+" "+data.gugun}</span>
-  `
+    corp_btnSubmit.innerHTML = `
+      <span>${data.name}</span>
+      <span>|</span>
+      <span>${data.city+" "+data.gugun}</span>
+    `
+    corp_btnSubmit.setAttribute("onclick", `location.href='/review/write/corp/${data.name}'`);
   }
   auto_corpList.appendChild(corp_btnSubmit);
   corpUl.appendChild(auto_corpList);

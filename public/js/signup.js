@@ -63,7 +63,6 @@ reqBtn.addEventListener('click', async ()=>{
 	});
 	authCode = res.data.authCode;
 	alert('인증번호가 전송되었습니다. 이메일을 확인해주세요.')
-	console.log(authCode)
 });
 inputAuth.addEventListener('input', ()=>{
 	if(inputAuth.value == ''){
@@ -81,7 +80,6 @@ inputAuth.addEventListener('input', ()=>{
 
 confirmBtn.addEventListener('click', ()=>{
 	if(inputAuth.value == authCode){
-		checkResultId = true;
 		inputEmail.readOnly = true;
 		reqBtn.disabled='disabled';
 		inputAuth.readOnly = true;
@@ -89,8 +87,8 @@ confirmBtn.addEventListener('click', ()=>{
 		confirmBtn.innerHTML='인증완료';
 		inputAuth.style.borderColor = '#6269F5';
 		inputAuth.style.backgroundColor = '#efefef';
+		checkResultId = true;
 		alert('이메일이 인증되었습니다.');
-
 	}else{
 		alert('인증번호가 틀렸습니다. 재발송을 원하시면 인증요청 버튼을 다시 클릭해주세요.')
 		inputAuth.style.borderColor = '#FF4444';
@@ -241,6 +239,7 @@ function checkRd(){
 
 //제출 전 최종 체크
 async function checkSubmit(){
+	console.log(checkid)
 	const ckbox2 = document.getElementById('check_2').checked;
 	const ckbox3 = document.getElementById('check_3').checked;
 	const checkid = checkResultId;

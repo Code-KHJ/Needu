@@ -119,15 +119,13 @@ module.exports = {
           RP.*,
           FORMAT(RP.total_score,1) as total_score,
           DATE_FORMAT(RP.created_date, '%Y.%m.%d') as date,
-          UC.type as type,
-          UC.last_date as last_date,
+          RP.type as type,
+          RP.last_date as last_date,
           U.nickname as nickname,
           ${hashList}
         FROM Review_Posts as RP
           LEFT JOIN Hashtag_Posts as HP
           on RP.No = HP.review_no
-          LEFT JOIN user_career as UC
-          on RP.No = UC.review_no
           LEFT JOIN user as U
           on RP.user_id = U.id
         WHERE RP.Corp_name = "${Corp_name}"
@@ -342,9 +340,9 @@ module.exports = {
   insert_review: (contents) => {
     return new Promise((resolve, reject) =>{
       const sql = `
-        INSERT into Review_Posts (Corp_name, user_id, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?)
+        INSERT into Review_Posts (Corp_name, user_id, type, first_date, last_date, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
       `
-      const data = [contents.Corp_name, contents.user_id, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
+      const data = [contents.Corp_name, contents.user_id, contents.type, contents.first_date, contents.last_date, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
       try{
         pool.query(sql, data, (err, result)=>{
           return resolve(result)
@@ -360,6 +358,9 @@ module.exports = {
       let today = (new Date()).toISOString().slice(0,10);
       const sql = `
         UPDATE Review_Posts SET
+        type = "${contents.type}",
+        first_date = "${contents.first_date}",
+        last_date = "${contents.last_date}",
         total_score = "${contents.total_score}",
         growth_score = "${contents.growth_score}",
         leadership_score = "${contents.leadership_score}",
@@ -599,26 +600,25 @@ module.exports = {
         SELECT
           RP.No as Review_no,
           RP.Corp_name as Corp_name,
-          RP.total_score as total, 
-          RP.growth_score as growth, 
-          RP.leadership_score as leadership, 
-          RP.reward_score as reward, 
-          RP.worth_score as worth, 
-          RP.culture_score as culture, 
-          RP.worklife_score as worklife,
+          FORMAT(RP.total_score,1) as total, 
+          FORMAT(RP.growth_score,1) as growth, 
+          FORMAT(RP.leadership_score,1) as leadership, 
+          FORMAT(RP.reward_score,1) as reward, 
+          FORMAT(RP.worth_score,1) as worth, 
+          FORMAT(RP.culture_score,1) as culture, 
+          FORMAT(RP.worklife_score,1) as worklife,
           RP.highlight as highlight,
           RP.pros as pros,
           RP.cons as cons,
           DATE_FORMAT(RP.created_date, "%Y.%m.%d") as date,
           RP.likes as likes,
           HP.*,
-          UC.first_date as first_date,
-          UC.last_date as last_date,
-          UC.type as type,
+          RP.first_date as first_date,
+          RP.last_date as last_date,
+          RP.type as type,
           U.nickname as nickname
         FROM Review_Posts as RP
           LEFT JOIN Hashtag_Posts as HP on RP.No = HP.review_no
-          LEFT JOIN user_career as UC on RP.No = UC.review_no
           LEFT JOIN user as U on RP.user_id = U.id
         WHERE RP.user_id = "${user_id}"
         GROUP BY RP.No
@@ -653,9 +653,9 @@ module.exports = {
           DATE_FORMAT(RP.created_date, "%Y.%m.%d") as date,
           RP.likes as likes,
           HP.*,
-          UC.first_date as first_date,
-          UC.last_date as last_date,
-          UC.type as type,
+          RP.first_date as first_date,
+          RP.last_date as last_date,
+          RP.type as type,
           U.nickname as nickname
         FROM Review_Posts as RP
           LEFT JOIN Hashtag_Posts as HP on RP.No = HP.review_no

@@ -1,4 +1,9 @@
 @charset "UTF-8";
+button {
+  color: #000;
+  cursor: pointer;
+}
+
 .mo-show {
   display: block;
 }
@@ -134,6 +139,11 @@ section .contents .contents_review .review_comment .highlight > div {
   flex-wrap: wrap;
   gap: 5px 0;
 }
+section .contents .contents_review .review_comment .highlight > div .work-status {
+  width: 16px;
+  height: 16px;
+  margin-right: 2px;
+}
 section .contents .contents_review .review_comment .highlight > div > span {
   height: 16px;
   font-weight: 400;
@@ -145,12 +155,6 @@ section .contents .contents_review .review_comment .highlight > div > span:not(:
   font-size: 1rem;
   margin-left: 5px;
   margin-right: 5px;
-}
-section .contents .contents_review .review_comment .highlight > div > span:nth-of-type(1) {
-  background: url(./images/airplane.png) no-repeat;
-  width: 16px;
-  height: 16px;
-  background-size: contain;
 }
 section .contents .contents_review .review_comment .pros_cons > p:nth-of-type(1) {
   font-weight: 700;
@@ -203,7 +207,8 @@ section .contents .contents_review .review_comment .comment_like {
   align-items: center;
   padding: 8px;
   gap: 4px;
-  width: 135px;
+  width: -moz-fit-content;
+  width: fit-content;
   height: 36px;
   border-radius: 5px;
   background-color: #efefef;
@@ -219,6 +224,7 @@ section .contents .contents_review .review_comment .comment_like > span:nth-of-t
   font-size: 1.4rem;
   line-height: 140%;
   letter-spacing: -0.02rem;
+  color: #aaaaaa;
 }
 section .contents .contents_review .review_comment .comment_like > span:nth-of-type(3) {
   width: 25px;
@@ -317,7 +323,7 @@ section .contents .contents_review .review-change:hover {
     margin-top: 16px;
     gap: 4px;
   }
-  section .contents .contents_review .review_main .review_comment .highlight > div > span:nth-of-type(1) {
+  section .contents .contents_review .review_main .review_comment .highlight > div .work-status {
     width: 18px;
     height: 18px;
   }
