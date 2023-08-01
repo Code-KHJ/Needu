@@ -406,12 +406,9 @@ module.exports = {
       for (let i=1; i<16; i++){
         let data;
         let hash = `${hashtag[`hashtag_${i}`]}`
-        console.log(hash)
         if(hash !== 'undefined'){
-          console.log('1')
           data = `hashtag_${i} = "${hash}", `
         }else{
-          console.log('2')
           data = `hashtag_${i} = `+'NULL, '
         }
         console.log(data)
@@ -428,7 +425,6 @@ module.exports = {
         ${loopquery}
         WHERE review_no = ${review_no}
       `
-      console.log(sql)
       try{
         pool.query(sql, (err, result)=>{
           return resolve(result)
