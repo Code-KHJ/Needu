@@ -18,20 +18,25 @@ function modal_show(){
 
 function modal_none(){
   const modalBox = document.querySelector('.modal-box');
+  const changePw = document.querySelector('.change-pw');
+  changePw.reset();
   modalBox.style.display = 'none';
   newPassword.style.border = 'none';
+  newPassword.style.boxShadow = '0px 0px 2px 0px #6269F5';
   msgpw1.style="display: none;"
   checkPw1 = false;
   newPasswordCheck.style.border = 'none';
+  newPasswordCheck.style.boxShadow = '0px 0px 2px 0px #6269F5';
   msgpw2.style="display: none;"
   checkPw2 = false;
 }
 
-newPassword.addEventListener('keyup', ()=>{
+newPassword.addEventListener('input', ()=>{
   var regPw = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,16}$/ //영어, 숫자만 가능한 정규식
   //비밀번호 글자 수 검사
   if(newPassword.value.length < 8){
     newPassword.style.border = '1px solid #dc3434';
+    newPassword.style.boxShadow = 'none';
     msgpw1.style="display: "
     msgpw1.innerHTML="비밀번호는 8~16자리로 입력해주세요."
     checkPw1 = false;
@@ -39,6 +44,7 @@ newPassword.addEventListener('keyup', ()=>{
   //비밀번호 유효성 검사
   else if(!regPw.test(newPassword.value)){
     newPassword.style.border = '1px solid #dc3434';
+    newPassword.style.boxShadow = 'none';
     msgpw1.style="display: "
     msgpw1.innerHTML="영문 대소문자, 숫자, 특수문자만 입력 가능하며 반드시 영문, 숫자 필요합니다."
     checkPw1 = false;
@@ -51,10 +57,11 @@ newPassword.addEventListener('keyup', ()=>{
   }
 });
 
-newPasswordCheck.addEventListener('keyup', ()=>{
+newPasswordCheck.addEventListener('input', ()=>{
   //비밀번호 일치 여부 검사
   if(newPasswordCheck.value !== newPassword.value){
     newPasswordCheck.style.border = '1px solid #dc3434';
+    newPasswordCheck.style.boxShadow = 'none';
     msgpw2.style="display: "
     msgpw2.innerHTML="비밀번호가 일치하지 않습니다."
     checkPw2 = false;
