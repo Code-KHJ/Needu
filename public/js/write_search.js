@@ -32,6 +32,9 @@ searchForm.addEventListener('keyup', async (e)=>{
     results.forEach((data) => {
       created_auto(data)
     })
+    //
+    searchInput.style.borderBottom = "1px solid #000";
+
     corpList = document.querySelectorAll(".auto_corp li");
     corpbtnSubmit = document.querySelectorAll(".auto_data");
 
@@ -104,8 +107,9 @@ function liClick(corpList) {
     item.addEventListener("click", (e)=>{ 
     e.preventDefault();
     input_data(item)
-    })});
-}
+    })
+  })
+};
 
 //검색창에 붙여넣기
 function input_data(target){
@@ -134,38 +138,38 @@ function removeList(){
 
 //자동완성 리스트 방향키 포커스 이동 구현
 function focusNav(e, corpList){
-    const keyCode = e.keyCode;
-    if(e.isComposing === false){
-      //방향키 위쪽 누를 때
-      switch (keyCode) {
-        // Up key
-        case 38:
-          nowIndex = Math.max(nowIndex - 1, -1);
-          updateFocus(corpList)
-          break;
-        // Down key
-        case 40:
-          nowIndex = Math.min(nowIndex + 1, corpbtnSubmit.length - 1);
-          updateFocus(corpList);
-          break;
-        // Enter key
-        case 13:
-          if(nowIndex !== -1){
-            Array.from(corpList).map((item, index)=>{
-              if(index == nowIndex){
-                input_data(item)
-                nowIndex = -1;
-              }
-            })
-            break
-          }
-        // 그 외
-        default:
-          nowIndex = -1;
-          break;
-      }
+  const keyCode = e.keyCode;
+  if(e.isComposing === false){
+    //방향키 위쪽 누를 때
+    switch (keyCode) {
+      // Up key
+      case 38:
+        nowIndex = Math.max(nowIndex - 1, -1);
+        updateFocus(corpList)
+        break;
+      // Down key
+      case 40:
+        nowIndex = Math.min(nowIndex + 1, corpbtnSubmit.length - 1);
+        updateFocus(corpList);
+        break;
+      // Enter key
+      case 13:
+        if(nowIndex !== -1){
+          Array.from(corpList).map((item, index)=>{
+            if(index == nowIndex){
+              input_data(item)
+              nowIndex = -1;
+            }
+          })
+          break
+        }
+      // 그 외
+      default:
+        nowIndex = -1;
+        break;
     }
   }
+}
 
 //자동완성 리스트 포커스 이동
 function updateFocus(corpList){
@@ -180,7 +184,7 @@ function updateFocus(corpList){
   }else{
     searchInput.focus()
   }
-;}
+};
 
 //마우스 hover
 function mouseover (corpList){
@@ -192,7 +196,7 @@ function mouseover (corpList){
     })
     updateFocus(corpList);
   })})  
-}
+};
 
 //상하 스크롤 방지
 searchForm.addEventListener('keydown', (e)=>{
@@ -200,7 +204,7 @@ searchForm.addEventListener('keydown', (e)=>{
   if (keyCode === 38 || keyCode === 40 || keyCode === 13){
     e.preventDefault();
   }
-})
+});
 
 //submit btnSubmit 제출
 searchInput.addEventListener('keydown', (e)=>{

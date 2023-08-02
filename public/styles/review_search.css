@@ -265,7 +265,7 @@ button {
   border: 1px solid #aaa;
   border-radius: 3px;
   padding: 6px 8px;
-  color: #aaa;
+  color: #444;
   font-size: 1.4rem;
 }
 .list-section .corp-wrap {
@@ -278,6 +278,7 @@ button {
   padding: 28px 40px;
   gap: 20px;
   border-bottom: 1px solid #aaa;
+  cursor: pointer;
 }
 .list-section .corp-wrap li .corp-img {
   padding: 20px 10px;

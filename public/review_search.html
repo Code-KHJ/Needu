@@ -220,11 +220,11 @@
           {% if Corp_data.length > 0 %}
           <ul class="corp-wrap">
             {% for corp in Corp_data %}
-            <li class="corp-li">
+            <li class="corp-li" onclick="location.href='/review/corp/{{corp.Corp_name}}'">
               <div class="corp-img">{{corp.Corp_name.slice(0,2)}}</div>
               <div class="corp-data">
                 <div>
-                  <h1><a href="/review/corp/{{corp.Corp_name}}">{{corp.Corp_name}}</a></h1>
+                  <h1>{{corp.Corp_name}}</a></h1>
                   <p>{{corp.city}} {{corp.gugun}}</p>
                 </div>
                 <div class="corp-hash">

@@ -12,12 +12,12 @@ let checkPw1 = false;
 let checkPw2 = false;
 
 function modal_show(){
-  const modalBox = document.querySelector('.modal-box');
+  const modalBox = document.querySelector('.pw-modal-box');
   modalBox.style.display = 'block';
 }
 
 function modal_none(){
-  const modalBox = document.querySelector('.modal-box');
+  const modalBox = document.querySelector('.pw-modal-box');
   const changePw = document.querySelector('.change-pw');
   changePw.reset();
   modalBox.style.display = 'none';
@@ -194,7 +194,7 @@ function careerCount(){
     }
   }
   year = year + Math.floor(month / 12);
-  month = month % 12;
+  month = Math.abs(month % 12);
   
   const careerY = document.querySelectorAll('.career-year');
   const careerM = document.querySelectorAll('.career-month');
@@ -282,4 +282,205 @@ function addCareer(e){
       }
     }  
   })
+}
+
+
+//프로필 이미지 변경
+function changeUserImage(){
+  alert('프로필 사진 변경 기능은 추구 개발될 예정입니다.')
+};
+
+
+//기관명 자동완성
+const addCareerCorp = document.getElementById('add-corpname');
+const corpUl = document.querySelector(".auto_corp");
+const corpAdd = document.querySelector(".register");
+const addCareerWrap = document.querySelector('.career-corplist');
+let corp = [];
+let corpList = [];
+let corpbtnSubmit = [];
+let nowIndex = -1;
+addCareerCorp.addEventListener('keyup', async (e)=>{
+  if(corp.length == 0){
+    const res = await axios.get("/review/write/all")
+    corp = res.data.corp
+  }
+
+  //이전 li 삭제
+  removeList();
+
+  const results = load_data();
+
+  //css 조정
+  corpUl.style.display = '';
+  corpAdd.style.display = '';
+
+  //li 추가
+  if(addCareerCorp.value.length !== 0){
+    results.forEach((data) => {
+      created_auto(data)
+    })
+    //
+
+    corpList = document.querySelectorAll(".auto_corp li");
+    corpbtnSubmit = document.querySelectorAll(".auto_data");
+
+    //키보드 네비게이션
+    focusNav(e, corpList)
+
+    //마우스 hover
+    mouseover(corpList)
+
+    //마우스 클릭
+    liClick(corpList)
+  }
+  if(addCareerCorp.value.length == 0){
+    corpUl.style = 'display: none';
+    corpAdd.style ='display: none';
+  }
+})
+
+
+//자동완성 데이터 가져오기
+function load_data(){
+  //db 데이터 정리
+  let value = addCareerCorp.value.trim();
+  let filterCorp = corp.filter(data => {
+    const name = Hangul.disassemble(data.Corp_name).join('')
+    const query = Hangul.disassemble(value).join('')
+    return name.includes(query);
+  }).map(data => {
+    return {
+      name: data.Corp_name,
+      city: data.city,
+      gugun: data.gugun}})
+  //5개 이하로 갯수 보여주기
+  const maxResults = 3;
+  const resultsCount = Math.min(maxResults, filterCorp.length);
+  return filterCorp.slice(0, resultsCount)
+};
+
+//리스트 삭제
+function removeList(){
+  while (corpUl.firstChild){
+    corpUl.removeChild(corpUl.firstChild)
+  }
+};
+
+//자동완성 리스트 추가
+function created_auto(data) {
+  const auto_corpList = document.createElement('li')
+  const corp_btnSubmit = document.createElement('button');
+  corp_btnSubmit.classList.add('auto_data');
+  corp_btnSubmit.innerHTML = `
+    <span>${data.name}</span>
+  `
+  auto_corpList.appendChild(corp_btnSubmit);
+  corpUl.appendChild(auto_corpList);
+};
+
+//생성된 li 클릭
+function liClick(corpList) {
+  corpList.forEach((item,i)=> {
+    item.addEventListener("click", (e)=>{ 
+    e.preventDefault();
+    input_data(item)
+    })
+  })
+};
+
+//검색창에 붙여넣기
+function input_data(target){
+  const corp_selected = target.querySelector('button>span:nth-child(1)').textContent;
+  addCareerCorp.value = corp_selected;
+  removeList()
+  nowIndex = -1
+  addCareerCorp.focus();
+  corpUl.style.display='none';
+  corpAdd.style.display='none';
+};
+
+//자동완성 리스트 방향키 포커스 이동 구현
+function focusNav(e, corpList){
+  const keyCode = e.keyCode;
+  if(e.isComposing === false){
+    //방향키 위쪽 누를 때
+    switch (keyCode) {
+      // Up key
+      case 38:
+        nowIndex = Math.max(nowIndex - 1, -1);
+        updateFocus(corpList)
+        break;
+      // Down key
+      case 40:
+        nowIndex = Math.min(nowIndex + 1, corpbtnSubmit.length - 1);
+        updateFocus(corpList);
+        break;
+      // Enter key
+      case 13:
+        if(nowIndex !== -1){
+          Array.from(corpList).map((item, index)=>{
+            if(index == nowIndex){
+              input_data(item)
+              nowIndex = -1;
+            }
+          })
+          break
+        }
+      // 그 외
+      default:
+        nowIndex = -1;
+        break;
+    }
+  }
+};
+
+//자동완성 리스트 포커스 이동
+function updateFocus(corpList){
+  if(nowIndex >= 0){
+    Array.from(corpList).map((item, index)=>{
+      if(index == nowIndex){
+        item.classList.add('active');
+      }else{
+        item.classList.remove('active')
+      }
+    })
+  }else{
+    addCareerCorp.focus()
+  }
+};
+
+//마우스 hover
+function mouseover (corpList){
+  corpList.forEach((item, i)=> {  
+    item.addEventListener('mouseenter', ()=>{
+    nowIndex = i;
+    corpList.forEach((item)=>{
+      item.classList.remove('active')
+    })
+    updateFocus(corpList);
+    })
+  })  
+};
+
+//상하 스크롤 방지
+addCareerWrap.addEventListener('keydown', (e)=>{
+  const keyCode = e.keyCode;
+  if (keyCode === 38 || keyCode === 40 || keyCode === 13){
+    e.preventDefault();
+  }
+});
+
+//기관등록 모달
+//모달 구현
+const btn_addCorp = document.querySelector('.btn_addCorp');
+const modal_box = document.querySelector('.modal-box');
+if(btn_addCorp !== null){
+  btn_addCorp.addEventListener('click', ()=>{
+    modal_box.style.display = 'block'
+  })
+  //모달 취소
+  function modal_cancel(){
+    modal_box.style.display = 'none';
+  }  
 }

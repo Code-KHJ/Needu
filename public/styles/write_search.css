@@ -28,14 +28,12 @@
 }
 .user_input{
   width: 100%;
-  padding: 0px 0px 10px;
 }
 #search_input{
   float: left;
   width: calc(100% - 30px);
   height: 28px;
   font-size: 1.4rem;
-  border-bottom: 1px solid #000; 
 }
 #search_input::placeholder{
   color: rgba(0,0,0,0.3);
@@ -44,8 +42,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 80px;
-  gap: 40px;
+  margin-top: 60px;
+  gap: 30px;
   font-size: 1.4rem;
 }
 .auto_corp button{
@@ -112,6 +110,7 @@
   }
   .auto_corp{
     font-size: 1.8rem;
+    margin-top: 100px;
   }
   .auto_corp>li{
     height: 40px;

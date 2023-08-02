@@ -10,7 +10,6 @@ module.exports = {
     res.json({corp})
   },
   Add_Corp: async(req, res)=>{
-    console.log(req.body)
     const Corp_name = req.body.Corp_name;
     const Corp_city = req.body.city;
     const Corp_gugun = req.body.gugun;

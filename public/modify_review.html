@@ -54,12 +54,12 @@
 				<div class="contents_wrap">
 					<div class="contents">
 						<p>입력하신 모든 정보는 익명으로 처리됩니다.</p>
-						<form class="review_form" id="review_form" method="post" action="/mypage/review/edit">
+						<form class="review_form" id="review_form" method="post" action="/mypage/review/edit" onsubmit="return confirmSubmit()">
 							<input name="Corp_name" value="{{Corp.name}}" style="display: none;">
 							<input name="review_no" value="{{Review.review_no}}" style="display: none;">
 							<div class="working_info">
 								<div class="period">
-									<label>근무기간</label>
+									<label>근무기간 <span style="color: red;">*</span></label>
 									<div>
 										<div>
 											<div>
@@ -93,7 +93,7 @@
 									</div>	
 								</div>
 								<div class="work_type">
-									<label for="work_type">근무직종</label>
+									<label for="work_type">근무직종 <span style="color: red;">*</span></label>
 									<select id="work_type" name="work_type"required>
 										<option value="" selected disabled hidden>직종 선택</option>
 										<option value="사회복지사">사회복지사</option>
@@ -226,23 +226,23 @@
 							</div>
 							<div class="write_review">
 								<div class="write_item">
-									<label for="highlight">한줄평</label>
+									<label for="highlight">한줄평 <span style="color: red;">*</span></label>
 									<div>
-										<textarea name="highlight" type="text" id="highlight" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." onchange="checkHigh()" required>{{Review.highlight}}</textarea>
+										<textarea name="highlight" type="text" id="highlight" maxlength="50" placeholder="근무했던 기관에 대한 한줄평을 작성해주세요." onchange="checkHigh()" required>{{Review.highlight}}</textarea>
 									</div>
 								</div>
 								<div class="write_item">
-									<label for="pros">장점</label>
+									<label for="pros">장점 <span style="color: red;">*</span></label>
 									<div>
 										<span id="pros_cnt">현재 글자수:000자</span>
-										<textarea name="pros" type="text" id="pros" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 50자)" required>{{Review.pros}}</textarea>
+										<textarea name="pros" type="text" id="pros" minlength="30" maxlength="2000" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 30자)" required>{{Review.pros}}</textarea>
 									</div>
 								</div>
 								<div class="write_item">
-									<label for="cons">단점</label>
+									<label for="cons">단점 <span style="color: red;">*</span></label>
 									<div>
 										<span id="cons_cnt">현재 글자수:000자</span>
-										<textarea name="cons" type="text" id="cons" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 50자)" required>{{Review.cons}}</textarea>
+										<textarea name="cons" type="text" id="cons" minlength="30" maxlength="2000" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 30자)" required>{{Review.cons}}</textarea>
 									</div>
 								</div>
 							</div>
@@ -250,8 +250,8 @@
 						<button type="submit" form="review_form" id="btnSubmit" disabled="disabled">제출</button>
 					</div>
 					<div class="sidebar">
-						<div>광고</div>
-						<div>광고</div>
+						<div></div>
+						<div></div>
 					</div>
 				</div>
 			</main>

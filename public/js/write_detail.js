@@ -77,7 +77,7 @@ function checkPros() {
     pros_cnt.innerHTML = `현재 글자수: ${pros.value.length}자`;
     alert('최대 2000자까지만 작성이 가능합니다.')
   }
-  if(pros.value.length>50){
+  if(pros.value.length>30){
     pros.style.borderColor = '#2D65FE';
     pros_cnt.style.color = '#aaaaaa';
     return true
@@ -99,7 +99,7 @@ function checkCons() {
     cons_cnt.innerHTML = `현재 글자수: ${cons.value.length}자`;
     alert('최대 2000자까지만 작성이 가능합니다.')
   }
-  if(cons.value.length>50){
+  if(cons.value.length>30){
     cons.style.borderColor = '#2D65FE';
     cons_cnt.style.color = '#aaaaaa';
     return true

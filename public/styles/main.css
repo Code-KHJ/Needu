@@ -166,8 +166,9 @@ input:-webkit-autofill:active {
 }
 .top-score-item{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background: #efefef;
+  gap: 20px;
   height: 120px;
   border-radius: 5px;
   padding: 25px 24px;
@@ -189,7 +190,7 @@ input:-webkit-autofill:active {
   position: relative;
 }
 .ts-item-detail{
-  max-width: 165px;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -197,6 +198,9 @@ input:-webkit-autofill:active {
 }
 .ts-item-detail>p:nth-child(1){
   font-size: 1.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .ts-item-detail>p:nth-child(2){
   font-size: 1.0rem;
@@ -308,7 +312,7 @@ input:-webkit-autofill:active {
   white-space: nowrap;
   gap: 40px;
   overflow: scroll;
-  margin: 48px 15px 40px;
+  margin: 30px 15px 10px;
   height: 300px;
 }
 /* 스크롤바 없애기 */
@@ -321,6 +325,7 @@ input:-webkit-autofill:active {
   background: #fafafa;
   border-radius: 5px;
   white-space: nowrap;
+  cursor: pointer;
 }
 .detail-top5-no{
   position: absolute;
@@ -343,9 +348,9 @@ input:-webkit-autofill:active {
 }
 .detail-top5-corp>p:nth-of-type(1){
   overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 1.4rem;
   font-weight: 400;
-  cursor: pointer;
 }
 .detail-top5-corp>p:nth-of-type(2){
   font-size: 1.0rem;
@@ -533,9 +538,6 @@ input:-webkit-autofill:active {
   }
   .second-contents>div:nth-of-type(1){
     padding: 35px 40px;
-  }
-  .detail-top5{
-    margin: 48px 40px 40px;
   }
   .detail-top5-corp>p:nth-of-type(2){
     font-size: 1.2rem;
