@@ -411,7 +411,6 @@ module.exports = {
         }else{
           data = `hashtag_${i} = `+'NULL, '
         }
-        console.log(data)
         loopquery += data
       }
       let hash16 = `${hashtag.hashtag_16}`;
@@ -617,7 +616,6 @@ module.exports = {
           LEFT JOIN Hashtag_Posts as HP on RP.No = HP.review_no
           LEFT JOIN user as U on RP.user_id = U.id
         WHERE RP.user_id = "${user_id}"
-        GROUP BY RP.No
         ORDER BY RP.No DESC;
       `
       try{
@@ -658,7 +656,6 @@ module.exports = {
           LEFT JOIN user_career as UC on RP.No = UC.review_no
           LEFT JOIN user as U on RP.user_id = U.id
         WHERE RP.No = "${review_no}"
-        GROUP BY RP.No
         ORDER BY RP.No DESC;
       `
       try{

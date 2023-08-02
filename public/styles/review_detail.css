@@ -399,6 +399,7 @@ main{
 	font-size: 1.4rem;
 	line-height: 140%;
 	letter-spacing: -0.02rem;
+	color: #000;
 }
 .comment_like>span:nth-of-type(3) {
 	width: 25px;

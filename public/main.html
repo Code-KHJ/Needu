@@ -112,11 +112,11 @@
           </div>
           <ul class="detail-top5">
             {% for detail in detail10.slice(0,5) %}
-            <li class="detail-top5-item">
+            <li class="detail-top5-item" onclick="location.href='/review/corp/{{detail.name}}'">
               <div class="detail-top5-no">{{loop.index}}</div>
               <div class="detail-top5-content">
                 <div class="detail-top5-corp">
-                  <p onclick="location.href='/review/corp/{{detail.name}}'">{{detail.name.slice(0,12)}}</p>
+                  <p>{{detail.name.slice(0,12)}}</p>
                   <p>{{detail.city}} {{detail.gugun}}</p>
                 </div>
                 <div class="detail-top5-highlight">

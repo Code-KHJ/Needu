@@ -83,9 +83,13 @@ class footer_component extends HTMLElement{
   render(){
     this.innerHTML = `
     <div class="footer_main">
-      <div class="logo"></div>
+      <div class="footer_logo"></div>
       <a>이용약관</a>
       <a>개인정보 처리방침</a>
+      
+    </div>
+    <div class="footer_contact">
+      <span>대표자: 김현준</span>
       <span>문의: needu.sw@gmail.com</span>
     </div>
   `

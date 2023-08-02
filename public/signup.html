@@ -52,25 +52,25 @@
             </div>
             <!-- 비밀번호 -->
             <div class="item">
-              <label for="password1">비밀번호</label>
+              <label for="password1">비밀번호<span style="color: red;">*</span></label>
               <input type="password" name="password" id="password1" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호(8~16자리) 영문 대소문자, 숫자, 특수문자 조합" onchange="checkPw1()" required>
               <div class="checkmsg" id="checkpw1msg" style="display: none;"></div>
             </div>
             <!-- 비밀번호 확인 -->
             <div class="item">
-              <label for="password2">비밀번호 확인</label>
+              <label for="password2">비밀번호 확인<span style="color: red;">*</span></label>
               <input type="password" id="password2" clsss="" maxlength="16" style="ime-mode:disabled" autocomplete="off" placeholder="비밀번호를 다시 한번 입력해주세요" onchange="checkPw2()" required>
               <div class="checkmsg" id="checkpw2msg" style="display: none;"></div>
             </div>
             <!-- 휴대폰 번호 -->
             <div class="item">
-              <label for="phonenumber">휴대폰</label>
+              <label for="phonenumber">휴대폰<span style="color: red;">*</span></label>
               <input type="text" name="phonenumber" id="phonenumber" clsss="" autocomplete="off" placeholder="휴대전화 번호('-'빼고 숫자만 입력)" onchange="checkPn()" required>
               <div class="checkmsg" id="checkPnmsg" style="display: none;"></div>
             </div>
             <!-- 닉네임 -->
             <div class="item">
-              <label for="nickname">닉네임</label>
+              <label for="nickname">닉네임<span style="color: red;">*</span></label>
               <input type="text" name="nickname" id="nickname" clsss="" minlength="2" maxlength="20" autocomplete="off" placeholder="닉네임을 입력해주세요" onblur="checkNm()" required>
               <div class="checkmsg" id="checknmmsg" style="display: none;"></div>
             </div>

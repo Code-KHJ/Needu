@@ -11,7 +11,6 @@ module.exports = {
         req.content = content;
         next();
       } else {
-        console.log('리뷰 없음')
         next();
       }  
     } catch(err){

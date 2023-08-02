@@ -49,6 +49,11 @@ button{
   border:none;
   background:none;
   font-family: 'NanumSquare';
+  color: #333333;
+}
+input{
+  font-family: 'NanumSquare';
+  color: #333333;
 }
 .screen_out{
   position:absolute;

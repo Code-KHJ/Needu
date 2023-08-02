@@ -219,7 +219,6 @@ module.exports = {
       console.log('finish sending : ' + info.response);
       transporter.close()
     });
-    console.log(authNum);
     return res.status(200).json({authCode: authNum});
   },
   changePw: (req, res) => {
@@ -304,7 +303,6 @@ module.exports = {
     const data = [id, corp_name, first_date, last_date, type];
     try{
       pool.query(sql, data, (err, row)=>{
-        console.log(row)
         if(err) return res.status(500).json(err)
         else if (row.affectedRows > 0){
           return res.status(200).send("<script>alert('경력정보 추가가 완료되었습니다.');location.href='/mypage/profile';</script>")

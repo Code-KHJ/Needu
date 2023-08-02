@@ -126,7 +126,6 @@ module.exports = {
         return res.status(500).json({err})
       }
     } else {
-      console.log('11')
       return res.status(200).send(JSON.stringify("권한없음"));
     }
   },
