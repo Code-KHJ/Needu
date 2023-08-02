@@ -239,7 +239,6 @@ function checkRd(){
 
 //제출 전 최종 체크
 async function checkSubmit(){
-	console.log(checkid)
 	const ckbox2 = document.getElementById('check_2').checked;
 	const ckbox3 = document.getElementById('check_3').checked;
 	const checkid = checkResultId;
