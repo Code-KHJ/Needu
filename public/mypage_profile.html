@@ -152,9 +152,14 @@
               <div class="career-item career-type">
                 <label class="content-font bold">근무직종</label>
                 <select name="type" required>
-                  <option value="사회복지사" {% if c.type == "사회복지사" %}selected{% endif %}>사회복지사</option>
-                  <option value="사무원" {% if c.type == "사무원" %}selected{% endif %}>사무원</option>
-                  <option value="영양사" {% if c.type == "영양사" %}selected{% endif %}>영양사</option>
+                  <div>{{Type}}</div>
+                  {% for type in Type %}
+                    {% if c.type == type.type %}
+                    <option value="{{type.type}}" selected>{{type.type}}</option>
+                    {% else %}
+                    <option value="{{type.type}}">{{type.type}}</option>
+                    {% endif %}
+                  {% endfor %}
                 </select>
               </div>
             </fieldset>

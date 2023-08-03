@@ -61,7 +61,8 @@ module.exports = {
     const middle_info = {
       User: req.user,
       Corp: req.corp,
-      hash: req.hash
+      hash: req.hash,
+      Type: req.careerType
     }
     if (middle_info.User) {
       if (middle_info.Corp){
@@ -164,7 +165,8 @@ module.exports = {
     const data = {
       User: req.user,
       Review: req.review,
-      Corp: req.corp
+      Corp: req.corp,
+      Type: req.careerType
     }
     if(data.User){
       if(data.User.nickname == data.Review.nickname){

@@ -13,6 +13,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const ejs = require('ejs');
 const dotenv = require('dotenv');
+const { Console } = require('console');
 dotenv.config({path: path.resolve(rootdir + '/config/.env')});
 
 
@@ -316,7 +317,8 @@ module.exports = {
     const data = {
       User: req.user,
       info: req.userData,
-      career: req.userCareer
+      career: req.userCareer,
+      Type: req.careerType
     }
     if(data.info.length > 0){
       return res.status(200).render(rootdir+'/public/mypage_profile.html', data)

@@ -121,8 +121,8 @@ form.addEventListener('input', ()=>{
   const check_worktype = document.getElementById('work_type').value !== "";
   const score_array = Array.prototype.slice.call(score_input).every(input => input.value > 0);
   const check_highlight = document.getElementById('highlight').value.length > 0;
-  const check_pros = document.getElementById('pros').value.length > 50;
-  const check_cons = document.getElementById('cons').value.length > 50;
+  const check_pros = document.getElementById('pros').value.length > 30;
+  const check_cons = document.getElementById('cons').value.length > 30;
   const checkAll = [check_firstdate, check_lastdate, check_worktype, score_array, check_highlight, check_pros, check_cons];
   if(checkAll.every((ck) => ck==true)){
     btnSubmit.disabled="";
