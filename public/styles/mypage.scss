@@ -314,6 +314,9 @@ section{
                   display: flex;
                   gap: 4px;
                   vertical-align: top;
+                  &>input{
+                    cursor: pointer;
+                  }
                 }
               }
             }
