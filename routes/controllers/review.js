@@ -139,7 +139,7 @@ module.exports = {
   },
   con_review_search: (req, res)=>{
     let cityArray;
-    if(!req.query.city.length==0){
+    if(!req.query.city == 0){
       cityArray = req.query.city.split(',');
     };
     let scoreArray;
