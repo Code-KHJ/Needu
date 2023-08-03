@@ -1,4 +1,3 @@
-
 ////비밀번호 변경 모달
 const changePwForm = document.querySelector('.change-pw');
 const changePwFieldset = document.querySelector('.change-pw>fieldset');
@@ -133,7 +132,7 @@ async function checkNick(){
       }
     }
   }
-}
+};
 
 function checkPhone(){
   phoneResult = false;
@@ -151,7 +150,7 @@ function checkPhone(){
     msgPn.style="display: none;"
     phoneResult = true
   }
-}
+};
 
 function checkPeriod(){
   periodResult = false;
@@ -159,7 +158,7 @@ function checkPeriod(){
   if(period !== null){
     periodResult = true;
   }
-}
+};
 
 function checkinfo(){
   checkPeriod()
@@ -173,7 +172,11 @@ function checkinfo(){
     alert('정보를 바르게 입력해주세요');
     return false;
   }
-}
+};
+//프로필 이미지 변경
+function changeUserImage(){
+  alert('프로필 사진 변경 기능은 추구 개발될 예정입니다.')
+};
 
 
 ////경력사항
@@ -261,6 +264,30 @@ workignBtn_add.addEventListener('click', (e)=>{
   }
 })
 
+//경력 삭제
+function deleteCareer(careerNo){
+  if(window.confirm("경력을 삭제하시겠습니까?")){
+    let queryString = `?no=${careerNo}`;
+    axios.delete(`/mypage/profile/career${queryString}`)
+      .then(response => {
+        if(response.status == 200){
+          alert('경력정보가 삭제되었습니다.')
+          location.reload();
+        } else if(response.status == 401){
+          alert('삭제 권한이 없습니다. 로그아웃 후 다시 로그인해주세요')
+        }
+        else{
+          alert('경력정보를 삭제할 수 없습니다. 잠시 후 다시 시도해주세요.')
+        }
+      })
+  }else{
+    return false;
+  }
+}
+
+
+
+
 ////경력추가
 function addCareer(e){
   e.preventDefault();
@@ -283,13 +310,6 @@ function addCareer(e){
     }  
   })
 }
-
-
-//프로필 이미지 변경
-function changeUserImage(){
-  alert('프로필 사진 변경 기능은 추구 개발될 예정입니다.')
-};
-
 
 //기관명 자동완성
 const addCareerCorp = document.getElementById('add-corpname');

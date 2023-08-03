@@ -223,7 +223,14 @@ module.exports = {
       console.log(err)
       return res.status(500).json({err});
     }
-  }
+  },
+  deleteReview: (req, res) => {
+    if(res.result.affectedRows == 1){
+      return res.status(200).send("삭제완료");
+    } else{
+      return res.status(400).send("삭제불가");
+    }
+  },
 }
 
 

@@ -139,7 +139,10 @@
                   </button>  
                 </div>
               </div>
-              <button type="button" class="review-change" onclick="reviewEdit({{review.Review_no}})">수정하기</button>
+              <div class="submit-btn">
+                <button type="button" onclick="deleteReview({{review.Review_no}})">삭제하기</button>
+                <button type="button" class="review-change" onclick="reviewEdit({{review.Review_no}})">수정하기</button>
+              </div>
             </li>
             {% endfor %}
           </ul>

@@ -1,4 +1,4 @@
-const { review_content, review_recent, review_search_result, review_search_result_cnt, select_auth, mypage_review_edit } = require('../../modules/sql');
+const { review_content, review_recent, review_search_result, review_search_result_cnt, select_auth, mypage_review_edit, checkUser, deleteData } = require('../../modules/sql');
 const rootdir = require("../../modules/path");
 
 
@@ -75,4 +75,16 @@ module.exports = {
       console.error(err)
     }
   },
+  midDeleteReview: async (req, res, next) => {
+    let checkId = await checkUser(req.query.no, 'Review_Posts');
+    if(!req.user.id == checkId[0].user_id){
+      return res.status(401).send("수정권한 없음")
+    }
+    try{
+      res.result = await deleteData(req.query.no, 'Review_Posts');
+      next();
+    } catch(err){
+      console.error(err)
+    }
+  }
 }

@@ -225,21 +225,27 @@ section{
           }
         }
       }
-      .review-change{
+      .submit-btn{
         display: flex;
-        margin-left: auto;
-        padding: 8px 10px;
-        border-radius: 5px;
-        border: 1px solid #aaa;
-        color: #444;
-        font-size: 1.4rem;
-        font-weight: 700;
-        cursor: pointer;
-        &:hover{
-          background: #6269F5;
-          color: #fff;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 20px;
+        button{
+          display: flex;
+          padding: 8px 10px;
+          border-radius: 5px;
+          border: 1px solid #aaa;
+          color: #444;
+          font-size: 1.4rem;
+          font-weight: 700;
+          cursor: pointer;
+          &:hover{
+            background: #6269F5;
+            color: #fff;
+          }
         }
       }
+
     }
   }
 }

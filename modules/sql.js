@@ -682,5 +682,37 @@ module.exports = {
         return reject(err)
       }
     })
-  }
+  },
+  checkUser: (no, table)=>{
+    return new Promise((resolve, reject) => {
+      const sql = `
+        SELECT user_id FROM ${table}
+        WHERE No = ${no}
+      `
+      try{
+        pool.query(sql, (err, rows)=>{
+          return resolve(rows);
+        })
+      } catch(err){
+        console.log(err);
+        return reject(err);
+      }
+    })
+  },
+  deleteData: (no, table)=>{
+    return new Promise((resolve, reject) => {
+      const sql = `
+        DELETE FROM ${table}
+        WHERE No = ${no}
+      `
+      try{
+        pool.query(sql, (err, result)=>{
+          return resolve(result)
+        })
+      } catch(err){
+        console.log(err);
+        return reject(err);
+      }
+    })
+  },
 }
