@@ -178,7 +178,6 @@ function changeUserImage(){
   alert('프로필 사진 변경 기능은 추구 개발될 예정입니다.')
 };
 
-
 ////경력사항
 //총경력
 function careerCount(){
@@ -210,36 +209,6 @@ function careerCount(){
 }
 careerCount();
 
-//재직중 체크 해제
-const workignBtn = document.querySelectorAll('.working');
-workignBtn.forEach((e,i)=>{
-  e.addEventListener('click', (e)=>{
-    let target = e.target
-    workingClick(target,i)
-  })
-})
-function workingClick(target,i){
-  const lastDate = document.querySelectorAll('.last-date');
-  if(target.checked){
-    lastDate[i].style.display = 'none';
-    lastDate[i].value = '9999-12'
-  } else{
-    lastDate[i].style.display = '';
-    lastDate[i].value = '2023-01'
-  }
-}
-
-//경력정보 입퇴사일 최대기간 설정
-const firstDate = document.querySelectorAll('.first-date');
-const lastDate = document.querySelectorAll('.last-date');
-const dateComponent = document.querySelectorAll('.first-date, .last-date, .first-date-add, .last-date-add')
-Array.from(dateComponent).map((item)=> item !== "9999-12" ? item.max = (new Date()).toISOString().slice(0,7) : item.max = "9999-12")
-firstDate.forEach((e, i) => {
-  e.addEventListener('change', ()=>
-  lastDate[i].min = firstDate[i].value
-  )
-})
-
 //form 제출 오류 방지
 function changeCareer(e, formId){
   e.preventDefault();
@@ -248,21 +217,6 @@ function changeCareer(e, formId){
     form.submit();
   }
 }
-
-//재직중 체크 해제(추가)
-const workignBtn_add = document.querySelector('.working-add');
-workignBtn_add.addEventListener('click', (e)=>{
-  const target = e.target;
-  const lastDate = document.querySelector('.last-date-add');
-  if(target.checked){
-    lastDate.style.display = 'none';
-    lastDate.max = "9999-12"
-    lastDate.value = '9999-12'
-  } else{
-    lastDate.style.display = '';
-    lastDate.value = "reset";
-  }
-})
 
 //경력 삭제
 function deleteCareer(careerNo){
