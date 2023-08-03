@@ -138,12 +138,23 @@ module.exports = {
     }
   },
   con_review_search: (req, res)=>{
+    let cityArray;
+    if(!req.query.city.length==0){
+      cityArray = req.query.city.split(',');
+    };
+    let scoreArray;
+    if(!req.query.score==0){
+      scoreArray = req.query.score.split(',');
+    }
     const data = {
       User: req.user,
       Corp_data: req.corp_data,
       Order: req.query.order,
       Page: req.query.page,
-      Count: req.totalDataCnt
+      Count: req.totalDataCnt,
+      City: cityArray,
+      Score: scoreArray,
+      Hashtag: req.query.hashtag,
     }
     if(data.Count !== undefined){res.cookie('totalCount', data.Count)};
     res.status(200).render(rootdir+'/public/review_search.html', data);
