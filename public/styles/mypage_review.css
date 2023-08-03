@@ -233,9 +233,14 @@ section .contents .contents_review .review_comment .comment_like > span:nth-of-t
   line-height: 140%;
   color: #aaaaaa;
 }
-section .contents .contents_review .review-change {
+section .contents .contents_review .submit-btn {
   display: flex;
-  margin-left: auto;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 20px;
+}
+section .contents .contents_review .submit-btn button {
+  display: flex;
   padding: 8px 10px;
   border-radius: 5px;
   border: 1px solid #aaa;
@@ -244,7 +249,7 @@ section .contents .contents_review .review-change {
   font-weight: 700;
   cursor: pointer;
 }
-section .contents .contents_review .review-change:hover {
+section .contents .contents_review .submit-btn button:hover {
   background: #6269F5;
   color: #fff;
 }

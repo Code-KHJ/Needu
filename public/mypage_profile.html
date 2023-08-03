@@ -164,6 +164,7 @@
               </div>
             </fieldset>
             <div class="btn-line">
+              <button type="button" onclick="deleteCareer({{c.no}})">삭제</button>
               <button form="career{{loop.index}}" type="submit" onclick="return changeCareer(event, 'career{{loop.index}}')">수정</button>
             </div>
           </form>
@@ -214,9 +215,9 @@
                 <label class="content-font bold">근무직종</label>
                 <select name="type" required>
                   <option value="" selected disabled hidden>직종 선택</option>
-                  <option value="사회복지사">사회복지사</option>
-                  <option value="사무원">사무원</option>
-                  <option value="영양사">영양사</option>
+                  {% for type in Type %}
+                  <option value="{{type.type}}">{{type.type}}</option>
+                  {% endfor %}
                 </select>
               </div>
             </fieldset>
