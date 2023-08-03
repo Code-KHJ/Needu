@@ -324,6 +324,9 @@ section {
   gap: 4px;
   vertical-align: top;
 }
+.career-wrap .career-contents .career-content fieldset .career-period .period-wrap > div .quit > div > input {
+  cursor: pointer;
+}
 .career-wrap .career-contents .career-content fieldset .career-type select {
   border: 0px;
   -webkit-appearance: none;
