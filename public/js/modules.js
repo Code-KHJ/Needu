@@ -48,3 +48,61 @@ $('document').ready(function() {
  });
 
 
+ 
+//달력 모듈
+let today = (new Date()).toISOString().slice(0,7);
+const firstDateInputs = document.querySelectorAll(".first-date");
+const lastDateInputs = document.querySelectorAll(".last-date");
+const workignBtn = document.querySelectorAll(".working");
+
+const datePairs = [];
+for (let i = 0; i < firstDateInputs.length; i++) {
+  datePairs.push({
+    firstPicker: null,
+    lastPicker: null,
+    working: workignBtn[i],
+  });
+}
+
+for (let i = 0; i < datePairs.length; i++) {
+  datePairs[i].firstPicker = flatpickr(firstDateInputs[i], {
+    locale: "ko",
+    minDate: "1950-01-01",
+    maxDate: today,
+    plugins: [new monthSelectPlugin({ shorthand: true, dateFormat: "Y-m" })],
+    onChange: function (selectedDates, dateStr, instance) {
+      datePairs[i].lastPicker.set("minDate", new Date(selectedDates[0]));
+    },
+  });
+
+  datePairs[i].lastPicker = flatpickr(lastDateInputs[i], {
+    locale: "ko",
+    minDate: firstDateInputs[i].value || "1950-01-01",
+    maxDate: today,
+    plugins: [new monthSelectPlugin({ shorthand: true, dateFormat: "Y-m" })],
+  });
+}
+workignBtn.forEach((e,i)=>{
+  e.addEventListener('click', (e)=>{
+    if (e.target.checked){
+      datePairs[i].lastPicker.set("maxDate", "9999-12-31");
+      lastDateInputs[i].value = "9999-12";
+      lastDateInputs[i].style.display = "none";
+    } else{
+      lastDateInputs[i].style.display = "";
+      lastDateInputs[i].value = today;
+    }
+    console.log(lastDateInputs[i])
+  })
+})
+
+firstDateInputs.forEach((e,i)=>{
+  e.addEventListener('change', (e)=>{
+    datePairs[i].lastPicker = flatpickr(lastDateInputs[i], {
+      locale: "ko",
+      minDate: e.target.value,
+      maxDate: today,
+      plugins: [new monthSelectPlugin({ shorthand: true, dateFormat: "Y-m" })],
+    });
+  })
+})

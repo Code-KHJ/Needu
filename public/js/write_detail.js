@@ -1,25 +1,3 @@
-//근무기간 퇴사일 기능 구현
-const first_date = document.getElementById('first_date');
-const last_date = document.getElementById('last_date');
-const working = document.getElementById('working');
-first_date.addEventListener('change', ()=>{
-  last_date.min = first_date.value;
-})
-working.addEventListener('change', ()=>{
-  if (working.checked) {
-    last_date.max = "9999-12";
-    last_date.style.visibility = "hidden";
-    last_date.value = "9999-12";
-  } else {
-    last_date.value = "";
-    last_date.style.visibility = ""
-    last_date.max = (new Date()).toISOString().slice(0,7);
-
-  }
-})
-const dateComponent = document.querySelectorAll('#first_date, #last_date');
-Array.from(dateComponent).map((item)=> item !== "9999-12" ? item.max = (new Date()).toISOString().slice(0,7) : item.max = "9999-12")
-
 // 별접 입력 구현
 const score_input = document.querySelectorAll('.star_bg input');
 const star = document.querySelectorAll('.star_bg span');

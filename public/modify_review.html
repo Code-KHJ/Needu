@@ -11,6 +11,8 @@
 		<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
 		<link href="/styles/webcomponent.css" rel="stylesheet">
 		<link href="/styles/write_detail.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
 		<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5XZB713D0"></script>
     <script>
@@ -67,27 +69,27 @@
 												<div>
 												</div>
 											</div>
-											<input type="month" max="YYYY-MM" id="first_date" name="first_date" required value="{{Review.first_date}}">
+											<input type="type" class="first-date" id="first_date" name="first_date" required value="{{Review.first_date}}">
 										</div>
 										<div>
 											{% if Review.last_date == '9999-12' %}
 											<div>
 												<label for="last_date" class="quit">퇴사일</label>
 												<div class="working">
-													<input type="checkbox" id="working" checked>
+													<input type="checkbox" class="working" id="working" checked>
 													<label for="working">재직중</label>
 												</div>
 											</div>
-											<input type="month" max="YYYY-MM" id="last_date" name="last_date" value="9999-12" required style="visibility: hidden">
+											<input type="type" class="last-date" id="last_date" name="last_date" value="9999-12" required style="visibility: hidden">
 											{% else %}
 											<div>
 												<label for="last_date" class="quit">퇴사일</label>
 												<div class="working">
-													<input type="checkbox" id="working">
+													<input type="checkbox" class="working" id="working">
 													<label for="working">재직중</label>
 												</div>
 											</div>
-											<input type="month" max="YYYY-MM" id="last_date" name="last_date" value="{{Review.last_date}}" required>
+											<input type="type" class="last-date" id="last_date" name="last_date" value="{{Review.last_date}}" required>
 											{% endif %}
 										</div>
 									</div>	
@@ -265,6 +267,11 @@
 		<totop-component></totop-component>
 		<script type="module" src="/js/webcomponent.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/l10n/ko.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/plugins/monthSelect/index.js"></script>	
 		<script defer src="/js/modify_review.js"></script>
+		<script defer src="/js/modules.js"></script>
 	</body>
 </html>
