@@ -148,8 +148,17 @@
                         </div>
                       </div>
                     </div>
-                    <div class="checked-list"></div>
-                    <input class="city-input" name="city" value="" style="display: none;">
+                    <div class="checked-list">
+                      {% if City !== '' %}
+                        {% for city in City %}
+                        <span class="sido-checked">
+                          <span onclick="sido_cancle(this)">❌ </span>
+                          <span>{{city}}</span>
+                        </span>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                    <input class="city-input" name="city" value="{{City}}" style="display: none;">
                   </div>
                 </div>
                 <div class="score">
@@ -161,7 +170,7 @@
                     <button type="button" class="btn-score" value="4"><img src="/styles/images/Star_4.png" alt="4점"></button>
                     <button type="button" class="btn-score" value="5"><img src="/styles/images/Star_5.png" alt="5점"></button>
                   </div>
-                  <input name="score" class="score-input" style="display: none;">
+                  <input name="score" class="score-input" style="display: none;" value="{{Score}}">
                 </div>
                 <div class="hashtag">
                   <label>키워드</label>
@@ -183,7 +192,7 @@
                     <button type="button" value="#야근식대지원">#야근식대지원</button>
                     <button type="button" value="#야근택시비지원">#야근택시비지원</button>
                   </div>
-                  <input name="hashtag" class="hashtag-input" value style="display: none;">
+                  <input name="hashtag" class="hashtag-input" value="{{Hashtag}}" style="display: none;">
                 </div>
               </div>
               <div class="search-main">

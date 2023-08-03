@@ -46,6 +46,7 @@ sidoSubmit.addEventListener('click', ()=>{
 //선택 취소하기
 function sido_cancle(item){
   let name = item.parentElement.querySelector('span:nth-child(2)');
+  console.log(name)
   item.parentElement.remove();
   sidoLi.forEach(checkbox =>{
     if(checkbox.value == name.innerHTML){
@@ -77,9 +78,18 @@ scoreBtn.forEach((e)=>e.addEventListener('click', function(){
   }else{
     this.classList.add('score-active');
     scoreInput.value = (scoreInput.value ? scoreInput.value + ',':'') + this.value;
-    console.log(scoreInput.value.split(','))
   }
-}))
+}));
+//클래스 추가
+[...scoreBtn].map((item)=>{
+  [...scoreInput.value.split(',').map((value)=>{
+    if(item.value == value){
+      item.classList.add('score-active');
+    }
+  })]
+});
+
+
 
 //////키워드 필터링//////
 const tagBtn = document.querySelectorAll('.tags>button');
@@ -92,9 +102,17 @@ tagBtn.forEach((e)=>e.addEventListener('click', function(){
   }else{
     this.classList.add('hashtag-active');
     hashtagInput.value = (hashtagInput.value ? hashtagInput.value + ',':'') + this.value;
-    console.log(hashtagInput.value.split(','))
   }
-}))
+}));
+//클래스 추가
+[...tagBtn].map((item)=>{
+  [...hashtagInput.value.split(',').map((value)=>{
+    if(item.value == value){
+      item.classList.add('hashtag-active');
+    }
+  })]
+});
+
 
 
 //////전체 초기화 버튼//////
@@ -261,3 +279,6 @@ if(btn_addCorp !== null){
   }  
 }
 
+
+
+////검색결과 필터링 유지
