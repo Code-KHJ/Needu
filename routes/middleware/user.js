@@ -1,4 +1,4 @@
-const { user_info, user_career } = require('../../modules/sql');
+const { user_info, user_career, careerTypeAll } = require('../../modules/sql');
 const rootdir = require("../../modules/path");
 const user = require('../controllers/user');
 
@@ -23,5 +23,13 @@ module.exports = {
     } catch(err){
       console.error(err)
     }
-  }
+  },
+  midCareerType: async (req, res, next) => {
+    try{
+      req.careerType = await careerTypeAll();
+      next();  
+    } catch(err){
+      console.error(err)
+    }
+  },
 }

@@ -3,6 +3,7 @@ const router = express.Router();
 const rootdir = require("../modules/path");
 const {auth} = require("./middleware/auth");
 const {Corp_all, Corp_info, Hash_info} = require("./middleware/corp");
+const {midCareerType} = require("./middleware/user");
 const {corp, Add_Corp} = require("./controllers/corp");
 const { write, write_auth } = require("./controllers/review");
 
@@ -15,7 +16,7 @@ router.get('/all', Corp_all, corp);
 
 router.post('/add', Add_Corp);
 
-router.get('/corp/:name', auth, Corp_info, Hash_info, write_auth);
+router.get('/corp/:name', auth, Corp_info, Hash_info, midCareerType, write_auth);
 
 router.post('/corp/:name', auth, write);
 

@@ -667,5 +667,20 @@ module.exports = {
         return reject(err)
       }
     })
+  },
+  careerTypeAll: ()=>{
+    return new Promise((resolve, reject) => {
+      const sql = `
+        SELECT * FROM career_type
+      `
+      try{
+        pool.query(sql, (err, rows)=>{
+          return resolve(rows)
+        })
+      } catch(err){
+        console.log(err)
+        return reject(err)
+      }
+    })
   }
 }
