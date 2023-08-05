@@ -112,6 +112,10 @@ button {
 .search-section .filter .city div:nth-of-type(2) .sido-checked > span:nth-of-type(1) {
   cursor: pointer;
 }
+.search-section .filter .city div:nth-of-type(2) .sido-checked > span:nth-of-type(1) > img {
+  width: 10px;
+  height: 10px;
+}
 .search-section .filter .score {
   display: flex;
   flex-wrap: wrap;
