@@ -51,7 +51,7 @@ button{
   font-family: 'NanumSquare';
   color: #333333;
 }
-input{
+input, select{
   font-family: 'NanumSquare';
   color: #333333;
 }
