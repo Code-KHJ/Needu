@@ -209,3 +209,20 @@ window.addEventListener('scroll', async function(){
     }
   }
 });
+
+
+////사이드바
+//리뷰 데이터 swiper
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'vertical',
+  loop: true,
+  autoplay: true,
+  delay: 3000,
+  slidesPerView: 4,
+  spaceBetween: 20,
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+});

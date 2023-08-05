@@ -33,37 +33,37 @@ async function change_select(index){
       <ul class="detail-top5-details">
         <li>
           <p>성장 가능성</p>
-          <div class="star_bg" style="background: none;">
+          <div class="star_bg">
             <span style="width: ${res.data[i].avg_growth*20}%"></span>
           </div>
         </li>
         <li>
           <p>리더십</p>
-          <div class="star_bg" style="background: none;">
+          <div class="star_bg">
             <span style="width: ${res.data[i].avg_leadership*20}%"></span>
           </div>
         </li>
         <li>
           <p>급여 및 복지</p>
-          <div class="star_bg" style="background: none;">
+          <div class="star_bg">
             <span style="width: ${res.data[i].avg_reward*20}%"></span>
           </div>
         </li>
         <li>
           <p>일 가치감</p>
-          <div class="star_bg" style="background: none;">
+          <div class="star_bg">
             <span style="width: ${res.data[i].avg_worth*20}%"></span>
           </div>
         </li>
         <li>
           <p>사내 문화</p>
-          <div class="star_bg" style="background: none;">
+          <div class="star_bg">
             <span style="width: ${res.data[i].avg_culture*20}%"></span>
           </div>
         </li>
         <li>
         <p>워라밸</p>
-        <div class="star_bg" style="background: none;">
+        <div class="star_bg">
           <span style="width: ${res.data[i].avg_worklife*20}%"></span>
         </div>
       </li>

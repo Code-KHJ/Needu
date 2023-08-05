@@ -87,7 +87,7 @@ module.exports = {
         hash: req.hash,
         content: req.content[0],
         cnt : cnt,
-        // top10 : req.top10
+        Review : req.review_recent
       }
       return res.status(200).render(rootdir+'/public/review_detail.html', middle_info)
     } else{

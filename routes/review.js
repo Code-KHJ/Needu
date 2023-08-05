@@ -12,7 +12,7 @@ router.get("/search", auth, mid_search_result, con_review_search)
 
 router.get('/detail', auth, mid_top10_detail, con_top10_detail)
 
-router.get('/corp/:name', auth, Corp_info, Hash_info, review_content, review_detail)
+router.get('/corp/:name', auth, Corp_info, Hash_info, review_content, mid_review_recent, review_detail)
 
 router.get('/corp/:name/more',auth, review_content, review_auth, review_more)
 

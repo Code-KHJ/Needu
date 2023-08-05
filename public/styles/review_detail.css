@@ -654,8 +654,12 @@ main{
 		margin-top: 20px;
 		border-bottom: 1px solid #aaaaaa;		
 	}
+	.side_contents>ul {
+		height: 760px;
+	}
 	.side_contents>ul>li {
-		margin: 20px 0px;
+		height: 150px;
+		margin-bottom: 30px;
 	}
 	.side_contents>ul>li>p {
 		font-size: 1.8rem;

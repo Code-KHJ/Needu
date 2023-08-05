@@ -34,7 +34,7 @@ sidoSubmit.addEventListener('click', ()=>{
       const item = document.createElement('span')
       item.classList.add('sido-checked');
       item.innerHTML=`
-        <span onclick="sido_cancle(this)">❌ </span><span>${checkbox.value}</span>
+        <span onclick="sido_cancel(this)"><img src="/styles/images/ico_cancel.png"> </span><span>${checkbox.value}</span>
       `
       checkedList.append(item)
       selected_city.push(checkbox.value);
@@ -44,7 +44,7 @@ sidoSubmit.addEventListener('click', ()=>{
   sidoList.style="display: none;"
 })
 //선택 취소하기
-function sido_cancle(item){
+function sido_cancel(item){
   let name = item.parentElement.querySelector('span:nth-child(2)');
   console.log(name)
   item.parentElement.remove();

@@ -152,7 +152,7 @@
                       {% if City !== '' %}
                         {% for city in City %}
                         <span class="sido-checked">
-                          <span onclick="sido_cancle(this)">❌ </span>
+                          <span onclick="sido_cancel(this)"><img src="/styles/images/ico_cancel.png"> </span>
                           <span>{{city}}</span>
                         </span>
                         {% endfor %}
@@ -273,7 +273,6 @@
       </section>
     </main>
   </div>
-  <div class="sidebar">사이드바</div>
   <footer>
     <footer-component></footer-component>
   </footer>

@@ -11,6 +11,9 @@
 	<link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
 	<link href="/styles/webcomponent.css" rel="stylesheet">
 	<link href="/styles/review_detail.css" rel="stylesheet" type="text/css">
+	<!-- SWIPER 외부 라이브러리 연결-->
+	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>	
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-G5XZB713D0"></script>
 	<script>
@@ -225,6 +228,36 @@
 							<div id="more"><button></button></div>
 						</ul>
 						{% endif %}
+					</div>
+				</div>
+				<div class="sidebar">
+					<div class="side_contents swiper">
+						<ul class="swiper-wrapper">
+							{% for review in Review %}
+							<li class="side_content swiper-slide">
+								<p>{{review.Corp_name}}</p>
+								<div>
+									<div class="star_bg">
+										<span style="width: {{review.avg_total*20}}%"></span>
+									</div>
+									<span>{{review.avg_total}}</span>
+									{% if review.last_date == '9999-12' %}
+									<span>현직원</span>
+									{% else %}
+									<span>전직원</span>
+									{% endif %}
+									<span>{{review.type}}</span>
+									<span>{{review.date}}</span>
+								</div>
+								<div>
+									<p>{{review.highlight}}</p>
+									<div>
+										<button type="button" onclick="location.href='{{review.Corp_name}}'">리뷰보기</button>	
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+						</ul>
 					</div>
 				</div>
 			</div>
