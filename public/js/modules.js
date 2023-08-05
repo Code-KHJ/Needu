@@ -69,6 +69,7 @@ for (let i = 0; i < datePairs.length; i++) {
     locale: "ko",
     minDate: "1950-01-01",
     maxDate: today,
+    disableMobile: "true",
     plugins: [new monthSelectPlugin({ shorthand: true, dateFormat: "Y-m" })],
     onChange: function (selectedDates, dateStr, instance) {
       datePairs[i].lastPicker.set("minDate", new Date(selectedDates[0]));
@@ -79,6 +80,7 @@ for (let i = 0; i < datePairs.length; i++) {
     locale: "ko",
     minDate: firstDateInputs[i].value || "1950-01-01",
     maxDate: today,
+    disableMobile: "true",
     plugins: [new monthSelectPlugin({ shorthand: true, dateFormat: "Y-m" })],
   });
 }
@@ -92,7 +94,6 @@ workignBtn.forEach((e,i)=>{
       lastDateInputs[i].style.display = "";
       lastDateInputs[i].value = today;
     }
-    console.log(lastDateInputs[i])
   })
 })
 
@@ -102,6 +103,7 @@ firstDateInputs.forEach((e,i)=>{
       locale: "ko",
       minDate: e.target.value,
       maxDate: today,
+      disableMobile: "true",
       plugins: [new monthSelectPlugin({ shorthand: true, dateFormat: "Y-m" })],
     });
   })
