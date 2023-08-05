@@ -31,16 +31,16 @@
     <main>
       <section class="banner">
         <div class="banner-search">
-          <h1>기관리뷰</h1>
+          <h1>사회복지기관 리뷰</h1>
           <div>
-            <P>전/현직자들의 생생한 후기가 궁금하다면</P>
-            <P>지금 바로 찾아보세요!</P>  
+            <P>전⋅현직자들의 생생한 리뷰,</P>
+            <P>NEEDU에서 만나보세요!</P>
           </div>
           <form class="search" id="search" method="get" action="review/search">
             <fieldset>
               <div class="user-input">
                 <label><select name="city" id="city1"></select></label>              
-                <input placeholder="기관 이름을 입력해주세요" type="text" name="corp_name" id="search_input">
+                <input placeholder="어떤 기관을 찾고 있나요?" type="text" name="corp_name" id="search_input">
               </div>
               <button form="search" id="btnSubmit" onclick="submit()"></button>
             </fieldset>
@@ -129,37 +129,37 @@
                 <ul class="detail-top5-details">
                   <li style="display: none;">
                     <p>성장 가능성</p>
-                    <div class="star_bg">
+                    <div class="star_bg" style="background: none;">
                       <span style="width: {{detail.avg_growth*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>리더십</p>
-                    <div class="star_bg">
+                    <div class="star_bg" style="background: none;">
                       <span style="width: {{detail.avg_leadership*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>급여 및 복지</p>
-                    <div class="star_bg">
+                    <div class="star_bg" style="background: none;">
                       <span style="width: {{detail.avg_reward*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>일 가치감</p>
-                    <div class="star_bg">
+                    <div class="star_bg" style="background: none;">
                       <span style="width: {{detail.avg_worth*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>사내 문화</p>
-                    <div class="star_bg">
+                    <div class="star_bg" style="background: none;">
                       <span style="width: {{detail.avg_culture*20}}%"></span>
                     </div>
                   </li>
                   <li>
                     <p>워라밸</p>
-                    <div class="star_bg">
+                    <div class="star_bg" style="background: none;">
                       <span style="width: {{detail.avg_worklife*20}}%"></span>
                     </div>
                   </li>

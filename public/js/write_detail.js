@@ -115,7 +115,7 @@ form.addEventListener('input', ()=>{
 })
 
 function confirmSubmit(){
-  if(window.confirm('부적절한 내용 혹은 사실이 아닌 내용이 포함되어 있을 경우 작성하신 리뷰가 삭제될 수 있습니다. 리뷰를 제출하시겠습니까?')){
+  if(window.confirm('불필요한 비난, 비속어 등의 내용을 적지는 않았나요? 더 나은 조직문화를 위한 리뷰를 함께 만들어요. 리뷰를 제출하시겠습니까?')){
     return true;
   }else{
     return false;
