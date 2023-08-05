@@ -125,7 +125,7 @@ input{
   display:inline-block;
   transform:translateY(4px);
   width:18px; height:18px;
-  margin-right:8px;
+  margin-right:3px;
   background:url(images/ico_login.png) no-repeat center/contain;
 }
 .signup::before{
@@ -133,7 +133,7 @@ input{
   display:inline-block;
   transform:translateY(4px);
   width:18px; height:18px;
-  margin-right:8px;
+  margin-right:3px;
   background:url(images/ico_signup.png) no-repeat center/contain;
 }
 .nickname{
@@ -148,7 +148,7 @@ input{
   display:inline-block;
   transform:translateY(4px);
   width:18px; height:18px;
-  margin-right:8px;
+  margin-right:3px;
   background:url(images/ico_login.png) no-repeat center/contain;
 }
 .logout::before{
@@ -156,7 +156,7 @@ input{
   display:inline-block;
   transform:translateY(4px);
   width:18px; height:18px;
-  margin-right:8px;
+  margin-right:3px;
   background:url(images/ico_logout.png) no-repeat center/contain;
 }
 .logout span{
@@ -344,8 +344,7 @@ nav{
 }
 .gnb_wrap{
   margin:0;
-  margin-right: 20px;
-  width:50%;
+  width:fit-content;
   display:flex;
   justify-content: flex-end;
   flex-flow: row-reverse;
@@ -370,7 +369,6 @@ nav{
 }
 .usersign{
   margin:0;
-  margin-left: 20px;
   width: fit-content;
   justify-content: space-around;
 }
