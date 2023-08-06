@@ -388,20 +388,18 @@ main{
 	border-radius: 5px;
 	cursor: pointer;
 }
-.comment_like>span:nth-of-type(1) {
-	background:url(./images/like.png) no-repeat;
-	width: 20px;
-	height: 20px;
-	background-size: contain;
+.comment_like>img {
+	width: 18px;
+	height: 18px;
 }
-.comment_like>span:nth-of-type(2) {
+.comment_like>span:nth-of-type(1) {
 	height: 20px;
 	font-size: 1.4rem;
 	line-height: 140%;
 	letter-spacing: -0.02rem;
 	color: #000;
 }
-.comment_like>span:nth-of-type(3) {
+.comment_like>span:nth-of-type(2) {
 	width: 25px;
 	height: 20px;
 	font-size: 1.4rem;

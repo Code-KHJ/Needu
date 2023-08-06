@@ -38,7 +38,7 @@ button{
     margin-bottom: 50px;
     .city{
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: wrap;
       gap: 15px;
       // @include filter-flex;
@@ -251,9 +251,14 @@ button{
   }
   .btn-filter{
     position: absolute;
+    display: flex;
+    align-items: flex-end;
     right: 20px;
     top: 40px;
     cursor: pointer;
+    span{
+      font-size: 1.4rem;
+    }
     img{
       width: 20px;
     }
@@ -428,6 +433,7 @@ button{
       gap: 30px;
       .city{
         justify-content: flex-start;
+        flex-direction: row;
         gap: 10px;
         .city-sido{
           height: 35px !important;

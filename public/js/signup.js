@@ -82,11 +82,17 @@ confirmBtn.addEventListener('click', ()=>{
 	if(inputAuth.value == authCode){
 		inputEmail.readOnly = true;
 		reqBtn.disabled='disabled';
-		inputAuth.readOnly = true;
-		confirmBtn.disabled='disabled;'
+		reqBtn.style.backgroundColor = '#aaaaaa';
+		reqBtn.style.color = '#444444';
+		confirmBtn.disabled='disabled;';
 		confirmBtn.innerHTML='인증완료';
-		inputAuth.style.borderColor = '#6269F5';
+		confirmBtn.style.backgroundColor = '#aaaaaa';
+		confirmBtn.style.color = '#444444';
+		inputEmail.style.borderColor = '#aaaaaa';
+		inputEmail.style.backgroundColor = '#efefef';
+		inputAuth.style.borderColor = '#aaaaaa';
 		inputAuth.style.backgroundColor = '#efefef';
+		inputAuth.readOnly = true;
 		checkResultId = true;
 		alert('이메일이 인증되었습니다.');
 	}else{

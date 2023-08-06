@@ -14,7 +14,7 @@ function star_detailClick(element){
 
 //좋아요 버튼
 async function likesClick(element) {
-  const likes_cnt = element.querySelectorAll("span")[2];
+  const likes_cnt = element.querySelectorAll("span")[1];
   const like = likes_cnt.querySelector("span");
   const currentColor = element.style.backgroundColor;
   const liElement = element.closest("li");
@@ -35,6 +35,7 @@ async function likesClick(element) {
     else{
       element.style.backgroundColor = '';
       [...element.querySelectorAll('span')].map(element=>element.style.color='#333333');
+      element.querySelector('img').src="/styles/images/like.png"
       like.innerHTML = parseInt(like.innerHTML,10)-1;
     }
   } else {
@@ -51,6 +52,7 @@ async function likesClick(element) {
       element.style.backgroundColor = '#3D47FF';
       [...element.querySelectorAll('span')].map(element=>element.style.color='#ffffff');
       like.innerHTML = parseInt(like.innerHTML,10)+1;
+      element.querySelector('img').src="/styles/images/like-white.png";
     }
   }
 }
@@ -177,7 +179,7 @@ async function More_contents() {
               </div>	
             </div>
             <button type="button" class="comment_like" onclick="likesClick(this)">
-              <span></span>
+              <img src="/styles/images/like.png">
               <span>도움이 돼요</span>
               <span>(<span>${review.likes}</span>)</span>
             </button>
