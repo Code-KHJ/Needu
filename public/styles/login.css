@@ -107,7 +107,8 @@ main{
 }
 .ad_wrap{
   width:270px;
-  background-color: #aaa;
+  background: url(images/needU_login_banner.jpg) no-repeat center/cover;
+  border-radius: 5px;
 }
 /* main end */
 

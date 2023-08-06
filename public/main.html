@@ -56,7 +56,7 @@
               {% for review_item in review.slice(0,10) %}
               <div class="review swiper-slide">
                 <div>
-                  <span>{{review_item.Corp_name}}</span>
+                  <span>{{review_item.Corp_name.slice(0,12)}}</span>
                   {% if review_item.last_date == '9999-12' %}
                   <span class="mo_none tab_show">현직원</span>
                   {% else %}
