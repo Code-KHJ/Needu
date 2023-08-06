@@ -609,6 +609,7 @@ input:-webkit-autofill:active {
   }
   .top-score-banner>p:nth-child(2){
     font-size: 2.0rem;
+    margin-top: 0px;
   }
   .ts-banner-img{
     width: 150px;
