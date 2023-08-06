@@ -84,6 +84,7 @@
   font-size: 1.4rem;
   font-family: 'NanumSquareBold';
   cursor: pointer;
+  background: linear-gradient(to top, #c2c5f4 50%, transparent 50%);
 }
 /* mobile-end */
 

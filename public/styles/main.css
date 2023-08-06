@@ -291,15 +291,19 @@ input:-webkit-autofill:active {
   display: none;
 }
 .details>li{
-  display: inline-block;
+  display: flex;
   height: 52px;
-  padding: 18px 24px;
+  padding: 14px 20px;
+  gap: 2px;
 }
 .details>li>button{
   display: inline-block;
   white-space: nowrap;
   font-size: 1.6rem;
   cursor: pointer;
+}
+.details>li>img{
+  width: 24px;
 }
 .select-detail{
   background: #c2C5F4 !important;
@@ -611,9 +615,7 @@ input:-webkit-autofill:active {
   .second-contents h1{
     font-size: 2.0rem;
   }
-  .details>li{
-    padding: 18px 40px;
-  }
+  
   .back{
     left: 40px;
   }
@@ -646,6 +648,9 @@ input:-webkit-autofill:active {
   .second-contents{
     width: 67%;
   }
+  .details>li{
+    padding: 14px 28px;
+  }
 }
 
 /* PC 1920 사이즈 반응형 */
@@ -676,5 +681,8 @@ input:-webkit-autofill:active {
   .ts-banner-img{
     width: 200px;
     height: 100px;
+  }
+  .details>li{
+    padding: 14px 40px;
   }
 }

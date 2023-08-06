@@ -33,7 +33,7 @@ button {
 }
 .search-section .filter .city {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 15px;
 }
@@ -248,9 +248,14 @@ button {
 }
 .search-section .btn-filter {
   position: absolute;
+  display: flex;
+  align-items: flex-end;
   right: 20px;
   top: 40px;
   cursor: pointer;
+}
+.search-section .btn-filter span {
+  font-size: 1.4rem;
 }
 .search-section .btn-filter img {
   width: 20px;
@@ -424,6 +429,7 @@ button {
   }
   .search-section .filter .city {
     justify-content: flex-start;
+    flex-direction: row;
     gap: 10px;
   }
   .search-section .filter .city .city-sido {
