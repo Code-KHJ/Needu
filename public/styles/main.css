@@ -605,7 +605,7 @@ input:-webkit-autofill:active {
     padding: 20px 24px;
   }
   .top-score-banner>p:nth-child(1){
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   .top-score-banner>p:nth-child(2){
     font-size: 2.0rem;
