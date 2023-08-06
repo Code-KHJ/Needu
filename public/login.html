@@ -38,13 +38,14 @@
                     <input type="password" name="password" id="userpw" autocomplete="off" style="ime-mode:disabled" placeholder="비밀번호를 입력하세요" required>
                   </fieldset>
                 </form>
-                <!-- <div class="login_option">
-                  <div class="save_id">
+                <div class="login_option">
+                  <!-- <div class="save_id">
                     <input type="checkbox" id="saveId">
                     <label for="saveId">아이디 저장</label>  
-                  </div>
-                  <button type="button">아이디/비밀번호 찾기</button>  
-                </div> -->
+                  </div> -->
+                  <button type="button" onclick="modalShow('search-id-modal')">아이디 찾기</button>
+                  <button type="button" onclick="modalShow('search-pw-modal')">비밀번호 찾기</button>
+                </div>
               </div>
               <button type="submit" class="" id="submit_user" form="form_user" disabled="disabled">로그인</button>
             </div>
@@ -55,6 +56,70 @@
           </div>
         </div>      
       </main>
+      <div class="search-id-modal modal-box" id="search-id-modal" style="display: none;">
+        <div class="modal-wrap">
+          <div>
+            아이디 찾기
+            <button class="modal_cancel" type="reset" onclick="modal_cancel('search-id-modal');">
+              <img src="../styles/images/cancel.png", alt="닫기">
+          </div>
+          <form class="search-info" id="search-id">
+            <div class="content-font">회원가입 시 작성하신 휴대폰 번호를 입력해주세요.</div>
+            <fieldset>
+              <div class="form-item">
+                <label class="content-font">휴대폰</label>
+                <div>
+                  <div class="form-item-input">
+                    <input type="text" name="phonenumber" autocomplete="off" placeholder="'-'빼고 숫자만 입력하세요." maxlength="11" required>
+                    <button type="button">찾기</button>  
+                  </div>
+                  <div class="checkmsg"></div>
+                </div>
+              </div>
+              <div class="form-item">
+                <label class="content-font">아이디</label>
+                <p class="return-userid">dfjhklhdfssdsffssdfdsfsddfsdf</p>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="search-pw-modal modal-box" id="search-pw-modal" style="display: none;">
+        <div class="modal-wrap">
+          <div>
+            비밀번호 찾기
+            <button class="modal_cancel" type="reset" onclick="modal_cancel('search-pw-modal');">
+              <img src="../styles/images/cancel.png", alt="닫기">
+          </div>
+          <form class="search-info" id="search-pw">
+            <div class="content-font">아이디(Email)로 발송된 인증번호를 확인해주세요.</div>
+            <fieldset>
+              <div class="form-item">
+                <label class="content-font">아이디</label>
+                <div>
+                  <div class="form-item-input">
+                    <input type="text" name="search-pw" autocomplete="off" placeholder="아이디(이메일형식)를 입력하세요" required>
+                    <button type="button" class="mo_none tab_show">요청</button>
+                  </div>
+                  <div class="checkmsg">123</div>
+                </div>
+              </div>
+              <button type="button" class="tab_none">요청</button>
+              <div class="form-item">
+                <label class="content-font">인증번호</label>
+                <div>
+                  <div class="form-item-input">
+                    <input type="text" class="checkCode" autocomplete="off" placeholder="인증번호를 입력하세요" required>
+                    <button type="button" class="mo_none tab_show">확인</button>
+                  </div>
+                  <div class="checkmsg"></div>
+                </div>
+              </div>
+              <button type="button" class="tab_none">확인</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </div>
     <footer>
 			<footer-component></footer-component>
