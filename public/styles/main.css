@@ -38,7 +38,7 @@ button{
   flex-direction: column;
   justify-content: center;
   margin-top: 50px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.8);
   border: 2px solid #ffffff;
   border-radius: 40px;
   padding: 10px 20px;
@@ -54,28 +54,22 @@ button{
   width: 50px;
   height: 20px;
   padding: 0 10px 0 0;
-  background-color: rgba(255, 255, 255, 0);
   border: 0px;
-  color: rgba(255, 255, 255, 0.8);
   appearance: none;
-  background: url(images/btn_select.png) no-repeat right center;
+  background: url(images/btn_select.svg) no-repeat right center;
   background-size: 10px 10px;
   font-size: 1.4rem;
-}
-.search option{
-  background-color: rgba(255, 255, 255, 0);
-  color: rgba(255, 255, 255, 0.8);
 }
 .search input{
   width: calc(100% - 70px);
   margin: 0 0 0 10px;
   height: 20px;
   background-color: rgba(255, 255, 255, 0);
-  color: rgba(255, 255, 255, 0.8);
+  color: #000;
   font-size: 1.4rem;
 }
 .search input::placeholder{
-  color: rgba(255, 255, 255, 0.8);
+  color: #000;
   font-size: 1.4rem;
 }
 input:-webkit-autofill,
@@ -90,7 +84,7 @@ input:-webkit-autofill:active {
   width: 20px;
   height: 20px;
   float: right;
-  background: url(images/btn_search_white.png) no-repeat center/contain;
+  background: url(images/btn_search_white.svg) no-repeat center/contain;
   cursor: pointer;
 }
 /* .auto_corp{
@@ -156,7 +150,7 @@ input:-webkit-autofill:active {
   position: absolute;
   right: 48px;
   top: 28px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
 }
@@ -502,6 +496,9 @@ input:-webkit-autofill:active {
   }
   .review>p{
     margin-top: 28px;
+    font-size: 1.6rem;
+  }
+  .review>button{
     font-size: 1.6rem;
   }
   .top-score-contents{
