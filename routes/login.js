@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {login} = require("./controllers/user");
+const {login, findId, mailAuthPw, resetPw} = require("./controllers/user");
 const {auth} = require("./middleware/auth");
 const rootdir = require("../modules/path");
 
@@ -13,6 +13,12 @@ router.get('/', auth, (req,res)=>{
     res.sendFile(rootdir+'/public/login.html')
   }})
 router.post('/', login)
+
+router.post('/find/id', findId)
+router.post('/find/pw', mailAuthPw)
+router.post('/update/pw', resetPw)
+
+
 
 module.exports = router;
 

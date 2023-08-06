@@ -14,6 +14,7 @@ const nodemailer = require('nodemailer');
 const ejs = require('ejs');
 const dotenv = require('dotenv');
 const { Console } = require('console');
+const sql = require('../../modules/sql');
 dotenv.config({path: path.resolve(rootdir + '/config/.env')});
 
 
@@ -222,9 +223,43 @@ module.exports = {
     });
     return res.status(200).json({authCode: authNum});
   },
+  mailAuthPw: (req, res) => {
+    let authNum = Math.random().toString().substr(2,6);
+    let emailTemplate;
+    ejs.renderFile(rootdir+'/template/autoMailPw.ejs', {authCode : authNum}, function(err, data){
+      if(err){console.log(err)}
+      emailTemplate = data
+    });
+  
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASS,
+      }
+    });
+  
+    let mailOptions = {
+      from: `needu`,
+      to: req.body.mail,
+      subject: '[Needu] 비밀번호 찾기를 위한 인증번호입니다.',
+      html: emailTemplate,
+    };
+    
+    transporter.sendMail(mailOptions, function (err, info){
+      if(err){console.log(err)};
+      console.log('finish sending : ' + info.response);
+      transporter.close()
+    });
+    return res.status(200).json({authCode: authNum});
+  },
   changePw: (req, res) => {
     const {id, nickname} = req.user;
     const {password, new_password} = req.body;
+    const current = new Date().toISOString().slice(0, 10);
     const sql = `
       SELECT id, password, nickname FROM user WHERE id = "${id}"
     `
@@ -237,7 +272,7 @@ module.exports = {
             const salt = bcrypt.genSaltSync(saltRounds);
             const hashPw = bcrypt.hashSync(new_password, salt);
             const updateSql = `
-              UPDATE user SET password = "${hashPw}"
+              UPDATE user SET password = "${hashPw}", modified_date = "${current}"
               WHERE id = "${id}"
             `
             pool.query(updateSql, (err, row)=>{
@@ -255,6 +290,30 @@ module.exports = {
       })
     } catch (err) {
       res.status(500).json(err);
+    }
+  },
+  resetPw: (req, res) => {
+    const id = req.body.resetId;
+    const password = req.body.password1;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hashPw = bcrypt.hashSync(password, salt);
+    const current = new Date().toISOString().slice(0, 10);
+    const updateSql = `
+      UPDATE user SET password = "${hashPw}", modified_date = "${current}"
+      WHERE id = "${id}"
+    `
+    if(id == ''){
+      return res.status(200).send("<script>alert('오류가 발생했습니다. 다시 시도해주세요.');location.href='/login';<script>");
+    }
+    try{
+      pool.query(updateSql, (err, row)=>{
+        if(err) return res.status(500).json(err)
+        else if(row.changedRows > 0){
+          return res.status(200).send("<script>alert('비밀번호가 변경이 되었습니다.');location.href='/login';</script>")
+        }
+      })
+    } catch (err) {
+      return res.status(500).json(err);
     }
   },
   changeInfo: (req, res) => {
@@ -331,6 +390,23 @@ module.exports = {
       return res.status(200).send("삭제완료");
     } else{
       return res.status(400).send("삭제불가");
+    }
+  },
+  findId: (req, res) => {
+    const phonenumber = req.body.phonenumber;
+    const sql = `
+      SELECT id FROM user WHERE phonenumber = ${phonenumber}
+    `
+    try{
+      pool.query(sql, (err, rows)=>{
+        if(err){
+          return res.status(200).json({status : '400'})
+        } else{
+          return res.status(200).send(rows)
+        }
+      })
+    } catch(err){
+      return res.status(500).json(err)
     }
   },
 }
