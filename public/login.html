@@ -70,15 +70,15 @@
                 <label class="content-font">휴대폰</label>
                 <div>
                   <div class="form-item-input">
-                    <input type="text" name="phonenumber" autocomplete="off" placeholder="'-'빼고 숫자만 입력하세요." maxlength="11" required>
-                    <button type="button">찾기</button>  
+                    <input type="text" id="phonenumber" autocomplete="off" placeholder="'-'빼고 숫자만 입력하세요." maxlength="11" required>
+                    <button type="button" class="mo_none tab_show" onclick="searchId()">찾기</button>  
                   </div>
                   <div class="checkmsg"></div>
                 </div>
               </div>
-              <div class="form-item">
+              <button type="button" class="tab_none" onclick="searchId()">찾기</button>  
+              <div class="form-item searched-id" style="display: none;">
                 <label class="content-font">아이디</label>
-                <p class="return-userid">dfjhklhdfssdsffssdfdsfsddfsdf</p>
               </div>
             </fieldset>
           </form>
@@ -98,24 +98,58 @@
                 <label class="content-font">아이디</label>
                 <div>
                   <div class="form-item-input">
-                    <input type="text" name="search-pw" autocomplete="off" placeholder="아이디(이메일형식)를 입력하세요" required>
-                    <button type="button" class="mo_none tab_show">요청</button>
-                  </div>
-                  <div class="checkmsg">123</div>
-                </div>
-              </div>
-              <button type="button" class="tab_none">요청</button>
-              <div class="form-item">
-                <label class="content-font">인증번호</label>
-                <div>
-                  <div class="form-item-input">
-                    <input type="text" class="checkCode" autocomplete="off" placeholder="인증번호를 입력하세요" required>
-                    <button type="button" class="mo_none tab_show">확인</button>
+                    <input type="text" id="user-id" autocomplete="off" placeholder="아이디(이메일형식)를 입력하세요" required>
+                    <button type="button" class="mo_none tab_show" onclick="searchPw()">요청</button>
                   </div>
                   <div class="checkmsg"></div>
                 </div>
               </div>
-              <button type="button" class="tab_none">확인</button>
+              <button type="button" class="tab_none" onclick="searchPw()">요청</button>
+              <div class="form-item codeInput">
+                <label class="content-font">인증번호</label>
+                <div>
+                  <div class="form-item-input">
+                    <input type="text" class="checkCode" autocomplete="off" placeholder="인증번호를 입력하세요" required>
+                    <button type="button" class="mo_none tab_show" onclick="checkAuth()">확인</button>
+                  </div>
+                  <div class="checkmsg"></div>
+                </div>
+              </div>
+              <button type="button" class="tab_none" onclick="checkAuth()">확인</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="reset-pw-modal modal-box" id="reset-pw-modal" style="display: none;">
+        <div class="modal-wrap">
+          <div>
+            비밀번호 재설정
+            <button class="modal_cancel" type="reset" onclick="modal_cancel('reset-pw-modal');">
+              <img src="../styles/images/cancel.png", alt="닫기">
+          </div>
+          <form class="search-info" id="reset-pw" method="post" action="/login/update/pw">
+            <div class="content-font">비밀번호를 다시 설정해주세요.</div>
+            <fieldset>
+              <input id="reset-id" name="resetId" value="" style="display: none;">
+              <div class="form-item" style="flex-direction: column;">
+                <label class="content-font">비밀번호</label>
+                <div>
+                  <div class="form-item-input">
+                    <input type="password" name="password1" id="password1" maxlength="16" autocomplete="off" style="ime-mode:disabled" placeholder="비밀번호를 입력하세요" oninput="checkPw1()" required>
+                  </div>
+                  <div class="checkmsg" id="checkpw1msg">비밀번호(8~16자리) 영문 대소문자, 숫자, 특수문자 조합</div>
+                </div>
+              </div>
+              <div class="form-item" style="flex-direction: column;">
+                <label class="content-font">비밀번호 확인</label>
+                <div>
+                  <div class="form-item-input">
+                    <input type="password" name="password2" id="password2" maxlength="16" autocomplete="off" style="ime-mode:disabled" placeholder="비밀번호를 다시 한번 입력하세요" oninput="checkPw2()" required>
+                  </div>
+                  <div class="checkmsg" id="checkpw2msg"></div>
+                </div>
+              </div>
+              <button type="submit" form="reset-pw" id="reset-pw-btn" disabled>수정</button>
             </fieldset>
           </form>
         </div>
