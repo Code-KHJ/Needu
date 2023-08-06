@@ -20,12 +20,10 @@ function modal_none(){
   const changePw = document.querySelector('.change-pw');
   changePw.reset();
   modalBox.style.display = 'none';
-  newPassword.style.border = 'none';
-  newPassword.style.boxShadow = '0px 0px 2px 0px #6269F5';
+  newPassword.style.border = '1px solid #6269F5';
   msgpw1.style="display: none;"
   checkPw1 = false;
-  newPasswordCheck.style.border = 'none';
-  newPasswordCheck.style.boxShadow = '0px 0px 2px 0px #6269F5';
+  newPasswordCheck.style.border = '1px solid #6269F5';
   msgpw2.style="display: none;"
   checkPw2 = false;
 }
@@ -35,7 +33,6 @@ newPassword.addEventListener('input', ()=>{
   //비밀번호 글자 수 검사
   if(newPassword.value.length < 8){
     newPassword.style.border = '1px solid #dc3434';
-    newPassword.style.boxShadow = 'none';
     msgpw1.style="display: "
     msgpw1.innerHTML="비밀번호는 8~16자리로 입력해주세요."
     checkPw1 = false;
@@ -43,7 +40,6 @@ newPassword.addEventListener('input', ()=>{
   //비밀번호 유효성 검사
   else if(!regPw.test(newPassword.value)){
     newPassword.style.border = '1px solid #dc3434';
-    newPassword.style.boxShadow = 'none';
     msgpw1.style="display: "
     msgpw1.innerHTML="영문 대소문자, 숫자, 특수문자만 입력 가능하며 반드시 영문, 숫자 필요합니다."
     checkPw1 = false;
@@ -60,7 +56,6 @@ newPasswordCheck.addEventListener('input', ()=>{
   //비밀번호 일치 여부 검사
   if(newPasswordCheck.value !== newPassword.value){
     newPasswordCheck.style.border = '1px solid #dc3434';
-    newPasswordCheck.style.boxShadow = 'none';
     msgpw2.style="display: "
     msgpw2.innerHTML="비밀번호가 일치하지 않습니다."
     checkPw2 = false;
@@ -93,13 +88,11 @@ async function checkNick(){
   const regnick = /^[A-Za-z가-힣0-9._-]{2,}$/
   if(nickname.value.length == 0){
     nickname.style.border = '1px solid #dc3434';
-    nickname.style.boxShadow = 'none';
     msgnm.style="display: "
     msgnm.innerHTML="닉네임을 입력해주세요."
   } else{
     if(!regnick.test(nickname.value)){
       nickname.style.border = '1px solid #dc3434';
-      nickname.style.boxShadow = 'none';
       msgnm.style="display: "
       msgnm.innerHTML="닉네임은 영어, 한글, 숫자로 만들어주세요."
     } else{
@@ -112,7 +105,6 @@ async function checkNick(){
         //통과
         if(res.data == 1){
           nickname.style.border = '1px solid #2D65FE';
-          nickname.style.boxShadow = 'none';
           msgnm.style="display: none;"
           nickResult = true;
         } else{
@@ -141,12 +133,10 @@ function checkPhone(){
   const regPn = /^(010)[0-9]{7,8}$/ //전화번호 정규식
   if(!regPn.test(phone.value)){
     phone.style.border = '1px solid #dc3434';
-    phone.style.boxShadow = 'none';
     msgPn.style="display: "
     msgPn.innerHTML="휴대폰 번호를 바르게 입력해주세요."
   } else{ //통과
     phone.style.border = '1px solid #2D65FE';
-    phone.style.boxShadow = 'none';
     msgPn.style="display: none;"
     phoneResult = true
   }
@@ -175,7 +165,7 @@ function checkinfo(){
 };
 //프로필 이미지 변경
 function changeUserImage(){
-  alert('프로필 사진 변경 기능은 추구 개발될 예정입니다.')
+  alert('프로필 사진 변경 기능은 추후 개발될 예정입니다.')
 };
 
 ////경력사항
