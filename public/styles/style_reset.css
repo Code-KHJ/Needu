@@ -50,6 +50,7 @@ button{
   background:none;
   font-family: 'NanumSquare';
   color: #333333;
+  cursor: pointer;
 }
 input, select{
   font-family: 'NanumSquare';

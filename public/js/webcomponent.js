@@ -131,7 +131,7 @@ class register_component extends HTMLElement{
   render(){
     this.innerHTML = `
     <div class="modal-box" style="display: none;">
-      <div class="modal_addCorp">
+      <div class="modal-wrap">
         <div>기관 등록하기
           <button class="modal_cancel" type="reset" onclick="modal_cancel();">
             <img src="../styles/images/cancel.png", alt="닫기">

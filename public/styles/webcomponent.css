@@ -235,7 +235,7 @@ footer-component{
   background: rgba(0,0,0,0.2);
   z-index: 11;
 }
-.modal_addCorp{
+.modal-wrap{
   position: fixed;
   width: 80%;
   height: auto;
@@ -244,7 +244,7 @@ footer-component{
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
-.modal_addCorp>div{
+.modal-wrap>div{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -410,7 +410,7 @@ footer-component{
 }
 
 /* 기관등록 모달 */
-.modal_addCorp>div{
+.modal-wrap>div{
   height: 68px;
   font-size: 2.0rem;
 }
