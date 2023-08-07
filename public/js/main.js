@@ -16,11 +16,12 @@ async function change_select(index){
   const res = await axios.get('review/detail',{params: { data: value }})
   const li = document.querySelectorAll('.detail-top5-item');
   for (var i = 0; i<5; i++){
+    li.item(i).setAttribute('onclick', `location.href='/review/corp/${res.data[i].name}'`);
     li.item(i).innerHTML = `
     <div class="detail-top5-no">${i+1}</div>
     <div class="detail-top5-content">
       <div class="detail-top5-corp">
-        <p onclick="location.href='/review/corp/${res.data[i].name}'">${res.data[i].name.slice(0,12)}</p>
+        <p>${res.data[i].name.slice(0,12)}</p>
         <p>${res.data[i].city} ${res.data[i].gugun}</p>
       </div>
       <div class="detail-top5-highlight">
