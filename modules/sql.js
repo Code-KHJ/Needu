@@ -414,7 +414,7 @@ module.exports = {
         loopquery += data
       }
       let hash16 = `${hashtag.hashtag_16}`;
-      if(hash16 !== undefined){
+      if(hash16 !== 'undefined'){
         loopquery += `hashtag_16 = "${hashtag.hashtag_16}"`
       } else{
         loopquery += `hashtag_16 = `+'NULL'
