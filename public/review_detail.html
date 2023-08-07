@@ -191,11 +191,11 @@
 									</div>
 									<div class="pros_cons">
 										<p>장점</p>
-										<p>{{content.pros.replace('\n', '<br>') | safe}}</p>
+										<p>{{content.pros.replaceAll('\n', '<br>') | safe}}</p>
 									</div>
 									<div class="pros_cons">
 										<p>단점</p>
-										<p>{{content.cons.replace('\n', '<br>') | safe}}</p>
+										<p>{{content.cons.replaceAll('\n', '<br>') | safe}}</p>
 									</div>
 									<div class="comment_hashtag_wrap">
 										<div class="hashtag_fade"></div>
