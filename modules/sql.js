@@ -90,6 +90,9 @@ module.exports = {
   })},
   HashTop_update: (Corp_name, hashTopList) => {
     return new Promise(async(resolve, reject)=>{
+      if(hashTopList[0].hash == null){
+        return resolve(null)
+      }
       const hashArray = hashTopList.map((row)=>row.hash).filter((value) => value !== null);
       let hash_query = hashArray.map((h,i)=> `hashtag_top${i+1} = '${h}'`).join(', ');
       let sql = `
