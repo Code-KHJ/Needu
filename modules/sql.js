@@ -239,6 +239,7 @@ module.exports = {
       if(corpname == undefined){corpname = ''};
       let sql = `
         SELECT
+          C.No as No,
           C.Corp_name as Corp_name,
           C.city as city,
           C.gugun as gugun,
@@ -247,8 +248,7 @@ module.exports = {
           C.hashtag_top3 as hashTop3,
           C.hashtag_top4 as hashTop4,
           count(RP.total_score) as cnt,
-          FORMAT(round(avg(RP.total_score),1),1) as avg_total,
-          RP.No as No
+          FORMAT(round(avg(RP.total_score),1),1) as avg_total
         FROM Corp as C
           LEFT JOIN Review_Posts as RP
             ON C.Corp_name = RP.Corp_name
@@ -276,7 +276,7 @@ module.exports = {
       };
 
       //order 정렬
-      if(order == 'count'){sql += `ORDER BY cnt DESC, No DESC\n`}
+      if(order == 'count'){sql += `ORDER BY cnt DESC, avg_total DESC, No ASC\n`}
       else{sql += `ORDER BY avg_total DESC\n`};
 
       //페이지네이션
