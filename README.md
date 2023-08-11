@@ -44,4 +44,4 @@
 * 회원정보, 리뷰 게시글 CRUD
 
 ## 웹 어플리케이션 구조
-<img width="1000px" alt="웹 어플리케이션 구조" src="https://github.com/Code-KHJ/Needu/assets/124508326/10f5995d-33ee-465a-9ff1-041bfbe58bb9">
+<img width="1000px" alt="웹 어플리케이션 구조" src="https://github.com/Code-KHJ/Needu/assets/124508326/6471b261-c276-415b-8c38-bc630d039826">
