@@ -267,13 +267,13 @@ module.exports = {
         if(score !== undefined && score !== null && score !== ''){
           const scoreArray = score.split(',');
           let score_query = scoreArray.map((s)=> `(avg_total >= ${s} AND avg_total < ${parseInt(s) + 1})`).join(' OR ');
-          if(city){sql += (`AND (${score_query})`)}
+          if(city && city !== '시/도'){sql += (`AND (${score_query})`)}
           else{sql += (`HAVING (${score_query})`)};
         };
         if(hashtag !== undefined && hashtag !== null && hashtag !== ''){
           const hashtagArray = hashtag.split(',');
           let hash_query = hashtagArray.map((h)=> `((hashTop1 = '${h}') OR (hashTop2 = '${h}') OR (hashTop3 = '${h}') OR (hashTop4 = '${h}'))`).join(' OR ');
-          if(city || score){sql += (`AND (${hash_query})`)}
+          if(city && city !=='시/도' || score){sql += (`AND (${hash_query})`)}
           else{sql += (`HAVING (${hash_query})`)};
         };
       };
