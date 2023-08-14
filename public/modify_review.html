@@ -240,14 +240,14 @@
 									<label for="pros">장점 <span style="color: red;">*</span></label>
 									<div>
 										<span id="pros_cnt">현재 글자수:000자</span>
-										<textarea name="pros" type="text" id="pros" minlength="30" maxlength="2000" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 30자)" required>{{Review.pros.replaceAll('\n', '<br>') | safe}}</textarea>
+										<textarea name="pros" type="text" id="pros" minlength="30" maxlength="2000" placeholder="근무했던 기관의 장점을 작성해주세요 (최소 30자)" required>{{Review.pros}}</textarea>
 									</div>
 								</div>
 								<div class="write_item">
 									<label for="cons">단점 <span style="color: red;">*</span></label>
 									<div>
 										<span id="cons_cnt">현재 글자수:000자</span>
-										<textarea name="cons" type="text" id="cons" minlength="30" maxlength="2000" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 30자)" required>{{Review.cons.replaceAll('\n', '<br>') | safe}}</textarea>
+										<textarea name="cons" type="text" id="cons" minlength="30" maxlength="2000" placeholder="근무했던 기관의 단점을 작성해주세요 (최소 30자)" required>{{Review.cons}}</textarea>
 									</div>
 								</div>
 							</div>
