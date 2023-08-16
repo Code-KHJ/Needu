@@ -49,6 +49,8 @@ module.exports = {
       const hashTopList = await Hash_info(contents.Corp_name);
       //해시태그 TOP4 업데이트
       const hashUpdate_result = await HashTop_update(contents.Corp_name, hashTopList);
+      //경력 create
+      const addCareer = await add_career(contents, review_no);
       //권한 업데이트
       const updateAuth = await update_auth(contents);
       return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/review/corp/"+contents.Corp_name+"';</script>");
@@ -229,6 +231,9 @@ module.exports = {
       const hashTopList = await Hash_info(contents.Corp_name);
       //해시태그 TOP4 업데이트
       const hashUpdate_result = await HashTop_update(contents.Corp_name, hashTopList);
+      //경력 update
+      const updateCareer = await update_career(contents, contents.review_no);
+
       return res.status(200).send("<script>alert('리뷰가 수정되었습니다.');location.href = '/mypage/review';</script>");
     } catch(err){
       console.log(err)
