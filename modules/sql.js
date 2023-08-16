@@ -122,8 +122,8 @@ module.exports = {
           RP.*,
           FORMAT(RP.total_score,1) as total_score,
           DATE_FORMAT(RP.created_date, '%Y.%m.%d') as date,
-          RP.type as type,
-          RP.last_date as last_date,
+          UC.type as type,
+          UC.last_date as last_date,
           U.nickname as nickname,
           ${hashList}
         FROM Review_Posts as RP
@@ -131,6 +131,7 @@ module.exports = {
           on RP.No = HP.review_no
           LEFT JOIN user as U
           on RP.user_id = U.id
+          LEFT JOIN user_career as UC on RP.No = UC.review_no
         WHERE RP.Corp_name = "${Corp_name}"
         ORDER BY no DESC;`
       try {
@@ -223,10 +224,14 @@ module.exports = {
   review_recent: () => {
     return new Promise((resolve, reject)=>{
       const sql = `
-        SELECT *, 
-        DATE_FORMAT(created_date, '%Y.%m.%d') as date
-        FROM Review_Posts
-        ORDER BY No DESC
+        SELECT RP.*, 
+          DATE_FORMAT(RP.created_date, '%Y.%m.%d') as date,
+          UC.last_date as last_date,
+          UC.type as type
+        FROM Review_Posts as RP
+          LEFT JOIN user_career as UC
+            on RP.No = UC.review_no
+        ORDER BY RP.No DESC
         LIMIT 10;`;
       try {
         pool.query(sql, (err, rows)=>{
@@ -344,11 +349,13 @@ module.exports = {
   insert_review: (contents) => {
     return new Promise((resolve, reject) =>{
       const sql = `
-        INSERT into Review_Posts (Corp_name, user_id, type, first_date, last_date, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        INSERT into Review_Posts (Corp_name, user_id, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?)
       `
-      const data = [contents.Corp_name, contents.user_id, contents.type, contents.first_date, contents.last_date, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
+      const data = [contents.Corp_name, contents.user_id, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
+      console.log(sql)
       try{
         pool.query(sql, data, (err, result)=>{
+          console.log(result)
           return resolve(result)
           })
       }catch(err){
@@ -612,13 +619,14 @@ module.exports = {
           DATE_FORMAT(RP.created_date, "%Y.%m.%d") as date,
           RP.likes as likes,
           HP.*,
-          RP.first_date as first_date,
-          RP.last_date as last_date,
-          RP.type as type,
+          UC.first_date as first_date,
+          UC.last_date as last_date,
+          UC.type as type,
           U.nickname as nickname
         FROM Review_Posts as RP
           LEFT JOIN Hashtag_Posts as HP on RP.No = HP.review_no
           LEFT JOIN user as U on RP.user_id = U.id
+          LEFT JOIN user_career as UC on RP.No = UC.review_no
         WHERE RP.user_id = "${user_id}"
         ORDER BY RP.No DESC;
       `
@@ -651,9 +659,9 @@ module.exports = {
           DATE_FORMAT(RP.created_date, "%Y.%m.%d") as date,
           RP.likes as likes,
           HP.*,
-          RP.first_date as first_date,
-          RP.last_date as last_date,
-          RP.type as type,
+          UC.first_date as first_date,
+          UC.last_date as last_date,
+          UC.type as type,
           U.nickname as nickname
         FROM Review_Posts as RP
           LEFT JOIN Hashtag_Posts as HP on RP.No = HP.review_no
