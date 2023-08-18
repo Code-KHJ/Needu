@@ -3,7 +3,7 @@ const router = express.Router();
 const rootdir = require("../modules/path");
 const {auth} = require("./middleware/auth");
 const {mid_top10_corp, mid_top10_detail} = require("./middleware/corp");
-const { review_content, review_auth, mid_review_recent } = require("./middleware/review");
+const { mid_review_recent } = require("./middleware/review");
 const { review_detail, review_more, review_likes, con_top10_detail, con_search_result } = require("./controllers/review");
 
 
