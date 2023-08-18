@@ -30,7 +30,7 @@
 * Frontend : HTML, CSS, Sass, Javascript
 * Backend : Node.js, Express.js
 * Database : Mysql, Redis
-* Infra : Ncloud, Github
+* Infra : Ncloud, Github, Jenkins
 
 ## 구현 기술
 * 반응형웹 구현(Mobile First)
