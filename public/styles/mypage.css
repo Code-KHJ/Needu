@@ -328,7 +328,6 @@ section {
   cursor: pointer;
 }
 .career-wrap .career-contents .career-content fieldset .career-type select {
-  border: 0px;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
