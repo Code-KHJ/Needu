@@ -33,7 +33,7 @@ module.exports = {
         FROM Corp as C 
           LEFT JOIN Review_Posts as RP 
           on C.Corp_name = RP.Corp_name
-        WHERE C.Corp_name = "${Corp_name}";`;
+        WHERE C.Corp_name = "${Corp_name}" AND RP.blind = "1";`;
       try {
         pool.query(sql, (err, row, fields)=>{
         return resolve(row[0])
@@ -132,7 +132,7 @@ module.exports = {
           LEFT JOIN user as U
           on RP.user_id = U.id
           LEFT JOIN user_career as UC on RP.No = UC.review_no
-        WHERE RP.Corp_name = "${Corp_name}"
+        WHERE RP.Corp_name = "${Corp_name}" AND RP.blind = "1"
         ORDER BY no DESC;`
       try {
         pool.query(sql, (err, rows)=>{
@@ -172,6 +172,7 @@ module.exports = {
           FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife
         FROM Corp as C 
           LEFT JOIN Review_Posts as RP on C.Corp_name = RP.Corp_name
+        WHERE RP.blind = "1"
         GROUP BY C.Corp_name
         ORDER BY ${item} DESC
         LIMIT 10;`;
@@ -189,24 +190,7 @@ module.exports = {
     return new Promise((resolve, reject)=>{
       const sql = `
         SELECT Corp_name, count(*) as cnt, FORMAT(round(avg(total_score),1),1) as avg_total FROM Review_Posts
-        group by Corp_name
-        ORDER by avg_total DESC
-        LIMIT 3;
-      `
-      try{
-        pool.query(sql, (err, rows)=>{
-          return resolve(rows)
-        })  
-      } catch(err){
-        console.log(err)
-        return reject(err)
-      }
-    })
-  },
-  sidebar_corp: () => {
-    return new Promise((resolve, reject)=>{
-      const sql = `
-        SELECT Corp_name, count(*) as cnt, FORMAT(round(avg(total_score),1),1) as avg_total FROM Review_Posts
+        WHERE RP.blind = "1"
         group by Corp_name
         ORDER by avg_total DESC
         LIMIT 3;
@@ -231,6 +215,7 @@ module.exports = {
         FROM Review_Posts as RP
           LEFT JOIN user_career as UC
             on RP.No = UC.review_no
+        WHERE RP.blind = "1"
         ORDER BY RP.No DESC
         LIMIT 10;`;
       try {
@@ -260,7 +245,7 @@ module.exports = {
         FROM Corp as C
           LEFT JOIN Review_Posts as RP
             ON C.Corp_name = RP.Corp_name
-        WHERE C.Corp_name LIKE '%${corpname}%'
+        WHERE C.Corp_name LIKE '%${corpname}%' AND RP.blind = "1"
         GROUP BY C.Corp_name
         `;
       if(city || score || hashtag || corpname){
@@ -310,7 +295,7 @@ module.exports = {
         FROM Corp as C
           LEFT JOIN Review_Posts as RP
             ON C.Corp_name = RP.Corp_name
-        WHERE C.Corp_name LIKE '%${corpname}%'
+        WHERE C.Corp_name LIKE '%${corpname}%' AND RP.blind = "1"
         GROUP BY C.Corp_name
         `;
       if(city || score || hashtag || corpname){
