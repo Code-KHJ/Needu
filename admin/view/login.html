@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0">
+  <title>관리자 로그인</title>
+  <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
+  <link href="./styles/login.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <img class="logo" src="./styles/logo_NeedU.png" alt="logo">
+      <p>ADMIN</p>
+    </div>
+    <div class="login-wrap">
+      <form id="login-admin" method="post" action="/login">
+        <div class="item">
+          <label>아이디</label>
+          <input type="text">
+        </div>
+        <div class="item">
+          <label>비밀번호</label>
+          <input type="password">
+        </div>
+        <button type="submit">로그인</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

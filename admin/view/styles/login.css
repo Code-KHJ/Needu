@@ -1,0 +1,44 @@
+.wrap {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 50px 30px;
+  background-color: #efefef;
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+.wrap .header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.wrap .header .logo {
+  width: 30%;
+  max-width: 100px;
+}
+.wrap .login-wrap {
+  margin-top: 50px;
+}
+.wrap .login-wrap form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.wrap .login-wrap form .item label {
+  display: inline-block;
+  width: 50px;
+}
+.wrap .login-wrap form button {
+  width: 100%;
+  max-width: 201px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #000;
+  border-radius: 5px;
+}/*# sourceMappingURL=login.css.map */

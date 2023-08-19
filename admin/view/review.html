@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0">
+  <title>관리자 리뷰</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+  <link href="./styles/style_reset.css" rel="stylesheet" type="text/css">
+  <link href="./styles/review.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header>
+    <img src="./styles/logo_NeedU.png">
+    <nav class="nav-wrap">
+      <ul class="gnb">
+        <li>리뷰관리</li>
+        <li>유저관리</li>
+        <!-- <li>대시보드(추후개발)</li> -->
+      </ul>
+      <div class="admin-sign">
+        <span>000</span>
+        <span>로그아웃</span>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="filter">
+      필터영역
+      <div class="btn">
+        <button type="button" class="update-blind">블라인드</button>
+        <button type="button" class="delete">삭제</button>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">No</th>
+          <th scope="col" class="th-corp">기관명</th>
+          <th scope="col" class="th-id">ID</th>
+          <th scope="col" class="th-score">성장</th>
+          <th scope="col" class="th-score">리더</th>
+          <th scope="col" class="th-score">복지</th>
+          <th scope="col" class="th-score">가치</th>
+          <th scope="col" class="th-score">문화</th>
+          <th scope="col" class="th-score">워라</th>
+          <th scope="col">한줄평</th>
+          <th scope="col">장점</th>
+          <th scope="col">단점</th>
+          <th scope="col">작성일</th>
+          <th scope="col">수정일</th>
+          <th scope="col">bl</th>
+          <th scope="col" class="th-change"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox"></td>
+          <th scope="row">3</th>
+          <td>서울특별시사회복지사협회"</td>
+          <td class="td-id">guswns212000@gmail.com</td>
+          <td class="td-score">3.5</td>
+          <td class="td-score">4.0</td>
+          <td class="td-score">4.5</td>
+          <td class="td-score">3.5</td>
+          <td class="td-score">3.5</td>
+          <td class="td-score">4.5</td>
+          <td>사회복지사 네트워크가 많을 수록 일하기 재밌고, 좋은 곳!</td>
+          <td>사회복지 영역에서 네트워크를 쌓기에 유리합니다. 전체적으로 좋은 동료들이 있고, 유연한 분위기라 적응이 어렵지 않습니다.
+            팀바팀이겠지만 대체로 야근을 많이 하지 않고, 눈치보지 않고 퇴근할 수 있어서 좋습니다!</td>
+          <td>전화가 너무 많이 와서 일에 집중하는 것이 어려워요. 가끔은 전화벨소리 환청이...
+            사람 대하는 일을 좋아하지 않으면, 힘들 것 같아요!</td>
+          <td>2023-08-07</td>
+          <td>2023-08-13</td>
+          <td>1</td>
+          <td><button type="button">수정</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

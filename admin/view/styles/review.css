@@ -1,0 +1,81 @@
+header {
+  width: 86%;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-bottom: 1px solid #000;
+}
+header img {
+  width: 120px;
+  height: 37px;
+}
+header nav {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
+header nav .gnb {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-left: 0;
+}
+header nav .admin-sign {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+main {
+  width: 86%;
+  margin: 0 auto;
+}
+main .filter {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+main .filter .btn {
+  margin: auto;
+  margin-right: 0;
+}
+main .filter .btn button {
+  padding: 3px 5px;
+  background-color: #efefef;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+main .filter .btn button:hover {
+  background-color: #6269f5;
+  color: #ffffff;
+}
+main table {
+  margin-top: 20px;
+}
+main table thead tr .th-corp {
+  min-width: 36px;
+}
+main table thead tr .th-id {
+  min-width: 50px;
+}
+main table thead tr .th-score {
+  width: 30px;
+}
+main table thead tr .th-change {
+  min-width: 35px;
+}
+main table tbody tr .td-id {
+  word-break: break-all;
+}
+main table tbody tr td button {
+  padding: 2px;
+  background-color: #efefef;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+main table tbody tr td button:hover {
+  background-color: #6269f5;
+  color: #ffffff;
+}/*# sourceMappingURL=review.css.map */
