@@ -83,14 +83,17 @@ class footer_component extends HTMLElement{
   }
   render(){
     this.innerHTML = `
-    <div class="footer_main">
-      <div class="footer_logo"></div>
-      <a href='https://neighborly-arithmetic-8e6.notion.site/NEEDU-2023-08-06-850d2be0329c403daf4377ade286c4a1?pvs=25' target="_blank">이용약관</a>
-      <a href="https://neighborly-arithmetic-8e6.notion.site/d262bf0970b143fa97cfb93552a1b33f" target="_blank">개인정보 처리방침</a>
-    </div>
-    <div class="footer_contact">
-      <span>대표자: 김현준</span>
-      <span>문의: needu.sw@gmail.com</span>
+    <div class="footer_logo"></div>
+    <div class="footer_wrap">
+      <div class="footer_main">
+        <a href='https://neighborly-arithmetic-8e6.notion.site/NEEDU-2023-08-06-850d2be0329c403daf4377ade286c4a1?pvs=25' target="_blank">이용약관</a>
+        <a href="https://neighborly-arithmetic-8e6.notion.site/d262bf0970b143fa97cfb93552a1b33f" target="_blank">개인정보 처리방침</a>
+        <a href="https://neighborly-arithmetic-8e6.notion.site/NEEDU-d7cb722b6a6247d38594aff27c31c036?pvs=4" target="_blank">운영원칙</a>
+      </div>
+      <div class="footer_contact">
+        <span>대표자: 김현준</span>
+        <span>문의: needu.sw@gmail.com</span>
+      </div>
     </div>
   `
   }

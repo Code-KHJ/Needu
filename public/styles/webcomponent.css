@@ -191,12 +191,12 @@ footer-component{
   height: auto;
   gap: 20px;
   padding: 20px 0 ;
-  margin-left: 10px;
 }
 .footer_logo{
   width: 70px;
-  height: 20px;
-  background: url(images/logo_NeedU.png) no-repeat center/95%;;
+  height: 33.5px;
+  padding: 20px 0 ;
+  background: url(images/logo_NeedU.png) no-repeat center/95%;
 }
 .footer_data{
   display: flex;
@@ -399,8 +399,12 @@ nav{
 
 footer-component{
   width:86%;
-  flex-direction: row;
   border-bottom: 1px solid rgba(0, 13, 255, 0.1);
+}
+.footer_wrap{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 .footer_main{
   border-bottom: none;
