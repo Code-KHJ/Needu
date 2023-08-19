@@ -25,6 +25,15 @@
 </head>
 <body>
   <div class="container">
+    <a href="https://neighborly-arithmetic-8e6.notion.site/NEEDU-d7cb722b6a6247d38594aff27c31c036?pvs=4" target="_blank">
+      <div class="top-banner">
+        <div class="top-banner-text">
+          <p><strong>NEEDU</strong>는 이렇게 이용합니다.</p>
+          <p>(필독)커뮤니티 운영 가이드 보러가기</p>
+        </div>
+        <img src="/styles/images/cta_arrow.svg">
+      </div>
+    </a>
     <div id="header_wrap">
       <header-component data-name="{{User.nickname}}"></header-component>
     </div>
@@ -56,7 +65,7 @@
               {% for review_item in review.slice(0,10) %}
               <div class="review swiper-slide">
                 <div>
-                  <span>{{review_item.Corp_name.slice(0,12)}}</span>
+                  <span class="review-corpname">{{review_item.Corp_name.slice(0,12)}}</span>
                   {% if review_item.last_date == '9999-12' %}
                   <span class="mo_none tab_show">현직원</span>
                   {% else %}
@@ -72,10 +81,17 @@
           </div>
         </div>
         <div class="top-score">
-          <h1>전체 만족도 Top</h1>
+          <h1>별점 상위</h1>
           <div class="top-score-contents">
-            {% for top in top10.slice(0,4) %}
+            {% for top in top10.slice(0,6) %}
             <div class="top-score-item top1" onclick="location.href='/review/corp/{{top.name}}'">
+              {% if loop.index == 1 %}
+              <img src="/styles/images/ico_gold.svg">
+              {% elseif loop.index == 2 %}
+              <img src="/styles/images/ico_silver.svg">
+              {% elseif loop.index == 3 %}
+              <img src="/styles/images/ico_blonze.svg">
+              {% endif %}
               <div>{{top.name.slice(0,2)}}</div>
               <div>
                 <div class="ts-item-detail">
@@ -90,13 +106,14 @@
             </div>
             {% endfor %}
           </div>
-          <div class="top-score-banner" onclick="location.href='/review/write'">
-            <p>지금 후기 작성하면 전체 리뷰 확인 가능</p>
-            <p>별점 주고 후기 보러가기</p>
-            <span class="ts-banner-img"></span>
-          </div>
         </div>
       </section>
+      <div class="top-score-banner" onclick="location.href='/review/write'">
+        <p>지금 후기 작성하면 전체 리뷰 확인 가능</p>
+        <p>별점 주고 후기 보러가기</p>
+        <img src="/styles/images/cta_arrow.svg">
+        <span class="ts-banner-img"></span>
+      </div>
       <section class="second-contents">
         <h1>항목별 Top5</h1>
         <div>

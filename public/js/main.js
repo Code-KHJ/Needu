@@ -109,7 +109,7 @@ const swiper = new Swiper('.swiper', {
   loop: true,
   autoplay: true,
   delay: 3000,
-  slidesPerView: 3,
+  slidesPerView: 4,
   spaceBetween: 20,
   // If we need pagination
   pagination: {

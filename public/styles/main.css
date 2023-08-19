@@ -6,6 +6,32 @@ button{
 .mo_none{
   display: none;
 }
+.container{
+  overflow:visible;
+}
+.top-banner{
+  background: #6269f5;
+  padding: 40px 10% 20px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.top-banner-text>p:nth-of-type(1){
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.top-banner-text>p:nth-of-type(1)>strong{
+  font-weight: 1800;
+}
+.top-banner-text>p:nth-of-type(2){
+  font-size: 1.2rem;
+}
+#header_wrap{
+  overflow: auto;
+  position: sticky;
+  top: 0;
+}
 .banner{
   position: relative;
   display: flex;
@@ -13,7 +39,6 @@ button{
   width: 100%;
   height: auto;
   margin: 0 auto;
-  margin-top: 120px;
   background-color: #2A2F9C;
   color: #fff;
 }
@@ -110,12 +135,21 @@ input:-webkit-autofill:active {
 .first-contents h1{
   font-size: 1.6rem;
   font-weight: 700;
+  display: inline-block;
+  background: linear-gradient(to top, #eeefff 50%, transparent 50%);
+}
+.recent-reviews{
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fafafa;
+  box-shadow: 0px 0px 10px 0px #d9d9d9;
+  text-align: center;
 }
 .recent-reviews>div{
   display: flex;
   height: 370px;
   flex-direction: column;
-  margin-top: 25px;
+  margin-top: 40px;
   gap: 20px;
   flex-wrap: nowrap;
   overflow: hidden;
@@ -126,15 +160,15 @@ input:-webkit-autofill:active {
   width: 99% !important;
   height: 110px;
   position: relative;
-  border-radius: 5px 60px 60px 60px;
-  background-color: #efefef;
-  box-shadow: 2px 4px 0px 0px #d9d9d9;
-  padding: 28px 48px;
+  border-bottom: 1px solid #d9d9d9;
 }
 .review>div{
   display: flex;
   gap: 15px;
   font-size: 1.2rem;
+}
+.review-corpname{
+  font-weight: 700;
 }
 .review>div>span:nth-of-type(2), .review>div>span:nth-of-type(3){
   color: #888;
@@ -145,17 +179,25 @@ input:-webkit-autofill:active {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: left;
 }
 .review>button{
   position: absolute;
-  right: 48px;
-  top: 28px;
+  right: 0px;
+  top: 0px;
   font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
 }
 .top-score{
+  height: 638px;
   margin-top: 80px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fafafa;
+  box-shadow: 0px 0px 10px 0px #d9d9d9;
+  text-align: center;
+  overflow: hidden;
 }
 .top-score-contents{
   display: flex;
@@ -165,16 +207,23 @@ input:-webkit-autofill:active {
 }
 .top-score-item{
   display: flex;
-  justify-content: space-evenly;
   background: #efefef;
   gap: 20px;
   height: 120px;
   border-radius: 5px;
-  padding: 25px 24px;
+  padding: 25px 12px;
   cursor: pointer;
+  text-align: left;
+  position: relative;
 }
-.top-score-item>div:nth-child(1){
+.top-score-item>img{
+  position: absolute;
+  top: -12px;
+  left: -5px;
+}
+.top-score-item>div:nth-of-type(1){
   width: 70px;
+  min-width: 70px;
   height: 70px;
   border-radius: 50px;
   background: radial-gradient(54.12% 54.12% at 50.00% 50.00%, #FFF 0%, #F9F9F9 100%, #F9F9F9 100%);
@@ -183,13 +232,13 @@ input:-webkit-autofill:active {
   line-height: 70px;
   vertical-align: middle;
 }
-.top-score-item>div:nth-child(2){
-  min-width: 165px;
+.top-score-item>div:nth-of-type(2){
+  min-width: calc(100% - 90px);
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 .ts-item-detail{
-  max-width: 200px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -220,9 +269,9 @@ input:-webkit-autofill:active {
 	height: 100%;
 	background-size:cover;
 }
-.top-score-item>div:nth-child(2)>span{
+.top-score-item>div:nth-of-type(2)>span{
   position: absolute;
-  right: 0px;
+  left: 90px;
   bottom: 0px;
   font-size: 2.8rem;
   font-weight: 700;
@@ -230,17 +279,19 @@ input:-webkit-autofill:active {
 .top-score-contents>div:nth-child(1){
   background: #a0a6ff !important;
 }
-.top-score-contents>div:nth-child(1)>div:nth-child(1){
+.top-score-contents>div:nth-child(1)>div:nth-of-type(1){
   background: radial-gradient(64.91% 64.91% at 44.29% 40.71%, rgba(249, 249, 249, 0.70) 0%, rgba(228, 228, 228, 0.70) 100%);
 }
 .top-score-banner{
   position: relative;
   background: linear-gradient(94.81deg, #A0A6FF 27.67%, #A0C0FF 83.5%);
   border-radius: 5px;
+  width: 80%;
   height: 120px;
   padding: 20px 24px;
   overflow: hidden;
-  margin-top: 20px;
+  margin: 0 auto;
+  margin-top: 60px;
   cursor: pointer;
 }
 .top-score-banner>p:nth-child(1){
@@ -254,6 +305,9 @@ input:-webkit-autofill:active {
   color: #fff;
   margin-top: 8px;
 }
+.top-score-banner>img{
+  margin-top: 20px;
+}
 .ts-banner-img{
   position: absolute;
   background: url(./images/banner_top_score.png) no-repeat;
@@ -264,26 +318,35 @@ input:-webkit-autofill:active {
   bottom: 0px;
 }
 .second-contents{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 140px;
-  margin-bottom: 200px;
+  margin-top: 100px;
+  margin-bottom: 150px;
+  padding: 40px 10% 0;
+  background: #eeefff;
 }
 .second-contents h1{
   font-size: 1.6rem;
   font-weight: 700;
+  text-align: center;
 }
 .second-contents>div:nth-of-type(1){
   position: relative;
-  margin-top: 40px;
+  margin-top: 10px;
   background: #eeefff;
-  padding: 30px 20px;
+  padding: 30px 0px;
+}
+.second-contents>div:nth-of-type(1)>div{
+  display: flex;
+  justify-content: center;
 }
 .details{
   display: flex;
   flex-direction: row;
   overflow: scroll;
   width: 100%;
+  max-width: fit-content;
+  background-color: #ffffff;
 }
 /* 스크롤바 없애기 */
 .details::-webkit-scrollbar {
@@ -315,7 +378,7 @@ input:-webkit-autofill:active {
   white-space: nowrap;
   gap: 40px;
   overflow: scroll;
-  margin: 30px 15px 10px;
+  margin: 30px 25px 10px;
   height: 300px;
 }
 /* 스크롤바 없애기 */
@@ -409,7 +472,6 @@ input:-webkit-autofill:active {
 .back{
   position: absolute;
   top: 246px;
-  left: 20px;
   width: 40px;
   height: 50px;
   background: rgba(0,0,0,0.1);
@@ -427,7 +489,7 @@ input:-webkit-autofill:active {
 .next{
   position: absolute;
   top: 246px;
-  right: 20px;
+  right: 0px;
   width: 40px;
   height: 50px;
   background: rgba(0,0,0,0.1);
@@ -447,6 +509,21 @@ input:-webkit-autofill:active {
 @media screen and (min-width: 768px) {
   .tab_show{
     display: block;
+  }
+  .top-banner{
+    padding: 30px 7% 20px;
+  }
+  .top-banner-text{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 20px;
+  }
+  .top-banner-text>p:nth-of-type(1){
+    font-size: 1.8rem;
+  }
+  .top-banner-text>p:nth-of-type(2){
+    font-size: 1.4rem;
   }
   .banner-search{
     margin: 100px auto 200px;
@@ -483,6 +560,9 @@ input:-webkit-autofill:active {
   .first-contents h1{
     font-size: 1.8rem;
   }
+  .recent-reviews{
+    padding: 20px 40px;
+  }
   .recent-reviews>div{
     margin-top: 42px;
     height: 400px;
@@ -500,6 +580,9 @@ input:-webkit-autofill:active {
   }
   .review>button{
     font-size: 1.6rem;
+  }
+  .top-score{
+    height: 358px;
   }
   .top-score-contents{
     flex-direction: row;
@@ -520,7 +603,7 @@ input:-webkit-autofill:active {
     height: 15px;
   }
   .top-score-banner{
-    width: 100%;
+    width: 86%;
     padding: 32px 24px;
   }
   .top-score-banner>p:nth-child(1){
@@ -531,19 +614,25 @@ input:-webkit-autofill:active {
     font-size: 3.2rem;
     line-height: 32px;
   }
+  .top-score-banner>img{
+    position: absolute;
+    margin-top: 0;
+    left: 350px;
+    bottom: 30px;
+  }
   .ts-banner-img{
     width: 200px;
     height: 100px;
     right: 28px;
   }
   .second-contents{
-    width: 86%;
+    padding: 40px 7% 0;
   }
   .second-contents h1{
     font-size: 1.8rem;
   }
   .second-contents>div:nth-of-type(1){
-    padding: 35px 40px;
+    padding: 35px 0;
   }
   .detail-top5-corp>p:nth-of-type(2){
     font-size: 1.2rem;
@@ -552,6 +641,12 @@ input:-webkit-autofill:active {
 
 /* PC 1024 사이즈 반응형 */
 @media screen and (min-width: 1024px) {
+  .top-banner-text>p:nth-of-type(1){
+    font-size: 2.0rem;
+  }
+  .top-banner-text>p:nth-of-type(2){
+    font-size: 1.6rem;
+  }
   .banner-search>h1{
     font-size: 4.0rem;
   }
@@ -582,53 +677,41 @@ input:-webkit-autofill:active {
     font-size: 2.0rem;
   }
   .recent-reviews{
-    width: 60%;
-    height: 465px;
+    width: 58.6%;
+    padding: 20px 20px;
+    height: 500px;
   }
   .top-score{
     margin-top: 0;
-    width: 35%;
-    height: 465px;
+    width: 38%;
+    height: 500px;
   }
   .top-score-contents{
     width: 100%;
     height: 260px;
     flex-direction: column;
     flex-wrap: nowrap;
-    overflow: hidden;
   }
   .top-score-item{
     width: 100%;    
-  }
-  .top-score-banner{
-    width: 100%;
-    padding: 20px 24px;
-  }
-  .top-score-banner>p:nth-child(1){
-    font-size: 1.4rem;
-  }
-  .top-score-banner>p:nth-child(2){
-    font-size: 2.0rem;
-    margin-top: 0px;
-  }
-  .ts-banner-img{
-    width: 150px;
-    height: 75px;
   }
   .second-contents h1{
     font-size: 2.0rem;
   }
   
   .back{
-    left: 40px;
+    left: 0;
   }
   .next{
-    right: 40px;
+    right: 0;
   }
 }
 
 /* PC 1920 사이즈 반응형 */
 @media screen and (min-width: 1280px) {
+  .top-banner{
+    padding: 30px 16.5% 20px;
+  }
   .banner-search{
     margin: 140px auto 270px;
     width: 67%;
@@ -642,14 +725,11 @@ input:-webkit-autofill:active {
   .first-contents{
     width: 67%;
   }
-  .recent-reviews{
-    width: 55%;
-  }
-  .top-score{
-    width: 40%;
+  .top-score-banner{
+    width: 67%;
   }
   .second-contents{
-    width: 67%;
+    padding: 40px 16.5% 0;
   }
   .details>li{
     padding: 14px 28px;
@@ -666,6 +746,7 @@ input:-webkit-autofill:active {
   }
   .top-score-contents{
     flex-wrap: wrap;
+    height: 400px;
   }
   .top-score-item{
     width: 48.5%;    
