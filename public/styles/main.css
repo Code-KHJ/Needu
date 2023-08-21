@@ -28,9 +28,16 @@ button{
   font-size: 1.2rem;
 }
 #header_wrap{
-  overflow: auto;
   position: sticky;
   top: 0;
+}
+header-component{
+  display: flex;
+  height: 120px;
+  align-items: center;
+}
+header{
+  margin-top: 0;
 }
 .banner{
   position: relative;
