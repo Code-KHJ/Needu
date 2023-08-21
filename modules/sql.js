@@ -354,9 +354,6 @@ module.exports = {
       let today = (new Date()).toISOString().slice(0,10);
       const sql = `
         UPDATE Review_Posts SET
-        type = "${contents.type}",
-        first_date = "${contents.first_date}",
-        last_date = "${contents.last_date}",
         total_score = "${contents.total_score}",
         growth_score = "${contents.growth_score}",
         leadership_score = "${contents.leadership_score}",
@@ -499,10 +496,8 @@ module.exports = {
   update_career: (contents, review_no) => {
     return new Promise((resolve, reject) =>{
       const sql = `
-        UPDATE user_career SET last_date = "${contents.last_date}", type = "${contents.type}", review_no = "${review_no}"
-        WHERE user_id = "${contents.user_id}"
-        AND Corp_name = "${contents.Corp_name}"
-        AND first_date = "${contents.first_date}"
+        UPDATE user_career SET first_date = "${contents.first_date}", last_date = "${contents.last_date}", type = "${contents.type}"
+        WHERE review_no = "${review_no}"
       `
       try{
         pool.query(sql, (err, row)=>{
