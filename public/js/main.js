@@ -136,6 +136,10 @@ function submit(){
 
 //비회원 리뷰 보기 제한
 function checkLimit(corpname){
+  const nickname = document.querySelector('.nickname');
+  if(nickname !== null){
+    return window.location.href = `/review/corp/${corpname}`
+  }
   const viewcount = document.cookie.split('; ')
   .find(cookie => cookie.startsWith('viewcount='));
   //리뷰 보기 허용
