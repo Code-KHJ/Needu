@@ -224,7 +224,7 @@ footer-component{
 	z-index: 9;
 }
 
-/* 기관등록 모달 */
+/* 모달 */
 .modal-box{
   display: flex;
   position: absolute;
@@ -244,7 +244,7 @@ footer-component{
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
-.modal-wrap>div{
+.modal-wrap>div:nth-of-type(1){
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -255,13 +255,18 @@ footer-component{
   font-size: 1.4rem;
   color: #ffffff;
 }
-.modal-box .Corp_data{
+.modal-box .Corp_data, .modal-content{
   display: flex;
   flex-direction: column;
   padding: 20px;
   gap: 20px;
   background: #ffffff;
   font-size: 1.2rem;
+}
+.modal-content{
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 40px;
 }
 .modal-box .Corp_data>div{
   display: flex;
@@ -299,13 +304,29 @@ footer-component{
   background: url(images/btn_select.png) no-repeat right 12px center;
   background-size: 12px 9px;
 }
-.btn_modalSubmit{
+.btn_modalSubmit, .modal-btn-wrap{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   padding: 20px;
   background: #eeeeee;
   border-radius: 0px 0px 5px 5px;
+}
+.modal-btn-wrap{
+  justify-content: space-between;
+}
+.modal-btn-wrap>button{
+  width: 40%;
+  max-width: 180px;
+  height: 38px;
+  padding: 8px;
+  font-size: 1.4rem;
+  color: #fff;
+  background: #6269F5;
+  border-radius: 5px;
+}
+.modal-btn-wrap>button:nth-of-type(2){
+  background: #888;
 }
 .modal_cancel>img{
   width: 20px;
@@ -322,7 +343,6 @@ footer-component{
   font-size: 1.2rem;
   cursor: pointer;
 }
-
 
 
 /* mobile-end */
@@ -414,7 +434,7 @@ footer-component{
 }
 
 /* 기관등록 모달 */
-.modal-wrap>div{
+.modal-wrap>div:nth-of-type(1){
   height: 68px;
   font-size: 2.0rem;
 }

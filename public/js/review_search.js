@@ -268,17 +268,26 @@ page.forEach((e)=>{
 
 //모달 구현
 const btn_addCorp = document.querySelector('.btn_addCorp');
-const modal_box = document.querySelector('.modal-box');
 if(btn_addCorp !== null){
+  const modal_box = document.querySelector('#register-modal');
   btn_addCorp.addEventListener('click', ()=>{
     modal_box.style.display = 'block'
   })
-  //모달 취소
-  function modal_cancel(){
-    modal_box.style.display = 'none';
-  }  
 }
 
-
-
-////검색결과 필터링 유지
+//비회원 리뷰 보기 제한
+function checkLimit(corpname){
+  const viewcount = document.cookie.split('; ')
+  .find(cookie => cookie.startsWith('viewcount='));
+  //리뷰 보기 허용
+  if(viewcount === undefined || viewcount.split('=')[1] < 3){
+    return window.location.href = `/review/corp/${corpname}`
+  }
+  //로그인 필요
+  const modal_box = document.querySelector('#login-modal');
+  modal_box.style.display = 'block';
+}
+function modal_cancel(button){
+  const modalContainer = button.closest('.modal-box');
+  modalContainer.style.display = 'none';
+}  

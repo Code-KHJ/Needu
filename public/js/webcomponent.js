@@ -133,10 +133,10 @@ class register_component extends HTMLElement{
   }
   render(){
     this.innerHTML = `
-    <div class="modal-box" style="display: none;">
+    <div id="register-modal" class="modal-box" style="display: none;">
       <div class="modal-wrap">
         <div>기관 등록하기
-          <button class="modal_cancel" type="reset" onclick="modal_cancel();">
+          <button class="modal_cancel" type="reset" onclick="modal_cancel(this);">
             <img src="../styles/images/cancel.png", alt="닫기">
           </button>
         </div>
@@ -164,3 +164,34 @@ class register_component extends HTMLElement{
   }
 }
 customElements.define('register-modal', register_component)
+
+//기관 등록 모달 컴포넌트
+class login_component extends HTMLElement{
+  constructor(){
+    super();
+  }
+  connectedCallback(){
+    this.render();
+  }
+  render(){
+    this.innerHTML = `
+    <div id="login-modal" class="modal-box" style="display: none;">
+      <div class="modal-wrap" style="max-width: 400px">
+        <div>로그인
+          <button class="modal_cancel" type="reset" onclick="modal_cancel(this);">
+            <img src="../styles/images/cancel.png", alt="닫기">
+          </button>
+        </div>
+        <div class="modal-content">
+          지금 가입하면</br>더 많은 리뷰를 볼 수 있어요!
+        </div>
+        <div class="modal-btn-wrap">
+          <button type="button" onclick="location.href = '/signup'">회원가입</button>
+          <button type="button" onclick="location.href = '/login'">로그인</button>
+        </div>
+      </div>
+    </div>
+    `
+  }
+}
+customElements.define('login-modal', login_component)

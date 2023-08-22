@@ -230,7 +230,7 @@
           {% if Corp_data.length > 0 %}
           <ul class="corp-wrap">
             {% for corp in Corp_data %}
-            <li class="corp-li" onclick="location.href='/review/corp/{{corp.Corp_name}}'">
+            <li class="corp-li" onclick="checkLimit('{{corp.Corp_name}}')">
               <div class="corp-img">{{corp.Corp_name.slice(0,2)}}</div>
               <div class="corp-data">
                 <div>
@@ -253,7 +253,7 @@
                   <p>{{corp.avg_total}}<span> ({{corp.cnt}})</span></p>
                   {% endif %}
                 </div>
-                <a href="/review/corp/{{corp.Corp_name}}">리뷰보기</a>
+                <a>리뷰보기</a>
               </div>
             </li>
             {% endfor %}
@@ -273,6 +273,7 @@
         </div>
       </section>
     </main>
+    <login-modal></login-modal>
   </div>
   <footer>
     <footer-component></footer-component>
