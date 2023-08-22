@@ -1,4 +1,5 @@
 //Top5 섹션 기능구현
+
 //클릭된 요소로 class 바꾸기
 function select(i){
   const selected = document.querySelector('.select-detail');
@@ -131,4 +132,16 @@ const swiper = new Swiper('.swiper', {
 function submit(){
   const form = document.querySelector('.search');
   form.submit()
+}
+
+//비회원 리뷰 보기 제한
+function checkLimit(corpname){
+  const viewcount = document.cookie.split('; ')
+  .find(cookie => cookie.startsWith('viewcount='));
+  //리뷰 보기 허용
+  if(viewcount === undefined || viewcount.split('=')[1] < 3){
+    return window.location.href = `/review/corp/${corpname}`
+  }
+  //로그인 필요
+  return window.location.href = `/review/corp/${corpname}`
 }

@@ -76,7 +76,7 @@
                   <span class="mo_none tab_show">{{review_item.date}}</span>  
                 </div>
                 <p>{{review_item.highlight}}</p>
-                <button type="button" onclick="location.href='/review/corp/{{review_item.Corp_name}}'">더보기</button>
+                <button type="button" onclick="checkLimit('{{review_item.Corp_name}}')">더보기</button>
               </div>
               {% endfor %}  
             </div>
@@ -86,7 +86,7 @@
           <h1>별점 상위</h1>
           <div class="top-score-contents">
             {% for top in top10.slice(0,6) %}
-            <div class="top-score-item top1" onclick="location.href='/review/corp/{{top.name}}'">
+            <div class="top-score-item top1" onclick="checkLimit('{{top.name}}')">
               {% if loop.index == 1 %}
               <img src="/styles/images/ico_gold.svg">
               {% elseif loop.index == 2 %}
@@ -131,7 +131,7 @@
           </div>
           <ul class="detail-top5">
             {% for detail in detail10.slice(0,5) %}
-            <li class="detail-top5-item" onclick="location.href='/review/corp/{{detail.name}}'">
+            <li class="detail-top5-item" onclick="checkLimit('{{detail.name}}')">
               <div class="detail-top5-no">{{loop.index}}</div>
               <div class="detail-top5-content">
                 <div class="detail-top5-corp">

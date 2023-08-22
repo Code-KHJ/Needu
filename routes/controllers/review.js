@@ -79,22 +79,26 @@ module.exports = {
   },
   review_detail: (req, res) => {
     let cnt = true
-    if(req.corp !== undefined){
-      if(req.corp.cnt == 0){
-        cnt = false
-      }
-      const middle_info = {
-        User: req.user,
-        Corp: req.corp,
-        hash: req.hash,
-        content: req.content[0],
-        cnt : cnt,
-        Review : req.review_recent
-      }
-      return res.status(200).render(rootdir+'/public/review_detail.html', middle_info)
-    } else{
+    if(req.corp == undefined){
       return res.status(404).render(rootdir+'/public/404.html')
     }
+    if(req.corp.cnt == 0){
+      cnt = false
+    }
+    const middle_info = {
+      User: req.user,
+      Corp: req.corp,
+      hash: req.hash,
+      content: req.content[0],
+      cnt : cnt,
+      Review : req.review_recent
+    }
+    if(req.cookies.viewcount == undefined){
+      res.cookie('viewcount', 1)
+    } else{
+      res.cookie('viewcount', parseInt(req.cookies.viewcount) + 1)
+    }
+    return res.status(200).render(rootdir+'/public/review_detail.html', middle_info)
   },
   review_more: (req, res) => {
     const User = req.user
