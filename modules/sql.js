@@ -270,7 +270,7 @@ module.exports = {
 
       //order 정렬
       if(order == 'count'){sql += `ORDER BY cnt DESC, avg_total DESC, No ASC\n`}
-      else{sql += `ORDER BY avg_total DESC\n`};
+      else{sql += `ORDER BY avg_total DESC, No ASC\n`};
 
       //페이지네이션
       if(page !== undefined && page !== null && page !== ''){
