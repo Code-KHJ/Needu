@@ -161,6 +161,7 @@ module.exports = {
       City: cityArray,
       Score: scoreArray,
       Hashtag: req.query.hashtag,
+      Corp_name: req.query.corp_name
     }
     if(data.Count !== undefined){res.cookie('totalCount', data.Count)};
     res.status(200).render(rootdir+'/public/review_search.html', data);

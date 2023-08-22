@@ -143,5 +143,11 @@ function checkLimit(corpname){
     return window.location.href = `/review/corp/${corpname}`
   }
   //로그인 필요
-  return window.location.href = `/review/corp/${corpname}`
+  const modal_box = document.querySelector('.modal-box');
+  modal_box.style.display = 'block';
+}
+
+function modal_cancel(button){
+  const modalContainer = button.closest('.modal-box');
+  modalContainer.style.display = 'none';
 }
