@@ -327,7 +327,7 @@ input:-webkit-autofill:active {
 .event-banner{
   width: 80%;
   height: 120px;
-  background: #a0a6ff url(/styles/images/banner_reviewEvent_mo.svg) no-repeat center/contain;
+  background: #a0a6ff url(/styles/images/banner_reviewEvent_mo.jpg) no-repeat center/contain;
   margin: 0 auto;
   margin-top: 60px;
   border-radius: 5px;
@@ -642,7 +642,7 @@ input:-webkit-autofill:active {
   }
   .event-banner{
     width: 86%;
-    background: #a0a6ff url(/styles/images/banner_reviewEvent_tab.svg) no-repeat center/contain;
+    background: #a0a6ff url(/styles/images/banner_reviewEvent_tab.jpg) no-repeat center/contain;
   }
   .second-contents{
     padding: 40px 7% 0;

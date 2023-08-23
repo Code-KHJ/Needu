@@ -40,6 +40,7 @@ app.use("/login", require("./routes/login"));
 app.use("/review", require("./routes/review"));
 app.use("/review/write", require("./routes/review_write"));
 
+app.use("/admin", require("./admin/back/admin.routes"));
 // app.get("/404", auth, (req, res)=>{
 //     res.render('404.html', {User: req.user})
 // })
