@@ -33,7 +33,8 @@ module.exports = {
         FROM Corp as C 
           LEFT JOIN Review_Posts as RP 
           on C.Corp_name = RP.Corp_name
-        WHERE C.Corp_name = "${Corp_name}" AND RP.blind = "1";`;
+        WHERE C.Corp_name = "${Corp_name}"`;
+      // AND RP.blind = "1";
       try {
         pool.query(sql, (err, row, fields)=>{
         return resolve(row[0])
