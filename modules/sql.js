@@ -362,7 +362,6 @@ module.exports = {
         INSERT into Review_Posts (Corp_name, user_id, growth_score, leadership_score, reward_score, worth_score, culture_score, worklife_score, highlight, pros, cons) values (?,?,?,?,?,?,?,?,?,?,?)
       `
       const data = [contents.Corp_name, contents.user_id, contents.growth_score, contents.leadership_score, contents.reward_score, contents.worth_score, contents.culture_score, contents.worklife_score, contents.highlight, contents.pros, contents.cons];
-      console.log(sql)
       try{
         pool.query(sql, data, (err, result)=>{
           return resolve(result)

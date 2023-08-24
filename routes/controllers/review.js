@@ -1,3 +1,4 @@
+const request = require('request');
 const rootdir = require("../../modules/path");
 const { body, validationResult } = require("express-validator");
 const { NodeResolveLoader } = require("nunjucks");
@@ -53,6 +54,22 @@ module.exports = {
       const addCareer = await add_career(contents, review_no);
       //권한 업데이트
       const updateAuth = await update_auth(contents);
+      //리뷰작성 슬랙 웹훅
+      const total_score = ((contents.growth_score + contents.leadership_score + contents.reward_score + contents.worth_score + contents.culture_score + contents.worklife_score)/6).toFixed(1);
+      const options = {
+        uri: process.env.SLACK_API_NEWREVIEW,
+        method: 'POST',
+        body: {
+          "text": `
+            ${contents.user_id}가 ${contents.Corp_name}에 리뷰를 작성했습니다.\n
+            별점: ${total_score}\n
+            한줄평: ${contents.highlight}\n
+            장점: ${contents.pros}\n
+            단점: ${contents.cons}`
+        },
+        json: true
+      }
+      request.post(options, function(err,httpResponse,body){console.log("리뷰작성 슬랙 웹훅 : "+body)});
       return res.status(200).send("<script>alert('소중한 후기 감사합니다.');location.href = '/review/corp/"+contents.Corp_name+"';</script>");
     } catch(err){
       console.log(err)
