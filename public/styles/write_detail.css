@@ -491,9 +491,6 @@ main{
 	.contents_wrap {
 		width: 67%;
 	}
-	.contents>p {
-		height: 25px;
-	}
 }
 /* PC 1920 사이드바 추가 반응형 */
 @media screen and (min-width: 1920px) {
