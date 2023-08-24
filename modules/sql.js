@@ -133,8 +133,9 @@ module.exports = {
           LEFT JOIN user as U
           on RP.user_id = U.id
           LEFT JOIN user_career as UC on RP.No = UC.review_no
-        WHERE RP.Corp_name = "${Corp_name}" AND RP.blind = "1"
+        WHERE RP.Corp_name = "${Corp_name}"
         ORDER BY no DESC;`
+      // AND RP.blind = "1"
       try {
         pool.query(sql, (err, rows)=>{
         return resolve(rows)
@@ -246,9 +247,10 @@ module.exports = {
         FROM Corp as C
           LEFT JOIN Review_Posts as RP
             ON C.Corp_name = RP.Corp_name
-        WHERE C.Corp_name LIKE '%${corpname}%' AND RP.blind = "1"
+        WHERE C.Corp_name LIKE '%${corpname}%'
         GROUP BY C.Corp_name
         `;
+      // AND RP.blind = "1"
       if(city || score || hashtag || corpname){
         if(city !== undefined && city !== null && city !== '' && city !== '시/도'){
           const cityArray = city.split(',');
@@ -296,9 +298,10 @@ module.exports = {
         FROM Corp as C
           LEFT JOIN Review_Posts as RP
             ON C.Corp_name = RP.Corp_name
-        WHERE C.Corp_name LIKE '%${corpname}%' AND RP.blind = "1"
+        WHERE C.Corp_name LIKE '%${corpname}%'
         GROUP BY C.Corp_name
         `;
+      // AND RP.blind = "1"
       if(city || score || hashtag || corpname){
         if(city !== undefined && city !== null && city !== '' && city !== '시/도'){
           const cityArray = city.split(',');
