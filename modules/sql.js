@@ -22,19 +22,32 @@ module.exports = {
           C.Corp_name as name,
           C.city as city,
           C.gugun as gugun,
-          count(RP.total_score) as cnt, 
-          FORMAT(round(avg(RP.total_score),1),1) as avg_total, 
-          FORMAT(round(avg(RP.growth_score),1),1) as avg_growth, 
-          FORMAT(round(avg(RP.leadership_score),1),1) as avg_leadership, 
-          FORMAT(round(avg(RP.reward_score),1),1) as avg_reward, 
-          FORMAT(round(avg(RP.worth_score),1),1) as avg_worth, 
-          FORMAT(round(avg(RP.culture_score),1),1) as avg_culture, 
-          FORMAT(round(avg(RP.worklife_score),1),1) as avg_worklife
+          COALESCE(RP.cnt, 0) as cnt, 
+          RP.avg_total as avg_total, 
+          RP.avg_growth as avg_growth, 
+          RP.avg_leadership as avg_leadership, 
+          RP.avg_reward as avg_reward, 
+          RP.avg_worth as avg_worth, 
+          RP.avg_culture as avg_culture, 
+          RP.avg_worklife as avg_worklife
         FROM Corp as C 
-          LEFT JOIN Review_Posts as RP 
+          LEFT JOIN (
+            SELECT
+              Corp_name,
+              count(total_score) as cnt, 
+              FORMAT(round(avg(total_score),1),1) as avg_total, 
+              FORMAT(round(avg(growth_score),1),1) as avg_growth, 
+              FORMAT(round(avg(leadership_score),1),1) as avg_leadership, 
+              FORMAT(round(avg(reward_score),1),1) as avg_reward, 
+              FORMAT(round(avg(worth_score),1),1) as avg_worth, 
+              FORMAT(round(avg(culture_score),1),1) as avg_culture, 
+              FORMAT(round(avg(worklife_score),1),1) as avg_worklife
+            FROM Review_Posts
+            WHERE blind = 1
+            GROUP BY Corp_name
+          ) as RP
           on C.Corp_name = RP.Corp_name
         WHERE C.Corp_name = "${Corp_name}"`;
-      // AND RP.blind = "1";
       try {
         pool.query(sql, (err, row, fields)=>{
         return resolve(row[0])
@@ -49,8 +62,7 @@ module.exports = {
   Corp_all: () => {
     return new Promise((resolve, reject)=>{
       const sql = `
-        SELECT *
-        FROM Corp`;
+        SELECT * FROM Corp`;
       try {
         pool.query(sql, (err, rows)=>{
         return resolve(rows)
@@ -133,9 +145,8 @@ module.exports = {
           LEFT JOIN user as U
           on RP.user_id = U.id
           LEFT JOIN user_career as UC on RP.No = UC.review_no
-        WHERE RP.Corp_name = "${Corp_name}"
+        WHERE RP.Corp_name = "${Corp_name}" AND RP.blind = "1"
         ORDER BY no DESC;`
-      // AND RP.blind = "1"
       try {
         pool.query(sql, (err, rows)=>{
         return resolve(rows)
@@ -242,15 +253,22 @@ module.exports = {
           C.hashtag_top2 as hashTop2,
           C.hashtag_top3 as hashTop3,
           C.hashtag_top4 as hashTop4,
-          count(RP.total_score) as cnt,
-          FORMAT(round(avg(RP.total_score),1),1) as avg_total
+          COALESCE(RP.cnt, 0) as cnt,
+          RP.avg_total as avg_total
         FROM Corp as C
-          LEFT JOIN Review_Posts as RP
-            ON C.Corp_name = RP.Corp_name
+          LEFT JOIN (
+            SELECT
+              Corp_name,
+              count(total_score) as cnt,
+              FORMAT(round(avg(total_score),1),1) as avg_total
+            FROM Review_Posts
+            WHERE blind = 1
+            GROUP BY Corp_name
+          ) as RP
+          ON C.Corp_name = RP.Corp_name
         WHERE C.Corp_name LIKE '%${corpname}%'
         GROUP BY C.Corp_name
         `;
-      // AND RP.blind = "1"
       if(city || score || hashtag || corpname){
         if(city !== undefined && city !== null && city !== '' && city !== '시/도'){
           const cityArray = city.split(',');
@@ -265,7 +283,7 @@ module.exports = {
         };
         if(hashtag !== undefined && hashtag !== null && hashtag !== ''){
           const hashtagArray = hashtag.split(',');
-          let hash_query = hashtagArray.map((h)=> `((hashTop1 = '${h}') OR (hashTop2 = '${h}') OR (hashTop3 = '${h}') OR (hashTop4 = '${h}'))`).join(' OR ');
+          let hash_query = hashtagArray.map((h)=> `((hashTop1 = '${h}') OR (hashTop2 = '${h}') OR (hashTop3 = '${h}') OR (hashTop4 = '${h}'))`).join(' AND ');
           if(city && city !=='시/도' || score){sql += (`AND (${hash_query})`)}
           else{sql += (`HAVING (${hash_query})`)};
         };
@@ -296,8 +314,11 @@ module.exports = {
         SELECT
           C.Corp_name, C.city
         FROM Corp as C
-          LEFT JOIN Review_Posts as RP
-            ON C.Corp_name = RP.Corp_name
+          LEFT JOIN (
+            SELECT * FROM Review_Posts
+            WHERE blind = 1
+          ) as RP
+          ON C.Corp_name = RP.Corp_name
         WHERE C.Corp_name LIKE '%${corpname}%'
         GROUP BY C.Corp_name
         `;
@@ -316,7 +337,7 @@ module.exports = {
         };
         if(hashtag !== undefined && hashtag !== null && hashtag !== ''){
           const hashtagArray = hashtag.split(',');
-          let hash_query = hashtagArray.map((h)=> `((C.hashTop1 = '${h}') OR (C.hashTop2 = '${h}') OR (C.hashTop3 = '${h}') OR (C.hashTop4 = '${h}'))`).join(' OR ');
+          let hash_query = hashtagArray.map((h)=> `((C.hashTop1 = '${h}') OR (C.hashTop2 = '${h}') OR (C.hashTop3 = '${h}') OR (C.hashTop4 = '${h}'))`).join(' AND ');
           if(city || score){sql += (`AND (${hash_query})`)}
           else{sql += (`HAVING (${hash_query})`)};
         };
@@ -344,7 +365,6 @@ module.exports = {
       console.log(sql)
       try{
         pool.query(sql, data, (err, result)=>{
-          console.log(result)
           return resolve(result)
           })
       }catch(err){
