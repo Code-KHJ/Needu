@@ -1,3 +1,4 @@
+const request = require('request');
 const jwt = require('../../modules/jwt');
 const redisClient = require("../../modules/redis");
 const url = require('url')
@@ -15,6 +16,7 @@ const ejs = require('ejs');
 const dotenv = require('dotenv');
 const { Console } = require('console');
 const sql = require('../../modules/sql');
+const { json } = require('body-parser');
 dotenv.config({path: path.resolve(rootdir + '/config/.env')});
 
 
@@ -144,6 +146,16 @@ module.exports = {
           ];
           pool.query(sql, data, (err, rows, fields)=>{
             if(err) return res.status(500).json({ success: false, err})
+            //회원가입 슬랙 웹훅
+            const options = {
+              uri: process.env.SLACK_API_SIGNUP,
+              method: 'POST',
+              body: {
+                "text": `아이디 : ${user_info.id}\n닉네임 : ${user_info.nickname}\n회원가입하셨습니다.`
+              },
+              json: true
+            }
+            request.post(options, function(err,httpResponse,body){console.log("회원가입 슬랙 웹훅 : "+body)});
             return res.status(200).send("<script>alert('회원가입이 완료되었습니다. 로그인하신 후 서비스를 이용해주세요');location.href = '/login';</script>");
           })
         }
@@ -197,7 +209,6 @@ module.exports = {
       if(err){console.log(err)}
       emailTemplate = data
     });
-  
     let transporter = nodemailer.createTransport({
       service: 'gmail',
       host: 'smtp.gmail.com',

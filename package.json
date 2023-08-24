@@ -39,6 +39,7 @@
     "nunjucks": "^3.2.3",
     "pm2": "^5.3.0",
     "redis": "^4.6.5",
+    "request": "^2.88.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
   },
