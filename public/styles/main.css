@@ -331,6 +331,7 @@ input:-webkit-autofill:active {
   margin: 0 auto;
   margin-top: 60px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .second-contents{
   width: 100%;
