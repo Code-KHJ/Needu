@@ -50,7 +50,6 @@ module.exports = {
         WHERE C.Corp_name = "${Corp_name}"`;
       try {
         pool.query(sql, (err, row, fields)=>{
-          if(row[0] === undefined){console.error(sql)}
         return resolve(row[0])
         });
         
