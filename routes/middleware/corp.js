@@ -7,7 +7,6 @@ module.exports = {
     const Corp_name = req.params.name;
     try{
       const info = await Corp_info(Corp_name);
-      console.error(info)
       if (info.name !== null){
         req.corp = info;
         next();
