@@ -14,7 +14,7 @@ module.exports = {
     const Corp_city = req.body.city;
     const Corp_gugun = req.body.gugun;
     const checkInfo = await Corp_info(Corp_name);
-    if(checkInfo.name !== null){
+    if(checkInfo !== null && checkInfo !== undefined){
       return res.status(400).send("<script>alert('이미 등록된 기관입니다.');location.href = '/review/corp/"+checkInfo.name+"';</script>");
     }
     else{
