@@ -7,7 +7,7 @@ module.exports = {
     const Corp_name = req.params.name;
     try{
       const info = await Corp_info(Corp_name);
-      if (info.name !== null){
+      if (info !== null && info !== undefined){
         req.corp = info;
         next();
       } else {
