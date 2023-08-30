@@ -21,6 +21,7 @@ header{
       flex-direction: row;
       gap: 10px;
       padding-left: 0;
+      font-size: 1.8rem;
     }
     .admin-sign{
       display: flex;
@@ -55,6 +56,9 @@ main{
     margin-top: 20px;
     thead{
       tr{
+        th{
+          font-size: 1.2rem;
+        }
         .th-corp{
           min-width: 36px;
         }
@@ -62,19 +66,25 @@ main{
           min-width: 50px;
         }
         .th-score{
-          width: 30px;
+          width: 32px;
         }
         .th-change{
-          min-width: 35px;
+          min-width: 38px;
         }
       }
     }
     tbody{
       tr{
+        th{
+          font-size: 1.2rem;
+        }
         .td-id{
           word-break: break-all;
         }
         td{
+          font-size: 1.2rem;
+          max-width: 200px;
+          word-wrap: break-word;
           button{
             padding: 2px;
             background-color: #efefef;

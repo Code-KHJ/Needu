@@ -14,6 +14,7 @@ const swaggerUi = require('swagger-ui-express');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname+"/public"));
+app.use(express.static(__dirname+"/admin/front"));
 app.use(cookieParser());
 app.use(cors({
   origin : 'http://localhost:3000',
@@ -22,11 +23,14 @@ app.use(cors({
 }))
 
 app.set('view engine', 'html')
-nunjucks.configure('./public', {
+nunjucks.configure(['./public', './admin/front'], {
   autoescape : true,
   watch : true,
   express : app,
 })
+
+
+
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(require('./swagger/swagger')));
 
