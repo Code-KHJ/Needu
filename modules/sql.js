@@ -135,6 +135,7 @@ module.exports = {
           RP.*,
           FORMAT(RP.total_score,1) as total_score,
           DATE_FORMAT(RP.created_date, '%Y.%m.%d') as date,
+          DATE_FORMAT(RP.modified_date, '%Y.%m.%d') as mod_date,
           UC.type as type,
           UC.last_date as last_date,
           U.nickname as nickname,

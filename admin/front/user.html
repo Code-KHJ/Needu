@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0">
-  <title>리뷰관리</title>
+  <title>유저관리</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
   <link href="/styles/style_reset.css" rel="stylesheet" type="text/css">
@@ -37,42 +37,34 @@
         <tr>
           <th scope="col"></th>
           <th scope="col">No</th>
-          <th scope="col" class="th-corp">기관명</th>
           <th scope="col" class="th-id">ID</th>
-          <th scope="col" class="th-score">성장</th>
-          <th scope="col" class="th-score">리더</th>
-          <th scope="col" class="th-score">복지</th>
-          <th scope="col" class="th-score">가치</th>
-          <th scope="col" class="th-score">문화</th>
-          <th scope="col" class="th-score">워라</th>
-          <th scope="col">한줄평</th>
-          <th scope="col">장점</th>
-          <th scope="col">단점</th>
-          <th scope="col">작성일</th>
+          <th scope="col">연락처</th>
+          <th scope="col">닉네임</th>
+          <th scope="col">권한</th>
+          <th scope="col">마케팅(이메일)</th>
+          <th scope="col">마케팅(SMS)</th>
+          <th scope="col">정보보유기간</th>
+          <th scope="col">가입일</th>
           <th scope="col">수정일</th>
-          <th scope="col">bl</th>
+          <th scope="col">최근로그인</th>
           <th scope="col" class="th-change"></th>
         </tr>
       </thead>
       <tbody>
-        {% for review in Review %}
+        {% for user in User %}
         <tr>
           <td><input type="checkbox"></td>
-          <th scope="row">{{review.No}}</th>
-          <td>{{review.Corp_name}}</td>
-          <td class="td-id">{{review.user_id}}</td>
-          <td class="td-score">{{review.growth_score}}</td>
-          <td class="td-score">{{review.leadership_score}}</td>
-          <td class="td-score">{{review.reward_score}}</td>
-          <td class="td-score">{{review.worth_score}}</td>
-          <td class="td-score">{{review.culture_score}}</td>
-          <td class="td-score">{{review.worklife_score}}</td>
-          <td>{{review.highlight}}</td>
-          <td>{{review.pros}}</td>
-          <td>{{review.cons}}</td>
-          <td>{{review.cre_date}}</td>
-          <td>{{review.mod_date}}</td>
-          <td>1</td>
+          <th scope="row">{{user.No}}</th>
+          <td class="td-id">{{user.id}}</td>
+          <td>{{user.phonenumber}}</td>
+          <td>{{user.nickname}}</td>
+          <td>{{user.authority}}</td>
+          <td>{{user.marketing_email}}</td>
+          <td>{{user.marketing_SMS}}</td>
+          <td>{{user.info_period}}</td>
+          <td>{{user.cre_date}}</td>
+          <td>{{user.mod_date}}</td>
+          <td>{{user.login_date}}</td>
           <td><button type="button">수정</td>
         </tr>
         {% endfor %}

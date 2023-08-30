@@ -21,6 +21,7 @@ header nav .gnb {
   flex-direction: row;
   gap: 10px;
   padding-left: 0;
+  font-size: 1.8rem;
 }
 header nav .admin-sign {
   display: flex;
@@ -54,6 +55,9 @@ main .filter .btn button:hover {
 main table {
   margin-top: 20px;
 }
+main table thead tr th {
+  font-size: 1.2rem;
+}
 main table thead tr .th-corp {
   min-width: 36px;
 }
@@ -61,13 +65,21 @@ main table thead tr .th-id {
   min-width: 50px;
 }
 main table thead tr .th-score {
-  width: 30px;
+  width: 32px;
 }
 main table thead tr .th-change {
-  min-width: 35px;
+  min-width: 38px;
+}
+main table tbody tr th {
+  font-size: 1.2rem;
 }
 main table tbody tr .td-id {
   word-break: break-all;
+}
+main table tbody tr td {
+  font-size: 1.2rem;
+  max-width: 200px;
+  word-wrap: break-word;
 }
 main table tbody tr td button {
   padding: 2px;
