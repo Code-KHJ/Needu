@@ -1,12 +1,13 @@
 //헤더 웹 컴포넌트
-class header_component extends HTMLElement{
-  constructor(){
+class header_component extends HTMLElement {
+  constructor() {
     super();
   }
-  connectedCallback(){
+  connectedCallback() {
     this.render();
   }
-  render(){
+
+  render() {
     const name = this.dataset.name;
     this.innerHTML = `
     <div class="modal"></div>
@@ -35,9 +36,12 @@ class header_component extends HTMLElement{
             </ul>
           </div>
           <div class="usersign">
-            ${name ? `
+            ${
+              name
+                ? `
             <a href="/mypage/profile" class="nickname">${name}님</a>
-            <a href="/logout" class="logout"><span >로그아웃</span></a>` : `
+            <a href="/logout" class="logout"><span >로그아웃</span></a>`
+                : `
             <a href="/login" class="login">로그인</a>
             <a href="/signup" class="signup">회원가입</a>`
             }
@@ -45,93 +49,109 @@ class header_component extends HTMLElement{
         </nav>
       </div>
     </header>
-  `
+  `;
   }
 }
-customElements.define('header-component', header_component)
+customElements.define('header-component', header_component);
 
 //nav 모달 width에 따라 구현
 const btn_ham_gnb = document.querySelector('.btn_ham_gnb');
 const modal = document.querySelector('.modal');
 const nav = document.querySelector('nav');
 btn_ham_gnb.addEventListener('click', () => {
-  if(modal.style.display == 'block'){
-    modal.style.display = 'none'
-    nav.style.display = 'none'
+  if (modal.style.display == 'block') {
+    modal.style.display = 'none';
+    nav.style.display = 'none';
+  } else {
+    modal.style.display = 'block';
+    nav.style.display = 'block';
   }
-  else{
-    modal.style.display = 'block'
-    nav.style.display = 'block'
-  }
-})
+});
 window.addEventListener('resize', () => {
   let winResize = window.innerWidth;
-  if (winResize >= 768){
-    modal.style.display = 'none'
-    nav.style.display = 'none'
+  if (winResize >= 768) {
+    modal.style.display = 'none';
+    nav.style.display = 'none';
   }
-})
-
+});
 
 //푸터 웹 컴포넌트
-class footer_component extends HTMLElement{
-  constructor(){
+class footer_component extends HTMLElement {
+  constructor() {
     super();
   }
-  connectedCallback(){
+  connectedCallback() {
     this.render();
   }
-  render(){
+  render() {
     this.innerHTML = `
-    <div class="footer_logo"></div>
     <div class="footer_wrap">
       <div class="footer_main">
-        <a href='https://neighborly-arithmetic-8e6.notion.site/NEEDU-2023-08-06-850d2be0329c403daf4377ade286c4a1?pvs=25' target="_blank">이용약관</a>
-        <a href="https://neighborly-arithmetic-8e6.notion.site/d262bf0970b143fa97cfb93552a1b33f" target="_blank">개인정보 처리방침</a>
-        <a href="https://neighborly-arithmetic-8e6.notion.site/NEEDU-d7cb722b6a6247d38594aff27c31c036?pvs=4" target="_blank">커뮤니티 운영 가이드</a>
+        <div>
+          <a href='https://neighborly-arithmetic-8e6.notion.site/NEEDU-2023-08-06-850d2be0329c403daf4377ade286c4a1?pvs=25' target="_blank">이용약관</a>
+          <a href="https://neighborly-arithmetic-8e6.notion.site/d262bf0970b143fa97cfb93552a1b33f" target="_blank">개인정보처리방침</a>
+          <a href="https://neighborly-arithmetic-8e6.notion.site/NEEDU-d7cb722b6a6247d38594aff27c31c036?pvs=4" target="_blank">커뮤니티 운영가이드</a>
+        </div>
       </div>
-      <div class="footer_contact">
-        <span>대표자: 김현준</span>
-        <span>문의: needu.sw@gmail.com</span>
+      <div>
+        <div class="footer_ico">
+          <div class="footer_logo"></div>
+          <div class="ico_sns">
+            <a href="https://www.facebook.com/people/%EC%82%AC%ED%9A%8C%EB%B3%B5%EC%A7%80-%EA%B8%B0%EA%B4%80%EB%A6%AC%EB%B7%B0-%ED%94%8C%EB%9E%AB%ED%8F%BC-NEEDU/61550193057323/" target="_blank">
+              <img src="../styles/images/ico_facebook.svg">
+            </a>
+            <a href="https://www.instagram.com/needu.sw/" target="_blank">
+              <img src="../styles/images/ico_instagram.svg">
+            </a>
+            <a href="http://pf.kakao.com/_CsYKG" target="_blank">
+              <img src="../styles/images/ico_kakao.svg">
+            </a>
+          </div>
+        </div>
+        <div class="footer_contact">
+          <span>NEEDU</span>
+          <span>대표 김현준</span>
+          <span>사업자 등록번호 197-07-02539</span>
+          <span>문의 needu.sw@gmail.com</span>
+          <span>070-7954-4468</span>
+        </div>
       </div>
     </div>
-  `
+  `;
   }
 }
-customElements.define('footer-component', footer_component)
-
+customElements.define('footer-component', footer_component);
 
 //toTop 웹 컴포넌트
-class toTop_component extends HTMLElement{
-  constructor(){
+class toTop_component extends HTMLElement {
+  constructor() {
     super();
   }
-  connectedCallback(){
+  connectedCallback() {
     this.render();
   }
-  render(){
+  render() {
     this.innerHTML = `
     <button class="btn_toTop"></button>
-  `
-    this.onclick = function(){
-      if(window.pageYOffset > 0){
-        window.scrollTo({top:0, behavior: "smooth"});
-      }    
-    }
+  `;
+    this.onclick = function () {
+      if (window.pageYOffset > 0) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
   }
 }
-customElements.define('totop-component', toTop_component)
-
+customElements.define('totop-component', toTop_component);
 
 //기관 등록 모달 컴포넌트
-class register_component extends HTMLElement{
-  constructor(){
+class register_component extends HTMLElement {
+  constructor() {
     super();
   }
-  connectedCallback(){
+  connectedCallback() {
     this.render();
   }
-  render(){
+  render() {
     this.innerHTML = `
     <div id="register-modal" class="modal-box" style="display: none;">
       <div class="modal-wrap">
@@ -160,20 +180,20 @@ class register_component extends HTMLElement{
         </form>
       </div>
     </div>
-    `
+    `;
   }
 }
-customElements.define('register-modal', register_component)
+customElements.define('register-modal', register_component);
 
 //기관 등록 모달 컴포넌트
-class login_component extends HTMLElement{
-  constructor(){
+class login_component extends HTMLElement {
+  constructor() {
     super();
   }
-  connectedCallback(){
+  connectedCallback() {
     this.render();
   }
-  render(){
+  render() {
     this.innerHTML = `
     <div id="login-modal" class="modal-box" style="display: none;">
       <div class="modal-wrap" style="max-width: 400px">
@@ -191,7 +211,7 @@ class login_component extends HTMLElement{
         </div>
       </div>
     </div>
-    `
+    `;
   }
 }
-customElements.define('login-modal', login_component)
+customElements.define('login-modal', login_component);

@@ -1,0 +1,92 @@
+main {
+  margin-top: 120px;
+  width: 100%;
+}
+main .div-line {
+  height: 120px;
+  background-color: #ffd338;
+}
+
+section {
+  margin: 0 auto;
+  margin-top: 80px;
+  max-width: 740px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section h1 {
+  color: #444;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+section > div {
+  width: 100%;
+  padding: 40px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background: #fff;
+}
+section .info-box {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+section .info-box .item {
+  display: flex;
+  flex-direction: row;
+  color: #444;
+  font-size: 2rem;
+}
+section .info-box .item > div:nth-of-type(1) {
+  width: 120px;
+  font-weight: 700;
+}
+section .info-box .item > div:nth-of-type(2) {
+  margin: 0 10px;
+}
+section .info-box .item > div:nth-of-type(3) {
+  font-weight: 400;
+  flex: 1;
+}
+section .payment {
+  margin-top: 60px;
+}
+section .payment > h1 {
+  text-align: start;
+  margin-bottom: 40px;
+}
+section .payment > p {
+  color: #444;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+section .payment .payment-content {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+section > button {
+  margin-top: 60px;
+  margin-bottom: 100px;
+  padding: 20px 30px;
+  width: 280px;
+  height: 60px;
+  border-radius: 4px;
+  background: #aaa;
+  color: #fafafa;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+section > button:hover {
+  background: #6269f5;
+}/*# sourceMappingURL=chat_complete.css.map */
