@@ -1,20 +1,21 @@
 @charset "utf-8";
 /* z-index: madal12 modal-box11 header10; button9 */
 
-.main_wrap{
+.main_wrap {
   display: block;
   width: 80%;
   height: auto;
   margin: 0 auto;
   margin-top: 240px;
+  margin-bottom: 250px;
 }
-.main_wrap>h1{
+.main_wrap > h1 {
   text-align: center;
   font-size: 1.6rem;
   font-family: 'NanumSquareBold';
   margin-bottom: 50px;
 }
-.search{
+.search {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -26,19 +27,19 @@
   border-radius: 40px;
   margin-bottom: 100px;
 }
-.user_input{
+.user_input {
   width: 100%;
 }
-#search_input{
+#search_input {
   float: left;
   width: calc(100% - 30px);
   height: 28px;
   font-size: 1.4rem;
 }
-#search_input::placeholder{
-  color: rgba(0,0,0,0.3);
+#search_input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
 }
-.auto_corp{
+.auto_corp {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -46,20 +47,20 @@
   gap: 30px;
   font-size: 1.4rem;
 }
-.auto_corp button{
+.auto_corp button {
   width: 100%;
   height: 28px;
   text-align: left;
   cursor: pointer;
 }
-.auto_corp span{
+.auto_corp span {
   font-size: 1.4rem;
 }
-.active{
+.active {
   background-color: #ededed;
 }
 
-#btnSubmit{
+#btnSubmit {
   position: absolute;
   right: 20px;
   width: 28px;
@@ -68,19 +69,19 @@
   cursor: pointer;
 }
 
-.auto_corp>li{
+.auto_corp > li {
   height: 28px;
   line-height: 28px;
 }
-.auto_corp>li>span:nth-of-type(2){
+.auto_corp > li > span:nth-of-type(2) {
   margin: 0px 4px;
 }
-.register{
+.register {
   font-size: 1.4rem;
   margin-top: 40px;
   margin-bottom: 20px;
 }
-.register>span:nth-of-type(2){
+.register > span:nth-of-type(2) {
   font-size: 1.4rem;
   font-family: 'NanumSquareBold';
   cursor: pointer;
@@ -88,84 +89,83 @@
 }
 /* mobile-end */
 
-@media screen and (min-width:768px) {
-  .main_wrap{
+@media screen and (min-width: 768px) {
+  .main_wrap {
     width: 86%;
   }
-  .main_wrap>h1{
+  .main_wrap > h1 {
     font-size: 2.4rem;
   }
-  .search{
+  .search {
     padding: 20px 60px;
   }
-  #search_input{
+  #search_input {
     font-size: 1.8rem;
     width: calc(100% - 40px);
     height: 36px;
-    font-size: 2.0rem;
+    font-size: 2rem;
   }
-  #btnSubmit{
+  #btnSubmit {
     right: 60px;
     width: 36px;
     height: 36px;
   }
-  .auto_corp{
+  .auto_corp {
     font-size: 1.8rem;
     margin-top: 100px;
   }
-  .auto_corp>li{
+  .auto_corp > li {
     height: 40px;
     line-height: 40px;
   }
-  .auto_corp span{
-    font-size: 1.8rem;
-  }  
-  .register{
+  .auto_corp span {
     font-size: 1.8rem;
   }
-  .register>span:nth-of-type(2){
+  .register {
     font-size: 1.8rem;
   }
-
+  .register > span:nth-of-type(2) {
+    font-size: 1.8rem;
+  }
 }
 /* 768 end */
 /* 1024 */
-@media screen and (min-width:1024px) {
-  .search{
+@media screen and (min-width: 1024px) {
+  .search {
     padding: 20px 80px;
   }
-  #search_input{
-    font-size: 2.0rem;
+  #search_input {
+    font-size: 2rem;
     width: calc(100% - 50px);
     height: 44px;
   }
-  #btnSubmit{
+  #btnSubmit {
     right: 60px;
     width: 44px;
     height: 44px;
   }
-  .auto_corp{
-    font-size: 2.0rem;
+  .auto_corp {
+    font-size: 2rem;
   }
-  .auto_corp span{
-    font-size: 2.0rem;
+  .auto_corp span {
+    font-size: 2rem;
   }
-  .register{
-    font-size: 2.0rem;
+  .register {
+    font-size: 2rem;
   }
-  .register>span:nth-of-type(2){
-    font-size: 2.0rem;
+  .register > span:nth-of-type(2) {
+    font-size: 2rem;
   }
 }
-@media screen and (min-width:1280px){
-  .main_wrap{
+@media screen and (min-width: 1280px) {
+  .main_wrap {
     width: 67%;
     max-width: 1000px;
   }
-  .main_wrap>h1{
+  .main_wrap > h1 {
     font-size: 2.8rem;
   }
-  #search_input{
+  #search_input {
     font-size: 2.4rem;
   }
 }
