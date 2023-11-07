@@ -230,8 +230,19 @@ footer-component {
 }
 .footer_contact > span:not(:last-child)::after {
   content: '|';
+  color: #888;
   margin-left: 10px;
   margin-right: 10px;
+}
+.contact_email,
+.contact_phone {
+  height: 16px;
+}
+.contact_email > img,
+.contact_phone > img {
+  margin-right: 5px;
+  width: 15px;
+  vertical-align: middle;
 }
 
 .btn_toTop {
