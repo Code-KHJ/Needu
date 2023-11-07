@@ -112,8 +112,8 @@ class footer_component extends HTMLElement {
           <span>NEEDU</span>
           <span>대표 김현준</span>
           <span>사업자 등록번호 197-07-02539</span>
-          <span>문의 needu.sw@gmail.com</span>
-          <span>070-7954-4468</span>
+          <span class="contact_email"><img src="../styles/images/ico_email.svg">needu.sw@gmail.com</span>
+          <span class="contact_phone"><img src="../styles/images/ico_phone.svg">070-7954-4468</span>
         </div>
       </div>
     </div>

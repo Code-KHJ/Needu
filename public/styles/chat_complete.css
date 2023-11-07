@@ -1,3 +1,4 @@
+@charset "UTF-8";
 main {
   margin-top: 120px;
   width: 100%;
@@ -8,7 +9,7 @@ main .div-line {
 }
 
 section {
-  margin: 0 auto;
+  margin: 0 40px;
   margin-top: 80px;
   max-width: 740px;
   display: flex;
@@ -17,7 +18,7 @@ section {
 }
 section h1 {
   color: #444;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   font-weight: 700;
 }
 section > div {
@@ -36,18 +37,16 @@ section .info-box {
 }
 section .info-box .item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 4px;
   color: #444;
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 section .info-box .item > div:nth-of-type(1) {
-  width: 120px;
+  width: 150px;
   font-weight: 700;
 }
 section .info-box .item > div:nth-of-type(2) {
-  margin: 0 10px;
-}
-section .info-box .item > div:nth-of-type(3) {
   font-weight: 400;
   flex: 1;
 }
@@ -60,33 +59,78 @@ section .payment > h1 {
 }
 section .payment > p {
   color: #444;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 400;
   margin-top: 5px;
   margin-left: 20px;
 }
 section .payment .payment-content {
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 400;
   margin-top: 20px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: 5px;
+  line-height: 20px;
 }
 section > button {
   margin-top: 60px;
-  margin-bottom: 100px;
-  padding: 20px 30px;
-  width: 280px;
+  margin-bottom: 200px;
+  padding: 19px 28px;
+  width: 295px;
   height: 60px;
   border-radius: 4px;
   background: #aaa;
   color: #fafafa;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   cursor: pointer;
 }
 section > button:hover {
   background: #6269f5;
+}
+
+/* 테블릿 768 사이즈 반응형 */
+@media screen and (min-width: 768px) {
+  section {
+    margin: 0 auto;
+    margin-top: 80px;
+    min-width: 660px;
+  }
+  section h1 {
+    font-size: 2rem;
+  }
+  section .info-box .item {
+    flex-direction: row;
+    font-size: 1.8rem;
+  }
+  section .payment > p {
+    font-size: 1.4rem;
+  }
+  section .payment .payment-content {
+    font-size: 1.8rem;
+  }
+}
+/* PC 1024 사이즈 반응형 */
+@media screen and (min-width: 1024px) {
+  section h1 {
+    font-size: 2.4rem;
+  }
+  section .info-box .item {
+    font-size: 2rem;
+  }
+  section .info-box .item > div:nth-of-type(1) {
+    width: 200px;
+  }
+  section .payment > p {
+    color: #444;
+    font-size: 1.6rem;
+  }
+  section .payment .payment-content {
+    font-size: 2rem;
+  }
+  section > button {
+    font-size: 2rem;
+  }
 }/*# sourceMappingURL=chat_complete.css.map */
