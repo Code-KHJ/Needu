@@ -22,8 +22,6 @@ router.get('/reserve', auth, (req, res) => {
   res.status(200).render(rootdir + '/public/chat_reserve.html', middle_info);
 });
 
-//https://http://localhost:3000//chat/complete?status=confirm&calendar_code=qDiuJoXq8p&calendar_name=1시간 미팅&event_start_at=2022-04-12T12:00:00+09:00&event_end_at=2022-04-12T13:00:00+09:00&invitee_email=rangken4@naver.com&invitee_name=테스트&invitee_phone=
-
 router.get('/complete', auth, (req, res) => {
   const middle_info = {
     User: req.user,
