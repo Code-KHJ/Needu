@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0"
+    />
+    <link rel="icon" href="/styles/images/favicon.svg" />
+    <title>니쥬챗 예약</title>
+    <link href="/styles/style_reset.css" rel="stylesheet" type="text/css" />
+    <link href="/styles/webcomponent.css" rel="stylesheet" />
+    <link href="/styles/chat_reserve.css" rel="stylesheet" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-G5XZB713D0"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-G5XZB713D0');
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="header_wrap">
+        <header-component data-name="{{User.nickname}}"></header-component>
+      </div>
+      <main>
+        <div class="div-line"></div>
+        <section>
+          <!-- WhatTime embed widget begin -->
+          <div
+            class="whattime-inline-widget"
+            data-url="https://whattime.co.kr/needu/{{Host}}"
+            style="min-width: 320px; height: 690px"
+          ></div>
+          <link
+            href="https://assets.whattime.co.kr/widget/widget.css"
+            rel="stylesheet"
+          />
+          <script
+            src="https://assets.whattime.co.kr/widget/widget.js"
+            type="text/javascript"
+            async
+          ></script>
+          <!-- WhatTime embed widget end -->
+        </section>
+      </main>
+    </div>
+    <footer>
+      <footer-component></footer-component>
+    </footer>
+    <script type="module" src="/js/webcomponent.js"></script>
+  </body>
+</html>
