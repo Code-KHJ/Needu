@@ -100,7 +100,7 @@ module.exports = {
                 "<script>alert('" +
                   row[0].nickname +
                   "님 반갑습니다!');location.href = '" +
-                  returnPath +
+                  returnUrl +
                   "';</script>"
               );
           } catch (err) {

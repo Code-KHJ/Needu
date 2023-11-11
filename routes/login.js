@@ -1,27 +1,25 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const {login, findId, mailAuthPw, resetPw} = require("./controllers/user");
-const {auth} = require("./middleware/auth");
-const rootdir = require("../modules/path");
+const { login, findId, mailAuthPw, resetPw } = require('./controllers/user');
+const { auth } = require('./middleware/auth');
+const rootdir = require('../modules/path');
 
+router.get('/', auth, (req, res) => {
+  if (req.user) {
+    res.redirect('/');
+  } else {
+    res.cookie('returnPage', req.header('referer'));
+    console.log(req.header('referer'));
+    res.sendFile(rootdir + '/public/login.html');
+  }
+});
+router.post('/', login);
 
-router.get('/', auth, (req,res)=>{
-  if(req.user){
-    res.redirect("/")
-  }else{
-    res.cookie('returnPage', req.header("referer"))
-    res.sendFile(rootdir+'/public/login.html')
-  }})
-router.post('/', login)
-
-router.post('/find/id', findId)
-router.post('/find/pw', mailAuthPw)
-router.post('/update/pw', resetPw)
-
-
+router.post('/find/id', findId);
+router.post('/find/pw', mailAuthPw);
+router.post('/update/pw', resetPw);
 
 module.exports = router;
-
 
 /**
  * @swagger
@@ -37,7 +35,7 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               id: 
+ *               id:
  *                 type: string
  *               password:
  *                 type: string
@@ -48,4 +46,4 @@ module.exports = router;
  *         description: "클라이언트 입력정보 불일치"
  *       '500':
  *         description: "오류 발생"
-*/
+ */
