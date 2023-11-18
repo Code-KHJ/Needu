@@ -32,6 +32,10 @@ class header_component extends HTMLElement {
             <ul class="gnb">
               <li><a href="/review/search">기관리뷰</a></li>
               <li><a href="/review/write">리뷰작성</a></li>
+              <li class="beta" style=display:none>
+                <a href="https://needu.oopy.io">니쥬챗</a>
+                <img src="./styles/images/ico_beta.png">
+              </li>
               <li><a href="https://neighborly-arithmetic-8e6.notion.site/NeedU-2323fd6cf25042c28a5b9fb0029d67ce?pvs=4" target="_blank">NEEDU소개</a></li>
             </ul>
           </div>

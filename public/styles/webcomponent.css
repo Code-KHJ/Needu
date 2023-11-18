@@ -115,6 +115,15 @@ input {
   margin-left: 12px;
   background: url(images/ico_arrow_R.png) no-repeat bottom/contain;
 }
+.beta {
+  position: relative;
+}
+.beta > img {
+  position: absolute;
+  right: 120px;
+  top: -20px;
+  width: 35px;
+}
 .usersign {
   margin-top: 80px; /* 중첩돼서 80px로 구현됨 */
   display: flex;
@@ -417,10 +426,14 @@ footer-component {
   } /* ul */
   .gnb li {
     margin: 0;
-    margin-left: 40px;
+    margin-left: 20px;
   }
   .gnb li a::after {
     display: none;
+  }
+  .beta > img {
+    right: 0px;
+    top: -20px;
   }
   .usersign {
     margin: 0;
@@ -505,6 +518,9 @@ footer-component {
 } */
   .gnb_search {
     width: 36%;
+  }
+  .gnb li {
+    margin-left: 40px;
   }
   .logout::before {
     display: none;
