@@ -32,7 +32,7 @@ class header_component extends HTMLElement {
             <ul class="gnb">
               <li><a href="/review/search">기관리뷰</a></li>
               <li><a href="/review/write">리뷰작성</a></li>
-              <li class="beta" style=display:none>
+              <li class="beta">
                 <a href="https://needu.oopy.io">니쥬챗</a>
                 <img src="./styles/images/ico_beta.png">
               </li>
@@ -92,7 +92,7 @@ class footer_component extends HTMLElement {
     <div class="footer_wrap">
       <div class="footer_main">
         <div>
-          <a href='https://neighborly-arithmetic-8e6.notion.site/NEEDU-2023-08-06-850d2be0329c403daf4377ade286c4a1?pvs=25' target="_blank">이용약관</a>
+          <a href='https://neighborly-arithmetic-8e6.notion.site/NEEDU-2023-11-20-deb19b729f214bddbbbaf636cf14652d?pvs=4' target="_blank">이용약관</a>
           <a href="https://neighborly-arithmetic-8e6.notion.site/d262bf0970b143fa97cfb93552a1b33f" target="_blank">개인정보처리방침</a>
           <a href="https://neighborly-arithmetic-8e6.notion.site/NEEDU-d7cb722b6a6247d38594aff27c31c036?pvs=4" target="_blank">커뮤니티 운영가이드</a>
         </div>
