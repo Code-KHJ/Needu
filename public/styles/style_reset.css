@@ -10,70 +10,70 @@
 'NanumSquareAcl';
 'NanumSquareAcr'; */
 
-
-*{
-  margin:0; padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, body{
-  width:100%;
-  height:100%;
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
-html{
-  color:#333333;
-  font-size:0.625rem;
+html {
+  color: #333333;
+  font-size: 0.625rem;
   font-family: 'NanumSquare';
   /* font-family: 'NanumSquareNeo-Variable'; */
 }
-.container{
-  width:100%;;
+.container {
+  width: 100%;
   height: auto;
   min-height: 100%;
   background-color: #fafafa;
-	overflow:auto;
+  overflow: auto;
   position: relative;
-  padding-bottom: 200px;
 }
-a{
+a {
   text-decoration: none;
-  color:inherit
+  color: inherit;
 }
-li{
-  list-style:none;
+li {
+  list-style: none;
 }
-fieldset{
-  border:none;
+fieldset {
+  border: none;
 }
-button{
-  border:none;
-  background:none;
+button {
+  border: none;
+  background: none;
   font-family: 'NanumSquare';
   color: #333333;
   cursor: pointer;
 }
-input, select{
+input,
+select {
   font-family: 'NanumSquare';
   color: #333333;
 }
-.screen_out{
-  position:absolute;
-  left:-9999px;
+.screen_out {
+  position: absolute;
+  left: -9999px;
 }
-.blind{
-  text-indent:-9999px;
+.blind {
+  text-indent: -9999px;
 }
-.clearfix::after{
-  content:"";
-  display:block;
-  clear:both;
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
 }
-#header_wrap{
-  box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.10);
+#header_wrap {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
 }
-i{
+i {
   font-style: normal;
 }
 
 /* reset-end */
-
