@@ -34,7 +34,7 @@ class header_component extends HTMLElement {
               <li><a href="/review/write">리뷰작성</a></li>
               <li class="beta">
                 <a href="https://needu.oopy.io">니쥬챗</a>
-                <img src="./styles/images/ico_beta.png">
+                <img src="/styles/images/ico_beta.png">
               </li>
               <li><a href="https://neighborly-arithmetic-8e6.notion.site/NeedU-2323fd6cf25042c28a5b9fb0029d67ce?pvs=4" target="_blank">NEEDU소개</a></li>
             </ul>
@@ -102,13 +102,13 @@ class footer_component extends HTMLElement {
           <div class="footer_logo"></div>
           <div class="ico_sns">
             <a href="https://www.facebook.com/people/%EC%82%AC%ED%9A%8C%EB%B3%B5%EC%A7%80-%EA%B8%B0%EA%B4%80%EB%A6%AC%EB%B7%B0-%ED%94%8C%EB%9E%AB%ED%8F%BC-NEEDU/61550193057323/" target="_blank">
-              <img src="../styles/images/ico_facebook.svg">
+              <img src="/styles/images/ico_facebook.svg">
             </a>
             <a href="https://www.instagram.com/needu.sw/" target="_blank">
-              <img src="../styles/images/ico_instagram.svg">
+              <img src="/styles/images/ico_instagram.svg">
             </a>
             <a href="http://pf.kakao.com/_CsYKG" target="_blank">
-              <img src="../styles/images/ico_kakao.svg">
+              <img src="/styles/images/ico_kakao.svg">
             </a>
           </div>
         </div>
@@ -116,8 +116,8 @@ class footer_component extends HTMLElement {
           <span>NEEDU</span>
           <span>대표 김현준</span>
           <span>사업자 등록번호 197-07-02539</span>
-          <span class="contact_email"><img src="../styles/images/ico_email.svg">needu.sw@gmail.com</span>
-          <span class="contact_phone"><img src="../styles/images/ico_phone.svg">070-7954-4468</span>
+          <span class="contact_email"><img src="/styles/images/ico_email.svg">needu.sw@gmail.com</span>
+          <span class="contact_phone"><img src="/styles/images/ico_phone.svg">070-7954-4468</span>
         </div>
       </div>
     </div>
